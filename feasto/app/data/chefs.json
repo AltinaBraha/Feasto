@@ -1,0 +1,40 @@
+{
+  "executive": {
+    "name": "Alexander Petillo",
+    "bio": "Food is the foundation of true happiness. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "quote": "A distinctive, well-preserved and comfortable space, high-quality products, authentic cuisine, food and drinks are done flawlessly.",
+    "image": "/img/executive-chef.jpg"
+  },
+  "others": [
+    {
+      "name": "Lorenzo Morelli",
+      "role": "Sous Chef",
+      "bio": "With a sharp palate and precision under pressure, Lorenzo brings structure and soul to every dish he supports.",
+      "image": "/img/sousChef.jpg",
+      "socials": [
+        { "platform": "twitter", "url": "https://twitter.com" },
+        { "platform": "facebook", "url": "https://facebook.com" }
+      ]
+    },
+    {
+      "name": "Aaliyah Williams",
+      "role": "Pastry Chef",
+      "bio": "Aaliyah crafts desserts that balance creativity with tradition, delivering sweetness in every detail.",
+      "image": "/img/pastryChef.jpg",
+      "socials": [
+        { "platform": "twitter", "url": "https://twitter.com" },
+        { "platform": "facebook", "url": "https://facebook.com" }
+      ]
+    },
+    {
+      "name": "Lyon Blanchet",
+      "role": "Sauté Chef",
+      "bio": "Lyon masters the art of the pan, infusing bold flavors and flawless timing into every sautéed creation.",
+      "image": "/img/sauteChef.jpg",
+      "socials": [
+        { "platform": "twitter", "url": "https://twitter.com" },
+        { "platform": "facebook", "url": "https://facebook.com" }
+      ]
+    }
+  ]
+}
