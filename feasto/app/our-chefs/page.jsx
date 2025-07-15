@@ -9,6 +9,7 @@ import {
   FaYoutube,
   FaPinterest,
 } from "react-icons/fa";
+import ReservationForm from "@/components/ReservationForm";
 
 export default function MeetOurChefsPage() {
   const [showVideo, setShowVideo] = useState(false);
@@ -116,7 +117,7 @@ export default function MeetOurChefsPage() {
       {/* VIDEO THUMBNAIL */}
       <section className="max-w-6xl mx-auto px-4 pb-24">
         <div
-          className="relative w-full h-[500px]  overflow-hidden shadow-lg cursor-pointer group"
+          className="relative w-full h-[500px] overflow-hidden shadow-lg cursor-pointer group"
           onClick={() => setShowVideo(true)}
         >
           <img
@@ -159,6 +160,9 @@ export default function MeetOurChefsPage() {
           </div>
         </div>
       )}
+
+      {/* RESERVATION COMPONENT */}
+      <ReservationForm />
     </section>
   );
 }
