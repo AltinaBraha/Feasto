@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita Pizza",
+    "description": "Tomato sauce, Mozzarella cheese, oregano and fresh basil.",
+    "price": 29,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Margherita.png",
+    "available": true,
+    "ingredients": ["Tomato Sauce", "Mozzarella Cheese", "Oregano", "Fresh Basil"],
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "name": "Classic Burrata",
+    "description": "Tomato, Burrata, Parmesan & mozzarella.",
+    "price": 30,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Classic Burrata.png",
+    "available": true,
+    "ingredients": ["Tomato", "Burrata", "Parmesan", "Mozzarella"],
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "name": "Diavola",
+    "description": "Tomato sauce, mozzarella, salame, pepperoni.",
+    "price": 29,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Diavola.png",
+    "available": true,
+    "ingredients": ["Tomato Sauce", "Mozzarella", "Salame", "Pepperoni"],
+    "rating": 4.6
+  },
+  {
+    "id": 4,
+    "name": "Vegetariana",
+    "description": "Tomato sauce, mozzarella, artichokes, zucchini, mushrooms.",
+    "price": 24,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Vegetariana.png",
+    "available": true,
+    "ingredients": ["Tomato Sauce", "Mozzarella", "Artichokes", "Zucchini", "Mushrooms"],
+    "rating": 4.3
+  },
+  {
+    "id": 5,
+    "name": "Da Calabria",
+    "description": "Mozzarella, roasted mushrooms, Italian sausage, black olives.",
+    "price": 22,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Da Calabria.png",
+    "available": true,
+    "ingredients": ["Mozzarella", "Roasted Mushrooms", "Italian Sausage", "Black Olives"],
+    "rating": 4.4
+  },
+  {
+    "id": 6,
+    "name": "Capricciosa",
+    "description": "Tomato sauce, mozzarella, artichokes, olives, prosciutto.",
+    "price": 25,
+    "category": "Pizza",
+    "image": "/img/MenusFood/Capricciosa.png",
+    "available": true,
+    "ingredients": ["Tomato Sauce", "Mozzarella", "Artichokes", "Olives", "Prosciutto"],
+    "rating": 4.5
+  }
+]
