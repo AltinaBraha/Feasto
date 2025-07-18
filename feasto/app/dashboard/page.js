@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-// import Toast from "../../components/Toast";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { fetchOrders as getOrders, deleteOrder } from "@/app/api/orders";
+import {
+  fetchReservations as getReservations,
+  updateReservationStatus,
+} from "@/app/api/reservations";
 
 export default function WaiterDashboard() {
   const [orders, setOrders] = useState([]);
@@ -9,90 +13,53 @@ export default function WaiterDashboard() {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetchOrders();
-      fetchReservations();
-    }, 3000);
+    const fetchAll = async () => {
+      try {
+        const [ordersData, reservationsData] = await Promise.all([
+          getOrders(),
+          getReservations(),
+        ]);
+        setOrders(ordersData);
+        setReservations(reservationsData);
+      } catch (error) {
+        console.error("Gabim gjatë marrjes së të dhënave:", error);
+        setOrders([]);
+        setReservations([]);
+      }
+    };
 
-    fetchOrders();
-    fetchReservations();
-
+    const interval = setInterval(fetchAll, 3000);
+    fetchAll();
     return () => clearInterval(interval);
   }, []);
 
-  const fetchOrders = async () => {
+  const markReady = async (id) => {
     try {
-      const res = await fetch(
-        "https://6877a749dba809d901f05d20.mockapi.io/orders"
-      );
-      const data = await res.json();
-      if (Array.isArray(data)) setOrders(data);
-      else setOrders([]);
-    } catch (err) {
-      console.error("Gabim gjatë fetch të porosive:", err);
-      setOrders([]);
+      await deleteOrder(id);
+      toast.success(`Order #${id} marked as ready and removed`);
+    } catch (error) {
+      toast.error("Failed to delete order.");
+      console.error("DELETE error:", error);
     }
   };
-
-  const fetchReservations = async () => {
-    try {
-      const res = await fetch(
-        "https://6877a749dba809d901f05d20.mockapi.io/reservations"
-      );
-      const data = await res.json();
-      if (Array.isArray(data)) setReservations(data);
-      else setReservations([]);
-    } catch (err) {
-      console.error("Gabim gjatë fetch të rezervimeve:", err);
-      setReservations([]);
-    }
-  };
-
- const markReady = async (id) => {
-  try {
-    await fetch(`https://6877a749dba809d901f05d20.mockapi.io/orders/${id}`, {
-      method: "DELETE",
-    });
-    toast.success(`Order #${id} marked as ready and removed`);
-  } catch (error) {
-    toast.error("Failed to delete order. CORS or network issue.");
-    console.error("DELETE error:", error);
-  }
-};
-
-
 
   const confirmReservation = async (id) => {
     try {
-      await fetch(
-        `https://6877a749dba809d901f05d20.mockapi.io/reservations/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: "confirmed" }),
-        }
-      );
-      setToast(`Reservation #${id} confirmed`);
+      await updateReservationStatus(id, "confirmed");
+      toast.success(`Reservation #${id} confirmed`);
     } catch (err) {
       console.error("Gabim gjatë konfirmimit të rezervimit:", err);
-      setToast("Failed to confirm reservation.");
+      toast.error("Failed to confirm reservation.");
     }
   };
 
   const rejectReservation = async (id) => {
     try {
-      await fetch(
-        `https://6877a749dba809d901f05d20.mockapi.io/reservations/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: "rejected" }),
-        }
-      );
-      setToast(`Reservation #${id} rejected`);
+      await updateReservationStatus(id, "rejected");
+      toast.success(`Reservation #${id} rejected`);
     } catch (err) {
       console.error("Gabim gjatë refuzimit të rezervimit:", err);
-      setToast("Failed to reject reservation.");
+      toast.error("Failed to reject reservation.");
     }
   };
 
@@ -103,38 +70,21 @@ export default function WaiterDashboard() {
     <div className="min-h-screen flex bg-gray-100">
       <aside className="w-64 bg-black text-white p-6 space-y-4">
         <h2 className="text-xl font-bold text-orange-500">Filter Orders</h2>
-        <button
-          className={`block w-full text-left px-4 py-2 rounded ${
-            filter === "all" ? "bg-orange-500" : "hover:bg-gray-800"
-          }`}
-          onClick={() => setFilter("all")}
-        >
-          All Orders
-        </button>
-        <button
-          className={`block w-full text-left px-4 py-2 rounded ${
-            filter === "take-away" ? "bg-orange-500" : "hover:bg-gray-800"
-          }`}
-          onClick={() => setFilter("take-away")}
-        >
-          Take Away
-        </button>
-        <button
-          className={`block w-full text-left px-4 py-2 rounded ${
-            filter === "order-here" ? "bg-orange-500" : "hover:bg-gray-800"
-          }`}
-          onClick={() => setFilter("order-here")}
-        >
-          Order Here
-        </button>
-        <button
-          className={`block w-full text-left px-4 py-2 rounded ${
-            filter === "reservations" ? "bg-orange-500" : "hover:bg-gray-800"
-          }`}
-          onClick={() => setFilter("reservations")}
-        >
-          Show Reservations
-        </button>
+        {["all", "take-away", "order-here", "reservations"].map((type) => (
+          <button
+            key={type}
+            className={`block w-full text-left px-4 py-2 rounded ${
+              filter === type ? "bg-orange-500" : "hover:bg-gray-800"
+            }`}
+            onClick={() => setFilter(type)}
+          >
+            {type === "all"
+              ? "All Orders"
+              : type === "reservations"
+              ? "Show Reservations"
+              : type.charAt(0).toUpperCase() + type.slice(1)}
+          </button>
+        ))}
       </aside>
 
       <main className="flex-1 p-8">
@@ -178,7 +128,6 @@ export default function WaiterDashboard() {
                       Status: {res.status}
                     </p>
                   </div>
-
                   {res.status === "pending" && (
                     <div className="mt-4 flex gap-2">
                       <button
@@ -251,7 +200,6 @@ export default function WaiterDashboard() {
             ))}
           </div>
         )}
-        {/* {toast && <Toast message={toast} onClose={() => setToast("")} />} */}
       </main>
     </div>
   );
