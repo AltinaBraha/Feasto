@@ -48,7 +48,8 @@ export default function WaiterDashboard() {
     }
   };
 
-  const markReady = async (id) => {
+ const markReady = async (id) => {
+  try {
     await fetch(`https://6877a749dba809d901f05d20.mockapi.io/orders/${id}`, {
       method: "DELETE",
     });
@@ -58,6 +59,7 @@ export default function WaiterDashboard() {
     console.error("DELETE error:", error);
   }
 };
+
 
 
   const confirmReservation = async (id) => {
