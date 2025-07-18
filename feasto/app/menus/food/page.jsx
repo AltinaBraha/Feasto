@@ -22,7 +22,8 @@ export default function OurMenuPage() {
     }));
 
   return (
-    <section className="min-h-screen bg-white text-black">
+     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
+    <section className="min-h-screen text-black">
       {/* HERO */}
       <div className="relative h-[105vh] mb-20">
         <img
@@ -50,13 +51,21 @@ export default function OurMenuPage() {
 
       {/* FOOD as button center with subcategories */}
       <div className="flex flex-col items-center mb-12">
-        <button
-          onClick={() => setShowSubcategories(!showSubcategories)}
-          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
-        >
-          Food
-        </button>
+       <div className="flex justify-center space-x-10 mb-12">
+          <button
+            onClick={() => setShowSubcategories(!showSubcategories)}
+            className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
+          >
+            Food
+          </button>
 
+          <a
+            href="/menus/Drinks"
+            className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
+          >
+            Drinks
+          </a>
+        </div>
         {showSubcategories && (
           <div className="flex space-x-4 mt-4">
             {subcategories.map((subcat) => (
@@ -98,7 +107,7 @@ export default function OurMenuPage() {
                 />
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg">{item.name}</h3>
-                  <p className="text-gray-500 text-sm">{item.description}</p>
+                  <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
                 </div>
                 <div className="flex items-center space-x-4 min-w-[110px] justify-end">
                   <div className="flex-grow border-b border-dotted border-gray-400 mx-2"></div>
@@ -138,7 +147,7 @@ export default function OurMenuPage() {
                         />
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg">{item.name}</h3>
-                          <p className="text-gray-500 text-sm">{item.description}</p>
+                          <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
                         </div>
                         <div className="flex items-center space-x-4 min-w-[110px] justify-end">
                           <div className="flex-grow border-b border-dotted border-gray-400 mx-2"></div>
@@ -178,7 +187,8 @@ export default function OurMenuPage() {
                         />
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg">{item.name}</h3>
-                          <p className="text-gray-500 text-sm">{item.description}</p>
+                         <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
+
                         </div>
                         <div className="flex items-center space-x-4 min-w-[110px] justify-end">
                           <div className="flex-grow border-b border-dotted border-gray-400 mx-2"></div>
@@ -202,5 +212,6 @@ export default function OurMenuPage() {
       )}
 
     </section>
+      </main>
   );
 }
