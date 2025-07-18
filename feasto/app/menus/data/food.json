@@ -78,7 +78,7 @@
     "price": 28,
     "category": "Food",
     "subcategory": "Pasta",
-    "image": "/img/MenusFood/Napoletana.jpg",
+    "image": "/img/MenusFood/s1.webp",
     "available": true,
     "ingredients": ["Spaghetti", "Egg", "Pecorino Cheese", "Guanciale", "Black Pepper"],
     "rating": 4.7

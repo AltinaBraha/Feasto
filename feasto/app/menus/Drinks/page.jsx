@@ -142,7 +142,7 @@ export default function DrinksPage() {
                   onClick={() => handleSortChangeForCategory(activeSubcategory, "ratingHighToLow")}
                   className="text-sm text-gray-600 hover:text-orange-600"
                 >
-                  Rating ★
+                  Rating 
                 </button>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function DrinksPage() {
                       onClick={() => handleSortChangeForCategory(group.name, "ratingHighToLow")}
                       className="text-xs text-gray-500 hover:text-orange-600"
                     >
-                      Sort by Rating ★
+                      Sort by Rating 
                     </button>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/CartProvider";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,9 @@ export default function OurMenuPage() {
   const router = useRouter();
   const [notification, setNotification] = useState(null);
   const [sortOptionsByCategory, setSortOptionsByCategory] = useState({});
+
+  const slugify = (text) =>
+  text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   const subcategories = ["All Food", "Starters", "Pizza", "Sides",  "Pasta"];
 
@@ -136,19 +139,19 @@ export default function OurMenuPage() {
                   onClick={() => handleSortChangeForCategory(activeSubcategory, "priceLowToHigh")}
                   className="text-sm text-gray-600 hover:text-orange-600"
                 >
-                  Price ↑
+                  Sort by Price ↑
                 </button>
                 <button
                   onClick={() => handleSortChangeForCategory(activeSubcategory, "priceHighToLow")}
                   className="text-sm text-gray-600 hover:text-orange-600"
                 >
-                  Price ↓
+                 Sort by Price ↓
                 </button>
                 <button
                   onClick={() => handleSortChangeForCategory(activeSubcategory, "ratingHighToLow")}
                   className="text-sm text-gray-600 hover:text-orange-600"
                 >
-                  Rating ★
+                  Sort by Rating 
                 </button>
               </div>
             </div>
@@ -164,7 +167,10 @@ export default function OurMenuPage() {
                     className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg">{item.name}</h3>
+                    <Link href={`/menus/food/${slugify(item.name)}`} className="font-semibold text-lg hover:text-orange-600 transition">
+                      {item.name}
+                    </Link>
+
                     <p className="text-gray-500 text-sm">
                       {item.ingredients.join(", ")}
                     </p>
@@ -213,7 +219,7 @@ export default function OurMenuPage() {
                       onClick={() => handleSortChangeForCategory(group.name, "ratingHighToLow")}
                       className="text-xs text-gray-500 hover:text-orange-600"
                     >
-                      Sort by Rating ★
+                      Sort by Rating 
                     </button>
                   </div>
                 </div>
@@ -229,7 +235,10 @@ export default function OurMenuPage() {
                         className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                       />
                       <div className="flex-1">
-                        <h3 className="font-semibold text-lg">{item.name}</h3>
+                        <Link href={`/menus/food/${slugify(item.name)}`} className="font-semibold text-lg hover:text-orange-600 transition">
+                          {item.name}
+                        </Link>
+
                         <p className="text-gray-500 text-sm">
                           {item.ingredients.join(", ")}
                         </p>
