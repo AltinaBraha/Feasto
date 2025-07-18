@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import Image from "next/image";
 
 
 export default function Footer() {
@@ -6,19 +7,27 @@ export default function Footer() {
 
 <footer className="bg-black text-white px-8 py-12">
   <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-    <div>
-      <h2 className="text-xl font-bold mb-3">Patio.Time</h2>
-      <p className="text-m leading-relaxed">
-        Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-        In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-      </p>
-      <div className="flex mt-4 space-x-4 text-white text-lg">
-        <a href="#" aria-label="Facebook" className="hover:text-orange-500"><FaFacebookF /></a>
-        <a href="#" aria-label="Twitter" className="hover:text-orange-500"><FaTwitter /></a>
-        <a href="#" aria-label="Instagram" className="hover:text-orange-500"><FaInstagram /></a>
-        <a href="#" aria-label="LinkedIn" className="hover:text-orange-500"><FaLinkedinIn /></a>
-      </div>
-    </div>
+   <div className="flex flex-col items-start space-y-4">
+  <div className="relative w-48 h-16 mr-16">
+    <Image
+      src="/img/logo.png"
+      alt="Feasto Logo"
+      layout="fill"
+      objectFit="contain"
+      priority
+    />
+  </div>
+  <p className="text-m leading-relaxed">
+    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+    In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+  </p>
+  <div className="flex mt-2 space-x-4 text-white text-lg">
+    <a href="#" aria-label="Facebook" className="hover:text-orange-500"><FaFacebookF /></a>
+    <a href="#" aria-label="Twitter" className="hover:text-orange-500"><FaTwitter /></a>
+    <a href="#" aria-label="Instagram" className="hover:text-orange-500"><FaInstagram /></a>
+    <a href="#" aria-label="LinkedIn" className="hover:text-orange-500"><FaLinkedinIn /></a>
+  </div>
+</div>
 
     <div>
       <h3 className="text-lg font-semibold mb-3">Working Hours</h3>

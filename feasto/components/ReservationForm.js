@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { toast } from 'react-toastify';
+
 
 const timeSlots = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2);
@@ -46,19 +48,16 @@ export default function ReservationForm() {
         }
       );
 
-      if (!res.ok) throw new Error("Reservation failed");
+    if (!res.ok) throw new Error("Reservation failed");
 
-      alert("Reservation successful!");
-      setShowModal(false);
-      setName("");
-      setEmail("");
-    } catch (err) {
-      alert("Failed to reserve. Try again.");
-    }
-  };
+    toast.success("Reservation submitted! We will confirm shortly.");
+  } catch (err) {
+    toast.error("Failed to submit reservation. Try again.");
+  }
+};
 
   return (
-    <section className="relative py-20">
+    <section  id="reservation-form" className="relative py-20">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
