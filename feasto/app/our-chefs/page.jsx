@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import chefs from "@/app/data/chefs.json";
 import {
   FaFacebook,
   FaTwitter,
@@ -10,12 +6,12 @@ import {
   FaPinterest,
 } from "react-icons/fa";
 import ReservationForm from "@/components/ReservationForm";
+import OtherChefs from "@/components/ourChefs/OtherChefs";
+import ChefVideoSection from "@/components/ourChefs/ChefVideoSection";
 
 export default function MeetOurChefsPage() {
-  const [showVideo, setShowVideo] = useState(false);
-
   return (
-    <section className="min-h-screen bg-white text-black">
+    <section className="min-h-screen bg-[rgba(221,89,3,0.05)] text-black">
       {/* HERO */}
       <div className="relative h-[75vh] mb-20">
         <img
@@ -47,14 +43,10 @@ export default function MeetOurChefsPage() {
             Alexander Petillo
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Food is the foundation of true happiness. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit aenean commodo.
+            Food is the foundation of true happiness...
           </p>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            We see our customers as invited guests to a party, and we are the
-            hosts. It’s our job every day to make every important aspect of the
-            customer experience a little bit better. Donec quam felis, ultricies
-            nec, pellentesque eu.
+            We see our customers as invited guests to a party...
           </p>
           <div className="flex space-x-4 text-gray-800 text-xl mb-6">
             <FaTwitter className="hover:text-orange-600 cursor-pointer" />
@@ -69,7 +61,7 @@ export default function MeetOurChefsPage() {
         </div>
       </section>
 
-      {/* QUOTE SECTION */}
+      {/* QUOTE */}
       <section className="relative h-[400px] w-full mb-20">
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -88,80 +80,12 @@ export default function MeetOurChefsPage() {
       </section>
 
       {/* OTHER CHEFS */}
-      <div className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid md:grid-cols-3 gap-12">
-          {chefs.others.map((chef) => (
-            <div key={chef.name}>
-              <img
-                src={chef.image}
-                alt={chef.name}
-                className="w-full h-[400px] object-cover mb-4"
-              />
-              <p className="text-orange-600 font-semibold uppercase text-sm mb-1">
-                {chef.role}
-              </p>
-              <h3 className="text-xl font-bold mb-2">{chef.name}</h3>
-              <p className="text-gray-600 text-sm mb-3">{chef.bio}</p>
-              <div className="flex gap-3 text-gray-700 text-xl">
-                {chef.socials.map((icon, i) => (
-                  <a key={i} href={icon.url} target="_blank" rel="noreferrer">
-                    <i className={`fab fa-${icon.platform}`}></i>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <OtherChefs />
 
-      {/* VIDEO THUMBNAIL */}
-      <section className="max-w-6xl mx-auto px-4 pb-24">
-        <div
-          className="relative w-full h-[500px] overflow-hidden shadow-lg cursor-pointer group"
-          onClick={() => setShowVideo(true)}
-        >
-          <img
-            src="/img/chef-video-bg.jpg"
-            alt="Chef video"
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-300 ease-in-out"
-          />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="w-20 h-20 border-4 border-white rounded-full flex items-center justify-center transition hover:scale-110">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-8 h-8 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* VIDEO SECTION */}
+      <ChefVideoSection />
 
-      {/* VIDEO MODAL */}
-      {showVideo && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4">
-          <div className="relative w-full max-w-4xl aspect-video">
-            <iframe
-              src="https://www.youtube.com/embed/CoAvaYOwm6k?autoplay=1"
-              title="Chef Video"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="w-full h-full rounded"
-            ></iframe>
-            <button
-              onClick={() => setShowVideo(false)}
-              className="absolute top-2 right-2 text-white text-3xl"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* RESERVATION COMPONENT */}
+      {/* RESERVATION */}
       <ReservationForm />
     </section>
   );
