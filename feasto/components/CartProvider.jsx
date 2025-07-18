@@ -1,10 +1,28 @@
-"use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+    setIsReady(true); // e tregon që u kry inicializimi
+  }, []);
+
+  useEffect(() => {
+    if (isReady) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, isReady]);
+
+  const clearCart = () => {
+    setCart([]);
+  };
 
   const addToCart = (item) => {
     setCart((prev) => {
@@ -28,9 +46,12 @@ export function CartProvider({ children }) {
     );
   };
 
+  // Derisa s’është gati mos e shfaq children fare
+  if (!isReady) return null;
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQty }}
+      value={{ cart, addToCart, removeFromCart, updateQty, clearCart }}
     >
       {children}
     </CartContext.Provider>
