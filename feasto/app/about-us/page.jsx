@@ -1,5 +1,3 @@
-"use client";
-
 import Head from "next/head";
 import Image from "next/image";
 import secrets from "@/app/data/chefsSecrets.json";
@@ -15,7 +13,7 @@ export default function ChefsSecretsPage() {
         />
       </Head>
 
-      <section className="min-h-screen bg-white text-black">
+      <section className="min-h-screen  text-black bg-[rgba(221,89,3,0.05)]">
         {/* HERO SECTION */}
         <header className="relative h-[60vh] flex items-center justify-center overflow-hidden">
           <div
@@ -24,8 +22,17 @@ export default function ChefsSecretsPage() {
           ></div>
           <div className="relative z-10 text-center">
             <h1 className="text-white text-5xl font-bold px-6 py-4">
-              Latest News
+              About Us
             </h1>
+            <div className=" px-6 py-4 rounded-md max-w-3xl mx-auto mb-6">
+              <p className="text-amber-50 text-base leading-relaxed ">
+                Feasto is a contemporary restaurant established in June 2025,
+                dedicated to delivering a unique dining experience for all food
+                lovers. Our space blends comfort and elegance, offering a warm
+                ambiance ideal for family lunches, romantic dinners, or special
+                events.
+              </p>
+            </div>
           </div>
         </header>
 
@@ -35,9 +42,9 @@ export default function ChefsSecretsPage() {
             {secrets.map((item) => (
               <article
                 key={item.id}
-                className="bg-white overflow-hidden group cursor-pointer"
+                className=" overflow-hidden group cursor-pointer"
               >
-                <div className="w-full h-64 relative mb-4 overflow-hidden">
+                <div className="w-full h-64 relative mb-4 overflow-hidden ">
                   <div className="w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105">
                     <Image
                       src={item.image}

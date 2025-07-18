@@ -66,7 +66,6 @@ export default function ReservationForm() {
           backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/img/booking-bg.jpg")`,
         }}
       ></div>
-
       {/* Content above background */}
       <div className="relative z-10">
         <div className="text-center text-white mb-12">
@@ -131,42 +130,50 @@ export default function ReservationForm() {
           *Powered by OpenTable
         </div>
       </div>
-
+      {/* Modal */}
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-md w-[90%] max-w-md">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40">
+          <div className="bg-white py-12 px-8 rounded-md w-full max-w-sm flex flex-col items-center text-center shadow-2xl">
+            <h3 className="text-orange-600 text-sm font-medium tracking-wide uppercase mb-2">
+              Online Reservation
+            </h3>
+            <h5 className="text-2xl font-serif font-semibold tracking-wide mb-10">
               Enter Your Info
-            </h2>
-            <form onSubmit={handleReservationSubmit} className="space-y-4">
+            </h5>
+
+            <form
+              onSubmit={handleReservationSubmit}
+              className="w-full flex flex-col items-center gap-6"
+            >
               <input
                 type="text"
-                placeholder="Your name"
+                placeholder="Enter your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none"
+                className="w-full border-b border-gray-300 focus:outline-none text-center py-2 placeholder-gray-500"
               />
               <input
                 type="email"
-                placeholder="Your email"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none"
+                className="w-full border-b border-gray-300 focus:outline-none text-center py-2 placeholder-gray-500"
               />
-              <div className="flex justify-between mt-6">
+
+              <div className="flex gap-4 w-full mt-4">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-600"
+                  className="w-1/2 bg-gray-300 text-gray-800 py-3 rounded hover:bg-gray-400 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
+                  className="w-1/2 bg-[#d35400] text-white py-3 hover:bg-orange-600 transition uppercase tracking-wide rounded"
                 >
-                  Confirm
+                  Book Now
                 </button>
               </div>
             </form>
