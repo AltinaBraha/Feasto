@@ -11,7 +11,7 @@ export function CartProvider({ children }) {
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
-    setIsReady(true);
+    setIsReady(true); // e tregon që u kry inicializimi
   }, []);
 
   useEffect(() => {
