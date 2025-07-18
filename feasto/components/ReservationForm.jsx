@@ -19,7 +19,7 @@ export default function ReservationForm() {
 
     try {
       const res = await fetch(
-        "https://6876afc8dba809d901ecda6a.mockapi.io/reservations",
+        "https://6877a749dba809d901f05d20.mockapi.io/reservations",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -45,9 +45,11 @@ export default function ReservationForm() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('img/booking-bg.jpg')" }}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/img/booking-bg.jpg")`,
+        }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        {/* <div className="absolute inset-0 bg-black bg-opacity-60"></div> */}
       </div>
 
       {/* Content above background */}
