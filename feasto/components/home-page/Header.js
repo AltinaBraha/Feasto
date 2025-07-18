@@ -1,8 +1,17 @@
+'use client';
+import Image from 'next/image';
+
 
 
 export default function Header() {
+    const handleScroll = () => {
+    const element = document.getElementById('reservation-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
-<header className=" absolute top-0 left-0 w-full z-50 bg-transparent text-white">
+<header className=" absolute left-0 w-full z-50 bg-transparent text-white">
 
   <div className="flex justify-between px-20 py-3 mt-2 bg-transparent text-base border-b border-gray-600">
   <div>123 Main Street, City</div>
@@ -14,8 +23,15 @@ export default function Header() {
 
 {/* logo */}
   <nav className="flex justify-between items-center px-10 py-4 bg-transparent">
-    <div className="text-3xl  cursor-pointer">Feasto</div>
-
+      <div className="cursor-pointer relative w-50 h-20">
+            <Image
+              src="/img/logo.png"
+              alt="Feasto Logo"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
     <ul className="hidden md:flex space-x-20 font-medium pl-[35%]">
 
             <li className="relative cursor-pointer text-xs tracking-wide font-bold
@@ -79,9 +95,12 @@ export default function Header() {
 
 
     {/* Buttoni */}
-    <button className="border border-white px-4 py-2 rounded bg-transparent hover:bg-white hover:text-black transition">
-      Find a Table
-    </button>
+   <button
+        onClick={handleScroll}
+        className="border border-white px-4 py-2 rounded bg-transparent hover:bg-white hover:text-black transition"
+      >
+        Find a Table
+      </button>
   </nav>
 </header>
   );

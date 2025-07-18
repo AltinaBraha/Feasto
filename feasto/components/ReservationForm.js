@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { toast } from 'react-toastify';
+
 
 const timeSlots = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2);
@@ -14,34 +16,35 @@ export default function ReservationForm() {
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [time, setTime] = useState("12:00 am");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch(
-        "https://6877a749dba809d901f05d20.mockapi.io/reservations",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: "Guest",
-            email: "guest@feasto.com",
-            people: Number(people),
-            dateTime: `${date} ${time}`,
-            status: "pending",
-          }),
-        }
-      );
+  try {
+    const res = await fetch(
+      "https://6877a749dba809d901f05d20.mockapi.io/reservations",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Guest",
+          email: "guest@feasto.com",
+          people: Number(people),
+          dateTime: `${date} ${time}`,
+          status: "pending",
+        }),
+      }
+    );
 
-      if (!res.ok) throw new Error("Reservation failed");
-      alert("Reservation successful!");
-    } catch (err) {
-      alert("Failed to reserve. Try again.");
-    }
-  };
+    if (!res.ok) throw new Error("Reservation failed");
+
+    toast.success("Reservation submitted! We will confirm shortly.");
+  } catch (err) {
+    toast.error("Failed to submit reservation. Try again.");
+  }
+};
 
   return (
-    <section className="relative py-20">
+    <section  id="reservation-form" className="relative py-20">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

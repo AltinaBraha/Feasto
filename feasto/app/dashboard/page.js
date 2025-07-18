@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import Toast from "../../components/Toast";
+// import Toast from "../../components/Toast";
+import { toast } from 'react-toastify';
 
 export default function WaiterDashboard() {
   const [orders, setOrders] = useState([]);
   const [filter, setFilter] = useState("all");
-  const [toast, setToast] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,12 +35,18 @@ export default function WaiterDashboard() {
     }
   };
 
-  const markReady = async (id) => {
+ const markReady = async (id) => {
+  try {
     await fetch(`https://6877a749dba809d901f05d20.mockapi.io/orders/${id}`, {
       method: "DELETE",
     });
-    setToast(`Order #${id} marked as ready and removed`);
-  };
+    toast.success(`Order #${id} marked as ready and removed`);
+  } catch (error) {
+    toast.error("Failed to delete order. CORS or network issue.");
+    console.error("DELETE error:", error);
+  }
+};
+
 
   const filteredOrders =
     filter === "all" ? orders : orders.filter((o) => o.type === filter);
@@ -132,7 +138,7 @@ export default function WaiterDashboard() {
             ))}
           </div>
         )}
-        {toast && <Toast message={toast} onClose={() => setToast("")} />}
+        {/* {toast && <Toast message={toast} onClose={() => setToast("")} />} */}
       </main>
     </div>
   );
