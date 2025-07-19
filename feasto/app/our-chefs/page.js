@@ -5,7 +5,7 @@ import {
   FaYoutube,
   FaPinterest,
 } from "react-icons/fa";
-import ReservationForm from "@/components/ReservationForm";
+import ReservationForm from "@/components/reservations/ReservationForm";
 import OtherChefs from "@/components/ourChefs/OtherChefs";
 import ChefVideoSection from "@/components/ourChefs/ChefVideoSection";
 
