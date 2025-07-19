@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import SidebarFilter from "@/components/Waiter/SidebarFilter";
-import OrderCard from "@/components/Waiter/OrderCard";
-import ReservationCard from "@/components/Waiter/ReservationCard";
+import SidebarFilter from "@/components/dashboard/SidebarFilter";
+import OrderCard from "@/components/dashboard/OrderCard";
+import ReservationCard from "@/components/dashboard/ReservationCard";
 import ClientOnlyToast from "@/components/ClientToast";
 import { fetchOrders, deleteOrder } from "@/app/api/orders";
 import {

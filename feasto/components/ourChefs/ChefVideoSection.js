@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ChefVideoSection() {
   const [showVideo, setShowVideo] = useState(false);
@@ -11,9 +12,11 @@ export default function ChefVideoSection() {
           className="relative w-full h-[500px] overflow-hidden shadow-lg cursor-pointer group"
           onClick={() => setShowVideo(true)}
         >
-          <img
+          <Image
             src="/img/chef-video-bg.jpg"
             alt="Chef video"
+            width={1200}
+            height={500}
             className="w-full h-full object-cover group-hover:scale-105 transition duration-300 ease-in-out"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

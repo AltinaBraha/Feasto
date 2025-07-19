@@ -1,14 +1,18 @@
-import chefs from "@/app/data/chefs.json";
+import Image from "next/image";
 
-export default function OtherChefs() {
+export default function OtherChefs({ chefs }) {
+  if (!chefs || chefs.length === 0) return null;
+
   return (
     <div className="max-w-6xl mx-auto px-6 pb-24">
       <div className="grid md:grid-cols-3 gap-12">
-        {chefs.others.map((chef) => (
+        {chefs.map((chef) => (
           <div key={chef.name}>
-            <img
+            <Image
               src={chef.image}
               alt={chef.name}
+              width={500}
+              height={400}
               className="w-full h-[400px] object-cover mb-4"
             />
             <p className="text-orange-600 font-semibold uppercase text-sm mb-1">
