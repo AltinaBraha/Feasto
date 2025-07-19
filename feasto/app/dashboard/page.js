@@ -1,9 +1,14 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { fetchOrders as getOrders, deleteOrder } from "@/app/api/orders";
+import SidebarFilter from "@/components/Waiter/SidebarFilter";
+import OrderCard from "@/components/Waiter/OrderCard";
+import ReservationCard from "@/components/Waiter/ReservationCard";
+import ClientOnlyToast from "@/components/ClientToast";
+import { fetchOrders, deleteOrder } from "@/app/api/orders";
 import {
-  fetchReservations as getReservations,
+  fetchReservations,
   updateReservationStatus,
 } from "@/app/api/reservations";
 
@@ -16,13 +21,13 @@ export default function WaiterDashboard() {
     const fetchAll = async () => {
       try {
         const [ordersData, reservationsData] = await Promise.all([
-          getOrders(),
-          getReservations(),
+          fetchOrders(),
+          fetchReservations(),
         ]);
         setOrders(ordersData);
         setReservations(reservationsData);
       } catch (error) {
-        console.error("Gabim gjatë marrjes së të dhënave:", error);
+        console.error("Error fetching data:", error);
         setOrders([]);
         setReservations([]);
       }
@@ -48,7 +53,7 @@ export default function WaiterDashboard() {
       await updateReservationStatus(id, "confirmed");
       toast.success(`Reservation #${id} confirmed`);
     } catch (err) {
-      console.error("Gabim gjatë konfirmimit të rezervimit:", err);
+      console.error("Error confirming reservation:", err);
       toast.error("Failed to confirm reservation.");
     }
   };
@@ -58,7 +63,7 @@ export default function WaiterDashboard() {
       await updateReservationStatus(id, "rejected");
       toast.success(`Reservation #${id} rejected`);
     } catch (err) {
-      console.error("Gabim gjatë refuzimit të rezervimit:", err);
+      console.error("Error rejecting reservation:", err);
       toast.error("Failed to reject reservation.");
     }
   };
@@ -68,24 +73,7 @@ export default function WaiterDashboard() {
 
   return (
     <div className="min-h-screen flex bg-gray-100">
-      <aside className="w-64 bg-black text-white p-6 space-y-4">
-        <h2 className="text-xl font-bold text-orange-500">Filter Orders</h2>
-        {["all", "take-away", "order-here", "reservations"].map((type) => (
-          <button
-            key={type}
-            className={`block w-full text-left px-4 py-2 rounded ${
-              filter === type ? "bg-orange-500" : "hover:bg-gray-800"
-            }`}
-            onClick={() => setFilter(type)}
-          >
-            {type === "all"
-              ? "All Orders"
-              : type === "reservations"
-              ? "Show Reservations"
-              : type.charAt(0).toUpperCase() + type.slice(1)}
-          </button>
-        ))}
-      </aside>
+      <SidebarFilter current={filter} setFilter={setFilter} />
 
       <main className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">
@@ -95,112 +83,26 @@ export default function WaiterDashboard() {
         </h1>
 
         {filter === "reservations" ? (
-          reservations.length === 0 ? (
-            <p className="text-gray-600">No reservations found.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {reservations.map((res, index) => (
-                <div
-                  key={res?.id ?? `res-${index}`}
-                  className="bg-white border border-gray-300 p-6 rounded-lg shadow-md flex flex-col justify-between"
-                >
-                  <div>
-                    <h2 className="text-lg font-semibold text-gray-800">
-                      Reservation #{res.id}
-                    </h2>
-                    <p className="text-sm text-gray-600">
-                      Guests: {res.people}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      Date & Time: {res.dateTime}
-                    </p>
-                    <p className="text-sm text-gray-600">Email: {res.email}</p>
-                    <p className="text-sm text-gray-600">Name: {res.name}</p>
-                    <p
-                      className={`text-sm font-semibold mt-1 ${
-                        res.status === "confirmed"
-                          ? "text-green-600"
-                          : res.status === "rejected"
-                          ? "text-red-600"
-                          : "text-blue-600"
-                      }`}
-                    >
-                      Status: {res.status}
-                    </p>
-                  </div>
-                  {res.status === "pending" && (
-                    <div className="mt-4 flex gap-2">
-                      <button
-                        onClick={() => confirmReservation(res.id)}
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md w-full"
-                      >
-                        Confirm
-                      </button>
-                      <button
-                        onClick={() => rejectReservation(res.id)}
-                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md w-full"
-                      >
-                        Reject
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )
-        ) : filteredOrders.length === 0 ? (
-          <p className="text-gray-600">No orders found.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {reservations.map((res) => (
+              <ReservationCard
+                key={res.id}
+                reservation={res}
+                onConfirm={confirmReservation}
+                onReject={rejectReservation}
+              />
+            ))}
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {filteredOrders.map((order, index) => (
-              <div
-                key={order?.id ?? `order-${index}`}
-                className="bg-white border border-gray-300 p-6 rounded-lg shadow-md flex flex-col justify-between"
-              >
-                <div>
-                  <h2 className="text-lg font-semibold text-gray-800">
-                    Order #{order.id}
-                  </h2>
-                  <ul className="list-disc list-inside text-gray-700 mt-2">
-                    {Array.isArray(order.items) && order.items.length > 0 ? (
-                      order.items.map((item, i) => (
-                        <li key={i}>
-                          {item.name} x {item.qty}
-                        </li>
-                      ))
-                    ) : (
-                      <li className="italic text-gray-500">No items</li>
-                    )}
-                  </ul>
-                  <p className="mt-3 font-medium text-orange-600">
-                    Total: ${order.total}
-                  </p>
-                  <p className="text-sm text-gray-600">Type: {order.type}</p>
-                  <p
-                    className={`text-sm font-semibold mt-1 ${
-                      order.status === "ready"
-                        ? "text-green-600"
-                        : "text-blue-600"
-                    }`}
-                  >
-                    Status: {order.status}
-                  </p>
-                </div>
-                {order.status === "pending" && (
-                  <div className="mt-4">
-                    <button
-                      onClick={() => markReady(order.id)}
-                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md w-full"
-                    >
-                      Mark as Ready
-                    </button>
-                  </div>
-                )}
-              </div>
+            {filteredOrders.map((order) => (
+              <OrderCard key={order.id} order={order} onMarkReady={markReady} />
             ))}
           </div>
         )}
       </main>
+
+      <ClientOnlyToast />
     </div>
   );
 }
