@@ -6,7 +6,7 @@
     "price": 29,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/product-6.jpg",
+    "image": "/img/MenusFood/piza1.avif",
     "available": true,
     "ingredients": ["Tomato Sauce", "Mozzarella Cheese", "Oregano", "Fresh Basil"],
     "rating": 4.5
@@ -18,7 +18,7 @@
     "price": 30,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/Classic Burrata.png",
+    "image": "/img/MenusFood/piza2.avif",
     "available": true,
     "ingredients": ["Tomato", "Burrata", "Parmesan", "Mozzarella"],
     "rating": 4.7
@@ -30,7 +30,7 @@
     "price": 29,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/Diavola.png",
+    "image": "/img/MenusFood/piza3.avif",
     "available": true,
     "ingredients": ["Tomato Sauce", "Mozzarella", "Salame", "Pepperoni"],
     "rating": 4.6
@@ -42,7 +42,7 @@
     "price": 24,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/Vegetariana.png",
+    "image": "/img/MenusFood/piza4.avif",
     "available": true,
     "ingredients": ["Tomato Sauce", "Mozzarella", "Artichokes", "Zucchini", "Mushrooms"],
     "rating": 4.3
@@ -54,7 +54,7 @@
     "price": 22,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/Da Calabria.png",
+    "image": "/img/MenusFood/piza5.avif",
     "available": true,
     "ingredients": ["Mozzarella", "Roasted Mushrooms", "Italian Sausage", "Black Olives"],
     "rating": 4.4
@@ -66,7 +66,7 @@
     "price": 25,
     "category": "Food",
     "subcategory": "Pizza",
-    "image": "/img/MenusFood/Capricciosa.png",
+    "image": "/img/MenusFood/piza6.avif",
     "available": true,
     "ingredients": ["Tomato Sauce", "Mozzarella", "Artichokes", "Olives", "Prosciutto"],
     "rating": 4.5
@@ -78,7 +78,7 @@
     "price": 28,
     "category": "Food",
     "subcategory": "Pasta",
-    "image": "/img/MenusFood/Napoletana.jpg",
+    "image": "/img/MenusFood/s1.webp",
     "available": true,
     "ingredients": ["Spaghetti", "Egg", "Pecorino Cheese", "Guanciale", "Black Pepper"],
     "rating": 4.7
@@ -126,7 +126,7 @@
     "price": 36,
     "category": "Food",
     "subcategory": "Starters",
-    "image": "/img/MenusFood/purplecorn.png",
+    "image": "/img/MenusFood/purple.jpg",
     "available": true,
     "ingredients": ["Ricotta", "Goat Cheese", "Beetroot", "Datterini"],
     "rating": 4.2
@@ -138,7 +138,7 @@
     "price": 30,
     "category": "Food",
     "subcategory": "Starters",
-    "image": "/img/MenusFood/bruno.png",
+    "image": "/img/MenusFood/scrible.jpg",
     "available": true,
     "ingredients": ["Culatello", "Spalla Cotta", "Mortadella", "Culacciona"],
     "rating": 4.3
@@ -150,7 +150,7 @@
     "price": 59,
     "category": "Food",
     "subcategory": "Starters",
-    "image": "/img/MenusFood/fresh.png",
+    "image": "/img/MenusFood/fresh.webp",
     "available": true,
     "ingredients": ["Oysters", "Limes"],
     "rating": 4.6
@@ -162,7 +162,7 @@
     "price": 13,
     "category": "Food",
     "subcategory": "Sides",
-    "image": "/img/MenusFood/Brussel.png",
+    "image": "/img/MenusFood/brussel.jpg",
     "available": true,
     "ingredients": ["Brussel Sprouts", "Pork Lardon", "Garlic", "Balsamic Glaze"],
     "rating": 4.0
@@ -174,7 +174,7 @@
     "price": 15,
     "category": "Food",
     "subcategory": "Sides",
-    "image": "/img/MenusFood/Broccolini.png",
+    "image": "/img/MenusFood/brocolini.jpg",
     "available": true,
     "ingredients": ["Broccolini", "XO Butter", "Crispy Shallots"],
     "rating": 4.4
