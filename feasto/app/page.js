@@ -2,7 +2,6 @@ import Image from "next/image";
 import ImageSlider from "@/components/home-page/ImageSlider";
 import AnimateOnScroll from "@/components/home-page/AnimatedSection";
 import GalleryFeature from "@/components/home-page/GalleryFeature";
-import ReservationForm from "@/components/reservations/ReservationForm";
 
 export default function HomePage() {
   return (
