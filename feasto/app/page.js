@@ -9,7 +9,6 @@ export default function HomePage() {
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
           <AnimateOnScroll />
       <ImageSlider />
-
       <section
               className="max-w-7xl mx-auto px-6 py-40 grid md:grid-cols-2 gap-16 items-center" >
               <div >
@@ -142,7 +141,6 @@ export default function HomePage() {
 
 
 
-      <ReservationForm></ReservationForm>
 
     </main>
   );

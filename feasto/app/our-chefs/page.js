@@ -161,8 +161,6 @@ export default function MeetOurChefsPage() {
         </div>
       )}
 
-      {/* RESERVATION COMPONENT */}
-      <ReservationForm />
     </section>
   );
 }

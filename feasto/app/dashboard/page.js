@@ -72,10 +72,10 @@ export default function WaiterDashboard() {
           body: JSON.stringify({ status: "confirmed" }),
         }
       );
-      setToast(`Reservation #${id} confirmed`);
+      toast.success(`Reservation #${id} confirmed`);
     } catch (err) {
       console.error("Gabim gjatë konfirmimit të rezervimit:", err);
-      setToast("Failed to confirm reservation.");
+      toast.error("Failed to confirm reservation.");
     }
   };
 
@@ -89,10 +89,10 @@ export default function WaiterDashboard() {
           body: JSON.stringify({ status: "rejected" }),
         }
       );
-      setToast(`Reservation #${id} rejected`);
+      toast.success(`Reservation #${id} rejected`);
     } catch (err) {
       console.error("Gabim gjatë refuzimit të rezervimit:", err);
-      setToast("Failed to reject reservation.");
+      toast.error("Failed to reject reservation.");
     }
   };
 

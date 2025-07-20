@@ -1,5 +1,7 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 
 
@@ -34,13 +36,15 @@ export default function Header() {
           </div>
     <ul className="hidden md:flex space-x-20 font-medium pl-[35%]">
 
-            <li className="relative cursor-pointer text-xs tracking-wide font-bold
-                after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full
-                after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300
-                hover:after:scale-x-100"
-            >
-                HOME
-            </li>
+                <Link href="/">
+                <li className="relative cursor-pointer text-xs tracking-wide font-bold
+                  after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full
+                  after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300
+                  hover:after:scale-x-100"
+                >
+                  HOME
+                </li>
+              </Link>
 
             <li className="relative group cursor-pointer text-xs font-bold
                 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full
@@ -48,33 +52,54 @@ export default function Header() {
                 hover:after:scale-x-100"
             >
                 MENUS <span className="ml-1 text-[8px]">&#x25BC;</span>
-                <ul className="absolute left-0 top-full mt-2 w-44 bg-black bg-opacity-90 rounded shadow-lg
-                    opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
-                    transition-opacity duration-300 z-50"
-                >
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Food</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Drinks</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Desserts</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Specials</li>
-                </ul>
-            </li>
+  
+                  <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg
+                      opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
+                      transition-opacity duration-300 z-50"
+                  >
+                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+                      <Link href="/menus/food" className="block w-full h-full">Food</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+                      <Link href="/menus/drinks" className="block w-full h-full">Drinks</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+                      <Link href="/menus/desserts" className="block w-full h-full">Desserts</Link>
+                    </li>
+                  </ul>
+                </li>
 
-            <li className="relative group cursor-pointer text-xs font-bold
+              <li className="relative group cursor-pointer text-xs font-bold
                 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full
                 after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300
                 hover:after:scale-x-100"
             >
-                ABOUT US <span className="ml-1 text-[8px]">&#x25BC;</span>
-                <ul className="absolute left-0 top-full mt-2 w-44 bg-black bg-opacity-90 rounded shadow-lg
-                    opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
-                    transition-opacity duration-300 z-50"
-                >
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Our Chefs</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Our Story</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Contact Us</li>
-                    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">Location</li>
-                </ul>
-            </li>
+        ABOUT US <span className="ml-1 text-[8px]">&#x25BC;</span>
+
+  <ul
+    className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg
+      opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
+      transition-opacity duration-300 z-50"
+  >
+    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+      <Link href="/our-chefs" className="block w-full h-full">Our Chefs</Link>
+    </li>
+    {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+      <Link href="/about-us" className="block w-full h-full">Our Story</Link>
+    </li> */}
+    <li
+      className="px-4 py-2 hover:bg-orange-600 cursor-pointer"
+      onClick={handleScroll}
+    >
+      Contact Us
+    </li>
+  
+
+          <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+            <Link href="/about/location" className="block w-full h-full">Location</Link>
+          </li>
+        </ul>
+      </li>
 
                 <li className="relative  text-sm cursor-pointer group text-xs font-bold 
             after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full

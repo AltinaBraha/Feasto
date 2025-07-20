@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import WaiterDashboard from "../dashboard/page";
+import { toast } from "react-toastify";
 
 export default function StaffLogin() {
   const [pin, setPin] = useState("");
@@ -10,7 +11,7 @@ export default function StaffLogin() {
     if (pin === "staf") {
       setGranted(true);
     } else {
-      alert("PIN i gabuar");
+      toast.error("PIN i gabuar");
     }
   };
 

@@ -28,7 +28,7 @@ export default function ReservationForm() {
     e.preventDefault();
 
     if (!name.trim() || !email.trim()) {
-      alert("Please fill in both name and email.");
+      toast.error("Please fill in both name and email.");
       return;
     }
 

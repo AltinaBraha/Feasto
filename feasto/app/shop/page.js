@@ -2,8 +2,12 @@
 
 import { useCart } from "@/components/CartProvider";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import OrderModal from "@/components/OrderModal";
 
 export default function ShopPage() {
+    const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+
   const { cart, removeFromCart, updateQty, clearCart } = useCart();
   const [orderType, setOrderType] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -37,7 +41,7 @@ export default function ShopPage() {
     );
 
     if (res.ok) {
-      alert("Order placed!");
+      toast.success("Order placed!");
       clearCart();
     }
 
@@ -103,36 +107,16 @@ export default function ShopPage() {
         <div className="text-right mt-4 text-xl font-medium">Total: ${total}</div>
 
         {/* Order Type Buttons */}
-        <div className="flex gap-4 mt-6">
-          <button
-            onClick={() => setOrderType("take-away")}
-            className={`px-4 py-2 border rounded ${
-              orderType === "take-away" ? "bg-black text-white" : ""
-            }`}
-          >
-            Take Away
-          </button>
-          <button
-            onClick={() => setOrderType("order-here")}
-            className={`px-4 py-2 border rounded ${
-              orderType === "order-here" ? "bg-black text-white" : ""
-            }`}
-          >
-            Order Here
-          </button>
-        </div>
-
-        <button
-        onClick={handleOrder}
+            <button
+        onClick={() => setIsOrderModalOpen(true)}
         disabled={cart.length === 0}
         className={`mt-6 px-6 py-3 rounded ${
-          cart.length === 0
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-orange-600 text-white"
+          cart.length === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-orange-600 text-white"
         }`}
-        >
-        Confirm Order
+      >
+        Order Now
       </button>
+      <OrderModal isOpen={isOrderModalOpen} onClose={() => setIsOrderModalOpen(false)} />
 
       </div>
     </>

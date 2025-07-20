@@ -1,54 +1,43 @@
 "use client";
-
 import { useState } from "react";
 import { useCart } from "@/components/CartProvider";  // sigurohu që rruga relative është saktë
 import { useRouter } from "next/navigation";
 import foodMenu from "../data/food.json";
+import { toast } from "react-toastify";
 
 export default function OurMenuPage() {
   const [showSubcategories, setShowSubcategories] = useState(false);
   const [activeSubcategory, setActiveSubcategory] = useState("All Food");
-  const { addToCart } = useCart();
+  const { addToCart,cart } = useCart();
+  
   const router = useRouter();
-
   const [notification, setNotification] = useState(null);
-
   const subcategories = ["All Food", "Starters", "Sides", "Pizza", "Pasta"];
-
   const filteredMenu = foodMenu.filter((item) => {
     if (!activeSubcategory || activeSubcategory === "All Food") return true;
     return item.subcategory === activeSubcategory;
   });
-
   const groupedBySubcategory = subcategories
     .filter((subcategory) => subcategory !== "All Food")
     .map((subcategory) => ({
       name: subcategory,
       items: foodMenu.filter((item) => item.subcategory === subcategory),
     }));
-
-
   const showNotification = (message) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 3000);
   };
-
-  
   const handleAddToCart = (item) => {
     addToCart({ ...item, qty: 1 });
     showNotification(`"${item.name}" added!`);
-
   };
-
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen relative">
-    
       {notification && (
         <div className="fixed top-5 right-5 bg-orange-500 text-white px-4 py-2 rounded shadow-lg z-50">
           {notification}
         </div>
       )}
-
       <section className="min-h-screen text-black">
         <div className="relative h-[105vh] mb-20">
           <img
@@ -62,7 +51,6 @@ export default function OurMenuPage() {
               <span>delicious & healthy</span>
               <span className="block w-12 border-b-2 border-white-600"></span>
             </h2>
-
             <h1 className="text-white text-7xl font-serif tracking-wide font-sans">
               OUR MENU
             </h1>
@@ -71,7 +59,6 @@ export default function OurMenuPage() {
             </p>
           </div>
         </div>
-
         <div className="flex flex-col items-center mb-12">
           <div className="flex justify-center space-x-10 mb-12">
             <button
@@ -80,7 +67,6 @@ export default function OurMenuPage() {
             >
               Food
             </button>
-
             <a
               href="/menus/Drinks"
               className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
@@ -88,7 +74,6 @@ export default function OurMenuPage() {
               Drinks
             </a>
           </div>
-
           {showSubcategories && (
             <div className="flex space-x-4 mt-4">
               {subcategories.map((subcat) => (
@@ -110,7 +95,6 @@ export default function OurMenuPage() {
             </div>
           )}
         </div>
-
         {activeSubcategory && activeSubcategory !== "All Food" ? (
           <div className="px-8 md:px-16 lg:px-24">
             <h2 className="text-3xl font-bold mb-8 border-b pb-2 border-orange-600 uppercase">
@@ -200,7 +184,6 @@ export default function OurMenuPage() {
                   </div>
                 ))}
             </div>
-
             <div>
               {groupedBySubcategory
                 .filter((group) => group.name === "Pizza" || group.name === "Pasta")
@@ -250,6 +233,15 @@ export default function OurMenuPage() {
           </div>
         )}
       </section>
+      {cart.length > 0 && (
+  <button
+    onClick={() => router.push("/shop")}
+    className="fixed bottom-6 right-6 bg-orange-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-orange-700 transition z-50"
+  >
+    🛒 See My Cart ({cart.length})
+  </button>
+)}
+
     </main>
   );
 }
