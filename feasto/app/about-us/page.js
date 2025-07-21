@@ -1,51 +1,55 @@
-import Head from "next/head";
 import Image from "next/image";
-import secrets from "@/app/data/chefsSecrets.json";
+import Head from "next/head";
+import AboutUsClientWrapper from "@/components/about-us/AboutUsClientWrapper";
+import AnimatedStats from "@/components/about-us/AnimatedStats";
 
-export default function ChefsSecretsPage() {
+async function getSecrets() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/about-us`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error("Failed to fetch data");
+  return res.json();
+}
+
+export default async function AboutUsPage() {
+  const data = await getSecrets();
+
   return (
     <>
       <Head>
         <title>Our Chefs&apos; Secrets | Feasto</title>
-
         <meta
           name="description"
           content="Discover our latest recipes and culinary insights from top chefs."
         />
       </Head>
 
-      <section className="min-h-screen  text-black bg-[rgba(221,89,3,0.05)]">
-        {/* HERO SECTION */}
+      <section className="min-h-screen text-black bg-[rgba(221,89,3,0.05)]">
+        {/* HERO */}
         <header className="relative h-[60vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/img/chefs-banner.jpg')" }}
-          ></div>
+          />
           <div className="relative z-10 text-center">
             <h1 className="text-white text-5xl font-bold px-6 py-4">
               About Us
             </h1>
-            <div className=" px-6 py-4 rounded-md max-w-3xl mx-auto mb-6">
-              <p className="text-amber-50 text-base leading-relaxed ">
-                Feasto is a contemporary restaurant established in June 2025,
-                dedicated to delivering a unique dining experience for all food
-                lovers. Our space blends comfort and elegance, offering a warm
-                ambiance ideal for family lunches, romantic dinners, or special
-                events.
-              </p>
-            </div>
           </div>
         </header>
+        <AboutUsClientWrapper />
 
-        {/* CONTENT SECTION */}
+        <AnimatedStats />
+
+        {/* CONTENT */}
         <div className="max-w-6xl mx-auto px-6 py-24">
           <div className="grid md:grid-cols-3 gap-12">
-            {secrets.map((item) => (
+            {data.map((item) => (
               <article
                 key={item.id}
-                className=" overflow-hidden group cursor-pointer"
+                className="overflow-hidden group cursor-pointer"
               >
-                <div className="w-full h-64 relative mb-4 overflow-hidden ">
+                <div className="w-full h-64 relative mb-4 overflow-hidden">
                   <div className="w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105">
                     <Image
                       src={item.image}
