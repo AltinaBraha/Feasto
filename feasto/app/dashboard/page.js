@@ -6,6 +6,9 @@ import SidebarFilter from "@/components/dashboard/SidebarFilter";
 import OrderCard from "@/components/dashboard/OrderCard";
 import ReservationCard from "@/components/dashboard/ReservationCard";
 import ClientOnlyToast from "@/components/ClientToast";
+import { sendConfirmationEmail } from "@/components/dashboard/ClientEmailSender";
+import { sendRejectionEmail } from "@/components/dashboard/ClientEmailRejectionSender";
+
 import { fetchOrders, deleteOrder } from "@/app/api/orders";
 import {
   fetchReservations,
@@ -48,10 +51,18 @@ export default function WaiterDashboard() {
     }
   };
 
-  const confirmReservation = async (id) => {
+  const handleConfirmReservation = async (reservation) => {
     try {
-      await updateReservationStatus(id, "confirmed");
-      toast.success(`Reservation #${id} confirmed`);
+      await updateReservationStatus(reservation.id, "confirmed");
+
+      await sendConfirmationEmail({
+        to_email: reservation.email,
+        to_name: reservation.name,
+        people: reservation.people,
+        date_time: reservation.dateTime,
+      });
+
+      toast.success(`Reservation #${reservation.id} confirmed and email sent`);
     } catch (err) {
       console.error("Error confirming reservation:", err);
       toast.error("Failed to confirm reservation.");
@@ -61,7 +72,13 @@ export default function WaiterDashboard() {
   const rejectReservation = async (id) => {
     try {
       await updateReservationStatus(id, "rejected");
-      toast.success(`Reservation #${id} rejected`);
+
+      const reservation = reservations.find((r) => r.id === id);
+      if (reservation) {
+        await sendRejectionEmail(reservation);
+      }
+
+      toast.success(`Reservation #${id} rejected and email sent`);
     } catch (err) {
       console.error("Error rejecting reservation:", err);
       toast.error("Failed to reject reservation.");
@@ -88,7 +105,7 @@ export default function WaiterDashboard() {
               <ReservationCard
                 key={res.id}
                 reservation={res}
-                onConfirm={confirmReservation}
+                onConfirm={handleConfirmReservation}
                 onReject={rejectReservation}
               />
             ))}

@@ -16,8 +16,8 @@ export default function ReservationCard({ reservation, onConfirm, onReject }) {
             reservation.status === "confirmed"
               ? "text-green-600"
               : reservation.status === "rejected"
-              ? "text-red-600"
-              : "text-blue-600"
+                ? "text-red-600"
+                : "text-blue-600"
           }`}
         >
           Status: {reservation.status}
@@ -26,7 +26,7 @@ export default function ReservationCard({ reservation, onConfirm, onReject }) {
       {reservation.status === "pending" && (
         <div className="mt-4 flex gap-2">
           <button
-            onClick={() => onConfirm(reservation.id)}
+            onClick={() => onConfirm(reservation)}
             className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md w-full"
           >
             Confirm
