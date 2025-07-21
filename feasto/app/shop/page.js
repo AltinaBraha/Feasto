@@ -1,9 +1,8 @@
 "use client";
-
 import { useCart } from "@/components/CartProvider";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import OrderModal from "@/components/OrderModal";
+import OrderModal from "@/components/shop-page/OrderModal";
 
 export default function ShopPage() {
     const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -116,7 +115,14 @@ export default function ShopPage() {
       >
         Order Now
       </button>
-      <OrderModal isOpen={isOrderModalOpen} onClose={() => setIsOrderModalOpen(false)} />
+      
+      <OrderModal
+        isOpen={isOrderModalOpen}
+        onClose={() => setIsOrderModalOpen(false)}
+        total={total}
+        clearCart={clearCart}  
+        cart={cart}
+      />
 
       </div>
     </>

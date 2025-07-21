@@ -110,15 +110,21 @@ export default function HomePage() {
             We see our customers as invited guests to a party, and we are the
             hosts.
             <br />
-            Piazza della Signoria, 1050122, Firenze, Italy
+            Rruga B, Pristine, Kosova
             <br />
-            <strong>M:</strong> booking@patiotime.com
+            <strong>M:</strong> booking@feasto.com
             <br />
             <strong>T:</strong> +39 055 1234567
           </p>
-          <button className="bg-orange-500 text-white text-sm px-5 py-2.5 rounded hover:bg-orange-600 transition">
-            GET DIRECTIONS
-          </button>
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=Rruga+B,+Prishtine"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-orange-500 text-white text-sm px-5 py-2.5 rounded hover:bg-orange-600 transition inline-block"
+        >
+          GET DIRECTIONS
+        </a>
+
         </div>
 
         <div className="flex flex-row gap-4 items-start">

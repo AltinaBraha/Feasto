@@ -82,6 +82,9 @@ export default function Header() {
       transition-opacity duration-300 z-50"
   >
     <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+      <Link href="/about-us" className="block w-full h-full">Our Story</Link>
+    </li>
+    <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
       <Link href="/our-chefs" className="block w-full h-full">Our Chefs</Link>
     </li>
     {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
@@ -95,9 +98,9 @@ export default function Header() {
     </li>
   
 
-          <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+          {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
             <Link href="/about/location" className="block w-full h-full">Location</Link>
-          </li>
+          </li> */}
         </ul>
       </li>
 

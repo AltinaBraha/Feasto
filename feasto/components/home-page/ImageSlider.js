@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const images = [
   "https://patiotime.loftocean.com/wp-content/uploads/2022/03/emanuel-ekstrom-3-4eMmRBXjA-unsplash.jpg",
@@ -47,9 +48,12 @@ export default function ImageSlider() {
         <h3 className="text-[10px] md:text-[20px]">
           We Serve Food, Harmony & Laughter Since 1998
         </h3>
-        <button className="mt-4 bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 py-3 rounded shadow-lg">
+        <Link
+          href="/menus/food"
+          className="mt-4 bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 py-3 rounded shadow-lg inline-block text-center"
+        >
           VIEW FULL MENUS
-        </button>
+        </Link>
       </div>
     </div>
   );

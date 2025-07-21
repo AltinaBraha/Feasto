@@ -2,8 +2,6 @@ import ExecutiveChef from "@/components/ourChefs/ExecutiveChef";
 import ChefQuote from "@/components/ourChefs/ChefQuote";
 import OtherChefs from "@/components/ourChefs/OtherChefs";
 import ChefVideoSection from "@/components/ourChefs/ChefVideoSection.js";
-
-import ReservationForm from "@/components/reservations/ReservationForm";
 import Image from "next/image";
 
 async function getChefs() {
