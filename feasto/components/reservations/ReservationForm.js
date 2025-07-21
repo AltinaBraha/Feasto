@@ -46,7 +46,6 @@ export default function ReservationForm() {
 
       await createReservation(newReservation);
 
-      // ✅ Send confirmation email via EmailJS
       await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -82,13 +81,13 @@ export default function ReservationForm() {
             <h3 className="text-orange-500 text-lg font-medium tracking-wide mb-2">
               ONLINE RESERVATION
             </h3>
-            <h2 className="text-5xl font-serif font-semibold tracking-wide">
+            <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-wide">
               BOOK A TABLE
             </h2>
           </div>
 
-          <form className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-4">
-            <div className="flex flex-col w-[200px] text-white">
+          <form className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap justify-center items-center gap-4">
+            <div className="flex flex-col w-full sm:w-[200px] text-white">
               <label className="text-sm mb-1">Guests</label>
               <select
                 className="bg-transparent border-b border-white py-2 focus:outline-none"
@@ -103,7 +102,7 @@ export default function ReservationForm() {
               </select>
             </div>
 
-            <div className="flex flex-col w-[200px] text-white">
+            <div className="flex flex-col w-full sm:w-[200px] text-white">
               <label className="text-sm mb-1">Date</label>
               <input
                 type="date"
@@ -113,7 +112,7 @@ export default function ReservationForm() {
               />
             </div>
 
-            <div className="flex flex-col w-[200px] text-white">
+            <div className="flex flex-col w-full sm:w-[200px] text-white">
               <label className="text-sm mb-1">Time</label>
               <select
                 className="bg-transparent border-b border-white py-2 focus:outline-none"
@@ -130,7 +129,7 @@ export default function ReservationForm() {
 
             <button
               onClick={handleBookingClick}
-              className="bg-[#f16123] text-white py-3 px-8 rounded mt-6 lg:mt-8 hover:bg-orange-600 transition"
+              className="bg-[#f16123] text-white py-3 px-8 rounded mt-6 md:mt-8 hover:bg-orange-600 transition"
             >
               BOOK NOW
             </button>

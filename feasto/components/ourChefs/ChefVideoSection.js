@@ -9,7 +9,7 @@ export default function ChefVideoSection() {
     <>
       <section className="max-w-6xl mx-auto px-4 pb-24">
         <div
-          className="relative w-full h-[500px] overflow-hidden shadow-lg cursor-pointer group"
+          className="relative w-full h-[500px] sm:h-[400px] xs:h-[300px] overflow-hidden shadow-lg cursor-pointer group"
           onClick={() => setShowVideo(true)}
         >
           <Image
@@ -20,10 +20,10 @@ export default function ChefVideoSection() {
             className="w-full h-full object-cover group-hover:scale-105 transition duration-300 ease-in-out"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="w-20 h-20 border-4 border-white rounded-full flex items-center justify-center transition hover:scale-110">
+            <div className="w-20 h-20 sm:w-16 sm:h-16 xs:w-14 xs:h-14 border-4 border-white rounded-full flex items-center justify-center transition hover:scale-110">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-8 h-8 text-white"
+                className="w-8 h-8 sm:w-7 sm:h-7 xs:w-6 xs:h-6 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -35,7 +35,7 @@ export default function ChefVideoSection() {
       </section>
 
       {showVideo && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4">
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4 py-6">
           <div className="relative w-full max-w-4xl aspect-video">
             <iframe
               src="https://www.youtube.com/embed/CoAvaYOwm6k?autoplay=1"
@@ -46,7 +46,8 @@ export default function ChefVideoSection() {
             ></iframe>
             <button
               onClick={() => setShowVideo(false)}
-              className="absolute top-2 right-2 text-white text-3xl"
+              className="absolute top-2 right-3 text-white text-3xl sm:text-4xl hover:text-orange-500 transition"
+              aria-label="Close video"
             >
               &times;
             </button>

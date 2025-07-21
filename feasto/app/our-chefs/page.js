@@ -17,7 +17,7 @@ export default async function MeetOurChefsPage() {
   return (
     <section className="min-h-screen bg-[rgba(221,89,3,0.05)] text-black">
       {/* HERO */}
-      <div className="relative h-[75vh] mb-20">
+      <div className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh] mb-20">
         <Image
           src="/img/chefs-hero.jpg"
           alt="Hero"
@@ -25,8 +25,8 @@ export default async function MeetOurChefsPage() {
           className="absolute inset-0 w-full h-full object-cover brightness-[.5]"
         />
 
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <h1 className="text-white text-6xl font-bold tracking-wide">
+        <div className="relative z-10 flex items-center justify-center h-full px-4 text-center">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide">
             MEET OUR CHEFS
           </h1>
         </div>
