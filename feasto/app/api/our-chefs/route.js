@@ -1,4 +1,4 @@
-import chefsData from "@/app/data/chefs.json";
+import chefsData from "@/app/data/our-chefs.json";
 
 export async function GET() {
   return Response.json(chefsData);

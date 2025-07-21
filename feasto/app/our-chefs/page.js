@@ -45,9 +45,6 @@ export default async function MeetOurChefsPage() {
 
       {/* VIDEO */}
       <ChefVideoSection />
-
-      {/* RESERVATION */}
-      <ReservationForm />
     </section>
   );
 }
