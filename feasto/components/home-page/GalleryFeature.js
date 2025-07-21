@@ -5,7 +5,7 @@ export default function GalleryFeature() {
     <section className="w-full py-16">
       <div className="flex flex-col lg:flex-row w-full lg:h-[600px] gap-4 lg:gap-0">
         {/* LEFT COLUMN */}
-        <div className="w-full lg:w-1/3 h-[300px] lg:h-full overflow-hidden relative group">
+        <div className="w-full lg:w-1/3 h-[300px] lg:h-full relative overflow-hidden group rounded shadow-lg">
           <div
             className="w-full h-full bg-center bg-cover bg-no-repeat transition-transform duration-500 group-hover:scale-105"
             style={{
@@ -75,7 +75,7 @@ export default function GalleryFeature() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="w-full lg:w-1/3 h-[300px] lg:h-full relative overflow-hidden group rounded shadow-lg bg-white">
+        <div className="w-full lg:w-1/3 h-[300px] lg:h-full relative overflow-hidden group rounded shadow-lg ">
           <Image
             src="/img/4.jpg"
             alt="Image with overlay"

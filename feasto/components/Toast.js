@@ -10,7 +10,7 @@ export default function Toast({ message, onClose }) {
   }, [onClose]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 bg-black text-white px-4 py-2 rounded shadow-xl animate-fade-in">
+    <div className="fixed bottom-3 right-3 md:bottom-6 md:right-6 z-50 bg-black text-white px-3 py-2 md:px-4 md:py-2 text-sm md:text-base rounded shadow-xl animate-fade-in">
       {message}
     </div>
   );

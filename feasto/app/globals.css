@@ -41,3 +41,7 @@
 .group:hover .submenu {
   display: flex;
 }
+
+body {
+  background-color: rgba(221, 89, 3, 0.05);
+}
