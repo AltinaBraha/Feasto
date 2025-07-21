@@ -10,7 +10,9 @@ export default function LayoutClient({ children }) {
   const hideHeader =
     pathname === "/staff-login" ||
     pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/display");
+    pathname.startsWith("/display") ||
+    pathname.startsWith("/menus/scan-menu");
+
 
   return (
     <>
