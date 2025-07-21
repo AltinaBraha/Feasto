@@ -89,18 +89,20 @@ export default function WaiterDashboard() {
     filter === "all" ? orders : orders.filter((o) => o.type === filter);
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      <SidebarFilter current={filter} setFilter={setFilter} />
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-100">
+      <div className="w-full md:w-64 lg:w-72 bg-black text-white flex-shrink-0">
+        <SidebarFilter current={filter} setFilter={setFilter} />
+      </div>
 
-      <main className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">
+      <main className="flex-1 p-4 sm:p-6 md:p-8">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-800">
           {filter === "reservations"
             ? "Reservations"
             : `Orders ${filter !== "all" ? `(${filter})` : ""}`}
         </h1>
 
         {filter === "reservations" ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {reservations.map((res) => (
               <ReservationCard
                 key={res.id}
@@ -111,7 +113,7 @@ export default function WaiterDashboard() {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredOrders.map((order) => (
               <OrderCard key={order.id} order={order} onMarkReady={markReady} />
             ))}
