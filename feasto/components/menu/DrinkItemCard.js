@@ -1,17 +1,17 @@
 "use client";
-
 import Image from "next/image";
+
 import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
 
-export default function MenuItemCard({ item }) {
+export default function DrinkItemCard({ item }) {
   const { addToCart } = useCart();
   const slugify = (text) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   return (
     <div className="flex items-center space-x-6 border-b border-gray-200 pb-6">
-      <div className="flex-shrink-0 relative w-16 h-16">
+     <div className="flex-shrink-0 relative w-16 h-16">
         <Image
           src={item.image}
           alt={item.name}
@@ -20,7 +20,7 @@ export default function MenuItemCard({ item }) {
         />
       </div>
       <div className="flex-1">
-        <Link href={`/menus/food/${slugify(item.name)}`} className="font-semibold text-lg hover:text-orange-600 transition">
+        <Link href={`/menus/Drinks/${slugify(item.name)}`} className="font-semibold text-lg hover:text-orange-600 transition">
           {item.name}
         </Link>
         <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>

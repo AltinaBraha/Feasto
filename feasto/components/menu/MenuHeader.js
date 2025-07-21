@@ -1,10 +1,13 @@
+import Image from "next/image";
+
 export default function MenuHeader() {
   return (
     <section className="min-h-screen text-black">
       <div className="relative h-[105vh] mb-20">
-        <img
+        <Image
           src="/img/MenusFood/menu.jpg"
           alt="Hero"
+          fill
           className="absolute inset-0 w-full h-full object-cover brightness-[.5]"
         />
         <div className="relative z-10 flex flex-col items-center justify-center h-full space-y-4 text-center px-4">

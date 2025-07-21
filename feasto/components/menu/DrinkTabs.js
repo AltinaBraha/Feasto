@@ -1,40 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import MenuSection from "./MenuSection";
+import DrinkSection from "./DrinkSection";
 
-const subcategories = ["All Food", "Starters", "Pizza", "Sides", "Pasta"];
 
-export default function MenuTabs({ foodMenu }) {
-  const [activeSubcategory, setActiveSubcategory] = useState("All Food");
+const subcategories = ["All Drinks", "Cocktail", "Coffee", "Wine", "Milkshake"];
+
+export default function MenuTabs({ drinkMenu }) {
+  const [activeSubcategory, setActiveSubcategory] = useState("All Drinks");
   const [showSubcategories, setShowSubcategories] = useState(false);
 
-  const filteredMenu = foodMenu.filter((item) =>
-    activeSubcategory === "All Food" ? true : item.subcategory === activeSubcategory
+  const filteredMenu = drinkMenu.filter((item) =>
+    activeSubcategory === "All Drinks" ? true : item.subcategory === activeSubcategory
   );
 
   const groupedBySubcategory = subcategories
-    .filter((s) => s !== "All Food")
+    .filter((s) => s !== "All Drinks")
     .map((s) => ({
       name: s,
-      items: foodMenu.filter((item) => item.subcategory === s),
+      items: drinkMenu.filter((item) => item.subcategory === s),
     }));
 
   return (
     <div className="flex flex-col items-center mb-12">
       <div className="flex justify-center space-x-10 mb-12">
+         <a
+          href="/menus/food"
+          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
+        >
+          Food
+        </a>
         <button
           onClick={() => setShowSubcategories(!showSubcategories)}
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Food
-        </button>
-        <a
-          href="/menus/Drinks"
-          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
-        >
           Drinks
-        </a>
+        </button>
+       
       </div>
 
       {showSubcategories && (
@@ -59,23 +61,23 @@ export default function MenuTabs({ foodMenu }) {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-10 px-8 md:px-16 lg:px-24 mt-10">
-        {activeSubcategory === "All Food"
-        ? groupedBySubcategory.map((group) => (
-            <MenuSection
-              key={group.name}
-              category={group.name}
-              items={group.items}
-              className="border-b border-gray-300 pb-6 min-h-[300px]"
-            />
-          ))
-        : (
-          <MenuSection
-            category={activeSubcategory}
-            items={filteredMenu}
-            className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"
-          />
-        )
-      }
+  {activeSubcategory === "All Drinks"
+  ? groupedBySubcategory.map((group) => (
+      <DrinkSection
+        key={group.name}
+        category={group.name}
+        items={group.items}
+        className="border-b border-gray-300 pb-6 min-h-[300px]"
+      />
+    ))
+  : (
+    <DrinkSection
+      category={activeSubcategory}
+      items={filteredMenu}
+      className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"
+    />
+  )
+}
 
 </div>
 
