@@ -45,11 +45,24 @@ export default function ReservationForm() {
       };
 
       await createReservation(newReservation);
+
+      // ✅ Send confirmation email via EmailJS
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: email,
+          subject: "Your Table Reservation at Feasto",
+          text: `Hi ${name},\n\nWe received your booking for ${people} person(s) on ${date} at ${time}. We'll confirm it shortly.\n\nThank you,\nFeasto Team`,
+        }),
+      });
+
       toast.success("Reservation submitted! We will confirm shortly.");
       setShowModal(false);
       setName("");
       setEmail("");
     } catch (err) {
+      console.error(err);
       toast.error("Failed to submit reservation. Try again.");
     }
   };
