@@ -55,7 +55,7 @@ export default function FoodDetailsClient({ item }) {
       )}
 
       {/* Hero */}
-      <div className="relative h-[480px] w-full mb-8">
+      <div className="relative h-[300px] sm:h-[480px] w-full mb-8">
         <Image
           src="/img/shop-bg-darken.jpg"
           alt="More Food Details"
@@ -64,7 +64,7 @@ export default function FoodDetailsClient({ item }) {
           priority
         />
         <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
             Taste the Details
           </h1>
         </div>
@@ -72,15 +72,14 @@ export default function FoodDetailsClient({ item }) {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row gap-20">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-20">
           {/* Image */}
-          <div className="md:w-1/2">
-            <div className="overflow-hidden rounded-lg w-[500px] h-[450px] group">
+          <div className="w-full md:w-1/2 flex justify-center">
+            <div className="overflow-hidden rounded-lg w-full max-w-[500px] h-[300px] sm:h-[450px] group">
               <Image
                 src={item.image}
                 alt={item.name}
-                width={500}
-                height={350}
+                fill
                 quality={100}
                 className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110 brightness-75"
               />
@@ -88,8 +87,8 @@ export default function FoodDetailsClient({ item }) {
           </div>
 
           {/* Details */}
-          <div className="md:w-1/2 space-y-4">
-            <h1 className="text-4xl">{item.name}</h1>
+          <div className="w-full md:w-1/2 space-y-4">
+            <h1 className="text-3xl sm:text-4xl">{item.name}</h1>
 
             {/* Rating */}
             <div className="flex items-center space-x-1">
@@ -97,7 +96,9 @@ export default function FoodDetailsClient({ item }) {
                 <span
                   key={i}
                   className={`text-lg ${
-                    i < Math.round(averageRating) ? "text-yellow-400" : "text-gray-300"
+                    i < Math.round(averageRating)
+                      ? "text-yellow-400"
+                      : "text-gray-300"
                   }`}
                 >
                   ★
@@ -123,18 +124,20 @@ export default function FoodDetailsClient({ item }) {
 
             <p className="text-gray-700">{item.description}</p>
 
-            <div className="mt-4 flex items-center space-x-4">
-              <label htmlFor="quantity" className="font-semibold">
-                Quantity
-              </label>
-              <input
-                type="number"
-                id="quantity"
-                value={quantity}
-                min={1}
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-16 border border-gray-300 rounded px-2 py-1"
-              />
+            <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <div className="flex items-center space-x-4">
+                <label htmlFor="quantity" className="font-semibold">
+                  Quantity
+                </label>
+                <input
+                  type="number"
+                  id="quantity"
+                  value={quantity}
+                  min={1}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="w-16 border border-gray-300 rounded px-2 py-1"
+                />
+              </div>
               <button
                 onClick={handleAddToCart}
                 className="bg-black text-white px-6 py-2 rounded"
@@ -145,7 +148,8 @@ export default function FoodDetailsClient({ item }) {
 
             <div className="border-t border-gray-300 pt-4">
               <p>
-                Product total: <span className="font-semibold">${totalPrice}</span>
+                Product total:{" "}
+                <span className="font-semibold">${totalPrice}</span>
               </p>
             </div>
           </div>
@@ -180,8 +184,8 @@ export default function FoodDetailsClient({ item }) {
             <div>
               <h3 className="text-xl font-semibold">Add a review</h3>
               <p className="text-gray-600">
-                Your email address will not be published. Required fields are marked{" "}
-                <span className="text-red-500">*</span>
+                Your email address will not be published. Required fields are
+                marked <span className="text-red-500">*</span>
               </p>
             </div>
 
@@ -191,7 +195,9 @@ export default function FoodDetailsClient({ item }) {
                 placeholder="Name *"
                 required
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="border-b border-gray-400 focus:outline-none focus:border-black p-2"
               />
               <input
@@ -199,20 +205,26 @@ export default function FoodDetailsClient({ item }) {
                 placeholder="Email *"
                 required
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="border-b border-gray-400 focus:outline-none focus:border-black p-2"
               />
             </div>
 
             <div>
-              <label className="block mb-1 font-medium text-gray-500">Your rating *</label>
+              <label className="block mb-1 font-medium text-gray-500">
+                Your rating *
+              </label>
               <div className="flex space-x-1 text-xl">
                 {[...Array(5)].map((_, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setFormData({ ...formData, rating: i + 1 })}
-                    className={i < formData.rating ? "text-yellow-400" : "text-gray-300"}
+                    className={
+                      i < formData.rating ? "text-yellow-400" : "text-gray-300"
+                    }
                   >
                     ★
                   </button>
@@ -224,7 +236,9 @@ export default function FoodDetailsClient({ item }) {
               required
               placeholder="Your review *"
               value={formData.content}
-              onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, content: e.target.value })
+              }
               className="border-b border-gray-400 focus:outline-none focus:border-black p-2 w-full h-24 resize-none"
             ></textarea>
 

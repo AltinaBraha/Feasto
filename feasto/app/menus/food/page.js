@@ -18,15 +18,21 @@ async function getMenu() {
   return data;
 }
 
-
 export default async function OurMenuPage() {
   const foodMenu = await getMenu();
 
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen relative">
-      <MenuHeader />
-      <MenuTabs foodMenu={foodMenu} />
-      <CartButton />
+      <div className="max-w-full">
+        <MenuHeader />
+        <div className="sm:block hidden">
+          <MenuTabs foodMenu={foodMenu} />
+        </div>
+        <div className="sm:hidden block px-4">
+          <MenuTabs foodMenu={foodMenu} />
+        </div>
+        <CartButton />
+      </div>
     </main>
   );
 }
