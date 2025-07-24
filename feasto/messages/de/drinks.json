@@ -1,0 +1,252 @@
+{
+    "drinks": {
+    "margarita": {
+      "name": "Margarita",
+      "description": "Klassischer Cocktail mit Tequila, Limettensaft und Triple Sec.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Tequila": "Tequila",
+        "Lime": "Limette",
+        "Triple Sec": "Triple Sec"
+      }
+    },
+    "mojito": {
+      "name": "Mojito",
+      "description": "Erfrischender Cocktail mit Rum, Minze und Soda.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Rum": "Rum",
+        "Mint": "Minze",
+        "Lime": "Limette",
+        "Soda": "Soda"
+      }
+    },
+    "cosmopolitan": {
+      "name": "Cosmopolitan",
+      "description": "Wodka, Cranberrysaft, Limette und Triple Sec.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Vodka": "Wodka",
+        "Cranberry Juice": "Cranberrysaft",
+        "Lime": "Limette"
+      }
+    },
+    "pina-colada": {
+      "name": "Pina Colada",
+      "description": "Ananassaft, Kokoscreme und Rum.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Pineapple": "Ananas",
+        "Coconut": "Kokosnuss",
+        "Rum": "Rum"
+      }
+    },
+    "blue-lagoon": {
+      "name": "Blue Lagoon",
+      "description": "Wodka, Blue Curaçao und Limonade.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Vodka": "Wodka",
+        "Blue Curaçao": "Blue Curaçao",
+        "Lemonade": "Limonade"
+      }
+    },
+    "tequila-sunrise": {
+      "name": "Tequila Sunrise",
+      "description": "Tequila, Orangensaft und Grenadine.",
+      "category": "Getränke",
+      "subcategory": "Cocktail",
+      "ingredients": {
+        "Tequila": "Tequila",
+        "Orange Juice": "Orangensaft",
+        "Grenadine": "Grenadine"
+      }
+    },
+    "espresso": {
+      "name": "Espresso",
+      "description": "Starker italienischer Espresso-Shot.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Coffee Beans": "Kaffeebohnen",
+        "Water": "Wasser"
+      }
+    },
+    "cappuccino": {
+      "name": "Cappuccino",
+      "description": "Espresso mit aufgeschäumter Milch und Milchschaum.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Aufgeschäumte Milch",
+        "Foam": "Milchschaum"
+      }
+    },
+    "latte": {
+      "name": "Latte",
+      "description": "Sanfter Espresso mit aufgeschäumter Milch.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Aufgeschäumte Milch"
+      }
+    },
+    "americano": {
+      "name": "Americano",
+      "description": "Espresso, verdünnt mit heißem Wasser.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Water": "Wasser"
+      }
+    },
+    "flat-white": {
+      "name": "Flat White",
+      "description": "Espresso mit einer dünnen Schicht aufgeschäumter Milch.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Aufgeschäumte Milch"
+      }
+    },
+    "macchiato": {
+      "name": "Macchiato",
+      "description": "Espresso mit einem Schuss Milchschaum.",
+      "category": "Getränke",
+      "subcategory": "Kaffee",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Milk Foam": "Milchschaum"
+      }
+    },
+    "chardonnay": {
+      "name": "Chardonnay",
+      "description": "Ein klassischer Weißwein, sanft und fruchtig.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "cabernet-sauvignon": {
+      "name": "Cabernet Sauvignon",
+      "description": "Kräftiger Rotwein mit kräftigen Aromen.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "merlot": {
+      "name": "Merlot",
+      "description": "Weicher Rotwein mit einem Hauch von Pflaume.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "pinot-grigio": {
+      "name": "Pinot Grigio",
+      "description": "Leichter Weißwein mit Zitrusnoten.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "rose": {
+      "name": "Rosé",
+      "description": "Frischer und fruchtiger Roséwein.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "prosecco": {
+      "name": "Prosecco",
+      "description": "Spritziger italienischer Weißwein.",
+      "category": "Getränke",
+      "subcategory": "Wein",
+      "ingredients": {
+        "Grapes": "Trauben"
+      }
+    },
+    "strawberry-milkshake": {
+      "name": "Erdbeer-Milchshake",
+      "description": "Frische Erdbeeren gemixt mit Eiscreme.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Strawberries": "Erdbeeren",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    },
+    "chocolate-milkshake": {
+      "name": "Schokoladen-Milchshake",
+      "description": "Reiche Schokolade gemixt mit Milch und Eiscreme.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Chocolate": "Schokolade",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    },
+    "vanilla-milkshake": {
+      "name": "Vanille-Milchshake",
+      "description": "Klassischer Vanillegeschmack perfekt gemixt.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Vanilla": "Vanille",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    },
+    "banana-milkshake": {
+      "name": "Bananen-Milchshake",
+      "description": "Süße Bananen gemixt mit Eiscreme und Milch.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Banana": "Banane",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    },
+    "oreo-milkshake": {
+      "name": "Oreo-Milchshake",
+      "description": "Kekse und Sahne gemixt zu einem dicken Shake.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Oreo": "Oreo",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    },
+    "caramel-milkshake": {
+      "name": "Karamell-Milchshake",
+      "description": "Reicher Karamellgeschmack in einem cremigen Shake.",
+      "category": "Getränke",
+      "subcategory": "Milchshake",
+      "ingredients": {
+        "Caramel": "Karamell",
+        "Ice Cream": "Eiscreme",
+        "Milk": "Milch"
+      }
+    }
+  }
+}

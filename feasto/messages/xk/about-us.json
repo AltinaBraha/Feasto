@@ -1,0 +1,57 @@
+{
+  "about-us": {
+    "metaTitle": "Sekretet e kuzhinierëve tanë",
+    "metaDescription": "Zbuloni recetat tona më të fundit dhe këndvështrimet kulinarike nga kuzhinierët më të mirë.",
+    "headerTitle": "Rreth Nesh",
+    "cards": {
+      "1": {
+        "date": "16 Mars 2022",
+        "category": ["RECEPTA"],
+        "title": "Tarte me salmon të tymosur",
+        "description": "Një tarte e lehtë dhe elegante me salmon të tymosur, e shtresuar me krem djathi, barishte të freskëta dhe një kore krokante – perfekte për një antipastë të rafinuar ose brunch."
+      },
+      "2": {
+        "date": "15 Mars 2022",
+        "category": ["HISTORI USHQIMI"],
+        "title": "Eksperiencë e mrekullueshme ushqimi",
+        "description": "Hyni në kuzhinën tonë dhe zbuloni frymëzimin pas një nga pjatat tona më të dashura – ku shija, tradita dhe kreativiteti takohen në pjatë."
+      },
+      "3": {
+        "date": "12 Mars 2022",
+        "category": ["LAJME"],
+        "title": "Feasto tani ofron brunch",
+        "description": "Lajme emocionuese! Restoranti ynë i njohur Feasto tani shërben brunch në fundjavë, me pjata sezonale të freskëta dhe pije tipike."
+      },
+      "4": {
+        "date": "8 Mars 2022",
+        "category": ["HISTORI USHQIMI", "RECEPTA"],
+        "title": "Ushqimi është themeli i lumturisë së vërtetë",
+        "description": "Nga tryeza e kuzhinierit tonë tek ju – eksploroni se si përbërësit e thjeshtë dhe ushqimi i ngrohtë sjellin rehati, gëzim dhe lidhje në çdo vakt."
+      },
+      "5": {
+        "date": "7 Mars 2022",
+        "category": ["LAJME", "RECEPTA"],
+        "title": "Qoftet suedeze dhe pure patatesh",
+        "description": "Një pjatë klasike ngushëlluese me qofte suedeze të buta, pure patatesh kremoze, salcë të pasur dhe xhem prej boronicash të kuqe – një preferencë e përjetshme."
+      },
+      "6": {
+        "date": "9 Mars 2022",
+        "category": ["HISTORI USHQIMI"],
+        "title": "Dashuria dhe ushqimi: gjithçka ka të bëjë me erëzat",
+        "description": "Zbuloni lidhjen sekrete midis pasionit dhe erëzave teksa zhytemi në shijet e guximshme, përbërësit aromatikë dhe historitë shpirtërore pas çdo pjate."
+      }
+    },
+    "categories": {
+      "news": "Lajme",
+      "recipes": "Receta",
+      "food story": "Histori Ushqimi"
+    },
+    "introParagraph": "Feasto është një restorant bashkëkohor i themeluar në qershor 2025, i përkushtuar për të ofruar një përvojë të veçantë kulinare për të gjithë dashamirët e ushqimit. Ambienti ynë ndërthur komoditetin me elegancën, duke ofruar një atmosferë të ngrohtë ideale për dreka familjare, darka romantike apo ngjarje të veçanta.",
+      "stats": {
+    "chefs": "Kuzhinierë",
+    "happyGuests": "Mysafirë të kënaqur",
+    "averageRating": "Vlerësim mesatar"
+  }
+
+  }
+}

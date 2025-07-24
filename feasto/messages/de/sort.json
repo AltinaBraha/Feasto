@@ -1,0 +1,7 @@
+{
+ "sort": {
+    "priceLowToHigh": "Preis ↑",
+    "priceHighToLow": "Preis ↓",
+    "rating": "Bewertung"
+  }
+}

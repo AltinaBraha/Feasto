@@ -1,0 +1,252 @@
+{
+    "drinks": {
+    "margarita": {
+      "name": "Margarita",
+      "description": "Koktej klasik me tekila, lëng limoni dhe triple sec.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Tequila": "Tekila",
+        "Lime": "Limon",
+        "Triple Sec": "Triple Sec"
+      }
+    },
+    "mojito": {
+      "name": "Mojito",
+      "description": "Koktej freskues me rum, nenexhik dhe sodë.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Rum": "Rum",
+        "Mint": "Nenexhik",
+        "Lime": "Limon",
+        "Soda": "Sodë"
+      }
+    },
+    "cosmopolitan": {
+      "name": "Cosmopolitan",
+      "description": "Vodka, lëng boronice, limon dhe triple sec.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Vodka": "Vodka",
+        "Cranberry Juice": "Lëng boronice",
+        "Lime": "Limon"
+      }
+    },
+    "pina-colada": {
+      "name": "Pina Colada",
+      "description": "Lëng ananasi, krem kokosi dhe rum.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Pineapple": "Ananas",
+        "Coconut": "Kokos",
+        "Rum": "Rum"
+      }
+    },
+    "blue-lagoon": {
+      "name": "Blue Lagoon",
+      "description": "Vodka, blue curaçao dhe limonadë.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Vodka": "Vodka",
+        "Blue Curaçao": "Blue Curaçao",
+        "Lemonade": "Limonadë"
+      }
+    },
+    "tequila-sunrise": {
+      "name": "Tequila Sunrise",
+      "description": "Tekila, lëng portokalli dhe grenadine.",
+      "category": "Pije",
+      "subcategory": "Koktej",
+      "ingredients": {
+        "Tequila": "Tekila",
+        "Orange Juice": "Lëng portokalli",
+        "Grenadine": "Grenadine"
+      }
+    },
+    "espresso": {
+      "name": "Espresso",
+      "description": "Espresso i fortë në stil italian.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Coffee Beans": "Kokrra kafeje",
+        "Water": "Ujë"
+      }
+    },
+    "cappuccino": {
+      "name": "Cappuccino",
+      "description": "Espresso me qumësht të ngrohtë dhe shkumë qumështi.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Qumësht i ngrohtë",
+        "Foam": "Shkumë"
+      }
+    },
+    "latte": {
+      "name": "Latte",
+      "description": "Espresso e butë me qumësht të ngrohtë.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Qumësht i ngrohtë"
+      }
+    },
+    "americano": {
+      "name": "Americano",
+      "description": "Espresso e holluar me ujë të nxehtë.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Water": "Ujë"
+      }
+    },
+    "flat-white": {
+      "name": "Flat White",
+      "description": "Espresso me një shtresë të hollë qumështi të ngrohtë.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Steamed Milk": "Qumësht i ngrohtë"
+      }
+    },
+    "macchiato": {
+      "name": "Macchiato",
+      "description": "Espresso me një pikë shkumë qumështi.",
+      "category": "Pije",
+      "subcategory": "Kafe",
+      "ingredients": {
+        "Espresso": "Espresso",
+        "Milk Foam": "Shkumë qumështi"
+      }
+    },
+    "chardonnay": {
+      "name": "Chardonnay",
+      "description": "Verë e bardhë klasike, e butë dhe frutore.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "cabernet-sauvignon": {
+      "name": "Cabernet Sauvignon",
+      "description": "Verë e kuqe e fuqishme me shije të forta.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "merlot": {
+      "name": "Merlot",
+      "description": "Verë e kuqe e butë me nuanca kumbulle.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "pinot-grigio": {
+      "name": "Pinot Grigio",
+      "description": "Verë e bardhë e lehtë me nota agrumesh.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "rose": {
+      "name": "Rosé",
+      "description": "Verë rosé e freskët dhe frutore.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "prosecco": {
+      "name": "Prosecco",
+      "description": "Verë e bardhë italiane me gaz.",
+      "category": "Pije",
+      "subcategory": "Verë",
+      "ingredients": {
+        "Grapes": "Rrush"
+      }
+    },
+    "strawberry-milkshake": {
+      "name": "Milkshake me Luleshtrydhe",
+      "description": "Luleshtrydhe të freskëta të përziera me akullore.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Strawberries": "Luleshtrydhe",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    },
+    "chocolate-milkshake": {
+      "name": "Milkshake me Çokollatë",
+      "description": "Çokollatë e pasur e përzier me qumësht dhe akullore.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Chocolate": "Çokollatë",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    },
+    "vanilla-milkshake": {
+      "name": "Milkshake me Vanilje",
+      "description": "Shije klasike vanilje e përzier në mënyrë perfekte.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Vanilla": "Vanilje",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    },
+    "banana-milkshake": {
+      "name": "Milkshake me Bananë",
+      "description": "Banane të ëmbla të përziera me akullore dhe qumësht.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Banana": "Bananë",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    },
+    "oreo-milkshake": {
+      "name": "Milkshake me Oreo",
+      "description": "Biskota dhe krem të përzier në një milkshake të trashë.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Oreo": "Oreo",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    },
+    "caramel-milkshake": {
+      "name": "Milkshake me Karamel",
+      "description": "Shije e pasur karamel në një milkshake të butë.",
+      "category": "Pije",
+      "subcategory": "Milkshake",
+      "ingredients": {
+        "Caramel": "Karamel",
+        "Ice Cream": "Akullore",
+        "Milk": "Qumësht"
+      }
+    }
+  }
+}

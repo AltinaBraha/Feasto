@@ -1,0 +1,21 @@
+{
+"foodDetails": {
+  "addedToCart": "added to cart!",
+  "moreFoodDetailsAlt": "More Food Details Background",
+  "tasteTheDetails": "Taste the Details",
+  "reviewSingular": "review",
+  "reviewPlural": "reviews",
+  "ingredients": "Ingredients",
+  "quantity": "Quantity",
+  "addToCart": "Add to cart",
+  "productTotal": "Product total",
+  "reviews": "Reviews",
+  "addReview": "Add a review",
+  "emailPrivacyNotice": "Your email address will not be published. Required fields are marked",
+  "namePlaceholder": "Name *",
+  "emailPlaceholder": "Email *",
+  "yourRating": "Your rating",
+  "yourReviewPlaceholder": "Your review *",
+  "submitReview": "Submit Review"
+  }
+}

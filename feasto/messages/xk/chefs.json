@@ -1,0 +1,37 @@
+{
+  "ourChefs": {
+    "title": "TAKONI SHEFAT TANË"
+  },
+  "executive": {
+    "executiveTitle": "Shefi Ekzekutiv",
+    "button": "Kontakto",
+    "name": "Alexander Petillo",
+    "bio": "Ushqimi është themeli i lumturisë së vërtetë. Mirësevini në restorantin tonë, ku pasioni për ushqimin takon cilësinë dhe shijen e jashtëzakonshme.",
+    "quote": "Një ambient unik, i ruajtur mirë dhe i rehatshëm, produkte cilësore, kuzhinë autentike, ushqime dhe pije të përgatitura në mënyrë të përkryer.",
+    "image": "/img/executive-chef.jpg"
+  },
+    "roles": {
+    "sous_chef": "Zëvendësshef",
+    "pastry_chef": "Shefe e ëmbëlsirave",
+    "saute_chef": "Shef për skuqje"
+  },
+    "bios": {
+    "lorenzo_morelli": "Me një shije të hollë dhe saktësi nën presion, Lorenzo sjell strukturë dhe shpirt në çdo pjatë që përgatit.",
+    "aaliyah_williams": "Aaliyah krijon ëmbëlsira që bashkojnë kreativitetin me traditën, duke sjellë ëmbëlsi në çdo detaj.",
+    "lyon_blanchet": "Lyon e zotëron artin e skuqjes, duke i dhënë çdo pjate aromë të fortë dhe kohë të përkryer përgatitjeje."
+  },
+"others": {
+    "Lorenzo Morelli": {
+      "role": "Nënkuzhinier",
+      "bio": "Me një shije të hollë dhe precizion nën presion, Lorenzo sjell strukturë dhe shpirt në çdo pjatë."
+    },
+    "Aaliyah Williams": {
+      "role": "Embëltues",
+      "bio": "Aaliyah krijon ëmbëlsira që kombinojnë kreativitetin me traditën, duke sjellë ëmbëlsi në çdo detaj."
+    },
+    "Lyon Blanchet": {
+      "role": "Kuzhinier për Sauté",
+      "bio": "Lyon zotëron artin e sautierit, duke i dhënë çdo pjate shije të fuqishme dhe përgatitje perfekte."
+    }
+  }
+}

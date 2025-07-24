@@ -1,4 +1,4 @@
-import drinkMenu from "@/app/menus/data/drinks.json";
+import drinkMenu from "@/data/drinks.json"
 
 
 export async function GET() {

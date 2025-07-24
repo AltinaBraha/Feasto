@@ -1,86 +1,85 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import DrinkSection from "./DrinkSection";
 
-
-const subcategories = ["All Drinks", "Cocktail", "Coffee", "Wine", "Milkshake"];
-
 export default function MenuTabs({ drinkMenu }) {
-  const [activeSubcategory, setActiveSubcategory] = useState("All Drinks");
-  const [showSubcategories, setShowSubcategories] = useState(false);
+  const t = useTranslations("menuTabs");
 
-  const filteredMenu = drinkMenu.filter((item) =>
-    activeSubcategory === "All Drinks" ? true : item.subcategory === activeSubcategory
-  );
+  const subcategories = [
+    { key: "all-drinks", label: t("all-drinks") },
+    { key: "Cocktail", label: t("cocktail") },
+    { key: "Coffee", label: t("coffee") },
+    { key: "Wine", label: t("wine") },
+    { key: "Milkshake", label: t("milkshake") },
+  ];
+
+  const [activeKey, setActiveKey] = useState("all-drinks");
+
+  const filteredMenu =
+    activeKey === "all-drinks"
+      ? drinkMenu
+      : drinkMenu.filter(item => item.subcategory === activeKey);
 
   const groupedBySubcategory = subcategories
-    .filter((s) => s !== "All Drinks")
-    .map((s) => ({
-      name: s,
-      items: drinkMenu.filter((item) => item.subcategory === s),
+    .filter(s => s.key !== "all-drinks")
+    .map(s => ({
+      key: s.key,
+      label: s.label,
+      items: drinkMenu.filter(item => item.subcategory === s.key),
     }));
 
   return (
     <div className="flex flex-col items-center mb-12">
       <div className="flex justify-center space-x-10 mb-12">
-         <a
+        <a
           href="/menus/food"
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Food
+          {t("food")}
         </a>
         <button
-          onClick={() => setShowSubcategories(!showSubcategories)}
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Drinks
+          {t("drinks")}
         </button>
-       
       </div>
 
-      {showSubcategories && (
-        <div className="flex space-x-4 mt-4">
-          {subcategories.map((subcat) => (
-            <button
-              key={subcat}
-              onClick={() => {
-                setActiveSubcategory(subcat);
-                setShowSubcategories(false);
-              }}
-              className={`uppercase text-sm font-semibold tracking-wide ${
-                activeSubcategory === subcat
-                  ? "text-orange-600 border-b-2 border-orange-600"
-                  : "text-gray-600 hover:text-orange-600"
-              }`}
-            >
-              {subcat}
-            </button>
-          ))}
-        </div>
-      )}
+      <div className="flex space-x-4 mt-4">
+        {subcategories.map(subcat => (
+          <button
+            key={subcat.key}
+            onClick={() => setActiveKey(subcat.key)}
+            className={`uppercase text-sm font-semibold tracking-wide ${
+              activeKey === subcat.key
+                ? "text-orange-600 border-b-2 border-orange-600"
+                : "text-gray-600 hover:text-orange-600"
+            }`}
+          >
+            {subcat.label}
+          </button>
+        ))}
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-10 px-8 md:px-16 lg:px-24 mt-10">
-  {activeSubcategory === "All Drinks"
-  ? groupedBySubcategory.map((group) => (
-      <DrinkSection
-        key={group.name}
-        category={group.name}
-        items={group.items}
-        className="border-b border-gray-300 pb-6 min-h-[300px]"
-      />
-    ))
-  : (
-    <DrinkSection
-      category={activeSubcategory}
-      items={filteredMenu}
-      className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"
-    />
-  )
-}
-
-</div>
-
+        {activeKey === "all-drinks"
+          ? groupedBySubcategory.map(group => (
+              <DrinkSection
+                key={group.key}
+                category={group.label}
+                items={group.items}
+                className="border-b border-gray-300 pb-6 min-h-[300px]"
+              />
+            ))
+          : (
+            <DrinkSection
+              category={subcategories.find(s => s.key === activeKey)?.label || ""}
+              items={filteredMenu}
+              className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"
+            />
+          )}
+      </div>
     </div>
   );
 }

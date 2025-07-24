@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Jost } from "next/font/google";
 import { CartProvider } from "@/components/CartProvider"; 
-import ConditionalLayout from "@/components/ConditionalLayout";
 
 const myFont = Jost({
   subsets: ["latin"],
@@ -13,9 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${myFont.variable} font-serif`}>
         <CartProvider>
-          <ConditionalLayout>
-            <main>{children}</main>
-          </ConditionalLayout>
+          {children}
         </CartProvider>
       </body>
     </html>

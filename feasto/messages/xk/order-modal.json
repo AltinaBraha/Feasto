@@ -1,0 +1,27 @@
+{
+  "orderModal": {
+    "completeYourOrder": "Përfundo porosinë",
+    "chooseOrderType": "Zgjidh midis ngrënies në vend ose dërgesës",
+    "dineIn": "Në Restaurant",
+    "delivery": "Në Shtëpi",
+    "tableNumber": "Numri i tavolinës",
+    "tableNumberExample": "p.sh. 5",
+    "continue": "Vazhdo",
+    "reviewYourOrder": "Rishiko porosinë tuaj",
+    "orderType": "Lloji i porosisë",
+    "fullName": "Emri",
+    "email": "Email",
+    "phone": "Telefoni",
+    "address": "Adresa",
+    "city": "Qyteti",
+    "postalCode": "Kodi postar",
+    "total": "Totali",
+    "confirmOrder": "Konfirmo porosinë",
+    "processing": "Duke përpunuar...",
+    "editOrderDetails": "Ndrysho detajet e porosisë",
+    "pleaseSelectOrderType": "Ju lutem zgjidhni llojin e porosisë.",
+    "orderPlacedSuccess": "Porosia u pranua! Do të merrni konfirmim së shpejti.",
+    "orderPlaceError": "Diçka shkoi keq gjatë vendosjes së porosisë. Ju lutem provoni përsëri.",
+    "closeModal": "Mbyll modalin"
+  }
+}

@@ -1,0 +1,14 @@
+{
+ "ReservationModal": {
+    "onlineReservation": "Reserve a Table",
+    "enterYourInfo": "Fill in Your Details",
+    "placeholders": {
+      "name": "Your full name",
+      "email": "Your email address"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "bookNow": "Book Now"
+    }
+  }
+}

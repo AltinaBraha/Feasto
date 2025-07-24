@@ -1,0 +1,13 @@
+{
+ "GalleryFeature": {
+    "recommendations": "RECOMMENDATIONS",
+    "newTastingMenus": "NEW TASTING MENUS",
+    "springSpecials": "SPRING SPECIALS",
+    "viewFullMenus": "VIEW FULL MENUS",
+    "learnMore": "LEARN MORE",
+    "recipes": "RECIPES",
+    "ourChefsSecrets": "OUR CHEFS SECRETS",
+    "wineList": "WINE LIST",
+    "haveADrink": "HAVE A DRINK"
+  }
+}

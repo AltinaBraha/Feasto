@@ -1,0 +1,28 @@
+{
+  "ourChefs": {
+    "title": "MEET OUR CHEFS"
+  },
+  "executive": {
+    "executiveTitle": "Our Executive Chef",
+    "button": "Get in Touch",
+    "name": "Alexander Petillo",
+    "bio": "Food is the foundation of true happiness. Welcome to our restaurant, where passion for food meets exceptional quality and taste.",
+    "quote": "A unique, well-kept and cozy atmosphere, quality products, authentic cuisine, perfectly prepared food and drinks.",
+    "image": "/img/executive-chef.jpg"
+  },
+ "others": {
+    "Lorenzo Morelli": {
+      "role": "Sous Chef",
+      "bio": "With a refined palate and precision under pressure, Lorenzo brings structure and soul to every dish."
+    },
+    "Aaliyah Williams": {
+      "role": "Pastry Chef",
+      "bio": "Aaliyah creates desserts that blend creativity with tradition, bringing sweetness in every detail."
+    },
+    "Lyon Blanchet": {
+      "role": "Sauté Chef",
+      "bio": "Lyon masters the art of sautéing, giving every dish robust flavor and perfect preparation."
+    }
+  }
+
+}

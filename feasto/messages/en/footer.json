@@ -1,0 +1,30 @@
+{
+    "Footer": {
+    "description": "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.",
+    "workingHours": {
+      "title": "Working Hours",
+      "weekdays": "Monday - Friday: 09:00 - 22:00",
+      "saturday": "Saturday: 11:00 - 00:00",
+      "sunday": "Sunday: 11:00 - 23:00",
+      "happyHour": "* Happy hour: 17:00 - 21:00"
+    },
+    "address": {
+      "title": "Our Address",
+      "street": "Silk St, Barbican, London EC2Y 8DS, UK",
+      "phone": "+39-055-123456",
+      "email": "booking@feasto.com"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Receive the latest news from us.",
+      "placeholder": "Your Email Address",
+      "privacyAgreement": "I agree to the Privacy Policy"
+    },
+    "bottom": {
+      "copyright": "© Copyright Feasto",
+      "privacy": "Privacy",
+      "terms": "Term of Use",
+      "policy": "Policy"
+    }
+  }
+}

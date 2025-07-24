@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { createOrder } from "../../app/api/orders";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 const ORDER_TYPES = {
   DINE_IN: "dine-in",
@@ -19,6 +20,7 @@ const initialFormData = {
 };
 
 export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) {
+  const t = useTranslations("orderModal");
   const [step, setStep] = useState(1);
   const [orderType, setOrderType] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -56,7 +58,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
 
   const handleConfirm = async () => {
     if (!orderType) {
-      toast.error("Please select order type.");
+      toast.error(t("pleaseSelectOrderType"));
       return;
     }
 
@@ -84,12 +86,12 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
       };
 
       const result = await createOrder(orderPayload);
-      toast.success("Order placed! You’ll receive a confirmation shortly.");
+      toast.success(t("orderPlacedSuccess"));
       console.log(result);
       clearCart();
       handleClose();
     } catch (error) {
-    toast.error("Something went wrong while placing your order. Please try again.");
+      toast.error(t("orderPlaceError"));
       console.error(error);
     } finally {
       setLoading(false);
@@ -104,60 +106,56 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
       aria-labelledby="order-modal-title"
     >
       <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-md border border-gray-300 dark:border-gray-700 w-full max-w-lg rounded-2xl shadow-xl p-8 space-y-8 relative">
-        {/* Close Button */}
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center transition"
-          aria-label="Close modal"
+          aria-label={t("closeModal")}
           type="button"
         >
           &times;
         </button>
 
-        {/* Step 1: Choose Order Type */}
         {step === 1 && (
           <div className="space-y-6 text-gray-800 dark:text-gray-100">
             <h3
               id="order-modal-title"
               className="text-xl font-semibold text-center"
             >
-                COMPLETE YOUR ORDER
+              {t("completeYourOrder")}
             </h3>
-            <p className="text-md font-medium text-center">Choose between dine-in or delivery</p>
+            <p className="text-md font-medium text-center">{t("chooseOrderType")}</p>
             <div className="flex gap-4">
-               <button
-            type="button"
-            className="flex-1 bg-white/80 hover:bg-orange-500 hover:text-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-medium shadow-sm transition"
-            onClick={() => {
-              setOrderType(ORDER_TYPES.DINE_IN);
-              setStep(2);
-            }}
-          >
-            Dine In
-          </button>
-          <button
-            type="button"
-            className="flex-1 bg-white/80 hover:bg-orange-500 hover:text-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-medium shadow-sm transition"
-            onClick={() => {
-              setOrderType(ORDER_TYPES.DELIVERY);
-              setStep(2);
-            }}
-          >
-            Delivery
-          </button>
-
+              <button
+                type="button"
+                className="flex-1 bg-white/80 hover:bg-orange-500 hover:text-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-medium shadow-sm transition"
+                onClick={() => {
+                  setOrderType(ORDER_TYPES.DINE_IN);
+                  setStep(2);
+                }}
+              >
+                {t("dineIn")}
+              </button>
+              <button
+                type="button"
+                className="flex-1 bg-white/80 hover:bg-orange-500 hover:text-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-medium shadow-sm transition"
+                onClick={() => {
+                  setOrderType(ORDER_TYPES.DELIVERY);
+                  setStep(2);
+                }}
+              >
+                {t("delivery")}
+              </button>
             </div>
           </div>
         )}
 
-        {/* Step 2: Form */}
         {step === 2 && (
           <>
             {orderType === ORDER_TYPES.DINE_IN && (
               <div className="space-y-6">
                 <label className="block">
                   <span className="text-sm font-medium text-gray-700">
-                    Table Number
+                    {t("tableNumber")}
                   </span>
                   <input
                     autoComplete="off"
@@ -166,7 +164,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.tableNumber}
                     onChange={handleChange}
                     className="mt-2 w-full border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="e.g. 5"
+                    placeholder={t("tableNumberExample")}
                     autoFocus
                   />
                 </label>
@@ -177,7 +175,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   disabled={!isDineInValid()}
                   aria-disabled={!isDineInValid()}
                 >
-                  Continue
+                  {t("continue")}
                 </button>
               </div>
             )}
@@ -193,9 +191,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData[field]}
                     onChange={handleChange}
                     className="w-full border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder={field
-                      .replace(/([A-Z])/g, " $1")
-                      .replace(/^./, (str) => str.toUpperCase())}
+                    placeholder={t(field)}
                     autoFocus={field === "fullName"}
                   />
                 ))}
@@ -207,7 +203,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.city}
                     onChange={handleChange}
                     className="flex-1 border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="City"
+                    placeholder={t("city")}
                   />
                   <input
                     autoComplete="off"
@@ -216,7 +212,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.postalCode}
                     onChange={handleChange}
                     className="flex-1 border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="Postal Code"
+                    placeholder={t("postalCode")}
                   />
                 </div>
                 <button
@@ -226,35 +222,38 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   disabled={!isDeliveryValid()}
                   aria-disabled={!isDeliveryValid()}
                 >
-                  Continue
+                  {t("continue")}
                 </button>
               </div>
             )}
           </>
         )}
 
-        {/* Step 3: Review & Confirm */}
         {step === 3 && (
           <div className="space-y-6 text-gray-800 dark:text-gray-100">
-            <h2 className="text-2xl font-semibold text-center">Review Your Order</h2>
+            <h2 className="text-2xl font-semibold text-center">{t("reviewYourOrder")}</h2>
             <div className="space-y-2 text-sm">
               <p>
-                Order Type:{" "}
+                {t("orderType")}:{" "}
                 <strong className="capitalize">{orderType.replace("-", " ")}</strong>
               </p>
               {orderType === ORDER_TYPES.DINE_IN ? (
-                <p>Table Number: {formData.tableNumber}</p>
+                <p>
+                  {t("tableNumber")}: {formData.tableNumber}
+                </p>
               ) : (
                 <>
-                  <p>Name: {formData.fullName}</p>
-                  <p>Email: {formData.email}</p>
-                  <p>Phone: {formData.phone}</p>
+                  <p>{t("name")}: {formData.fullName}</p>
+                  <p>{t("email")}: {formData.email}</p>
+                  <p>{t("phone")}: {formData.phone}</p>
                   <p>
-                    Address: {formData.address}, {formData.city}, {formData.postalCode}
+                    {t("address")}: {formData.address}, {formData.city}, {formData.postalCode}
                   </p>
                 </>
               )}
-              <p>Total: ${total.toFixed(2)}</p>
+              <p>
+                {t("total")}: ${total.toFixed(2)}
+              </p>
             </div>
             <button
               type="button"
@@ -267,14 +266,14 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
               }`}
               aria-disabled={loading || !isFormValid || cart.length === 0}
             >
-              {loading ? "Processing..." : "Confirm Order"}
+              {loading ? t("processing") : t("confirmOrder")}
             </button>
             <button
               type="button"
               className="mt-2 text-sm text-gray-500 hover:text-gray-700 underline text-center w-full"
               onClick={() => setStep(1)}
             >
-              Edit Order Details
+              {t("editOrderDetails")}
             </button>
           </div>
         )}

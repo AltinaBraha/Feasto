@@ -3,8 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
+  const t = useTranslations("Header");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleScroll = () => {
@@ -17,18 +20,16 @@ export default function Header() {
 
   return (
     <header className="absolute left-0 w-full z-50 bg-transparent text-white">
-      {/* Top Bar */}
       <div className="hidden md:flex justify-between px-20 py-3 mt-2 bg-transparent text-base border-b border-gray-600">
-        <div>123 Main Street, City</div>
+        <div>{t("topBar.address")}</div>
         <div className="flex space-x-10">
-          <div>+1 234 567 890</div>
-          <div>contact@feasto.com</div>
+          <div>{t("topBar.phone")}</div>
+          <div>{t("topBar.email")}</div>
         </div>
       </div>
 
-      {/* Main Nav */}
       <nav className="flex justify-between items-center px-6 md:px-10 py-4">
-        <div className="relative w-32 h-12 cursor-pointer">
+        <div className="relative w-40 h-20 cursor-pointer">
           <Image
             src="/img/logo.png"
             alt="Feasto Logo"
@@ -38,65 +39,75 @@ export default function Header() {
           />
         </div>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-20 font-medium pl-[35%]">
-          <Link href="/">
-            <li className="relative cursor-pointer text-xs tracking-wide font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-              HOME
-            </li>
-          </Link>
+          <li className="relative cursor-pointer text-xs tracking-wide font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+            <Link href="/">
+              {t("menu.home")}
+            </Link>
+          </li>
 
           <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            MENUS <span className="ml-1 text-[8px]">&#x25BC;</span>
+            {t("menu.menus")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/menus/food">Food</Link>
+                <Link href="/menus/food">
+                  {t("menu.food")}
+                </Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/menus/drinks">Drinks</Link>
+                <Link href="/menus/drinks">
+                  {t("menu.drinks")}
+                </Link>
               </li>
-              <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/menus/desserts">Desserts</Link>
-              </li>
+              {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+                <Link href="/menus/desserts">
+                  {t("menu.desserts")}
+                </Link>
+              </li> */}
             </ul>
           </li>
 
           <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            ABOUT US <span className="ml-1 text-[8px]">&#x25BC;</span>
+            {t("menu.aboutUs")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/about-us">Our Story</Link>
+                <Link href="/about-us">
+                  {t("menu.ourStory")}
+                </Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/our-chefs">Our Chefs</Link>
+                <Link href="/our-chefs">
+                  {t("menu.ourChefs")}
+                </Link>
               </li>
               <li
                 className="px-4 py-2 hover:bg-orange-600 cursor-pointer"
                 onClick={handleScroll}
               >
-                Contact Us
+                {t("menu.contactUs")}
               </li>
             </ul>
           </li>
 
-          <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            GUESTBOOK <span className="ml-1 text-[8px]">&#x25BC;</span>
+          {/* <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+            {t("menu.guestbook")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full mt-2 w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                Leave a Review
+                {t("menu.leaveReview")}
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                What Our Guests Say
+                {t("menu.whatGuestsSay")}
               </li>
             </ul>
-          </li>
+          </li> */}
+          <LanguageSwitcher />
         </ul>
 
         <button
           onClick={handleScroll}
           className="hidden md:block border border-white px-4 py-2 rounded bg-transparent hover:bg-white hover:text-black transition"
         >
-          Find a Table
+          {t("menu.findTable")}
         </button>
 
         <div className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
@@ -104,58 +115,57 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-black/95 px-6 py-6 text-sm space-y-4">
           <ul className="space-y-2">
             <li>
               <Link href="/" onClick={() => setIsOpen(false)}>
-                HOME
+                {t("menu.home")}
               </Link>
             </li>
             <li className="group">
-              <span className="block">MENUS</span>
+              <span className="block">{t("menu.menus")}</span>
               <ul className="ml-4 mt-2 space-y-1">
                 <li>
                   <Link href="/menus/food" onClick={() => setIsOpen(false)}>
-                    Food
+                    {t("menu.food")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/menus/drinks" onClick={() => setIsOpen(false)}>
-                    Drinks
+                    {t("menu.drinks")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/menus/desserts" onClick={() => setIsOpen(false)}>
-                    Desserts
+                    {t("menu.desserts")}
                   </Link>
                 </li>
               </ul>
             </li>
             <li className="group">
-              <span className="block">ABOUT US</span>
+              <span className="block">{t("menu.aboutUs")}</span>
               <ul className="ml-4 mt-2 space-y-1">
                 <li>
                   <Link href="/about-us" onClick={() => setIsOpen(false)}>
-                    Our Story
+                    {t("menu.ourStory")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/our-chefs" onClick={() => setIsOpen(false)}>
-                    Our Chefs
+                    {t("menu.ourChefs")}
                   </Link>
                 </li>
                 <li>
-                  <button onClick={handleScroll}>Contact Us</button>
+                  <button onClick={handleScroll}>{t("menu.contactUs")}</button>
                 </li>
               </ul>
             </li>
             <li className="group">
-              <span className="block">GUESTBOOK</span>
+              <span className="block">{t("menu.guestbook")}</span>
               <ul className="ml-4 mt-2 space-y-1">
-                <li>Leave a Review</li>
-                <li>What Our Guests Say</li>
+                <li>{t("menu.leaveReview")}</li>
+                <li>{t("menu.whatGuestsSay")}</li>
               </ul>
             </li>
             <li className="pt-4">
@@ -163,7 +173,7 @@ export default function Header() {
                 onClick={handleScroll}
                 className="w-full border border-white px-4 py-2 rounded bg-transparent hover:bg-white hover:text-black transition"
               >
-                Find a Table
+                {t("menu.findTable")}
               </button>
             </li>
           </ul>

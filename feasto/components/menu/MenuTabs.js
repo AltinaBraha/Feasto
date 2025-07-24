@@ -2,72 +2,79 @@
 
 import { useState } from "react";
 import MenuSection from "./MenuSection";
+import { useTranslations } from "next-intl";
 
-const subcategories = ["All Food", "Starters", "Pizza", "Sides", "Pasta"];
+const subcategoryKeys = ["all-food", "starters", "pizza", "sides", "pasta"];
 
 export default function MenuTabs({ foodMenu }) {
-  const [activeSubcategory, setActiveSubcategory] = useState("All Food");
+  const t = useTranslations("MenuTabs");
+  const [activeSubcategory, setActiveSubcategory] = useState("all-food");
   const [showSubcategories, setShowSubcategories] = useState(false);
 
+  const subcategories = subcategoryKeys.map((key) => ({
+    key,
+    label: t(key),
+  }));
+
   const filteredMenu = foodMenu.filter((item) =>
-    activeSubcategory === "All Food"
+    activeSubcategory === "all-food"
       ? true
-      : item.subcategory === activeSubcategory
+      : item.subcategory.toLowerCase() === activeSubcategory
   );
 
-  const groupedBySubcategory = subcategories
-    .filter((s) => s !== "All Food")
-    .map((s) => ({
-      name: s,
-      items: foodMenu.filter((item) => item.subcategory === s),
+  const groupedBySubcategory = subcategoryKeys
+    .filter((key) => key !== "all-food")
+    .map((key) => ({
+      key,
+      name: t(key),
+      items: foodMenu.filter(
+        (item) => item.subcategory.toLowerCase() === key
+      ),
     }));
 
   return (
     <div className="flex flex-col items-center mb-12 px-4 sm:px-0">
-      {/* Tabs */}
       <div className="flex flex-wrap justify-center gap-4 sm:gap-10 mb-8">
         <button
           onClick={() => setShowSubcategories(!showSubcategories)}
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Food
+          {t("food")}
         </button>
         <a
-          href="/menus/Drinks"
+          href="/menus/drinks"
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Drinks
+          {t("drinks")}
         </a>
       </div>
 
-      {/* Subcategories */}
       {showSubcategories && (
         <div className="flex flex-wrap justify-center gap-3 mt-4 px-2">
-          {subcategories.map((subcat) => (
+          {subcategories.map(({ key, label }) => (
             <button
-              key={subcat}
+              key={key}
               onClick={() => {
-                setActiveSubcategory(subcat);
+                setActiveSubcategory(key);
                 setShowSubcategories(false);
               }}
               className={`uppercase text-sm font-semibold tracking-wide ${
-                activeSubcategory === subcat
+                activeSubcategory === key
                   ? "text-orange-600 border-b-2 border-orange-600"
                   : "text-gray-600 hover:text-orange-600"
               }`}
             >
-              {subcat}
+              {label}
             </button>
           ))}
         </div>
       )}
 
-      {/* Menu Sections */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-24 gap-y-10 px-4 sm:px-8 md:px-16 lg:px-24 mt-10 w-full">
-        {activeSubcategory === "All Food" ? (
+        {activeSubcategory === "all-food" ? (
           groupedBySubcategory.map((group) => (
             <MenuSection
-              key={group.name}
+              key={group.key}
               category={group.name}
               items={group.items}
               className="border-b border-gray-300 pb-6 min-h-[300px]"
@@ -75,7 +82,7 @@ export default function MenuTabs({ foodMenu }) {
           ))
         ) : (
           <MenuSection
-            category={activeSubcategory}
+            category={subcategories.find((s) => s.key === activeSubcategory)?.label}
             items={filteredMenu}
             className="flex flex-col space-y-6"
           />
@@ -84,3 +91,4 @@ export default function MenuTabs({ foodMenu }) {
     </div>
   );
 }
+

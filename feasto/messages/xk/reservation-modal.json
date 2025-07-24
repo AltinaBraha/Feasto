@@ -1,0 +1,14 @@
+{
+"ReservationModal": {
+    "onlineReservation": "Rezervim Online",
+    "enterYourInfo": "Shkruani të dhënat",
+    "placeholders": {
+      "name": "Emri dhe Mbiemri",
+      "email": "Email"
+    },
+    "buttons": {
+      "cancel": "Anulo",
+      "bookNow": "Rezervo tani"
+    }
+  }
+}

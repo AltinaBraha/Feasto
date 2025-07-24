@@ -1,0 +1,24 @@
+ { "ReservationForm": {
+    "onlineReservation": "Online Reservierung",
+    "bookATable": "Tisch Reservieren",
+    "guests": "Gäste",
+    "person": "Person",
+    "people": "Personen",
+    "date": "Datum",
+    "time": "Uhrzeit",
+    "bookNow": "Jetzt Buchen",
+    "poweredBy": "*Powered by OpenTable",
+    "errors": {
+      "fillNameEmail": "Bitte Name und E-Mail ausfüllen.",
+      "pastTime": "Reservierungen für vergangene Zeiten sind nicht möglich.",
+      "submitFailed": "Reservierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "email": {
+      "subject": "Ihre Tischreservierung bei Feasto",
+      "text": "Hallo {name},\n\nWir haben Ihre Reservierung für {people} Person(en) am {date} um {time} erhalten. Wir bestätigen sie bald.\n\nDanke,\nFeasto Team"
+    },
+    "success": {
+      "submitted": "Reservierung erfolgreich eingereicht! Wir bestätigen bald."
+    }
+  }
+}

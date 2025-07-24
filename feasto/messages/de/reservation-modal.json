@@ -1,0 +1,14 @@
+{
+     "ReservationModal": {
+    "onlineReservation": "Online Reservierung",
+    "enterYourInfo": "Geben Sie Ihre Daten ein",
+    "placeholders": {
+      "name": "Geben Sie Ihren Namen ein",
+      "email": "Geben Sie Ihre E-Mail ein"
+    },
+    "buttons": {
+      "cancel": "Abbrechen",
+      "bookNow": "Jetzt buchen"
+    }
+  }
+}

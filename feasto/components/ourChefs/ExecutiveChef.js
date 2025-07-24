@@ -6,8 +6,11 @@ import {
   FaYoutube,
   FaPinterest,
 } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export default function ExecutiveChef({ chef }) {
+  const t = useTranslations("executive");
+
   if (!chef) return null;
 
   return (
@@ -23,14 +26,14 @@ export default function ExecutiveChef({ chef }) {
       </div>
       <div>
         <h3 className="text-sm font-bold text-orange-600 uppercase mb-2">
-          Our Executive Chef
+          {t("executiveTitle")}
         </h3>
         <h2 className="text-3xl md:text-4xl font-semibold text-black mb-6">
           {chef.name}
         </h2>
-        <p className="text-gray-600 mb-4 leading-relaxed">{chef.bio}</p>
+        <p className="text-gray-600 mb-4 leading-relaxed">{t("bio")}</p>
         <p className="text-gray-600 mb-6 leading-relaxed">
-          We see our customers as invited guests to a party...
+          {t("quote")}
         </p>
         <div className="flex space-x-4 text-gray-800 text-xl mb-6">
           <FaTwitter className="hover:text-orange-600 cursor-pointer" />
@@ -40,7 +43,7 @@ export default function ExecutiveChef({ chef }) {
           <FaPinterest className="hover:text-orange-600 cursor-pointer" />
         </div>
         <button className="bg-orange-600 text-white px-6 py-3 rounded hover:bg-orange-700 transition-all duration-300 text-sm font-semibold">
-          Get in Touch
+          {t("button")}
         </button>
       </div>
     </section>

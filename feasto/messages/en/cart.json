@@ -1,0 +1,14 @@
+{
+    "cart":{
+    "seeMyCart": "See My Cart",
+    "cart":"Cart",
+    "emptyMessage": "Your cart is empty.",
+    "viewFoodOptions": "View Food Options",
+    "pricePrefix": "",
+    "decreaseQty": "Decrease quantity",
+    "increaseQty": "Increase quantity",
+    "removeItem": "Remove item",
+    "total": "Total",
+    "orderNow": "Order Now"
+  }
+}

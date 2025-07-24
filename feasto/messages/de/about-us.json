@@ -1,0 +1,59 @@
+{
+  "about-us": {
+    "metaTitle": "Die Geheimnisse unserer Köche",
+    "metaDescription": "Entdecken Sie unsere neuesten Rezepte und kulinarischen Einblicke von Spitzenköchen.",
+    "headerTitle": "Über uns",
+    "cards": {
+      "1": {
+        "date": "16. März 2022",
+        "category": ["REZEPTE"],
+        "title": "Geräucherte Lachs-Tarte",
+        "description": "Eine leichte und elegante Räucherlachs-Tarte mit Frischkäse, frischen Kräutern und knusprigem Teig – perfekt als raffinierte Vorspeise oder zum Brunch."
+      },
+      "2": {
+        "date": "15. März 2022",
+        "category": ["ESSENSGESCHICHTE"],
+        "title": "Wunderbares Esserlebnis",
+        "description": "Ein Blick in unsere Küche und die Inspiration hinter einem unserer beliebtesten Gerichte – wo Geschmack, Tradition und Kreativität aufeinandertreffen."
+      },
+      "3": {
+        "date": "12. März 2022",
+        "category": ["NACHRICHTEN"],
+        "title": "Feasto bietet jetzt Brunch an",
+        "description": "Großartige Neuigkeiten! Unser beliebtes Feasto-Restaurant serviert nun am Wochenende Brunch mit frisch zubereiteten saisonalen Gerichten und besonderen Getränken."
+      },
+      "4": {
+        "date": "8. März 2022",
+        "category": ["ESSENSGESCHICHTE", "REZEPTE"],
+        "title": "Essen ist die Grundlage wahren Glücks",
+        "description": "Von unserem Küchentisch zu Ihrem – erfahren Sie, wie einfache, nährhafte Zutaten und liebevolles Kochen Trost, Freude und Verbundenheit in jede Mahlzeit bringen."
+      },
+      "5": {
+        "date": "7. März 2022",
+        "category": ["NACHRICHTEN", "REZEPTE"],
+        "title": "Schwedische Fleischbällchen & Kartoffelpüree",
+        "description": "Ein klassisches Wohlfühlgericht mit zarten schwedischen Fleischbällchen, cremigem Kartoffelpüree, reichhaltiger Soße und Preiselbeermarmelade – ein zeitloser Favorit."
+      },
+      "6": {
+        "date": "9. März 2022",
+        "category": ["ESSENSGESCHICHTE"],
+        "title": "Liebe und Essen: Alles dreht sich um Gewürze",
+        "description": "Entdecken Sie die geheime Verbindung zwischen Leidenschaft und Gewürzen mit kräftigen Aromen, aromatischen Zutaten und herzlichen Geschichten hinter jedem Gericht."
+      }
+    },
+"categories": {
+    "news": "Nachrichten",
+    "recipes": "Rezepte",
+    "food story": "Geschichten über Essen"
+    },
+"introParagraph": "Feasto ist ein modernes Restaurant, das im Juni 2025 gegründet wurde und sich der Bereitstellung eines einzigartigen kulinarischen Erlebnisses für alle Feinschmecker widmet. Unser Raum vereint Komfort und Eleganz und bietet eine warme Atmosphäre, ideal für Familienessen, romantische Abendessen oder besondere Anlässe.",
+  "stats": {
+    "chefs": "Köche",
+    "happyGuests": "Zufriedene Gäste",
+    "averageRating": "Durchschnittliche Bewertung"
+  }
+
+
+  
+  }
+}
