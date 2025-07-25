@@ -1,48 +1,46 @@
+// components/StaffAuthForm.jsx
 "use client";
 
 import { useState } from "react";
-import { auth } from "@/lib/firebase"; // bëje këtë sipas rrugës që e ke ti
+import { auth } from "@/lib/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import WaiterDashboard from "../dashboard/page";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function StaffLogin() {
+export default function StaffAuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
-  const [granted, setGranted] = useState(false);
+  const router = useRouter();
 
   const handleAuth = async () => {
-    try {
-      let userCredential;
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
 
+    console.log("▶️ Triggering", isSignUp ? "Sign Up" : "Login");
+    console.log("📧 Email:", email, "🔑 Password:", password);
+    console.log("⚙️ Firebase config:", auth.app.options);
+
+    try {
       if (isSignUp) {
-        userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        toast.success("Account created successfully");
+        await createUserWithEmailAndPassword(auth, email, password);
+        toast.success("✅ Account created successfully");
       } else {
-        userCredential = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        toast.success("Login successful");
+        await signInWithEmailAndPassword(auth, email, password);
+        toast.success("✅ Login successful");
       }
 
-      setGranted(true);
+      router.push("/dashboard");
     } catch (err) {
-      toast.error(err.message);
+      console.error("❌ Firebase error:", err.code, err.message);
+      toast.error(`❌ ${err.code.replace("auth/", "")}`);
     }
   };
-
-  if (granted) return <WaiterDashboard />;
 
   return (
     <div
@@ -52,12 +50,10 @@ export default function StaffLogin() {
       }}
     >
       <div className="border-2 border-orange-500 p-8 rounded-lg shadow-lg w-full max-w-sm text-center text-white bg-transparent">
-        <Image
+        <img
           src="/img/logo.png"
           alt="Logo"
-          width={160} // ose çfarëdo madhësie
-          height={160}
-          className="mx-auto mb-6 object-contain"
+          className="mx-auto mb-6 w-40 h-40 object-contain"
         />
 
         <input

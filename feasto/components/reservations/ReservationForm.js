@@ -24,14 +24,22 @@ export default function ReservationForm() {
     setShowModal(true);
   };
 
-  const handleReservationSubmit = async (e) => {
-    e.preventDefault();
+  // const handleReservationSubmit = async (e) => {
+  //   e.preventDefault();
 
+  //   if (!name.trim() || !email.trim()) {
+  //     toast.error(t("errors.fillNameEmail"));
+  //     return;
+  //   }
+
+  //   setShowModal(true);
+  // };
+
+  const handleReservationSubmit = async (tableNumber) => {
     if (!name.trim() || !email.trim()) {
-      toast.error(t("errors.fillNameEmail"));
+      toast.error("Please fill in both name and email.");
       return;
     }
-
     const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
     if (selectedDateTime < new Date()) {
       toast.error(t("errors.pastTime"));
@@ -43,8 +51,10 @@ export default function ReservationForm() {
         name,
         email,
         people: Number(people),
-        dateTime: `${date} ${time}`,
+        date,
+        time: convertTo24Hour(time),
         status: "pending",
+        table: tableNumber,
       };
 
       await createReservation(newReservation);
@@ -152,6 +162,9 @@ export default function ReservationForm() {
           setName={setName}
           email={email}
           setEmail={setEmail}
+          date={date}
+          time={convertTo24Hour(time)}
+          people={people}
         />
       )}
 

@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
 import { useTranslations } from "next-intl";
 import { useLocale } from 'next-intl'; 
-
+import { getTodaysOfferCategory } from "@/utils/offerCategory";
+import { isOfferTimeActive } from "@/utils/offerTime";
 
 export default function MenuItemCard({ item }) {
   const { addToCart } = useCart();
@@ -30,6 +31,11 @@ const slugify = (text) =>
     ? item.ingredients.map(ing => t(`${slug}.ingredients.${ing}`)) 
     : item.ingredients;
 
+     // Logjika e ofertës:
+  const offerCategory = getTodaysOfferCategory();
+  const isOnOffer = item.subcategory?.toLowerCase() === offerCategory && isOfferTimeActive();
+  const discountedPrice = isOnOffer ? item.price * 0.8 : item.price;
+
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 border-b border-gray-200 pb-6 gap-4 sm:gap-0">
       <div className="relative w-16 h-16 flex-shrink-0">
@@ -48,14 +54,25 @@ const slugify = (text) =>
         >
           {name}
         </Link>
-       <p className="text-gray-500 text-sm">{ingredients.join(", ")}</p>
+         <p className="text-gray-500 text-sm">{ingredients.join(", ")}</p>
+        {isOnOffer && (
+          <p className="text-green-600 text-xs font-semibold mt-1">
+            Limited Time Offer - 20% off until 3:00 PM
+          </p>
+        )}
 
       </div>
-
-      <div className="flex sm:flex-row flex-col sm:items-center sm:space-x-4 sm:justify-end justify-start items-start sm:min-w-[110px]">
+ <div className="flex sm:flex-row flex-col sm:items-center sm:space-x-4 sm:justify-end justify-start items-start sm:min-w-[110px]">
         <div className="hidden sm:block flex-grow border-b border-dotted border-gray-400 mx-2"></div>
         <span className="font-bold whitespace-nowrap mb-2 sm:mb-0">
-          ${item.price.toFixed(2)}
+          {isOnOffer ? (
+            <>
+              <span className="line-through text-gray-400 mr-1">${item.price.toFixed(2)}</span>
+              <span className="text-orange-600">${discountedPrice.toFixed(2)}</span>
+            </>
+          ) : (
+            <>${item.price.toFixed(2)}</>
+          )}
         </span>
         <button
           onClick={() => addToCart({ ...item, qty: 1 })}

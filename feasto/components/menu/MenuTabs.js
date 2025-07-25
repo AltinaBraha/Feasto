@@ -1,5 +1,7 @@
 "use client";
 
+import { getTodaysOfferCategory } from "@/utils/offerCategory";
+import { isOfferTimeActive } from "@/utils/offerTime";
 import { useState } from "react";
 import MenuSection from "./MenuSection";
 import { useTranslations } from "next-intl";
@@ -32,6 +34,9 @@ export default function MenuTabs({ foodMenu }) {
       ),
     }));
 
+    const offerCategory = getTodaysOfferCategory();
+const offerActive = isOfferTimeActive();
+ 
   return (
     <div className="flex flex-col items-center mb-12 px-4 sm:px-0">
       <div className="flex flex-wrap justify-center gap-4 sm:gap-10 mb-8">
