@@ -1,6 +1,7 @@
-'use client';
+"use client";
+
 import { useState, useEffect } from "react";
-import { createOrder } from "../../app/api/orders";
+import { createOrder } from "@/lib/firestore/orders";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 
@@ -19,8 +20,14 @@ const initialFormData = {
   postalCode: "",
 };
 
-export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) {
-  const t = useTranslations("orderModal");
+export default function OrderModal({
+  isOpen,
+  onClose,
+  total,
+  cart,
+  clearCart,
+}) {
+  const t = useTranslations();
   const [step, setStep] = useState(1);
   const [orderType, setOrderType] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -58,7 +65,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
 
   const handleConfirm = async () => {
     if (!orderType) {
-      toast.error(t("pleaseSelectOrderType"));
+      toast.error(t("orderModal.pleaseSelectOrderType"));
       return;
     }
 
@@ -86,12 +93,12 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
       };
 
       const result = await createOrder(orderPayload);
-      toast.success(t("orderPlacedSuccess"));
+      toast.success(t("orderModal.orderPlacedSuccess"));
       console.log(result);
       clearCart();
       handleClose();
     } catch (error) {
-      toast.error(t("orderPlaceError"));
+      toast.error(t("orderModal.orderPlaceError"));
       console.error(error);
     } finally {
       setLoading(false);
@@ -109,7 +116,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center transition"
-          aria-label={t("closeModal")}
+          aria-label={t("orderModal.closeModal")}
           type="button"
         >
           &times;
@@ -121,9 +128,11 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
               id="order-modal-title"
               className="text-xl font-semibold text-center"
             >
-              {t("completeYourOrder")}
+              {t("orderModal.completeYourOrder")}
             </h3>
-            <p className="text-md font-medium text-center">{t("chooseOrderType")}</p>
+            <p className="text-md font-medium text-center">
+              {t("orderModal.chooseOrderType")}
+            </p>
             <div className="flex gap-4">
               <button
                 type="button"
@@ -133,7 +142,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   setStep(2);
                 }}
               >
-                {t("dineIn")}
+                {t("orderModal.dineIn")}
               </button>
               <button
                 type="button"
@@ -143,7 +152,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   setStep(2);
                 }}
               >
-                {t("delivery")}
+                {t("orderModal.delivery")}
               </button>
             </div>
           </div>
@@ -155,7 +164,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
               <div className="space-y-6">
                 <label className="block">
                   <span className="text-sm font-medium text-gray-700">
-                    {t("tableNumber")}
+                    {t("orderModal.tableNumber")}
                   </span>
                   <input
                     autoComplete="off"
@@ -164,7 +173,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.tableNumber}
                     onChange={handleChange}
                     className="mt-2 w-full border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder={t("tableNumberExample")}
+                    placeholder={t("orderModal.tableNumberExample")}
                     autoFocus
                   />
                 </label>
@@ -175,7 +184,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   disabled={!isDineInValid()}
                   aria-disabled={!isDineInValid()}
                 >
-                  {t("continue")}
+                  {t("orderModal.continue")}
                 </button>
               </div>
             )}
@@ -191,7 +200,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData[field]}
                     onChange={handleChange}
                     className="w-full border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder={t(field)}
+                    placeholder={t(`orderModal.${field}`)}
                     autoFocus={field === "fullName"}
                   />
                 ))}
@@ -203,7 +212,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.city}
                     onChange={handleChange}
                     className="flex-1 border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder={t("city")}
+                    placeholder={t("orderModal.city")}
                   />
                   <input
                     autoComplete="off"
@@ -212,7 +221,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                     value={formData.postalCode}
                     onChange={handleChange}
                     className="flex-1 border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder={t("postalCode")}
+                    placeholder={t("orderModal.postalCode")}
                   />
                 </div>
                 <button
@@ -222,7 +231,7 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
                   disabled={!isDeliveryValid()}
                   aria-disabled={!isDeliveryValid()}
                 >
-                  {t("continue")}
+                  {t("orderModal.continue")}
                 </button>
               </div>
             )}
@@ -231,28 +240,39 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
 
         {step === 3 && (
           <div className="space-y-6 text-gray-800 dark:text-gray-100">
-            <h2 className="text-2xl font-semibold text-center">{t("reviewYourOrder")}</h2>
+            <h2 className="text-2xl font-semibold text-center">
+              {t("orderModal.reviewYourOrder")}
+            </h2>
             <div className="space-y-2 text-sm">
               <p>
-                {t("orderType")}:{" "}
-                <strong className="capitalize">{orderType.replace("-", " ")}</strong>
+                {t("orderModal.orderType")}:{" "}
+                <strong className="capitalize">
+                  {orderType.replace("-", " ")}
+                </strong>
               </p>
               {orderType === ORDER_TYPES.DINE_IN ? (
                 <p>
-                  {t("tableNumber")}: {formData.tableNumber}
+                  {t("orderModal.tableNumber")}: {formData.tableNumber}
                 </p>
               ) : (
                 <>
-                  <p>{t("name")}: {formData.fullName}</p>
-                  <p>{t("email")}: {formData.email}</p>
-                  <p>{t("phone")}: {formData.phone}</p>
                   <p>
-                    {t("address")}: {formData.address}, {formData.city}, {formData.postalCode}
+                    {t("orderModal.fullName")}: {formData.fullName}
+                  </p>
+                  <p>
+                    {t("orderModal.email")}: {formData.email}
+                  </p>
+                  <p>
+                    {t("orderModal.phone")}: {formData.phone}
+                  </p>
+                  <p>
+                    {t("orderModal.address")}: {formData.address},{" "}
+                    {formData.city}, {formData.postalCode}
                   </p>
                 </>
               )}
               <p>
-                {t("total")}: ${total.toFixed(2)}
+                {t("orderModal.total")}: ${total.toFixed(2)}
               </p>
             </div>
             <button
@@ -266,14 +286,16 @@ export default function OrderModal({ isOpen, onClose, total, cart, clearCart }) 
               }`}
               aria-disabled={loading || !isFormValid || cart.length === 0}
             >
-              {loading ? t("processing") : t("confirmOrder")}
+              {loading
+                ? t("orderModal.processing")
+                : t("orderModal.confirmOrder")}
             </button>
             <button
               type="button"
               className="mt-2 text-sm text-gray-500 hover:text-gray-700 underline text-center w-full"
               onClick={() => setStep(1)}
             >
-              {t("editOrderDetails")}
+              {t("orderModal.editOrderDetails")}
             </button>
           </div>
         )}
