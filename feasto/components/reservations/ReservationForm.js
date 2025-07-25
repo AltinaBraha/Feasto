@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ClientToast from "@/components/ClientToast";
-import { createReservation } from "@/app/api/reservations";
+import { createReservation } from "@/lib/firestore/reservations";
 import { convertTo24Hour } from "@/utils/time";
 import { timeSlots } from "@/constants/time";
 import ReservationModal from "@/components/reservations/ReservationModal";
@@ -18,20 +18,19 @@ export default function ReservationForm() {
 
   const handleBookingClick = (e) => {
     e.preventDefault();
-    setShowModal(true);
-  };
-
-  const handleReservationSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!name.trim() || !email.trim()) {
-      toast.error("Please fill in both name and email.");
-      return;
-    }
 
     const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
     if (selectedDateTime < new Date()) {
       toast.error("You cannot reserve for a past time.");
+      return;
+    }
+
+    setShowModal(true);
+  };
+
+  const handleReservationSubmit = async (tableNumber) => {
+    if (!name.trim() || !email.trim()) {
+      toast.error("Please fill in both name and email.");
       return;
     }
 
@@ -40,22 +39,13 @@ export default function ReservationForm() {
         name,
         email,
         people: Number(people),
-        dateTime: `${date} ${time}`,
+        date,
+        time: convertTo24Hour(time),
         status: "pending",
+        table: tableNumber,
       };
 
       await createReservation(newReservation);
-
-      await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: email,
-          subject: "Your Table Reservation at Feasto",
-          text: `Hi ${name},\n\nWe received your booking for ${people} person(s) on ${date} at ${time}. We'll confirm it shortly.\n\nThank you,\nFeasto Team`,
-        }),
-      });
-
       toast.success("Reservation submitted! We will confirm shortly.");
       setShowModal(false);
       setName("");
@@ -134,10 +124,6 @@ export default function ReservationForm() {
               BOOK NOW
             </button>
           </form>
-
-          <div className="text-sm text-white mt-8 text-center opacity-80">
-            *Powered by OpenTable
-          </div>
         </div>
       </section>
 
@@ -149,6 +135,9 @@ export default function ReservationForm() {
           setName={setName}
           email={email}
           setEmail={setEmail}
+          date={date}
+          time={convertTo24Hour(time)}
+          people={people}
         />
       )}
 

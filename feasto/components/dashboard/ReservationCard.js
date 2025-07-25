@@ -1,39 +1,55 @@
 export default function ReservationCard({ reservation, onConfirm, onReject }) {
+  const { id, name, email, people, date, time, table, status } = reservation;
+
+  const isReserved = status === "confirmed" || status === "rejected";
+
   return (
-    <div className="bg-white border border-gray-300 p-6 rounded-lg shadow-md flex flex-col justify-between">
-      <div>
-        <h2 className="text-lg font-semibold text-gray-800">
-          Reservation #{reservation.id}
-        </h2>
-        <p className="text-sm text-gray-600">Guests: {reservation.people}</p>
-        <p className="text-sm text-gray-600">
-          Date & Time: {reservation.dateTime}
-        </p>
-        <p className="text-sm text-gray-600">Email: {reservation.email}</p>
-        <p className="text-sm text-gray-600">Name: {reservation.name}</p>
-        <p
-          className={`text-sm font-semibold mt-1 ${
-            reservation.status === "confirmed"
-              ? "text-green-600"
-              : reservation.status === "rejected"
-                ? "text-red-600"
-                : "text-blue-600"
+    <div
+      className={`relative shadow-md rounded p-4 mb-4 transition ${
+        isReserved ? "bg-gray-500 text-white" : "bg-white text-gray-800"
+      }`}
+    >
+      {/* Ikona X në tavolinë nëse është e rezervuar */}
+      {isReserved && (
+        <span className="absolute top-2 right-2 text-white text-2xl font-bold">
+          ×
+        </span>
+      )}
+
+      <h3 className="text-lg font-bold">{name || "No Name"}</h3>
+      <p className="text-gray-300">{email || "No Email"}</p>
+      <p>Guests: {people || "-"}</p>
+      <p>
+        Date & Time:{" "}
+        <span className="font-medium">
+          {date || "N/A"} {time ? `at ${time}` : ""}
+        </span>
+      </p>
+      <p>
+        Table:{" "}
+        <span
+          className={`font-semibold ${
+            isReserved ? "text-white" : "text-orange-600"
           }`}
         >
-          Status: {reservation.status}
-        </p>
-      </div>
-      {reservation.status === "pending" && (
-        <div className="mt-4 flex gap-2">
+          {table || "-"}
+        </span>
+      </p>
+
+      {/* Butonat shfaqen vetëm nëse rezervimi është pending */}
+      {!isReserved && (
+        <div className="flex gap-2 mt-4">
           <button
-            onClick={() => onConfirm(reservation)}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md w-full"
+            onClick={() => id && onConfirm(reservation)}
+            className="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-600 transition"
+            disabled={!id}
           >
             Confirm
           </button>
           <button
-            onClick={() => onReject(reservation.id)}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md w-full"
+            onClick={() => id && onReject(id)}
+            className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600 transition"
+            disabled={!id}
           >
             Reject
           </button>

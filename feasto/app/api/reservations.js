@@ -1,43 +1,35 @@
-const BASE_URL = "https://6877a749dba809d901f05d20.mockapi.io/reservations";
+// app/api/reservations.js
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-export const fetchReservations = async () => {
-  const res = await fetch(BASE_URL);
-  const data = await res.json();
-  return Array.isArray(data) ? data : [];
-};
-
-export const getReservationById = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}`);
-  if (!res.ok) throw new Error("Failed to fetch reservation by ID");
-  return await res.json();
-};
-
+// ✅ Add a new reservation
 export const createReservation = async (reservationData) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(reservationData),
-  });
-  if (!res.ok) throw new Error("Failed to create reservation");
-  return await res.json();
+  try {
+    const docRef = await addDoc(
+      collection(db, "reservations"),
+      reservationData
+    );
+    return { id: docRef.id, ...reservationData };
+  } catch (error) {
+    console.error("Failed to create reservation:", error);
+    throw error;
+  }
 };
 
-export const updateReservationStatus = async (id, status) => {
-  return updateReservation(id, { status });
-};
+// ✅ Get reservations for a specific date and time
+export const getReservationsByDateTime = async (date, time) => {
+  try {
+    const q = query(
+      collection(db, "reservations"),
+      where("date", "==", date),
+      where("time", "==", time)
+    );
 
-export const updateReservation = async (id, updates) => {
-  const res = await fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updates),
-  });
-  if (!res.ok) throw new Error("Failed to update reservation");
-  return await res.json();
-};
-
-export const deleteReservation = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
-  if (!res.ok) throw new Error("Failed to delete reservation");
-  return res;
+    const snapshot = await getDocs(q);
+    const reservations = snapshot.docs.map((doc) => doc.data());
+    return reservations;
+  } catch (error) {
+    console.error("Failed to fetch reservations:", error);
+    throw error;
+  }
 };
