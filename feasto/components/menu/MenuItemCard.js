@@ -43,7 +43,7 @@ const slugify = (text) =>
 
       <div className="flex-1 text-start">
         <Link
-          href={`/menus/food/${slug}`}
+          href={`/${locale}/menus/food/${slug}`} 
           className="font-semibold text-lg hover:text-orange-600 transition block"
         >
           {name}
