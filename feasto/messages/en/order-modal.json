@@ -1,0 +1,27 @@
+{
+  "orderModal": {
+    "completeYourOrder": "Complete Your Order",
+    "chooseOrderType": "Choose between dine-in or delivery",
+    "dineIn": "Dine In",
+    "delivery": "Delivery",
+    "tableNumber": "Table Number",
+    "tableNumberExample": "e.g. 5",
+    "continue": "Continue",
+    "reviewYourOrder": "Review Your Order",
+    "orderType": "Order Type",
+    "fullName": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "total": "Total",
+    "confirmOrder": "Confirm Order",
+    "processing": "Processing...",
+    "editOrderDetails": "Edit Order Details",
+    "pleaseSelectOrderType": "Please select order type.",
+    "orderPlacedSuccess": "Order placed! You’ll receive a confirmation shortly.",
+    "orderPlaceError": "Something went wrong while placing your order. Please try again.",
+    "closeModal": "Close modal"
+  }
+}

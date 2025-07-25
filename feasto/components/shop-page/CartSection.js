@@ -4,27 +4,28 @@ import { useCart } from "@/components/CartProvider";
 import { useState } from "react";
 import OrderModal from "@/components/shop-page/OrderModal";
 import Link from "next/link";
-
+import { useTranslations } from "next-intl";
 
 export default function ClientCartSection() {
+  const t = useTranslations("cart"); 
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const { cart, removeFromCart, updateQty, clearCart } = useCart();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
- if (cart.length === 0) {
-  return (
-    <div className="flex flex-col items-center justify-center h-64 text-gray-500">
-      <p className="mb-4 text-lg font-medium">Your cart is empty.</p>
-       <Link
+  if (cart.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 text-gray-500">
+        <p className="mb-4 text-lg font-medium">{t("emptyMessage")}</p>
+        <Link
           href="/menus/food"
           className="mt-2 px-6 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition text-center"
         >
-          View Food Options
+          {t("viewFoodOptions")}
         </Link>
-    </div>
-  );
-}
+      </div>
+    );
+  }
 
   return (
     <>
@@ -34,7 +35,9 @@ export default function ClientCartSection() {
             <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
             <div>
               <h2 className="font-semibold">{item.name}</h2>
-              <p className="text-sm text-gray-600">${item.price}</p>
+              <p className="text-sm text-gray-600">
+                {t("pricePrefix")}${item.price}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -42,27 +45,38 @@ export default function ClientCartSection() {
               onClick={() => updateQty(item.id, item.qty - 1)}
               className="px-2 py-1 border"
               disabled={item.qty <= 1}
+              aria-label={t("decreaseQty")}
             >
               -
             </button>
             <span className="w-6 text-center">{item.qty}</span>
-            <button onClick={() => updateQty(item.id, item.qty + 1)} className="px-2 py-1 border">
+            <button
+              onClick={() => updateQty(item.id, item.qty + 1)}
+              className="px-2 py-1 border"
+              aria-label={t("increaseQty")}
+            >
               +
             </button>
-            <button onClick={() => removeFromCart(item.id)} className="ml-4 text-red-500 text-xl">
+            <button
+              onClick={() => removeFromCart(item.id)}
+              className="ml-4 text-red-500 text-xl"
+              aria-label={t("removeItem")}
+            >
               &times;
             </button>
           </div>
         </div>
       ))}
 
-      <div className="text-right mt-4 text-xl font-medium">Total: ${total.toFixed(2)}</div>
+      <div className="text-right mt-4 text-xl font-medium">
+        {t("total")}: ${total.toFixed(2)}
+      </div>
 
       <button
         onClick={() => setIsOrderModalOpen(true)}
         className="mt-6 px-6 py-3 rounded bg-orange-600 text-white hover:bg-orange-700 transition"
       >
-        Order Now
+        {t("orderNow")}
       </button>
 
       <OrderModal

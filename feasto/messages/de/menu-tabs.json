@@ -1,0 +1,11 @@
+{
+ "MenuTabs": {
+    "all-food": "Alle Speisen",
+    "starters": "Vorspeisen",
+    "pizza": "Pizza",
+    "sides": "Beilagen",
+    "pasta": "Pasta",
+    "food": "Speisen",
+    "drinks": "Getränke"
+  }
+}

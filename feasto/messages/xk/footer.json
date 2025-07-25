@@ -1,0 +1,30 @@
+{
+    "Footer": {
+    "description": "Bëni një hap të drejtë, me dekorime dhe gjithçka që ju nevojitet për të përparuar. Saktësisht ashtu si duhet, me kujdes, pa probleme, jetë e mirë.",
+    "workingHours": {
+      "title": "Orari i Punës",
+      "weekdays": "E hënë - e premte: 09:00 - 22:00",
+      "saturday": "E shtunë: 11:00 - 00:00",
+      "sunday": "E diel: 11:00 - 23:00",
+      "happyHour": "* Ora e lumtur: 17:00 - 21:00"
+    },
+    "address": {
+      "title": "Adresa Jonë",
+      "street": "Silk St, Barbican, Londër EC2Y 8DS, UK",
+      "phone": "+39-055-123456",
+      "email": "booking@patiotime.com"
+    },
+    "newsletter": {
+      "title": "Buletini",
+      "description": "Merrni lajmet më të fundit nga ne.",
+      "placeholder": "Adresa juaj e email-it",
+      "privacyAgreement": "Unë pranoj Politikën e Privatësisë"
+    },
+    "bottom": {
+      "copyright": "© Të drejtat e autorit Faesto",
+      "privacy": "Privatësia",
+      "terms": "Kushtet e përdorimit",
+      "policy": "Politika"
+    }
+  }
+}

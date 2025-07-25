@@ -1,13 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
 
-const stats = [
-  { label: "Chefs", value: 25 },
-  { label: "Happy Guests", value: 4500 },
-  { label: "Average Rating", value: 4.9 },
-];
+import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function AnimatedStats() {
+  const t = useTranslations("about-us.stats");
+
+  const stats = [
+    { label: t("chefs"), value: 25 },
+    { label: t("happyGuests"), value: 4500 },
+    { label: t("averageRating"), value: 4.9 },
+  ];
+
   const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
@@ -34,7 +38,7 @@ export default function AnimatedStats() {
           <div key={stat.label}>
             <h2 className="text-4xl font-bold text-orange-600">
               {Math.round(counts[i])}
-              {stat.label === "Average Rating" && "★"}
+              {stat.label === t("averageRating") && "★"}
             </h2>
             <p className="text-gray-700 mt-2 text-sm uppercase tracking-wider">
               {stat.label}

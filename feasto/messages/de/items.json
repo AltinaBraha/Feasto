@@ -1,0 +1,208 @@
+{
+    "items": {
+    "margherita-pizza": {
+      "name": "Margherita Pizza",
+      "description": "Klassische italienische Pizza mit Tomate, Mozzarella, Oregano und Basilikum. Ein einfaches, aber geschmackvolles Gericht, das Frische, Ausgewogenheit und Tradition feiert.",
+      "ingredients": {
+        "Tomato Sauce": "Tomatensoße",
+        "Mozzarella Cheese": "Mozzarella Käse",
+        "Oregano": "Oregano",
+        "Fresh Basil": "Frischer Basilikum"
+      }
+    },
+    "classic-burrata": {
+      "name": "Klassische Burrata",
+      "description": "Reiche Burrata, Tomaten, Mozzarella und Parmesan ergeben eine cremige, luxuriöse Pizza, ideal für Käseliebhaber und Geschmackssucher.",
+      "ingredients": {
+        "Tomato": "Tomate",
+        "Burrata": "Burrata",
+        "Parmesan": "Parmesan",
+        "Mozzarella": "Mozzarella"
+      }
+    },
+    "diavola": {
+      "name": "Diavola",
+      "description": "Würzige Pepperoni und Salami mit Mozzarella und Tomatensoße bieten ein kräftiges, rauchiges Geschmackserlebnis mit einem angenehmen scharfen Kick.",
+      "ingredients": {
+        "Tomato Sauce": "Tomatensoße",
+        "Mozzarella": "Mozzarella",
+        "Salame": "Salami",
+        "Pepperoni": "Pepperoni"
+      }
+    },
+    "vegetariana": {
+      "name": "Vegetariana",
+      "description": "Eine bunte Mischung aus Gemüse, darunter Artischocken, Zucchini und Champignons mit Mozzarella. Frisch, nahrhaft und voller zufriedenstellendem Geschmack.",
+      "ingredients": {
+        "Tomato Sauce": "Tomatensoße",
+        "Mozzarella": "Mozzarella",
+        "Artichokes": "Artischocken",
+        "Zucchini": "Zucchini",
+        "Mushrooms": "Champignons"
+      }
+    },
+    "da-calabria": {
+      "name": "Da Calabria",
+      "description": "Süd-italienische Inspiration mit Wurst, Pilzen und Oliven. Rauchig, herzhaft und perfekt ausbalanciert mit reichhaltigem Mozzarella und tiefen Geschmacksnoten.",
+      "ingredients": {
+        "Mozzarella": "Mozzarella",
+        "Roasted Mushrooms": "Geröstete Champignons",
+        "Italian Sausage": "Italienische Wurst",
+        "Black Olives": "Schwarze Oliven"
+      }
+    },
+    "capricciosa": {
+      "name": "Capricciosa",
+      "description": "Tomatensoße, Mozzarella, Artischocken, Oliven und Prosciutto vereinen sich zu einem ausgewogenen, herzhaften Erlebnis, ideal für klassische Pizza-Liebhaber.",
+      "ingredients": {
+        "Tomato Sauce": "Tomatensoße",
+        "Mozzarella": "Mozzarella",
+        "Artichokes": "Artischocken",
+        "Olives": "Oliven",
+        "Prosciutto": "Schinken"
+      }
+    },
+    "spaghetti-carbonara": {
+      "name": "Spaghetti Carbonara",
+      "description": "Reiche Eiersoße überzieht Spaghetti mit knusprigem Guanciale und Pecorino. Ein traditionelles italienisches Gericht mit cremiger Textur und tiefem, wohltuendem Geschmack.",
+      "ingredients": {
+        "Spaghetti": "Spaghetti",
+        "Egg": "Ei",
+        "Pecorino Cheese": "Pecorino Käse",
+        "Guanciale": "Guanciale",
+        "Black Pepper": "Schwarzer Pfeffer"
+      }
+    },
+    "penne-arrabbiata": {
+      "name": "Penne Arrabbiata",
+      "description": "Würzige Tomatensoße mit Knoblauch und Chili umhüllt Penne perfekt. Einfach, feurig, kräftig und sehr befriedigend für Liebhaber von Schärfe.",
+      "ingredients": {
+        "Penne": "Penne",
+        "Tomato Sauce": "Tomatensoße",
+        "Garlic": "Knoblauch",
+        "Chili": "Chili",
+        "Parsley": "Petersilie"
+      }
+    },
+    "tagliatelle-bolognese": {
+      "name": "Tagliatelle Bolognese",
+      "description": "Hausgemachte Tagliatelle mit langsam gekochtem Rinderragout in Tomate, Karotte, Zwiebel und Sellerie. Herzhaft und wohltuend mit authentischem italienischem Reichtum.",
+      "ingredients": {
+        "Tagliatelle": "Tagliatelle",
+        "Beef Ragu": "Rinder-Ragout",
+        "Tomato": "Tomate",
+        "Carrot": "Karotte",
+        "Onion": "Zwiebel",
+        "Celery": "Sellerie"
+      }
+    },
+    "fettuccine-alfredo": {
+      "name": "Fettuccine Alfredo",
+      "description": "Cremige Butter- und Parmesansauce umhüllt Fettuccine zu einem luxuriösen, geschmeidigen Gericht. Reichhaltig, elegant und ein wahrhaft wohltuender italienischer Pasta-Klassiker.",
+      "ingredients": {
+        "Fettuccine": "Fettuccine",
+        "Cream": "Sahne",
+        "Parmesan": "Parmesan",
+        "Butter": "Butter"
+      }
+    },
+    "purple-corn-tostada": {
+      "name": "Lila Mais Tostada",
+      "description": "Ein lebhafter Starter mit Roter Bete, Ricotta, Ziegenkäse und Datterini. Cremig, erdig, farbenfroh und ideal für einen geschmackvollen Beginn.",
+      "ingredients": {
+        "Ricotta": "Ricotta",
+        "Goat Cheese": "Ziegenkäse",
+        "Beetroot": "Rote Bete",
+        "Datterini": "Datterini"
+      }
+    },
+    "brunos-scribble": {
+      "name": "Brunos Mischung",
+      "description": "Eine Gourmetmischung aus gereiften Wurstwaren, fein geschnitten und perfekt gereift. Herzhaft, reichhaltig, zum Teilen und ideal zum gemeinsamen Genuss.",
+      "ingredients": {
+        "Culatello": "Culatello",
+        "Spalla Cotta": "Spalla Cotta",
+        "Mortadella": "Mortadella",
+        "Culacciona": "Culacciona"
+      }
+    },
+    "fresh-oysters-dozen": {
+      "name": "Frische Austern (12 Stück)",
+      "description": "Zwölf Austern, gekühlt serviert mit Limette. Eine frische Meeresfrüchte-Delikatesse mit sauberem, salzigem Geschmack und eleganter, ozean-inspirierter Raffinesse.",
+      "ingredients": {
+        "Oysters": "Austern",
+        "Limes": "Limetten"
+      }
+    },
+    "brussel-sprouts-new": {
+      "name": "Rosenkohl Neu",
+      "description": "Gerösteter Rosenkohl mit Schweinebauchstreifen und Balsamico-Glasur. Rauchig, süß, knusprig und perfekt für Fans von kräftigem Gemüse.",
+      "ingredients": {
+        "Brussel Sprouts": "Rosenkohl",
+        "Pork Lardon": "Schweinebauchstreifen",
+        "Garlic": "Knoblauch",
+        "Balsamic Glaze": "Balsamico-Glasur"
+      }
+    },
+    "broccolini-xo-butter": {
+      "name": "Broccolini & XO Butter",
+      "description": "Zartes Broccolini, verfeinert mit würziger XO-Butter und knusprigen Schalotten. Eine geschmackvolle Beilage mit tiefem Umami und toller Textur.",
+      "ingredients": {
+        "Broccolini": "Broccolini",
+        "XO Butter": "XO Butter",
+        "Crispy Shallots": "Knusprige Schalotten"
+      }
+    },
+    "arancini-balls": {
+      "name": "Arancini Bällchen",
+      "description": "Goldene Risottobällchen mit Mozzarella-Kern und knuspriger Panade. Ein befriedigender Biss, der cremigen Käse und knusprige Perfektion vereint.",
+      "ingredients": {
+        "Risotto Rice": "Risotto Reis",
+        "Mozzarella": "Mozzarella",
+        "Breadcrumbs": "Semmelbrösel",
+        "Tomato Sauce": "Tomatensoße"
+      }
+    },
+    "beef-carpaccio": {
+      "name": "Rindercarpaccio",
+      "description": "Rohes Rindfleisch, belegt mit Rucola, Parmesan und Zitrone. Ein raffinierter Starter, der Frische, Eleganz und authentische italienische Essenz bietet.",
+      "ingredients": {
+        "Beef": "Rindfleisch",
+        "Arugula": "Rucola",
+        "Parmesan": "Parmesan",
+        "Olive Oil": "Olivenöl",
+        "Lemon": "Zitrone"
+      }
+    },
+    "grilled-halloumi": {
+      "name": "Gegrillter Halloumi",
+      "description": "Gegrillter Halloumi-Käse, serviert warm mit frischen Kräutern und süßem Honig. Ein herzhaft-süßes Gericht mit zufriedenstellender Textur und köstlichem Geschmack.",
+      "ingredients": {
+        "Halloumi": "Halloumi",
+        "Olive Oil": "Olivenöl",
+        "Honey": "Honig",
+        "Herbs": "Kräuter"
+      }
+    },
+    "garlic-parmesan-fries": {
+      "name": "Knoblauch-Parmesan Pommes",
+      "description": "Knusprige Pommes, überzogen mit Knoblauchbutter und Parmesan. Knackig, geschmackvoll und eine Publikumsliebling-Beilage, die jedes herzhafte Gericht aufwertet.",
+      "ingredients": {
+        "Potatoes": "Kartoffeln",
+        "Garlic Butter": "Knoblauchbutter",
+        "Parmesan": "Parmesan",
+        "Parsley": "Petersilie"
+      }
+    },
+    "sweet-potato-wedges": {
+      "name": "Süße Kartoffelspalten",
+      "description": "Geröstete Süßkartoffeln mit geräuchertem Paprikapulver und Meersalz, serviert mit Aioli. Süß, würzig, cremig und perfekt geröstet.",
+      "ingredients": {
+        "Sweet Potato": "Süßkartoffel",
+        "Smoked Paprika": "Geräuchertes Paprikapulver",
+        "Sea Salt": "Meersalz",
+        "Aioli": "Aioli"
+      }
+    }
+  }
+}

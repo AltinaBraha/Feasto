@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Jost } from "next/font/google";
 import { CartProvider } from "@/components/CartProvider";
-import ConditionalLayout from "@/components/ConditionalLayout";
 import { AuthProvider } from "@/auth/AuthContext"; // ✅ Shto këtë
+import ConditionalLayout from "@/components/ConditionalLayout";
 
 const myFont = Jost({
   subsets: ["latin"],
@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
       <body className={`${myFont.variable} font-serif`}>
         <AuthProvider>
           {" "}
-          {/* ✅ AuthProvider vendoset më së larti */}
           <CartProvider>
             <ConditionalLayout>
               <main>{children}</main>

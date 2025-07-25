@@ -1,0 +1,208 @@
+{
+    "items": {
+    "margherita-pizza": {
+      "name": "Pica Margherita",
+      "description": "Pica klasike italiane me domate, mocarela, origano dhe borzilok. Një pjatë e thjeshtë por me shije që feston freskinë, balancën dhe traditën.",
+      "ingredients": {
+        "Tomato Sauce": "Salcë Domate",
+        "Mozzarella Cheese": "Djathë Mozarela",
+        "Oregano": "Origano",
+        "Fresh Basil": "Borzilok i Freskët"
+      }
+    },
+    "classic-burrata": {
+      "name": "Burrata Klasike",
+      "description": "Burrata e pasur, domate, mocarela dhe parmezan bashkohen për një picë kremoze dhe luksoze, ideale për dashamirët e djathit dhe shijes.",
+      "ingredients": {
+        "Tomato": "Domate",
+        "Burrata": "Burrata",
+        "Parmesan": "Parmezan",
+        "Mozzarella": "Mocarela"
+      }
+    },
+    "diavola": {
+      "name": "Diavola",
+      "description": "Pepperoni dhe salami të forta me mocarela dhe salcë domate krijojnë një shije të fortë, tymuese dhe me një kick të këndshëm pikant.",
+      "ingredients": {
+        "Tomato Sauce": "Salcë Domate",
+        "Mozzarella": "Mocarela",
+        "Salame": "Salami",
+        "Pepperoni": "Pepperoni"
+      }
+    },
+    "vegetariana": {
+      "name": "Vegetariana",
+      "description": "Një përzierje shumëngjyrëshe perimesh si artiçoka, kungulli dhe kërpudha me mocarela. E freskët, ushqyese dhe plot shije kënaqëse.",
+      "ingredients": {
+        "Tomato Sauce": "Salcë Domate",
+        "Mozzarella": "Mocarela",
+        "Artichokes": "Artiçoka",
+        "Zucchini": "Kungull",
+        "Mushrooms": "Kërpudha"
+      }
+    },
+    "da-calabria": {
+      "name": "Da Calabria",
+      "description": "Inspiruar nga Italia jugore me sallam, kërpudha dhe ullinj. Tymuese, e shijshme dhe e balancuar mirë me mocarela të pasur dhe shije të thella.",
+      "ingredients": {
+        "Mozzarella": "Mocarela",
+        "Roasted Mushrooms": "Kërpudha të pjekura",
+        "Italian Sausage": "Sallam italian",
+        "Black Olives": "Ullinj të zinj"
+      }
+    },
+    "capricciosa": {
+      "name": "Capricciosa",
+      "description": "Salcë domate, mocarela, artiçoka, ullinj dhe prosciutto përjetojnë një përvojë të balancuar dhe të shijshme, ideale për fansat e picës klasike.",
+      "ingredients": {
+        "Tomato Sauce": "Salcë Domate",
+        "Mozzarella": "Mocarela",
+        "Artichokes": "Artiçoka",
+        "Olives": "Ullinj",
+        "Prosciutto": "Prosciutto"
+      }
+    },
+    "spaghetti-carbonara": {
+      "name": "Spaghetti Carbonara",
+      "description": "Salcë e pasur me vezë mbulon spagetin me guanciale krokante dhe pecorino. Pjatë tradicionale italiane me teksturë kremoze dhe shije të thellë dhe ngushëlluese.",
+      "ingredients": {
+        "Spaghetti": "Spaghetti",
+        "Egg": "Vezë",
+        "Pecorino Cheese": "Djathë Pecorino",
+        "Guanciale": "Guanciale",
+        "Black Pepper": "Piper i zi"
+      }
+    },
+    "penne-arrabbiata": {
+      "name": "Penne Arrabbiata",
+      "description": "Salcë domate pikante me hudhër dhe spec djegës mbulon penen në mënyrë perfekte. E thjeshtë, e zjarrtë, e fortë dhe shumë kënaqëse për dashamirët e djegës.",
+      "ingredients": {
+        "Penne": "Penne",
+        "Tomato Sauce": "Salcë Domate",
+        "Garlic": "Hudhër",
+        "Chili": "Spec djegës",
+        "Parsley": "Majdanoz"
+      }
+    },
+    "tagliatelle-bolognese": {
+      "name": "Tagliatelle Bolognese",
+      "description": "Tagliatelle e bërë në shtëpi me ragù viçi gatuar ngadalë në domate, karotë, qepë dhe selino. E ngrohtë dhe komode me pasuri autentike italiane.",
+      "ingredients": {
+        "Tagliatelle": "Tagliatelle",
+        "Beef Ragu": "Ragù viçi",
+        "Tomato": "Domate",
+        "Carrot": "Karotë",
+        "Onion": "Qepë",
+        "Celery": "Selino"
+      }
+    },
+    "fettuccine-alfredo": {
+      "name": "Fettuccine Alfredo",
+      "description": "Salcë kremi me gjalpë dhe parmezan mbështjell fettuccine për një pjatë luksoze dhe të butë. E pasur, elegante dhe një klasik italian shumë ngushëllues.",
+      "ingredients": {
+        "Fettuccine": "Fettuccine",
+        "Cream": "Krem",
+        "Parmesan": "Parmezan",
+        "Butter": "Gjalpë"
+      }
+    },
+    "purple-corn-tostada": {
+      "name": "Tostada me Misër të Purpurt",
+      "description": "Një fillim shumëngjyrësh me panxhar, rikota, djathë dhie dhe datterini. Kremoz, tokësor, plot ngjyra dhe ideal për një fillim të shijshëm.",
+      "ingredients": {
+        "Ricotta": "Rikota",
+        "Goat Cheese": "Djathë dhie",
+        "Beetroot": "Panxhar",
+        "Datterini": "Datterini"
+      }
+    },
+    "brunos-scribble": {
+      "name": "Përzierja e Bruno-s",
+      "description": "Një përzierje gourmet me mishra të kuruar, të prerë hollë dhe të pjekur në perfeksion. E shijshme, e pasur, për të ndarë dhe ideale për shijim së bashku.",
+      "ingredients": {
+        "Culatello": "Culatello",
+        "Spalla Cotta": "Spalla Cotta",
+        "Mortadella": "Mortadella",
+        "Culacciona": "Culacciona"
+      }
+    },
+    "fresh-oysters-dozen": {
+      "name": "Duzina me Ostrica të Freskëta",
+      "description": "Dymbëdhjetë ostrica të ftohta, të shërbyera me lime. Një kënaqësi e freskët detare që ofron shije të pastër dhe elegante të detit.",
+      "ingredients": {
+        "Oysters": "Ostrica",
+        "Limes": "Limona"
+      }
+    },
+    "brussel-sprouts-new": {
+      "name": "Lakër Brukseli e Re",
+      "description": "Lakër brukseli e pjekur me copa derri dhe glazurë balsamike. Tymuese, e ëmbël, krokante dhe perfekte për adhuruesit e perimeve të forta.",
+      "ingredients": {
+        "Brussel Sprouts": "Lakër Brukseli",
+        "Pork Lardon": "Copa derri",
+        "Garlic": "Hudhër",
+        "Balsamic Glaze": "Glazurë balsamike"
+      }
+    },
+    "broccolini-xo-butter": {
+      "name": "Broccolini & Gjalpë XO",
+      "description": "Broccolini i butë i mbaruar me gjalpë XO dhe shallota krokante. Një garniturë me shije të thellë umami dhe teksturë të shkëlqyer.",
+      "ingredients": {
+        "Broccolini": "Broccolini",
+        "XO Butter": "Gjalpë XO",
+        "Crispy Shallots": "Shallota krokante"
+      }
+    },
+    "arancini-balls": {
+      "name": "Toptha Arancini",
+      "description": "Toptha të artë risotto me qendra mocarele dhe shtresë krokante. Një kafshatë kënaqësie që bashkon djathë kremoz dhe krokantësi perfekte.",
+      "ingredients": {
+        "Risotto Rice": "Oriz Risotto",
+        "Mozzarella": "Mocarela",
+        "Breadcrumbs": "Thërrime buke",
+        "Tomato Sauce": "Salcë Domate"
+      }
+    },
+    "beef-carpaccio": {
+      "name": "Carpaccio Mishi Viçi",
+      "description": "Feta mishi viçi të papërpunuar të mbuluar me rukola, parmezan dhe limon. Një fillim i rafinuar që ofron freski, elegancë dhe esencë autentike italiane.",
+      "ingredients": {
+        "Beef": "Mish viçi",
+        "Arugula": "Rukola",
+        "Parmesan": "Parmezan",
+        "Olive Oil": "Vaj ulliri",
+        "Lemon": "Limon"
+      }
+    },
+    "grilled-halloumi": {
+      "name": "Halloumi i Pjekur në Skarë",
+      "description": "Djathë halloumi i pjekur, i shërbyer i ngrohtë me barishte të freskëta dhe mjaltë të ëmbël. Një pjatë ëmbëlsisht e kripur me teksturë kënaqëse dhe shije të mrekullueshme.",
+      "ingredients": {
+        "Halloumi": "Halloumi",
+        "Olive Oil": "Vaj ulliri",
+        "Honey": "Mjaltë",
+        "Herbs": "Barishte"
+      }
+    },
+    "garlic-parmesan-fries": {
+      "name": "Patate të Frituara me Hudhër dhe Parmezan",
+      "description": "Patate krokante të mbuluara me gjalpë hudhre dhe parmezan. Krokante, plot shije dhe një garniturë që i jep shije çdo vakti të shijshëm.",
+      "ingredients": {
+        "Potatoes": "Patate",
+        "Garlic Butter": "Gjalpë hudhre",
+        "Parmesan": "Parmezan",
+        "Parsley": "Majdanoz"
+      }
+    },
+    "sweet-potato-wedges": {
+      "name": "Kubikë Patate të Ëmbla",
+      "description": "Patate të ëmbla të pjekura me paprika të tymosur dhe kripë deti, të shërbyera me aioli. Ëmbël, të forta, kremoze dhe të pjekura në mënyrë perfekte.",
+      "ingredients": {
+        "Sweet Potato": "Patate e ëmbël",
+        "Smoked Paprika": "Paprika e tymosur",
+        "Sea Salt": "Kripë deti",
+        "Aioli": "Aioli"
+      }
+     }
+    }
+}

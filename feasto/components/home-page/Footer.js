@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,6 +10,8 @@ import {
 import Image from "next/image";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+
   return (
     <footer id="contact" className="bg-black text-white px-4 sm:px-10 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -22,8 +27,7 @@ export default function Footer() {
             />
           </div>
           <p className="text-xs sm:text-sm leading-relaxed">
-            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+            {t("description")}
           </p>
           <div className="flex space-x-4 text-white text-lg">
             <a href="#" aria-label="Facebook" className="hover:text-orange-500">
@@ -32,11 +36,7 @@ export default function Footer() {
             <a href="#" aria-label="Twitter" className="hover:text-orange-500">
               <FaTwitter />
             </a>
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="hover:text-orange-500"
-            >
+            <a href="#" aria-label="Instagram" className="hover:text-orange-500">
               <FaInstagram />
             </a>
             <a href="#" aria-label="LinkedIn" className="hover:text-orange-500">
@@ -48,58 +48,58 @@ export default function Footer() {
         {/* Working Hours */}
         <div>
           <h3 className="text-base sm:text-lg font-semibold mb-3">
-            Working Hours
+            {t("workingHours.title")}
           </h3>
           <ul className="text-xs sm:text-sm space-y-1 leading-relaxed">
-            <li>Monday - Friday: 09:00 - 22:00</li>
-            <li>Saturday: 11:00 - 00:00</li>
-            <li>Sunday: 11:00 - 23:00</li>
+            <li>{t("workingHours.weekdays")}</li>
+            <li>{t("workingHours.saturday")}</li>
+            <li>{t("workingHours.sunday")}</li>
             <li className="mt-2 font-semibold text-orange-500">
-              * Happy hour: 17:00 - 21:00
+              {t("workingHours.happyHour")}
             </li>
           </ul>
         </div>
 
         {/* Address */}
         <div className="space-y-2">
-          <h3 className="text-base sm:text-lg font-semibold">Our Address</h3>
-          <p className="text-xs sm:text-sm">
-            Silk St, Barbican, London EC2Y 8DS, UK
-          </p>
-          <p className="text-xs sm:text-sm">+39-055-123456</p>
-          <p className="text-xs sm:text-sm">booking@patiotime.com</p>
+          <h3 className="text-base sm:text-lg font-semibold">
+            {t("address.title")}
+          </h3>
+          <p className="text-xs sm:text-sm">{t("address.street")}</p>
+          <p className="text-xs sm:text-sm">{t("address.phone")}</p>
+          <p className="text-xs sm:text-sm">{t("address.email")}</p>
         </div>
 
         {/* Newsletter */}
         <div className="space-y-3">
-          <h3 className="text-base sm:text-lg font-semibold">Newsletter</h3>
-          <p className="text-xs sm:text-sm">Receive the latest news from us.</p>
+          <h3 className="text-base sm:text-lg font-semibold">
+            {t("newsletter.title")}
+          </h3>
+          <p className="text-xs sm:text-sm">{t("newsletter.description")}</p>
           <input
             type="email"
-            placeholder="Your Email Address"
+            placeholder={t("newsletter.placeholder")}
             className="w-full px-3 py-2 mb-2 text-black text-sm border-b border-white bg-transparent placeholder-white focus:outline-none"
           />
           <div className="flex items-start gap-2 text-xs sm:text-sm">
             <input type="checkbox" id="privacy" />
-            <label htmlFor="privacy">I agree to the Privacy Policy</label>
+            <label htmlFor="privacy">{t("newsletter.privacyAgreement")}</label>
           </div>
         </div>
       </div>
 
       {/* Bottom Footer */}
       <div className="max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-xs gap-4 sm:gap-0">
-        <p className="text-center sm:text-left">
-          © Copyright PatioTime WordPress Theme for Restaurant & Cafe.
-        </p>
+        <p className="text-center sm:text-left">{t("bottom.copyright")}</p>
         <div className="flex space-x-6">
           <a href="#" className="hover:text-orange-500">
-            Privacy
+            {t("bottom.privacy")}
           </a>
           <a href="#" className="hover:text-orange-500">
-            Term of Use
+            {t("bottom.terms")}
           </a>
           <a href="#" className="hover:text-orange-500">
-            Policy
+            {t("bottom.policy")}
           </a>
         </div>
       </div>

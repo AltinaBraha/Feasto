@@ -3,39 +3,55 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from 'next-intl'; 
+
 
 export default function MenuItemCard({ item }) {
   const { addToCart } = useCart();
-  const slugify = (text) =>
-    text
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w-]+/g, "");
+   const locale = useLocale();
+  
+  const t = locale !== "en" ? useTranslations("items") : null;
+
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+
+  const slug = slugify(item.name);
+
+  const name =  t ? t(`${slug}.name`) : item.name;
+
+  const ingredients = t 
+    ? item.ingredients.map(ing => t(`${slug}.ingredients.${ing}`)) 
+    : item.ingredients;
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 border-b border-gray-200 pb-6 gap-4 sm:gap-0">
-      {/* Image */}
       <div className="relative w-16 h-16 flex-shrink-0">
         <Image
           src={item.image}
-          alt={item.name}
+          alt={name}
           fill
           className="rounded-full object-cover"
         />
       </div>
 
-      {/* Name + Ingredients */}
       <div className="flex-1 text-start">
         <Link
-          href={`/menus/food/${slugify(item.name)}`}
+          href={`/menus/food/${slug}`}
           className="font-semibold text-lg hover:text-orange-600 transition block"
         >
-          {item.name}
+          {name}
         </Link>
-        <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
+       <p className="text-gray-500 text-sm">{ingredients.join(", ")}</p>
+
       </div>
 
-      {/* Price + Add button */}
       <div className="flex sm:flex-row flex-col sm:items-center sm:space-x-4 sm:justify-end justify-start items-start sm:min-w-[110px]">
         <div className="hidden sm:block flex-grow border-b border-dotted border-gray-400 mx-2"></div>
         <span className="font-bold whitespace-nowrap mb-2 sm:mb-0">

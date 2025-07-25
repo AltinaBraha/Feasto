@@ -1,0 +1,24 @@
+{
+"Header": {
+    "topBar": {
+      "address": "Beispielstraße 123, Berlin",
+      "phone": "+49 123 456789",
+      "email": "kontakt@beispiel.de"
+    },
+    "menu": {
+      "home": "STARTSEITE",
+      "menus": "MENÜS",
+      "food": "Essen",
+      "drinks": "Getränke",
+      "desserts": "Desserts",
+      "aboutUs": "ÜBER UNS",
+      "ourStory": "Unsere Geschichte",
+      "ourChefs": "Unsere Köche",
+      "contactUs": "Kontakt",
+      "guestbook": "GÄSTEBUCH",
+      "leaveReview": "Bewertung abgeben",
+      "whatGuestsSay": "Was unsere Gäste sagen",
+      "findTable": "Tisch finden"
+    }
+  }
+}

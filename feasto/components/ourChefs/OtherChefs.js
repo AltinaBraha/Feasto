@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function OtherChefs({ chefs }) {
+  const t = useTranslations();
+
   if (!chefs || chefs.length === 0) return null;
 
   return (
@@ -16,10 +19,12 @@ export default function OtherChefs({ chefs }) {
               className="w-full h-[400px] object-cover mb-4"
             />
             <p className="text-orange-600 font-semibold uppercase text-sm mb-1">
-              {chef.role}
+              {t(`others.${chef.name}.role`, {}, { fallback: chef.role })}
             </p>
             <h3 className="text-xl font-bold mb-2">{chef.name}</h3>
-            <p className="text-gray-600 text-sm mb-3">{chef.bio}</p>
+            <p className="text-gray-600 text-sm mb-3">
+              {t(`others.${chef.name}.bio`, {}, { fallback: chef.bio })}
+            </p>
             <div className="flex gap-3 text-gray-700 text-xl">
               {chef.socials.map((icon, i) => (
                 <a key={i} href={icon.url} target="_blank" rel="noreferrer">

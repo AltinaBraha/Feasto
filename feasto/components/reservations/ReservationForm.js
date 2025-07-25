@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import ClientToast from "@/components/ClientToast";
-import { createReservation } from "@/lib/firestore/reservations";
+import ClientToast from "@/lib/ui/ClientToast";
+import { createReservation } from "@/app/api/reservations";
 import { convertTo24Hour } from "@/utils/time";
 import { timeSlots } from "@/constants/time";
 import ReservationModal from "@/components/reservations/ReservationModal";
+import { useTranslations } from "next-intl";
 
 export default function ReservationForm() {
+  const t = useTranslations("ReservationForm");
+
   const [people, setPeople] = useState("1");
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [time, setTime] = useState("12:00 am");
@@ -18,10 +21,20 @@ export default function ReservationForm() {
 
   const handleBookingClick = (e) => {
     e.preventDefault();
+    setShowModal(true);
+  };
+
+  const handleReservationSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!name.trim() || !email.trim()) {
+      toast.error(t("errors.fillNameEmail"));
+      return;
+    }
 
     const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
     if (selectedDateTime < new Date()) {
-      toast.error("You cannot reserve for a past time.");
+      toast.error(t("errors.pastTime"));
       return;
     }
 
@@ -46,13 +59,24 @@ export default function ReservationForm() {
       };
 
       await createReservation(newReservation);
-      toast.success("Reservation submitted! We will confirm shortly.");
+
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: email,
+          subject: t("email.subject"),
+          text: t("email.text", { name, people, date, time }),
+        }),
+      });
+
+      toast.success(t("success.submitted"));
       setShowModal(false);
       setName("");
       setEmail("");
     } catch (err) {
       console.error(err);
-      toast.error("Failed to submit reservation. Try again.");
+      toast.error(t("errors.submitFailed"));
     }
   };
 
@@ -69,16 +93,16 @@ export default function ReservationForm() {
         <div className="relative z-10">
           <div className="text-center text-white mb-12">
             <h3 className="text-orange-500 text-lg font-medium tracking-wide mb-2">
-              ONLINE RESERVATION
+              {t("onlineReservation")}
             </h3>
             <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-wide">
-              BOOK A TABLE
+              {t("bookATable")}
             </h2>
           </div>
 
           <form className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap justify-center items-center gap-4">
             <div className="flex flex-col w-full sm:w-[200px] text-white">
-              <label className="text-sm mb-1">Guests</label>
+              <label className="text-sm mb-1">{t("guests")}</label>
               <select
                 className="bg-transparent border-b border-white py-2 focus:outline-none"
                 value={people}
@@ -86,14 +110,14 @@ export default function ReservationForm() {
               >
                 {Array.from({ length: 20 }, (_, i) => (
                   <option key={i + 1} value={i + 1} className="text-black">
-                    {i + 1} Person{i > 0 && "s"}
+                    {i + 1} {i === 0 ? t("person") : t("people")}
                   </option>
                 ))}
               </select>
             </div>
 
             <div className="flex flex-col w-full sm:w-[200px] text-white">
-              <label className="text-sm mb-1">Date</label>
+              <label className="text-sm mb-1">{t("date")}</label>
               <input
                 type="date"
                 className="bg-transparent border-b border-white py-2 focus:outline-none"
@@ -103,7 +127,7 @@ export default function ReservationForm() {
             </div>
 
             <div className="flex flex-col w-full sm:w-[200px] text-white">
-              <label className="text-sm mb-1">Time</label>
+              <label className="text-sm mb-1">{t("time")}</label>
               <select
                 className="bg-transparent border-b border-white py-2 focus:outline-none"
                 value={time}
@@ -121,9 +145,13 @@ export default function ReservationForm() {
               onClick={handleBookingClick}
               className="bg-[#f16123] text-white py-3 px-8 rounded mt-6 md:mt-8 hover:bg-orange-600 transition"
             >
-              BOOK NOW
+              {t("bookNow")}
             </button>
           </form>
+
+          <div className="text-sm text-white mt-8 text-center opacity-80">
+            {t("poweredBy")}
+          </div>
         </div>
       </section>
 

@@ -1,0 +1,17 @@
+{
+ "cart":{
+  "seeMyCart": "Warenkorb anzeigen",
+  "cart":"Warenkorb",
+    "emptyMessage": "Ihr Warenkorb ist leer.",
+    "viewFoodOptions": "Speiseoptionen ansehen",
+    "pricePrefix": "",
+    "decreaseQty": "Menge verringern",
+    "increaseQty": "Menge erhöhen",
+    "removeItem": "Artikel entfernen",
+    "total": "Gesamt",
+    "orderNow": "Jetzt bestellen"
+  
+
+  }
+
+}

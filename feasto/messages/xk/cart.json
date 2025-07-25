@@ -1,0 +1,14 @@
+{
+ "cart":{
+  "seeMyCart": "Shiko Porosinë",
+    "cart":"Porosia",
+    "emptyMessage": "Shporta juaj është bosh.",
+    "viewFoodOptions": "Shiko menu-në",
+    "pricePrefix": "",
+    "decreaseQty": "Zvogëlo sasinë",
+    "increaseQty": "Rrit sasinë",
+    "removeItem": "Hiq artikullin",
+    "total": "Totali",
+    "orderNow": "Porosit tani"
+  }
+}

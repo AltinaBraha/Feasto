@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import MenuItemCard from "./MenuItemCard";
 
 export default function MenuSection({ category, items, className }) {
+  const t = useTranslations("sort"); 
   const [sortOption, setSortOption] = useState("default");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -16,7 +18,6 @@ export default function MenuSection({ category, items, className }) {
 
   return (
     <div className={className || ""}>
-      {/* Header & Sorting Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <h2 className="text-2xl sm:text-3xl font-bold border-b pb-2 border-orange-600 uppercase">
           {category}
@@ -26,24 +27,23 @@ export default function MenuSection({ category, items, className }) {
             onClick={() => setSortOption("priceLowToHigh")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Price ↑
+            {t("priceLowToHigh")}
           </button>
           <button
             onClick={() => setSortOption("priceHighToLow")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Price ↓
+            {t("priceHighToLow")}
           </button>
           <button
             onClick={() => setSortOption("ratingHighToLow")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Rating
+            {t("rating")}
           </button>
         </div>
       </div>
 
-      {/* Item Cards */}
       <div className="space-y-8">
         {sortedItems.map((item) => (
           <MenuItemCard key={item.id} item={item} />

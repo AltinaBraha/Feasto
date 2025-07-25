@@ -1,0 +1,24 @@
+{
+    "Header": {
+  "topBar": {
+    "address": "Example Street 123, Berlin",
+    "phone": "+49 123 456789",
+    "email": "contact@example.com"
+  },
+  "menu": {
+    "home": "HOME",
+    "menus": "MENUS",
+    "food": "Food",
+    "drinks": "Drinks",
+    "desserts": "Desserts",
+    "aboutUs": "ABOUT US",
+    "ourStory": "Our Story",
+    "ourChefs": "Our Chefs",
+    "contactUs": "Contact",
+    "guestbook": "GUESTBOOK",
+    "leaveReview": "Leave a Review",
+    "whatGuestsSay": "What Our Guests Say",
+    "findTable": "Find a Table"
+  }
+}
+}

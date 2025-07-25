@@ -1,0 +1,21 @@
+{
+"foodDetails": {
+  "addedToCart": "wurde zum Warenkorb hinzugefügt!",
+  "moreFoodDetailsAlt": "Mehr Lebensmittel Details Hintergrund",
+  "tasteTheDetails": "Schmecke die Details",
+  "reviewSingular": "Bewertung",
+  "reviewPlural": "Bewertungen",
+  "ingredients": "Zutaten",
+  "quantity": "Menge",
+  "addToCart": "In den Warenkorb",
+  "productTotal": "Produkt Gesamt",
+  "reviews": "Bewertungen",
+  "addReview": "Bewertung hinzufügen",
+  "emailPrivacyNotice": "Ihre E-Mail-Adresse wird nicht veröffentlicht. Pflichtfelder sind mit einem Sternchen gekennzeichnet",
+  "namePlaceholder": "Name *",
+  "emailPlaceholder": "E-Mail *",
+  "yourRating": "Ihre Bewertung",
+  "yourReviewPlaceholder": "Ihre Bewertung *",
+  "submitReview": "Bewertung absenden"
+  }
+}

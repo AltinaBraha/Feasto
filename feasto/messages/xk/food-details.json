@@ -1,0 +1,21 @@
+{
+      "foodDetails": {
+  "addedToCart": "është shtuar në porosi!",
+  "moreFoodDetailsAlt": "Më shumë Detaje Ushqimi sfondi",
+  "tasteTheDetails": "Shijo Detajet",
+  "reviewSingular": "vlerësim",
+  "reviewPlural": "vlerësime",
+  "ingredients": "Përbërësit",
+  "quantity": "Sasia",
+  "addToCart": "Shto në Porosi",
+  "productTotal": "Totali i produktit",
+  "reviews": "Vlerësimet",
+  "addReview": "Shto një vlerësim",
+  "emailPrivacyNotice": "Adresa juaj e email-it nuk do të publikohet. Fushat e detyrueshme janë shënuar me yll",
+  "namePlaceholder": "Emri *",
+  "emailPlaceholder": "Email *",
+  "yourRating": "Vlerësimi juaj",
+  "yourReviewPlaceholder": "Vlerësimi juaj *",
+  "submitReview": "Dërgo vlerësimin"
+}
+}

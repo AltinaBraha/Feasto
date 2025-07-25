@@ -25,6 +25,8 @@ const tables = [
   { id: 9, seats: 6 },
 ];
 
+import { useTranslations } from "next-intl";
+
 export default function ReservationModal({
   onClose,
   onSubmit,
@@ -32,6 +34,9 @@ export default function ReservationModal({
   setName,
   email,
   setEmail,
+}) {
+  const t = useTranslations("ReservationModal");
+
   date,
   time,
   people,
@@ -109,10 +114,10 @@ export default function ReservationModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40">
       <div className="bg-white py-10 px-6 sm:px-8 rounded-md w-full max-w-sm flex flex-col items-center text-center shadow-2xl">
         <h3 className="text-orange-600 text-sm font-medium tracking-wide uppercase mb-2">
-          Online Reservation
+          {t("onlineReservation")}
         </h3>
-        <h5 className="text-2xl font-serif font-semibold tracking-wide mb-6">
-          Enter Your Info
+        <h5 className="text-2xl font-serif font-semibold tracking-wide mb-10">
+          {t("enterYourInfo")}
         </h5>
 
         {loading ? (
@@ -124,14 +129,14 @@ export default function ReservationModal({
           >
             <input
               type="text"
-              placeholder="Enter your name"
+              placeholder={t("placeholders.name")}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full border-b border-gray-300 focus:outline-none text-center py-2 placeholder-gray-500"
             />
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder={t("placeholders.email")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border-b border-gray-300 focus:outline-none text-center py-2 placeholder-gray-500"
@@ -180,13 +185,13 @@ export default function ReservationModal({
                 onClick={onClose}
                 className="w-full sm:w-1/2 bg-gray-300 text-gray-800 py-3 rounded hover:bg-gray-400 transition"
               >
-                Cancel
+                {t("buttons.cancel")}
               </button>
               <button
                 type="submit"
                 className="w-full sm:w-1/2 bg-[#d35400] text-white py-3 hover:bg-orange-600 transition uppercase tracking-wide rounded"
               >
-                Book Now
+                {t("buttons.bookNow")}
               </button>
             </div>
           </form>

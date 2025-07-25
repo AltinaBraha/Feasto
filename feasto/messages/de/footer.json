@@ -1,0 +1,30 @@
+ {
+"Footer": {
+    "description": "Gerechter Schritt, Fransen und alle, alles, was man braucht, um sich zu entwickeln. Genau richtig, Rhombus, Verlegenheit, Gift, Leben, genau.",
+    "workingHours": {
+      "title": "Öffnungszeiten",
+      "weekdays": "Montag - Freitag: 09:00 - 22:00",
+      "saturday": "Samstag: 11:00 - 00:00",
+      "sunday": "Sonntag: 11:00 - 23:00",
+      "happyHour": "* Happy Hour: 17:00 - 21:00"
+    },
+    "address": {
+      "title": "Unsere Adresse",
+      "street": "Silk St, Barbican, London EC2Y 8DS, UK",
+      "phone": "+39-055-123456",
+      "email": "booking@feasto.com"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Erhalten Sie die neuesten Nachrichten von uns.",
+      "placeholder": "Ihre E-Mail-Adresse",
+      "privacyAgreement": "Ich stimme der Datenschutzrichtlinie zu"
+    },
+    "bottom": {
+      "copyright": "© Copyright Feasto",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen",
+      "policy": "Richtlinie"
+    }
+  }
+}

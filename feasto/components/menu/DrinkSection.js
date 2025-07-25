@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import DrinkItemCard from "./DrinkItemCard";
+import { useTranslations } from "next-intl";
 
 export default function DrinkSection({ category, items, className }) {
+  const t = useTranslations("sort"); 
   const [sortOption, setSortOption] = useState("default");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -20,9 +22,9 @@ export default function DrinkSection({ category, items, className }) {
           {category}
         </h2>
         <div className="space-x-2">
-          <button onClick={() => setSortOption("priceLowToHigh")} className="text-sm text-gray-600 hover:text-orange-600">Price ↑</button>
-          <button onClick={() => setSortOption("priceHighToLow")} className="text-sm text-gray-600 hover:text-orange-600">Price ↓</button>
-          <button onClick={() => setSortOption("ratingHighToLow")} className="text-sm text-gray-600 hover:text-orange-600">Rating</button>
+          <button onClick={() => setSortOption("priceLowToHigh")} className="text-sm text-gray-600 hover:text-orange-600"> {t("priceLowToHigh")}</button>
+          <button onClick={() => setSortOption("priceHighToLow")} className="text-sm text-gray-600 hover:text-orange-600"> {t("priceHighToLow")}</button>
+          <button onClick={() => setSortOption("ratingHighToLow")} className="text-sm text-gray-600 hover:text-orange-600"> {t("rating")}</button>
         </div>
       </div>
       <div className="space-y-8">

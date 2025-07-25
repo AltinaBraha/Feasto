@@ -1,0 +1,25 @@
+{
+      "ReservationForm": {
+    "onlineReservation": "Rezervim Online",
+    "bookATable": "Rezervo Një Tavolinë",
+    "guests": "Të Ftuarit",
+    "person": "Person",
+    "people": "Persona",
+    "date": "Data",
+    "time": "Ora",
+    "bookNow": "Rezervo Tani",
+    "poweredBy": "*Fuqizuar nga OpenTable",
+    "errors": {
+      "fillNameEmail": "Ju lutem plotësoni emrin dhe emailin.",
+      "pastTime": "Nuk mund të rezervoni për kohë të kaluar.",
+      "submitFailed": "Dështoi të dërgohet rezervimi. Provojeni përsëri."
+    },
+    "email": {
+      "subject": "Rezervimi juaj në Feasto",
+      "text": "Përshëndetje {name},\n\nMarrëm rezervimin tuaj për {people} person(a) më {date} në orën {time}. Do ta konfirmojmë së shpejti.\n\nFaleminderit,\nEkipi i Feasto"
+    },
+    "success": {
+      "submitted": "Rezervimi u dorëzua me sukses! Do ta konfirmojmë së shpejti."
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "orderModal": {
+    "completeYourOrder": "Bestellung abschließen",
+    "chooseOrderType": "Wählen Sie zwischen Vor Ort oder Lieferung",
+    "dineIn": "Vor Ort",
+    "delivery": "Lieferung",
+    "tableNumber": "Tischnummer",
+    "tableNumberExample": "z.B. 5",
+    "continue": "Weiter",
+    "reviewYourOrder": "Überprüfen Sie Ihre Bestellung",
+    "orderType": "Bestelltyp",
+    "fullName": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "city": "Stadt",
+    "postalCode": "Postleitzahl",
+    "total": "Gesamt",
+    "confirmOrder": "Bestellung bestätigen",
+    "processing": "Verarbeitung...",
+    "editOrderDetails": "Bestelldetails bearbeiten",
+    "pleaseSelectOrderType": "Bitte Bestelltyp auswählen.",
+    "orderPlacedSuccess": "Bestellung aufgegeben! Sie erhalten in Kürze eine Bestätigung.",
+    "orderPlaceError": "Beim Aufgeben der Bestellung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "closeModal": "Modal schließen"
+  }
+}

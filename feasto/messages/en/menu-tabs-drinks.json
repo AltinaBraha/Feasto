@@ -1,0 +1,11 @@
+{
+      "menuTabs": {
+    "all-drinks": "All Drinks",
+    "cocktail": "Cocktail",
+    "coffee": "Coffee",
+    "wine": "Wine",
+    "milkshake": "Milkshake",
+    "food": "Food",
+    "drinks": "Drinks"
+  }
+}
