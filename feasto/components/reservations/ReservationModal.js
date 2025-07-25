@@ -2,17 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import {
-  collection,
-  onSnapshot,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { convertTo24Hour } from "@/utils/time";
+import { useTranslations } from "next-intl";
 
-// Restore the hardcoded tables array
+// Hardcoded table configuration
 const tables = [
   { id: 1, seats: 2 },
   { id: 2, seats: 2 },
@@ -25,8 +20,6 @@ const tables = [
   { id: 9, seats: 6 },
 ];
 
-import { useTranslations } from "next-intl";
-
 export default function ReservationModal({
   onClose,
   onSubmit,
@@ -34,17 +27,15 @@ export default function ReservationModal({
   setName,
   email,
   setEmail,
-}) {
-  const t = useTranslations("ReservationModal");
-
   date,
   time,
   people,
 }) {
+  const t = useTranslations("ReservationModal");
+
   const [selectedTable, setSelectedTable] = useState(null);
   const [reservedTables, setReservedTables] = useState([]);
   const [loading, setLoading] = useState(true);
-  // Remove tables state and fetchTables useEffect
 
   useEffect(() => {
     if (!date || !time) return;
@@ -58,7 +49,6 @@ export default function ReservationModal({
       (snapshot) => {
         const reservations = snapshot.docs.map((doc) => doc.data());
 
-        // Gjej tavolinat e rezervuara për këtë datë (jo më për orë specifike)
         const reservedForDate = reservations
           .filter((res) => ["pending", "confirmed"].includes(res.status))
           .map((res) => Number(res.table));
@@ -73,7 +63,6 @@ export default function ReservationModal({
           (t) => !reservedForDate.includes(t.id)
         );
 
-        // Nëse tavolina e zgjedhur më parë është zënë, zgjedh e para të lirë
         if (!freeTables.some((t) => t.id === selectedTable)) {
           setSelectedTable(freeTables.length > 0 ? freeTables[0].id : null);
         }

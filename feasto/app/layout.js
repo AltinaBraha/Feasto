@@ -1,8 +1,8 @@
+// app/layout.tsx
 import "./globals.css";
 import { Jost } from "next/font/google";
 import { CartProvider } from "@/components/CartProvider";
-import { AuthProvider } from "@/auth/AuthContext"; // ✅ Shto këtë
-import ConditionalLayout from "@/components/ConditionalLayout";
+import { AuthProvider } from "@/auth/AuthContext";
 
 const myFont = Jost({
   subsets: ["latin"],
@@ -14,11 +14,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${myFont.variable} font-serif`}>
         <AuthProvider>
-          {" "}
           <CartProvider>
-            <ConditionalLayout>
-              <main>{children}</main>
-            </ConditionalLayout>
+            {children} {/* DO NOT WRAP IN ConditionalLayout */}
           </CartProvider>
         </AuthProvider>
       </body>
