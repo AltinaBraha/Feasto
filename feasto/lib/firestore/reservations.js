@@ -1,122 +1,102 @@
-// lib/firestore/reservations.js
-import { db } from "../firebase";
+import { db } from "@/lib/firebase";
 import {
   collection,
-  addDoc,
+  doc,
   getDocs,
   getDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
-  doc,
-  query,
-  where,
+  onSnapshot,
+  runTransaction,
+  serverTimestamp,
 } from "firebase/firestore";
 
+const RESERVATIONS_COLLECTION = "reservations";
+const RES_COUNTER_DOC = doc(db, "counters", "reservations");
+
 /**
- * Krijon një rezervim të ri në Firestore.
- * Kontrollon nëse tavolina është e lirë për datën dhe orën e caktuar.
+ * Merr numrin radhor të ardhshëm për rezervimet.
  */
-export const createReservation = async (data) => {
-  if (!data || !data.table || !data.date || !data.time) {
-    console.error("createReservation: Missing required data", data);
-    throw new Error("Missing required reservation data");
-  }
+const getNextReservationNumber = async () => {
+  return await runTransaction(db, async (transaction) => {
+    const counterDoc = await transaction.get(RES_COUNTER_DOC);
+    if (!counterDoc.exists()) {
+      transaction.set(RES_COUNTER_DOC, { lastReservationNumber: 1 });
+      return 1;
+    }
+    const newNumber = counterDoc.data().lastReservationNumber + 1;
+    transaction.update(RES_COUNTER_DOC, { lastReservationNumber: newNumber });
+    return newNumber;
+  });
+};
 
-  const reservationsRef = collection(db, "reservations");
+/**
+ * Merr të gjitha rezervimet, të renditura sipas numrit radhor.
+ */
+export const getReservations = async () => {
+  const snapshot = await getDocs(collection(db, RESERVATIONS_COLLECTION));
+  return snapshot.docs
+    .map((doc) => ({ id: doc.id, ...doc.data() }))
+    .sort((a, b) => (a.reservationNumber || 0) - (b.reservationNumber || 0));
+};
 
-  // Kontrollo nëse tavolina është tashmë e rezervuar për këtë datë dhe orë
-  const q = query(
-    reservationsRef,
-    where("table", "==", Number(data.table)),
-    where("date", "==", data.date)
-  );
+/**
+ * Krijon një rezervim të ri me ID numerike (1, 2, 3...).
+ */
+export const createReservation = async (reservationData) => {
+  const reservationNumber = await getNextReservationNumber();
+  const reservationId = reservationNumber.toString(); // ID numerike
 
-  const snapshot = await getDocs(q);
-  if (!snapshot.empty) {
-    console.warn(
-      `Table ${data.table} is already reserved on ${data.date} at ${data.time}`
-    );
-    throw new Error("This table is already reserved at that time.");
-  }
-
-  // Nëse është e lirë, shto rezervimin
-  const res = await addDoc(reservationsRef, {
-    ...data,
-    table: Number(data.table),
-    status: data.status || "pending",
-    createdAt: new Date().toISOString(),
+  const docRef = doc(db, RESERVATIONS_COLLECTION, reservationId);
+  await setDoc(docRef, {
+    ...reservationData,
+    reservationNumber,
+    status: reservationData.status || "pending",
+    createdAt: serverTimestamp(),
   });
 
-  return res.id;
+  const snapshot = await getDoc(docRef);
+  return { id: docRef.id, ...snapshot.data() };
 };
 
 /**
- * Merr të gjitha rezervimet, ose vetëm për një datë të caktuar.
- * Nuk përdor orderBy për të shmangur nevojën e indeksit.
+ * Përditëson një rezervim ekzistues.
  */
-export const getReservations = async (selectedDate = null) => {
-  try {
-    const reservationsRef = collection(db, "reservations");
-
-    const q = selectedDate
-      ? query(reservationsRef, where("date", "==", selectedDate))
-      : reservationsRef;
-
-    const snapshot = await getDocs(q);
-
-    const reservations = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    // Sortim sipas date dhe pastaj time (në JS)
-    return reservations.sort((a, b) => {
-      if (a.date === b.date) {
-        return a.time.localeCompare(b.time);
-      }
-      return a.date.localeCompare(b.date);
-    });
-  } catch (error) {
-    console.error("Error fetching reservations:", error);
-    return [];
-  }
+export const updateReservationStatus = async (id, newStatus) => {
+  const docRef = doc(db, RESERVATIONS_COLLECTION, id);
+  await updateDoc(docRef, { status: newStatus });
+  const snapshot = await getDoc(docRef);
+  return { id: docRef.id, ...snapshot.data() };
 };
 
 /**
- * Merr një rezervim specifik sipas ID-së.
- */
-export const getReservationById = async (id) => {
-  if (!id) throw new Error("Reservation ID is required");
-  const reservationRef = doc(db, "reservations", id);
-  const snapshot = await getDoc(reservationRef);
-  if (!snapshot.exists()) {
-    throw new Error("Reservation not found");
-  }
-  return { id: snapshot.id, ...snapshot.data() };
-};
-
-/**
- * Përditëson statusin e një rezervimi: confirmed | rejected.
- */
-export const updateReservationStatus = async (id, status) => {
-  if (!id || typeof id !== "string") {
-    console.error("updateReservationStatus: Invalid ID", id);
-    throw new Error("Invalid reservation ID");
-  }
-
-  if (!status) {
-    console.error("updateReservationStatus: Missing status");
-    throw new Error("Missing status for reservation update");
-  }
-
-  const reservationRef = doc(db, "reservations", id);
-  await updateDoc(reservationRef, { status });
-};
-
-/**
- * Fshin një rezervim nga Firestore.
+ * Fshin një rezervim.
  */
 export const deleteReservation = async (id) => {
-  if (!id) throw new Error("Reservation ID is required");
-  await deleteDoc(doc(db, "reservations", id));
+  const docRef = doc(db, RESERVATIONS_COLLECTION, id);
+  await deleteDoc(docRef);
+  return { id };
+};
+
+/**
+ * Listener real-time për rezervimet.
+ */
+export const subscribeToReservations = (callback) => {
+  return onSnapshot(collection(db, RESERVATIONS_COLLECTION), (snapshot) => {
+    const reservations = snapshot.docs
+      .map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      .sort((a, b) => (a.reservationNumber || 0) - (b.reservationNumber || 0));
+    callback(reservations);
+  });
+};
+
+/**
+ * Opsionale: Reseton counter në 0 (vetëm për testim).
+ */
+export const resetReservationCounter = async () => {
+  await setDoc(RES_COUNTER_DOC, { lastReservationNumber: 0 });
 };

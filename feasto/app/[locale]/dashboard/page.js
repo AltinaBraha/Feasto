@@ -27,12 +27,10 @@ export default function DashboardPage() {
           ...doc.data(),
         }));
 
-        // Fshij të gjitha që janë 'rejected'
         const activeReservations = allReservations.filter(
           (r) => r.status !== "rejected"
         );
 
-        // Rendit që pending të dalin para confirmed
         activeReservations.sort((a, b) => {
           if (a.status === b.status) return 0;
           return a.status === "pending" ? -1 : 1;
@@ -123,7 +121,6 @@ export default function DashboardPage() {
     }
   };
 
-  // Fshin kartën vetëm nga dashboard (jo nga Firebase)
   const removeReservationCard = (id) => {
     setReservations((prev) => prev.filter((res) => res.id !== id));
   };
@@ -141,12 +138,7 @@ export default function DashboardPage() {
     <ProtectedDashboard>
       <div className="min-h-screen flex flex-col md:flex-row bg-gray-100">
         <SidebarFilter current={filter} setFilter={setFilter} />
-        <main className="flex-1 p-4 sm:p-6 md:p-8">
-          <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-800">
-            {filter === "reservations"
-              ? "Reservations"
-              : `Orders ${filter !== "all" ? `(${filter})` : ""}`}
-          </h1>
+        <main className="flex-1 p-4 sm:p-6 md:p-8 pt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filter === "reservations"
               ? reservations.map((res) => (

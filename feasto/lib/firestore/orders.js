@@ -4,31 +4,19 @@ import {
   doc,
   getDocs,
   getDoc,
-  addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   onSnapshot,
-  serverTimestamp,
   runTransaction,
+  serverTimestamp,
 } from "firebase/firestore";
 
 const ORDERS_COLLECTION = "orders";
 const COUNTER_DOC = doc(db, "counters", "orders");
 
-export const fetchOrders = async () => {
-  const snapshot = await getDocs(collection(db, ORDERS_COLLECTION));
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-};
-
-export const getOrderById = async (id) => {
-  const docRef = doc(db, ORDERS_COLLECTION, id);
-  const snapshot = await getDoc(docRef);
-  if (!snapshot.exists()) throw new Error("Order not found");
-  return { id: snapshot.id, ...snapshot.data() };
-};
-
 /**
- * Gjeneron numrin radhor të porosisë duke përdorur dokumentin counters/orders.
+ * Merr numrin radhor të ardhshëm për porositë.
  */
 const getNextOrderNumber = async () => {
   return await runTransaction(db, async (transaction) => {
@@ -43,10 +31,35 @@ const getNextOrderNumber = async () => {
   });
 };
 
-export const createOrder = async (orderData) => {
-  const orderNumber = await getNextOrderNumber();
+/**
+ * Fetch të gjitha porositë e renditura sipas numrit radhor.
+ */
+export const fetchOrders = async () => {
+  const snapshot = await getDocs(collection(db, ORDERS_COLLECTION));
+  return snapshot.docs
+    .map((doc) => ({ id: doc.id, ...doc.data() }))
+    .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
+};
 
-  const docRef = await addDoc(collection(db, ORDERS_COLLECTION), {
+/**
+ * Merr një porosi sipas ID-së.
+ */
+export const getOrderById = async (id) => {
+  const docRef = doc(db, ORDERS_COLLECTION, id);
+  const snapshot = await getDoc(docRef);
+  if (!snapshot.exists()) throw new Error("Order not found");
+  return { id: snapshot.id, ...snapshot.data() };
+};
+
+/**
+ * Krijon një porosi të re me ID numerike.
+ */
+export const createOrder = async (orderData) => {
+  const orderNumber = await getNextOrderNumber(); // merr numrin radhor
+  const orderId = orderNumber.toString();
+
+  const docRef = doc(db, ORDERS_COLLECTION, orderId);
+  await setDoc(docRef, {
     ...orderData,
     orderNumber,
     status: orderData.status || "pending",
@@ -57,6 +70,9 @@ export const createOrder = async (orderData) => {
   return { id: docRef.id, ...snapshot.data() };
 };
 
+/**
+ * Përditëson një porosi ekzistuese.
+ */
 export const updateOrder = async (id, updates) => {
   const docRef = doc(db, ORDERS_COLLECTION, id);
   await updateDoc(docRef, updates);
@@ -64,18 +80,33 @@ export const updateOrder = async (id, updates) => {
   return { id: docRef.id, ...snapshot.data() };
 };
 
+/**
+ * Fshin një porosi.
+ */
 export const deleteOrder = async (id) => {
   const docRef = doc(db, ORDERS_COLLECTION, id);
   await deleteDoc(docRef);
   return { id };
 };
 
+/**
+ * Real-time listener për porositë.
+ */
 export const subscribeToOrders = (callback) => {
   return onSnapshot(collection(db, ORDERS_COLLECTION), (snapshot) => {
-    const orders = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const orders = snapshot.docs
+      .map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
     callback(orders);
   });
+};
+
+/**
+ * Opsional: Reseton counter në 0 (përdoret vetëm për testim).
+ */
+export const resetOrderCounter = async () => {
+  await setDoc(COUNTER_DOC, { lastOrderNumber: 0 });
 };
