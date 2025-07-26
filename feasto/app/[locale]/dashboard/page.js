@@ -7,7 +7,8 @@ import SidebarFilter from "@/components/dashboard/SidebarFilter";
 import OrderCard from "@/components/dashboard/OrderCard";
 import ReservationCard from "@/components/dashboard/ReservationCard";
 import ClientToast from "@/lib/ui/ClientToast";
-import { deleteOrder } from "@/lib/firestore/orders";
+import { updateOrder } from "@/lib/firestore/orders";
+
 import {
   getReservations,
   updateReservationStatus,
@@ -54,11 +55,11 @@ export default function DashboardPage() {
 
   const markReady = async (id) => {
     try {
-      await deleteOrder(id);
-      toast.success(`Order #${id} marked as ready and removed`);
+      await updateOrder(id, { status: "ready" });
+      toast.success(`Order #${id} marked as ready`);
     } catch (error) {
-      console.error("DELETE error:", error);
-      toast.error("Failed to delete order.");
+      console.error("UPDATE error:", error);
+      toast.error("Failed to mark order as ready.");
     }
   };
 
@@ -113,7 +114,9 @@ export default function DashboardPage() {
   };
 
   const filteredOrders =
-    filter === "all" ? orders : orders.filter((o) => o.type === filter);
+    filter === "all"
+      ? orders.filter((o) => o.status !== "ready")
+      : orders.filter((o) => o.type === filter && o.status !== "ready");
 
   return (
     <ProtectedDashboard>
