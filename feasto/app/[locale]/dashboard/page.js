@@ -8,11 +8,7 @@ import OrderCard from "@/components/dashboard/OrderCard";
 import ReservationCard from "@/components/dashboard/ReservationCard";
 import ClientToast from "@/lib/ui/ClientToast";
 import { updateOrder } from "@/lib/firestore/orders";
-
-import {
-  getReservations,
-  updateReservationStatus,
-} from "@/lib/firestore/reservations";
+import { updateReservationStatus } from "@/lib/firestore/reservations";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import emailjs from "@emailjs/browser";
@@ -26,9 +22,23 @@ export default function DashboardPage() {
     const unsubReservations = onSnapshot(
       collection(db, "reservations"),
       (snapshot) => {
-        setReservations(
-          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        const allReservations = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        // Fshij të gjitha që janë 'rejected'
+        const activeReservations = allReservations.filter(
+          (r) => r.status !== "rejected"
         );
+
+        // Rendit që pending të dalin para confirmed
+        activeReservations.sort((a, b) => {
+          if (a.status === b.status) return 0;
+          return a.status === "pending" ? -1 : 1;
+        });
+
+        setReservations(activeReservations);
       },
       (error) => {
         console.error("Error fetching reservations:", error);
@@ -113,10 +123,19 @@ export default function DashboardPage() {
     }
   };
 
+  // Fshin kartën vetëm nga dashboard (jo nga Firebase)
+  const removeReservationCard = (id) => {
+    setReservations((prev) => prev.filter((res) => res.id !== id));
+  };
+
   const filteredOrders =
     filter === "all"
-      ? orders.filter((o) => o.status !== "ready")
-      : orders.filter((o) => o.type === filter && o.status !== "ready");
+      ? orders
+          .filter((o) => o.status !== "ready")
+          .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0))
+      : orders
+          .filter((o) => o.type === filter && o.status !== "ready")
+          .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
 
   return (
     <ProtectedDashboard>
@@ -128,7 +147,7 @@ export default function DashboardPage() {
               ? "Reservations"
               : `Orders ${filter !== "all" ? `(${filter})` : ""}`}
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filter === "reservations"
               ? reservations.map((res) => (
                   <ReservationCard
@@ -136,6 +155,7 @@ export default function DashboardPage() {
                     reservation={res}
                     onConfirm={handleConfirmReservation}
                     onReject={rejectReservation}
+                    onRemove={removeReservationCard}
                   />
                 ))
               : filteredOrders.map((order) => (

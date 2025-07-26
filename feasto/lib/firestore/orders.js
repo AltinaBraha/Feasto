@@ -9,9 +9,11 @@ import {
   deleteDoc,
   onSnapshot,
   serverTimestamp,
+  runTransaction,
 } from "firebase/firestore";
 
 const ORDERS_COLLECTION = "orders";
+const COUNTER_DOC = doc(db, "counters", "orders");
 
 export const fetchOrders = async () => {
   const snapshot = await getDocs(collection(db, ORDERS_COLLECTION));
@@ -25,12 +27,32 @@ export const getOrderById = async (id) => {
   return { id: snapshot.id, ...snapshot.data() };
 };
 
+/**
+ * Gjeneron numrin radhor të porosisë duke përdorur dokumentin counters/orders.
+ */
+const getNextOrderNumber = async () => {
+  return await runTransaction(db, async (transaction) => {
+    const counterDoc = await transaction.get(COUNTER_DOC);
+    if (!counterDoc.exists()) {
+      transaction.set(COUNTER_DOC, { lastOrderNumber: 1 });
+      return 1;
+    }
+    const newNumber = counterDoc.data().lastOrderNumber + 1;
+    transaction.update(COUNTER_DOC, { lastOrderNumber: newNumber });
+    return newNumber;
+  });
+};
+
 export const createOrder = async (orderData) => {
+  const orderNumber = await getNextOrderNumber();
+
   const docRef = await addDoc(collection(db, ORDERS_COLLECTION), {
     ...orderData,
+    orderNumber,
     status: orderData.status || "pending",
     createdAt: serverTimestamp(),
   });
+
   const snapshot = await getDoc(docRef);
   return { id: docRef.id, ...snapshot.data() };
 };
