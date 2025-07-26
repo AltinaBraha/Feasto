@@ -5,10 +5,14 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale } from "next-intl";
+
 
 export default function Header() {
   const t = useTranslations("Header");
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
+
 
   const handleScroll = () => {
     const element = document.getElementById("reservation-form");
@@ -50,12 +54,12 @@ export default function Header() {
             {t("menu.menus")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/menus/food">
+                <Link href={`/${locale}/menus/food`}>
                   {t("menu.food")}
                 </Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/menus/drinks">
+                <Link href={`/${locale}/menus/drinks`}>
                   {t("menu.drinks")}
                 </Link>
               </li>
@@ -71,12 +75,12 @@ export default function Header() {
             {t("menu.aboutUs")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/about-us">
+                <Link href={`/${locale}/about-us`}>
                   {t("menu.ourStory")}
                 </Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href="/our-chefs">
+                <Link href={`/${locale}/our-chefs`}>
                   {t("menu.ourChefs")}
                 </Link>
               </li>

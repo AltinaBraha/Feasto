@@ -2,24 +2,25 @@ import DrinkTabs from "@/components/menu/DrinkTabs";
 import CartButton from "@/components/menu/CartButton";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import drinkMenu from "@/data/drinks.json";
 
-async function getMenu() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  export const dynamic = 'force-static';
 
-  const res = await fetch(`${baseUrl}/api/menu/drinks`, {
-    cache: "no-store",
-  });
+// async function getMenu() {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch menu");
-  }
+//   const res = await fetch(`${baseUrl}/api/menu/drinks`, {
+//     cache: "force-cache",
+//   });
 
-  const data = await res.json();
-  return data;
-}
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch menu");
+//   }
+
+//   return res.json();
+// }
 
 export default async function OurMenuPage() {
-  const drinkMenu = await getMenu();
   const t = await getTranslations("drinkHeader");
 
   return (

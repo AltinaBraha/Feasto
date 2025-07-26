@@ -8,7 +8,6 @@ export default async function GalleryFeature() {
   return (
     <section className="w-full py-16">
       <div className="flex flex-col lg:flex-row w-full lg:h-[600px] gap-4 lg:gap-0">
-        {/* LEFT COLUMN */}
         <div className="w-full lg:w-1/3 h-[300px] lg:h-full relative overflow-hidden group rounded shadow-lg">
           <div
             className="w-full h-full bg-center bg-cover bg-no-repeat transition-transform duration-500 group-hover:scale-105"
@@ -28,7 +27,6 @@ export default async function GalleryFeature() {
           </div>
         </div>
 
-        {/* MIDDLE COLUMN */}
         <div className="flex flex-col w-full lg:w-1/3 gap-4 lg:gap-0">
           <div className="flex flex-col sm:flex-row w-full h-[300px] lg:h-1/2">
             <div className="w-full sm:w-1/2 h-1/2 sm:h-full overflow-hidden relative group">
@@ -78,7 +76,6 @@ export default async function GalleryFeature() {
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
         <div className="w-full lg:w-1/3 h-[300px] lg:h-full relative overflow-hidden group rounded shadow-lg ">
           <Image
             src="/img/4.jpg"
