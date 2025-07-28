@@ -1,0 +1,54 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useCart } from "@/components/CartProvider";
+
+export default function DessertItemCard({ item }) {
+  const { addToCart } = useCart();
+
+  // Një funksion për slug (për URL friendly)
+  const slugify = (text) =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-");
+
+  const slug = slugify(item.name);
+
+  return (
+    <div className="flex items-center space-x-6 border-b border-gray-200 pb-6">
+      <div className="flex-shrink-0 relative w-16 h-16">
+    <Image
+        src={item.image || "/img/default-dessert.jpg"}
+        alt={item.name || "Dessert"}
+        fill
+        className="object-cover rounded"
+        />
+
+      </div>
+      <div className="flex-1">
+        <Link
+          href={`/menus/desserts/${slug}`}
+          className="font-semibold text-lg hover:text-orange-600 transition"
+        >
+          {item.name}
+        </Link>
+        <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
+      </div>
+      <div className="flex items-center space-x-4 min-w-[110px] justify-end">
+        <div className="flex-grow border-b border-dotted border-gray-400 mx-2"></div>
+        <span className="font-bold whitespace-nowrap">${item.price.toFixed(2)}</span>
+        <button
+          onClick={() => addToCart({ ...item, qty: 1 })}
+          disabled={!item.available}
+          title={item.available ? "Add to cart" : "Not available"}
+          className="ml-4 text-orange-600 border border-orange-600 rounded px-2 text-lg font-bold hover:bg-orange-600 hover:text-white transition"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}

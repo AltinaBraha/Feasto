@@ -52,6 +52,12 @@ const offerActive = isOfferTimeActive();
         >
           {t("drinks")}
         </a>
+        <a
+          href="/menus/desserts"
+          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
+        >
+          {("desserts")}
+        </a>
       </div>
 
       {showSubcategories && (

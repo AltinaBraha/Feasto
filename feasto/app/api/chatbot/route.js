@@ -6,6 +6,7 @@ export async function POST(req) {
     const { message } = await req.json();
     const lowerMsg = message.toLowerCase();
 
+    
     if (lowerMsg.includes("hello") || lowerMsg.includes("hi")) {
       return NextResponse.json({
         reply: "Hello! Welcome to Feasto. How can I help you today?",

@@ -1,55 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
-import DrinkSection from "./DrinkSection";
+import DessertSection from "./DessertSection";
 
-export default function MenuTabs({ drinkMenu }) {
-  const t = useTranslations("menuTabs");
-
+export default function DessertTabs({ dessertMenu }) {
   const subcategories = [
-    { key: "all-drinks", label: t("all-drinks") },
-    { key: "Cocktail", label: t("cocktail") },
-    { key: "Coffee", label: t("coffee") },
-    { key: "Wine", label: t("wine") },
-    { key: "Milkshake", label: t("milkshake") },
+    { key: "all-desserts", label: "All Desserts" },
+    { key: "Cakes", label: "Cakes" },
+    { key: "Ice Cream", label: "Ice Cream" },
+    { key: "Cookies", label: "Cookies" },
+    { key: "Fruit Desserts", label: "Fruit Desserts" },
+
   ];
 
-  const [activeKey, setActiveKey] = useState("all-drinks");
+  const [activeKey, setActiveKey] = useState("all-desserts");
 
   const filteredMenu =
-    activeKey === "all-drinks"
-      ? drinkMenu
-      : drinkMenu.filter(item => item.subcategory === activeKey);
+    activeKey === "all-desserts"
+      ? dessertMenu
+      : dessertMenu.filter(item => item.subCategory === activeKey);
 
   const groupedBySubcategory = subcategories
-    .filter(s => s.key !== "all-drinks")
+    .filter(s => s.key !== "all-desserts")
     .map(s => ({
       key: s.key,
       label: s.label,
-      items: drinkMenu.filter(item => item.subcategory === s.key),
+      items: dessertMenu.filter(item => item.subCategory === s.key),
     }));
 
   return (
     <div className="flex flex-col items-center mb-12">
       <div className="flex justify-center space-x-10 mb-12">
+        {/* Link-et për të shkuar në kategori të tjera në menunë e përgjithshme */}
         <a
           href="/menus/food"
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          {t("food")}
+          Food
+        </a>
+        <a
+          href="/menus/drinks"
+          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
+        >
+          Drinks
         </a>
         <button
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          {t("drinks")}
+          Desserts
         </button>
-        <a
-          href="/menus/desserts"
-          className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
-        >
-          {t("desserts")}
-        </a>
       </div>
 
       <div className="flex space-x-4 mt-4">
@@ -69,9 +68,9 @@ export default function MenuTabs({ drinkMenu }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-10 px-8 md:px-16 lg:px-24 mt-10">
-        {activeKey === "all-drinks"
+        {activeKey === "all-desserts"
           ? groupedBySubcategory.map(group => (
-              <DrinkSection
+              <DessertSection
                 key={group.key}
                 category={group.label}
                 items={group.items}
@@ -79,7 +78,7 @@ export default function MenuTabs({ drinkMenu }) {
               />
             ))
           : (
-            <DrinkSection
+            <DessertSection
               category={subcategories.find(s => s.key === activeKey)?.label || ""}
               items={filteredMenu}
               className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"

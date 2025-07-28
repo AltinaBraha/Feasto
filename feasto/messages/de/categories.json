@@ -1,6 +1,7 @@
 {
  "categories": {
     "Food": "Speisen",
-    "Drinks": "Getränke"
+    "Drinks": "Getränke",
+    "Desserts":"Desserts"
   }
 }
