@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
-    setIsReady(true); // e tregon që u kry inicializimi
+    setIsReady(true);
   }, []);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ export function CartProvider({ children }) {
     );
   };
 
-  // Derisa s’është gati mos e shfaq children fare
   if (!isReady) return null;
 
   return (

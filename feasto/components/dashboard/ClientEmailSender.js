@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 
 /**
  * Dërgon email konfirmimi për rezervim.
- * @param {Object} data - Informacionet e rezervimit
+ * @param {Object} data
  */
 export const sendConfirmationEmail = async (data) => {
   const templateParams = {
@@ -19,12 +19,12 @@ export const sendConfirmationEmail = async (data) => {
     console.log(
       "EMAILJS TEMPLATE ID:",
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-    ); // Debug log
+    );
     const result = await emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, // Feasto
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // template_frwbc1b
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
       templateParams,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY // g3w7nRHgJASZcaos0
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     );
 
     console.log("Confirmation email sent:", result.status);

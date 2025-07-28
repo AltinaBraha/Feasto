@@ -14,7 +14,7 @@ export default async function ChefQuote() {
             “{t("quote")}”
           </p>
           <p className="mt-4 sm:mt-6 text-xs sm:text-sm md:text-lg font-semibold text-orange-400">
-            {t('name')}
+            {t("name")}
           </p>
         </div>
       </div>

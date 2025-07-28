@@ -2,10 +2,10 @@ import Image from "next/image";
 import ImageSlider from "@/components/home-page/ImageSlider";
 import AnimateOnScroll from "@/components/home-page/AnimatedSection";
 import GalleryFeature from "@/components/home-page/GalleryFeature";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
 
 export default async function HomePage() {
-  const t = await getTranslations('HomePage');
+  const t = await getTranslations("HomePage");
 
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
@@ -15,19 +15,19 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-6 py-20 md:py-40 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <h3 className="text-orange-600 uppercase tracking-widest mb-4">
-            {t('refreshTasteBuds')}
+            {t("refreshTasteBuds")}
           </h3>
           <hr className="border-orange-600 border-t-2 w-16 mb-6" />
 
           <h1 className="text-3xl md:text-4xl font-medium  mb-8">
-            {t('enjoyJourney')}
+            {t("enjoyJourney")}
           </h1>
           <p className="text-base md:text-lg font-extralight mb-6 text-gray-700">
-            {t('hostsMessage')}
+            {t("hostsMessage")}
           </p>
 
           <button className="bg-orange-500  text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
-            {t('discoverMore')}
+            {t("discoverMore")}
           </button>
 
           <div
@@ -37,7 +37,7 @@ export default async function HomePage() {
           >
             <Image
               src="/img/chef3.jpg"
-              alt={t('refreshTasteBuds')} 
+              alt={t("refreshTasteBuds")}
               fill
               style={{ objectFit: "cover" }}
             />
@@ -51,7 +51,7 @@ export default async function HomePage() {
         >
           <Image
             src="/img/img.jpg"
-            alt={t('enjoyJourney')}
+            alt={t("enjoyJourney")}
             fill
             style={{ objectFit: "cover" }}
           />
@@ -65,7 +65,7 @@ export default async function HomePage() {
           <div className="relative w-full h-[300px] md:w-[550px] md:h-[600px] overflow-hidden">
             <Image
               src="/img/5.jpg"
-              alt={t('qualityBalance')}
+              alt={t("qualityBalance")}
               fill
               style={{ objectFit: "cover" }}
             />
@@ -74,7 +74,7 @@ export default async function HomePage() {
           <div className="relative w-full h-[300px] md:w-[800px] md:h-[800px] z-15 md:-ml-15 mt-4 md:mt-[-200px]">
             <Image
               src="/img/sauteChef.jpg"
-              alt={t('ourPhilosophy')}
+              alt={t("ourPhilosophy")}
               layout="fill"
               style={{ objectFit: "contain", objectPosition: "center" }}
             />
@@ -83,17 +83,17 @@ export default async function HomePage() {
 
         <div>
           <h1 className="text-orange-600 uppercase font-bold tracking-widest mb-4">
-            {t('qualityBalance')}
+            {t("qualityBalance")}
           </h1>
           <hr className="border-orange-600 border-t-2 w-16 mb-6" />
           <h1 className="text-3xl md:text-4xl font-medium mb-8">
-            {t('ourPhilosophy')}
+            {t("ourPhilosophy")}
           </h1>
           <p className="text-base md:text-lg font-extralight mb-6 text-gray-700">
-            {t('philosophyDesc')}
+            {t("philosophyDesc")}
           </p>
           <button className="bg-orange-500 text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
-            {t('discoverMore')}
+            {t("discoverMore")}
           </button>
         </div>
       </section>
@@ -101,20 +101,20 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-8 items-start">
         <div className="pt-6 md:mr-12 text-left md:text-right">
           <h3 className="text-orange-600 uppercase font-bold tracking-widest mb-2">
-            {t('rightHereWaiting')}
+            {t("rightHereWaiting")}
           </h3>
           <hr className="border-orange-600 border-t-2 w-16 mb-3 md:ml-90" />
           <h1 className="text-3xl md:text-4xl font-medium mb-4">
-            {t('visitRestaurant')}
+            {t("visitRestaurant")}
           </h1>
           <p className="text-base md:text-lg font-light text-gray-700 mb-4 leading-relaxed">
-            {t('hostsMessage')}
+            {t("hostsMessage")}
             <br />
-            {t('addressLine1')}
+            {t("addressLine1")}
             <br />
-            <strong>{t('emailLabel')}</strong> {t('email')}
+            <strong>{t("emailLabel")}</strong> {t("email")}
             <br />
-            <strong>{t('phoneLabel')}</strong> {t('phone')}
+            <strong>{t("phoneLabel")}</strong> {t("phone")}
           </p>
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Rruga+B,+Prishtine"
@@ -122,7 +122,7 @@ export default async function HomePage() {
             rel="noopener noreferrer"
             className="bg-orange-500 text-white text-sm px-5 py-2.5 rounded hover:bg-orange-600 transition inline-block"
           >
-            {t('getDirections')}
+            {t("getDirections")}
           </a>
         </div>
 
@@ -130,7 +130,7 @@ export default async function HomePage() {
           <div className="relative w-full md:w-1/2 h-[250px] md:h-[450px] rounded overflow-hidden">
             <Image
               src="/img/wine.jpg"
-              alt={t('qualityBalance')}
+              alt={t("qualityBalance")}
               fill
               style={{ objectFit: "cover" }}
               className="rounded"
@@ -139,7 +139,7 @@ export default async function HomePage() {
           <div className="relative w-full md:w-1/2 h-[200px] md:h-[320px] rounded overflow-hidden">
             <Image
               src="/img/food.jpg"
-              alt={t('ourPhilosophy')}
+              alt={t("ourPhilosophy")}
               fill
               style={{ objectFit: "contain" }}
               className="rounded"

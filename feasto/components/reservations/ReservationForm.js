@@ -4,13 +4,15 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import ClientToast from "@/lib/ui/ClientToast";
 import { createReservation } from "@/lib/firestore/reservations";
-
+import { getAvailableTables } from "@/lib/firestore/tables";
 import { convertTo24Hour } from "@/utils/time";
 import { timeSlots } from "@/constants/time";
 import ReservationModal from "@/components/reservations/ReservationModal";
 import { useTranslations } from "next-intl";
 
 export default function ReservationForm() {
+  console.log("ReservationForm loaded");
+
   const t = useTranslations("ReservationForm");
 
   const [people, setPeople] = useState("1");
@@ -19,28 +21,52 @@ export default function ReservationForm() {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [selectedTables, setSelectedTables] = useState([]);
 
-  const handleBookingClick = (e) => {
+  /**
+   * Kontrollon nëse ka tavolina të mjaftueshme para hapjes së modalit.
+   */
+  const handleBookingClick = async (e) => {
     e.preventDefault();
-    setShowModal(true);
+    try {
+      const availableTables = await getAvailableTables(
+        date,
+        convertTo24Hour(time),
+        Number(people)
+      );
+
+      const totalFreeSeats = availableTables.reduce(
+        (sum, t) => sum + t.seats,
+        0
+      );
+
+      if (totalFreeSeats < Number(people)) {
+        toast.error(
+          `Nuk ka tavolina të mjaftueshme për ${people} persona në këtë datë dhe orë.`
+        );
+        return; // Mos hap modalin
+      }
+
+      setShowModal(true); // Hap modal vetëm nëse ka kapacitet
+    } catch (error) {
+      console.error("Error checking tables:", error);
+      toast.error("Nuk mund të kontrollohen tavolinat për momentin.");
+    }
   };
 
-  // const handleReservationSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   if (!name.trim() || !email.trim()) {
-  //     toast.error(t("errors.fillNameEmail"));
-  //     return;
-  //   }
-
-  //   setShowModal(true);
-  // };
-
-  const handleReservationSubmit = async (tableNumber) => {
+  /**
+   * Submition i rezervimit.
+   */
+  const handleReservationSubmit = async (tablesArray) => {
     if (!name.trim() || !email.trim()) {
       toast.error("Please fill in both name and email.");
       return;
     }
+    if (!tablesArray || tablesArray.length === 0) {
+      toast.error("Zgjedh të paktën një tavolinë.");
+      return;
+    }
+
     const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
     if (selectedDateTime < new Date()) {
       toast.error(t("errors.pastTime"));
@@ -55,25 +81,16 @@ export default function ReservationForm() {
         date,
         time: convertTo24Hour(time),
         status: "pending",
-        table: tableNumber,
+        tables: tablesArray,
       };
 
       await createReservation(newReservation);
-
-      await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: email,
-          subject: t("email.subject"),
-          text: t("email.text", { name, people, date, time }),
-        }),
-      });
 
       toast.success(t("success.submitted"));
       setShowModal(false);
       setName("");
       setEmail("");
+      setSelectedTables([]);
     } catch (err) {
       console.error(err);
       toast.error(t("errors.submitFailed"));
@@ -148,10 +165,6 @@ export default function ReservationForm() {
               {t("bookNow")}
             </button>
           </form>
-
-          <div className="text-sm text-white mt-8 text-center opacity-80">
-            {t("poweredBy")}
-          </div>
         </div>
       </section>
 
@@ -166,6 +179,8 @@ export default function ReservationForm() {
           date={date}
           time={convertTo24Hour(time)}
           people={people}
+          selectedTables={selectedTables}
+          setSelectedTables={setSelectedTables}
         />
       )}
 

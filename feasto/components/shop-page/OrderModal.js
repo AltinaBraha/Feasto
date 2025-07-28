@@ -168,10 +168,20 @@ export default function OrderModal({
                   </span>
                   <input
                     autoComplete="off"
-                    type="text"
+                    type="number"
                     name="tableNumber"
+                    min="1"
+                    max="9"
                     value={formData.tableNumber}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (
+                        val === "" ||
+                        (Number(val) >= 1 && Number(val) <= 9)
+                      ) {
+                        handleChange(e);
+                      }
+                    }}
                     className="mt-2 w-full border border-gray-300 rounded-md px-4 py-3 bg-white/90 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     placeholder={t("orderModal.tableNumberExample")}
                     autoFocus

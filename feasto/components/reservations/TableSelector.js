@@ -7,8 +7,8 @@ export default function TableSelector({
   date,
   time,
   people,
-  selectedTable,
-  setSelectedTable,
+  selectedTables,
+  setSelectedTables,
 }) {
   const [availableTables, setAvailableTables] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,10 +32,18 @@ export default function TableSelector({
     fetchTables();
   }, [date, time, people]);
 
+  const toggleTableSelection = (tableId) => {
+    if (selectedTables.includes(tableId)) {
+      setSelectedTables(selectedTables.filter((id) => id !== tableId));
+    } else {
+      setSelectedTables([...selectedTables, tableId]);
+    }
+  };
+
   return (
     <div className="mt-6">
       <h3 className="text-lg font-semibold text-center mb-4">
-        Zgjedh tavolinën
+        Zgjedh tavolinën/tavolinat
       </h3>
 
       {loading ? (
@@ -50,11 +58,11 @@ export default function TableSelector({
             <button
               key={table.id}
               className={`w-20 h-20 rounded-full border-2 flex items-center justify-center text-lg font-semibold transition ${
-                selectedTable === table.id
+                selectedTables.includes(table.id)
                   ? "bg-orange-500 text-white border-orange-600"
                   : "bg-white text-black hover:bg-orange-100"
               }`}
-              onClick={() => setSelectedTable(table.id)}
+              onClick={() => toggleTableSelection(table.id)}
             >
               {table.id}
             </button>

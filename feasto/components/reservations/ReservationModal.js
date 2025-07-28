@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { convertTo24Hour } from "@/utils/time";
 import { useTranslations } from "next-intl";
 
-// Hardcoded table configuration
 const tables = [
   { id: 1, seats: 2 },
   { id: 2, seats: 2 },
@@ -30,47 +28,36 @@ export default function ReservationModal({
   date,
   time,
   people,
+  selectedTables,
+  setSelectedTables,
 }) {
   const t = useTranslations("ReservationModal");
-
-  const [selectedTable, setSelectedTable] = useState(null);
   const [reservedTables, setReservedTables] = useState([]);
   const [loading, setLoading] = useState(true);
+  const guestCount = parseInt(people);
 
   useEffect(() => {
     if (!date || !time) return;
 
-    const formattedTime = convertTo24Hour(time);
     const reservationsRef = collection(db, "reservations");
-    const q = query(reservationsRef, where("date", "==", date));
+    const q = query(
+      reservationsRef,
+      where("date", "==", date),
+      where("time", "==", time)
+    );
 
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
         const reservations = snapshot.docs.map((doc) => doc.data());
-
         const reservedForDate = reservations
           .filter((res) => ["pending", "confirmed"].includes(res.status))
-          .map((res) => Number(res.table));
-
+          .flatMap((res) =>
+            Array.isArray(res.tables)
+              ? res.tables.map(Number)
+              : [Number(res.table)]
+          );
         setReservedTables(reservedForDate);
-
-        const suitableTables = tables.filter(
-          (t) => t.seats >= parseInt(people)
-        );
-
-        const freeTables = suitableTables.filter(
-          (t) => !reservedForDate.includes(t.id)
-        );
-
-        if (!freeTables.some((t) => t.id === selectedTable)) {
-          setSelectedTable(freeTables.length > 0 ? freeTables[0].id : null);
-        }
-
-        if (freeTables.length === 0) {
-          toast.error("No available tables for this date.");
-        }
-
         setLoading(false);
       },
       (error) => {
@@ -81,23 +68,53 @@ export default function ReservationModal({
     );
 
     return () => unsubscribe();
-  }, [date, time, people, selectedTable]);
+  }, [date, time]);
+
+  const calculateTotalSeats = (tablesArray) =>
+    tablesArray.reduce((sum, tId) => {
+      const table = tables.find((tbl) => tbl.id === tId);
+      return sum + (table ? table.seats : 0);
+    }, 0);
+
+  const toggleTableSelection = (tableId) => {
+    const table = tables.find((tbl) => tbl.id === tableId);
+    if (!table) return;
+
+    if (selectedTables.includes(tableId)) {
+      setSelectedTables(selectedTables.filter((id) => id !== tableId));
+      return;
+    }
+
+    const currentTotalSeats = calculateTotalSeats(selectedTables);
+    const newTotalSeats = currentTotalSeats + table.seats;
+
+    if (newTotalSeats > guestCount + 1) {
+      toast.warning(
+        `Nuk mund të zgjedhësh më shumë se ${guestCount + 1} ulëse.`
+      );
+      return;
+    }
+
+    setSelectedTables([...selectedTables, tableId]);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!name.trim() || !email.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
-
-    if (!selectedTable) {
-      toast.error("No available tables to book.");
+    if (selectedTables.length === 0) {
+      toast.error("Select at least one table.");
       return;
     }
-
-    onSubmit(selectedTable);
+    onSubmit(selectedTables);
   };
+
+  const getDisplayTables = () =>
+    tables.filter((t) => !reservedTables.includes(t.id));
+
+  const totalSeatsSelected = calculateTotalSeats(selectedTables);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40">
@@ -105,7 +122,7 @@ export default function ReservationModal({
         <h3 className="text-orange-600 text-sm font-medium tracking-wide uppercase mb-2">
           {t("onlineReservation")}
         </h3>
-        <h5 className="text-2xl font-serif font-semibold tracking-wide mb-10">
+        <h5 className="text-2xl font-serif font-semibold tracking-wide mb-4">
           {t("enterYourInfo")}
         </h5>
 
@@ -133,38 +150,27 @@ export default function ReservationModal({
 
             <div className="w-full">
               <p className="mb-2 text-sm font-medium text-gray-700">
-                Select a Table:
+                Seats selected: <strong>{totalSeatsSelected}</strong> /{" "}
+                <strong>{guestCount}</strong>
               </p>
               <div className="grid grid-cols-3 gap-2">
-                {tables
-                  .filter((t) => t.seats >= parseInt(people))
-                  .map((table) => {
-                    const isReserved = reservedTables.includes(table.id);
-                    return (
-                      <button
-                        type="button"
-                        key={table.id}
-                        disabled={isReserved}
-                        onClick={() =>
-                          !isReserved && setSelectedTable(table.id)
-                        }
-                        className={`relative py-2 px-4 border rounded transition ${
-                          isReserved
-                            ? "bg-gray-500 text-white cursor-not-allowed"
-                            : selectedTable === table.id
-                              ? "bg-orange-500 text-white"
-                              : "bg-gray-100 text-gray-700 hover:bg-orange-100"
-                        }`}
-                      >
-                        {isReserved && (
-                          <span className="absolute top-1 right-1 text-white text-lg font-bold">
-                            ×
-                          </span>
-                        )}
-                        Table {table.id} ({table.seats})
-                      </button>
-                    );
-                  })}
+                {getDisplayTables().map((table) => {
+                  const isSelected = selectedTables.includes(table.id);
+                  return (
+                    <button
+                      type="button"
+                      key={table.id}
+                      onClick={() => toggleTableSelection(table.id)}
+                      className={`relative py-2 px-4 border rounded transition ${
+                        isSelected
+                          ? "bg-orange-500 text-white"
+                          : "bg-gray-100 text-gray-700 hover:bg-orange-100"
+                      }`}
+                    >
+                      Table {table.id} ({table.seats})
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

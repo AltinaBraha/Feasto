@@ -51,11 +51,8 @@ export const getOrderById = async (id) => {
   return { id: snapshot.id, ...snapshot.data() };
 };
 
-/**
- * Krijon një porosi të re me ID numerike.
- */
 export const createOrder = async (orderData) => {
-  const orderNumber = await getNextOrderNumber(); // merr numrin radhor
+  const orderNumber = await getNextOrderNumber();
   const orderId = orderNumber.toString();
 
   const docRef = doc(db, ORDERS_COLLECTION, orderId);
@@ -70,9 +67,6 @@ export const createOrder = async (orderData) => {
   return { id: docRef.id, ...snapshot.data() };
 };
 
-/**
- * Përditëson një porosi ekzistuese.
- */
 export const updateOrder = async (id, updates) => {
   const docRef = doc(db, ORDERS_COLLECTION, id);
   await updateDoc(docRef, updates);
@@ -80,18 +74,12 @@ export const updateOrder = async (id, updates) => {
   return { id: docRef.id, ...snapshot.data() };
 };
 
-/**
- * Fshin një porosi.
- */
 export const deleteOrder = async (id) => {
   const docRef = doc(db, ORDERS_COLLECTION, id);
   await deleteDoc(docRef);
   return { id };
 };
 
-/**
- * Real-time listener për porositë.
- */
 export const subscribeToOrders = (callback) => {
   return onSnapshot(collection(db, ORDERS_COLLECTION), (snapshot) => {
     const orders = snapshot.docs
@@ -104,9 +92,6 @@ export const subscribeToOrders = (callback) => {
   });
 };
 
-/**
- * Opsional: Reseton counter në 0 (përdoret vetëm për testim).
- */
 export const resetOrderCounter = async () => {
   await setDoc(COUNTER_DOC, { lastOrderNumber: 0 });
 };

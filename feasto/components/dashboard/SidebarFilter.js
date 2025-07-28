@@ -23,11 +23,11 @@ export default function SidebarFilter({ current, setFilter }) {
     <aside className="w-full md:w-64 lg:w-62 bg-black text-white p-6 flex flex-col justify-between min-h-screen shadow-xl">
       {/* MENU */}
       <div className="space-y-4">
-        {/* Orders with dropdown */}
+        {/* Orders  */}
         <div>
           <button
             onClick={() => {
-              setFilter("all"); // Klikimi direkt shfaq All Orders
+              setFilter("all");
               setShowOrdersDropdown((prev) => !prev);
             }}
             className={`w-full flex items-center justify-between px-4 py-2 rounded font-medium transition border ${
@@ -49,7 +49,7 @@ export default function SidebarFilter({ current, setFilter }) {
           </button>
           {showOrdersDropdown && (
             <div className="ml-4 mt-2 space-y-2">
-              {/* Heqim All Orders */}
+              {/*  */}
               <button
                 onClick={() => setFilter("delivery")}
                 className={`block w-full text-left px-4 py-1 rounded transition ${isActive("delivery")}`}

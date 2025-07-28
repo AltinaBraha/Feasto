@@ -1,10 +1,9 @@
 "use client";
 import emailjs from "@emailjs/browser";
 
-/**
- * Dërgon email refuzimi për rezervim.
- * @param {Object} data - Informacionet e rezervimit
- */
+
+  @param {Object} data 
+ 
 export const sendRejectionEmail = async (data) => {
   const templateParams = {
     to_email: data.to_email,
@@ -17,10 +16,10 @@ export const sendRejectionEmail = async (data) => {
 
   try {
     const result = await emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, // Feasto
-      process.env.NEXT_PUBLIC_EMAILJS_REJECT_TEMPLATE_ID, // template_a2akwnu
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, 
+      process.env.NEXT_PUBLIC_EMAILJS_REJECT_TEMPLATE_ID, 
       templateParams,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY // g3w7nRHgJASZcaos0
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY 
     );
 
     console.log("Rejection email sent:", result.status);

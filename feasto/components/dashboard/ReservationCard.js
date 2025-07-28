@@ -4,8 +4,14 @@ export default function ReservationCard({
   onReject,
   onRemove,
 }) {
-  const { id, name, email, people, date, time, table, status } = reservation;
+  const { id, name, email, people, date, time, table, tables, status } =
+    reservation;
   const isReserved = status === "confirmed" || status === "rejected";
+
+  // Logjika për të shfaqur tavolinat
+  const displayTables = Array.isArray(tables)
+    ? tables.join(" & ")
+    : table || "-";
 
   return (
     <div
@@ -34,7 +40,7 @@ export default function ReservationCard({
         </p>
         <p className="text-sm">
           Table:{" "}
-          <span className="font-semibold text-orange-600">{table || "-"}</span>
+          <span className="font-semibold text-orange-600">{displayTables}</span>
         </p>
       </div>
 
