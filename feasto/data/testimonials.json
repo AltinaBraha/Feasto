@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Patio Time",
+    "title": "Cafe Owner",
+    "text": "Feasto is my go-to spot for hosting client dinners. The food is consistently fresh, the plating is elegant, and the atmosphere supports great conversation.",
+    "image": "/img/p1.jpg"
+  },
+  {
+    "name": "Betsy Ward",
+    "title": "Critic",
+    "text": "The service at Feasto is top-notch. From the warm welcome to the attention to detail at every course, this restaurant exceeds expectations.",
+    "image": "/img/p2.png"
+  },
+  {
+    "name": "Will Mo",
+    "title": "Coffee Lover",
+    "text": "Their coffee is hands down the best in town. Pair it with one of their handmade desserts and you've got the perfect break in your day.",
+    "image": "/img/p1.jpg"
+  },
+  {
+    "name": "Laura Bell",
+    "title": "Food Blogger",
+    "text": "Every dish tells a story. Feasto brings flavors to life in a way that’s both comforting and creatively surprising.",
+    "image": "/img/p2.png"
+  },
+  {
+    "name": "James Carter",
+    "title": "Regular Guest",
+    "text": "I’ve been coming here every weekend. The seasonal menu, the cozy vibe, and the friendly staff make it feel like home.",
+    "image": "/img/p1.jpg"
+  },
+  {
+    "name": "Emma Lee",
+    "title": "Chef & Consultant",
+    "text": "Feasto’s kitchen shows true craftsmanship. Their balance of tradition and modern flair makes this place a culinary standout.",
+    "image": "/img/p2.png"
+  }
+]

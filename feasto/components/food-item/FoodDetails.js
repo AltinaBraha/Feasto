@@ -6,7 +6,7 @@ import { useCart } from "@/components/CartProvider";
 import { useTranslations } from "next-intl";
 
 export default function FoodDetailsClient({ item }) {
-  const t = useTranslations("foodDetails"); 
+  const t = useTranslations("foodDetails");
 
   const [quantity, setQuantity] = useState(1);
   const [notification, setNotification] = useState(null);
@@ -66,7 +66,7 @@ export default function FoodDetailsClient({ item }) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
             {t("tasteTheDetails")}
           </h1>
@@ -78,7 +78,7 @@ export default function FoodDetailsClient({ item }) {
         <div className="flex flex-col md:flex-row gap-10 md:gap-20">
           {/* Image */}
           <div className="w-full md:w-1/2 flex justify-center">
-            <div className="overflow-hidden rounded-lg w-full max-w-[500px] h-[300px] sm:h-[450px] group">
+            <div className="relative overflow-hidden rounded-lg w-full max-w-[500px] h-[300px] sm:h-[450px] md:h-[500px] group">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -90,7 +90,7 @@ export default function FoodDetailsClient({ item }) {
           </div>
 
           {/* Details */}
-          <div className="w-full md:w-1/2 space-y-4">
+          <div className="w-full md:w-1/2 space-y-6">
             <h1 className="text-3xl sm:text-4xl">{item.name}</h1>
 
             {/* Rating */}
@@ -109,7 +109,8 @@ export default function FoodDetailsClient({ item }) {
               ))}
               <span className="text-gray-500 text-sm ml-2">
                 ({reviews.length}{" "}
-                {reviews.length === 1 ? t("reviewSingular") : t("reviewPlural")})
+                {reviews.length === 1 ? t("reviewSingular") : t("reviewPlural")}
+                )
               </span>
             </div>
 
@@ -128,7 +129,7 @@ export default function FoodDetailsClient({ item }) {
 
             <p className="text-gray-700">{item.description}</p>
 
-            <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="mt-4 flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
               <div className="flex items-center space-x-4">
                 <label htmlFor="quantity" className="font-semibold">
                   {t("quantity")}
@@ -188,7 +189,8 @@ export default function FoodDetailsClient({ item }) {
             <div>
               <h3 className="text-xl font-semibold">{t("addReview")}</h3>
               <p className="text-gray-600">
-                {t("emailPrivacyNotice")} <span className="text-red-500">*</span>
+                {t("emailPrivacyNotice")}{" "}
+                <span className="text-red-500">*</span>
               </p>
             </div>
 
