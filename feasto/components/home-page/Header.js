@@ -6,6 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "next-intl";
+import AuthButton from "../login-signup/AuthButton";
 
 
 export default function Header() {
@@ -113,6 +114,13 @@ export default function Header() {
         >
           {t("menu.findTable")}
         </button>
+        <AuthButton/>
+          {/* <button
+    onClick={() => setAuthModalOpen(true)}
+    className="hidden md:block border border-white px-4 py-2 rounded bg-orange-500 hover:bg-orange-600 transition text-white text-sm"
+  >
+    {t("menu.loginSignUp")}
+  </button> */}
 
         <div className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
