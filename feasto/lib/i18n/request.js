@@ -17,6 +17,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
       try {
         const nsMessages = (await import(`../../messages/${locale}/${ns}.json`)).default;
         Object.assign(messages, nsMessages);
+        console.log(`Loading messages for locale: ${locale}`);
+console.log("Available keys in menu-header:", Object.keys(nsMessages));
+
       } catch (e) {
         console.warn(`Could not load ${ns} namespace for ${locale}`, e);
       }

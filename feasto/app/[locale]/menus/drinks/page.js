@@ -4,7 +4,6 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import drinkMenu from "@/data/drinks.json";
 
-  export const dynamic = 'force-static';
 
 // async function getMenu() {
 //   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";

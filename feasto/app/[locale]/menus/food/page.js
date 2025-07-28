@@ -4,7 +4,6 @@ import MenuSection from "@/components/menu/MenuSection";
 import CartButton from "@/components/menu/CartButton";
 import foodMenu from "@/data/food.json";
 
-export const dynamic = 'force-static';
 
 // async function getMenu() {
 //   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";

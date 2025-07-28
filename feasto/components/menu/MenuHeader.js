@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getTranslations } from 'next-intl/server';
 
 export default async function MenuHeader() {
-  const t = await getTranslations("menuHeader");
+  const t = await getTranslations("menu-header");
 
   return (
     <section className="min-h-screen text-black">

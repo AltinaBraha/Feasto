@@ -1,7 +1,7 @@
 {
- "menuHeader": {
-    "slogan": "lecker & gesund",
-    "title": "UNSER MENÜ",
-    "openHours": "Dienstag–Sonntag, 12–20 Uhr"
+  "menu-header":{
+  "slogan": "lecker & gesund",
+  "title": "UNSER MENÜ",
+  "openHours": "Dienstag–Sonntag, 12–20 Uhr"
   }
 }
