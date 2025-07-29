@@ -21,7 +21,7 @@ export default function ExecutiveChef({ chef }) {
           alt={chef.name}
           width={500}
           height={500}
-          className="w-full h-auto object-cover"
+          className="object-cover"
         />
       </div>
       <div>

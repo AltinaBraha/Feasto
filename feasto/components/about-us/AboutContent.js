@@ -11,9 +11,9 @@ export default function AboutContent() {
             About Us
           </p>
           <h2 className="text-3xl font-extrabold text-gray-900 leading-snug">
-            Building Trust,
+            Where Trust
             <br />
-            Quality, and Innovation
+            Meets Flavor & Innovation
           </h2>
 
           <Image

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Catering",
+    "description": "Our restaurant provides professional catering services for all kinds of events – from private parties to corporate gatherings. Enjoy freshly prepared, high-quality dishes served wherever your event takes place.",
+    "image": "/img/catering.jpg",
+    "reverse": false
+  },
+  {
+    "title": "Weddings",
+    "description": "Let us host your special day in our beautiful venue. We take care of everything – from decorations and food to the atmosphere – to create a wedding experience that’s elegant, personalized, and unforgettable.",
+    "image": "/img/weeding.jpg",
+    "reverse": true
+  },
+  {
+    "title": "Private Celebration",
+    "description": "Whether it’s a birthday, graduation, or just a party for fun – we offer the perfect space for private celebrations. With great food, warm ambiance, and tailored service, we make your event truly memorable.",
+    "image": "/img/private.jpg",
+    "reverse": false
+  }
+]
