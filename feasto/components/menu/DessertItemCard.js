@@ -3,11 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export default function DessertItemCard({ item }) {
   const { addToCart } = useCart();
+  const locale = useLocale();
+  const t = locale !== "en" ? useTranslations("desserts") : null;
 
-  // Një funksion për slug (për URL friendly)
+  // Funksion për slug
   const slugify = (text) =>
     text
       .toLowerCase()
@@ -17,25 +21,31 @@ export default function DessertItemCard({ item }) {
 
   const slug = slugify(item.name);
 
+
+  const translatedName = t ? t(`${slug}.name`) : item.name;
+
+  const translatedIngredients = t
+    ? item.ingredients.map((ing) => t(`${slug}.ingredients.${ing}`))
+    : item.ingredients;
+
   return (
     <div className="flex items-center space-x-6 border-b border-gray-200 pb-6">
       <div className="flex-shrink-0 relative w-16 h-16">
-    <Image
-        src={item.image || "/img/default-dessert.jpg"}
-        alt={item.name || "Dessert"}
-        fill
-        className="object-cover rounded"
+        <Image
+          src={item.image || "/img/default-dessert.jpg"}
+          alt={translatedName}
+          fill
+          className="object-cover rounded"
         />
-
       </div>
       <div className="flex-1">
         <Link
           href={`/menus/desserts/${slug}`}
           className="font-semibold text-lg hover:text-orange-600 transition"
         >
-          {item.name}
+          {translatedName}
         </Link>
-        <p className="text-gray-500 text-sm">{item.ingredients.join(", ")}</p>
+        <p className="text-gray-500 text-sm">{translatedIngredients.join(", ")}</p>
       </div>
       <div className="flex items-center space-x-4 min-w-[110px] justify-end">
         <div className="flex-grow border-b border-dotted border-gray-400 mx-2"></div>

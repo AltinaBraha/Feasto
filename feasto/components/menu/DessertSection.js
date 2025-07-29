@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import DessertItemCard from "./DessertItemCard";
+import { useTranslations } from "next-intl";
 
 export default function DessertSection({ category, items, className }) {
+  const t = useTranslations("sort"); // 🔄 Përkthimet për butonat e sortimit
   const [sortOption, setSortOption] = useState("default");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -14,7 +16,7 @@ export default function DessertSection({ category, items, className }) {
   });
 
   return (
-    <div className={`${className ? className : ""}`}>
+    <div className={`${className || ""}`}>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-3xl font-bold border-b pb-2 border-orange-600 uppercase">
           {category}
@@ -24,19 +26,19 @@ export default function DessertSection({ category, items, className }) {
             onClick={() => setSortOption("priceLowToHigh")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Price Low to High
+            {t("priceLowToHigh")}
           </button>
           <button
             onClick={() => setSortOption("priceHighToLow")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Price High to Low
+            {t("priceHighToLow")}
           </button>
           <button
             onClick={() => setSortOption("ratingHighToLow")}
             className="text-sm text-gray-600 hover:text-orange-600"
           >
-            Rating
+            {t("rating")}
           </button>
         </div>
       </div>

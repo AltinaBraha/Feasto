@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import DrinkSection from "./DrinkSection";
 
 export default function MenuTabs({ drinkMenu }) {
-  const t = useTranslations("menuTabs");
+  const t = useTranslations("menutabs");
 
   const subcategories = [
     { key: "all-drinks", label: t("all-drinks") },

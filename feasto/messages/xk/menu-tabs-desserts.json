@@ -1,9 +1,12 @@
 {
   "menuTabs": {
-    "all-desserts": "Të gjitha ëmbëlsirat",
-    "cakes": "Torta",
-    "ice-cream": "Akullore",
-    "cookies": "Biskota",
-    "fruit-desserts": "Ëmbëlsira me fruta"
+     "all-desserts": "Të gjitha ëmbëlsirat",
+      "cakes": "Tortat",
+      "ice-cream": "Akulloret",
+      "cookies": "Biskotat",
+      "fruit-desserts": "Ëmbëlsira me fruta",
+      "food": "Ushqim",
+      "drinks": "Pije",
+      "desserts": "Ëmbëlsira"
   }
 }

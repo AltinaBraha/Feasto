@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import DessertSection from "./DessertSection";
 
-export default function DessertTabs({ dessertMenu }) {
-  const subcategories = [
-    { key: "all-desserts", label: "All Desserts" },
-    { key: "Cakes", label: "Cakes" },
-    { key: "Ice Cream", label: "Ice Cream" },
-    { key: "Cookies", label: "Cookies" },
-    { key: "Fruit Desserts", label: "Fruit Desserts" },
+export default function MenuTabs({ dessertMenu }) {
+  const t = useTranslations("menuTabs");
 
+  const subcategories = [
+    { key: "all-desserts", label: t("all-desserts") },
+    { key: "Cakes", label: t("cakes") },
+    { key: "Ice Cream", label: t("ice-cream") },
+    { key: "Cookies", label: t("cookies") },
+    { key: "Fruit Desserts", label: t("fruit-desserts") },
   ];
 
   const [activeKey, setActiveKey] = useState("all-desserts");
@@ -31,23 +33,22 @@ export default function DessertTabs({ dessertMenu }) {
   return (
     <div className="flex flex-col items-center mb-12">
       <div className="flex justify-center space-x-10 mb-12">
-        {/* Link-et për të shkuar në kategori të tjera në menunë e përgjithshme */}
         <a
           href="/menus/food"
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Food
+          {t("food")}
         </a>
         <a
           href="/menus/drinks"
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Drinks
+          {t("drinks")}
         </a>
         <button
           className="border-b-2 pb-1 border-orange-600 text-orange-600 font-bold uppercase text-sm tracking-wide"
         >
-          Desserts
+          {t("desserts")}
         </button>
       </div>
 
@@ -79,7 +80,9 @@ export default function DessertTabs({ dessertMenu }) {
             ))
           : (
             <DessertSection
-              category={subcategories.find(s => s.key === activeKey)?.label || ""}
+              category={
+                subcategories.find(s => s.key === activeKey)?.label || ""
+              }
               items={filteredMenu}
               className="flex flex-col space-y-6 px-8 md:px-16 lg:px-24"
             />

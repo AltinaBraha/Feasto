@@ -8,7 +8,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
-  const namespaces = ['header', 'footer', 'home-page', 'slider','gallery-feature','reservation-form','reservation-modal','cart','categories','drink-header','drinks','food-details','items','menu-header','menu-tabs-drinks','menu-tabs','sort','subcategories','about-us','chefs','order-modal','auth'];
+  const namespaces = ['header', 'footer', 'home-page', 'slider','gallery-feature','reservation-form','reservation-modal','cart','categories','drink-header','drinks','food-details','items','menu-header','menu-tabs-drinks','menu-tabs','sort','subcategories','about-us','chefs','order-modal','auth','menu-tabs-desserts', 'dessert-header','desserts'];
 
   const messages = {};
 

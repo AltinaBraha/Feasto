@@ -1,0 +1,100 @@
+{
+    "desserts": {
+  "apple-crumble": {
+    "name": "Apple Crumble",
+    "description": "Molla të ngrohta me erëza të mbuluara me shtresë të thërrmuar me gjalpë.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Ëmbëlsira me fruta",
+    "ingredients": {
+      "Apples": "Molla",
+      "Cinnamon": "Kanelle",
+      "Brown Sugar": "Sheqer kaf",
+      "Butter": "Gjalpë"
+    }
+  },
+  "berry-parfait": {
+    "name": "Parfait me Manaferra",
+    "description": "Ëmbëlsirë freskuese dhe e lehtë me fruta.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Ëmbëlsira me fruta",
+    "ingredients": {
+      "Blueberries": "Boronica",
+      "Greek Yogurt": "Kos grek",
+      "Granola": "Granola",
+      "Honey": "Mjaltë"
+    }
+  },
+  "cheesecake": {
+    "name": "Cheesecake",
+    "description": "Tortë me djathë me bazë biskote dhe mbushje kremoze.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Torta",
+    "ingredients": {
+      "Cream Cheese": "Djathë krem",
+      "Sugar": "Sheqer",
+      "Eggs": "Vezë",
+      "Graham Crackers": "Biskota Graham"
+    }
+  },
+  "chocolate-chip-cookies": {
+    "name": "Biskota me copa çokollate",
+    "description": "Krokante jashtë dhe të buta brenda.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Biskota",
+    "ingredients": {
+      "Flour": "Miell",
+      "Sugar": "Sheqer",
+      "Butter": "Gjalpë",
+      "Eggs": "Vezë"
+    }
+  },
+  "oatmeal-raisin-cookies": {
+    "name": "Biskota me tërshërë dhe rrush të thatë",
+    "description": "Biskota të buta me tërshërë dhe rrush të thatë.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Biskota",
+    "ingredients": {
+      "Rolled Oats": "Tërshërë",
+      "Raisins": "Rrush i thatë",
+      "Flour": "Miell"
+    }
+  },
+  "strawberry-ice-cream": {
+    "name": "Akullore me luleshtrydhe",
+    "description": "Akullore e freskët dhe kremoze me shije luleshtrydheje.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Akullore",
+    "ingredients": {
+      "Milk": "Qumësht",
+      "Sugar": "Sheqer",
+      "Strawberries": "Luleshtrydhe",
+      "Cream": "Krem"
+    }
+  },
+  "tiramisu": {
+    "name": "Tiramisu",
+    "description": "Ëmbëlsirë italiane me shtresa biskotash me kafe dhe krem mascarpone.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Torta",
+    "ingredients": {
+      "Ladyfingers": "Biskota",
+      "Mascarpone": "Mascarpone",
+      "Coffee": "Kafe",
+      "Eggs": "Vezë",
+      "Sugar": "Sheqer"
+    }
+  },
+  "vanilla-ice-cream": {
+    "name": "Akullore me vanilje",
+    "description": "Akullore klasike kremoze me shije vaniljeje.",
+    "category": "Ëmbëlsira",
+    "subcategory": "Akullore",
+    "ingredients": {
+      "Milk": "Qumësht",
+      "Sugar": "Sheqer",
+      "Vanilla Extract": "Ekstrakt vaniljeje"
+    }
+  }
+}
+
+}

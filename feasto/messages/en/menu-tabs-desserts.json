@@ -1,9 +1,12 @@
 {
   "menuTabs": {
     "all-desserts": "All Desserts",
-    "cakes": "Cakes",
-    "ice-cream": "Ice Cream",
-    "cookies": "Cookies",
-    "fruit-desserts": "Fruit Desserts"
+  "cakes": "Cakes",
+  "ice-cream": "Ice Cream",
+  "cookies": "Cookies",
+  "fruit-desserts": "Fruit Desserts",
+  "food": "Food",
+  "drinks": "Drinks",
+  "desserts": "Desserts"
   }
 }

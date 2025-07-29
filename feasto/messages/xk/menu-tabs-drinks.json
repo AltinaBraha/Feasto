@@ -1,11 +1,12 @@
 {
-"menuTabs": {
+"menutabs": {
     "all-drinks": "Të gjitha pijet",
     "cocktail": "Kokteje",
     "coffee": "Kafe",
     "wine": "Verë",
     "milkshake": "Milkshake",
     "food": "Ushqim",
-    "drinks": "Pije"
+    "drinks": "Pije",
+    "desserts": "Ëmbëlsira"
   }
 }

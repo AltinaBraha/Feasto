@@ -1,0 +1,100 @@
+{
+    "desserts": {
+  "apple-crumble": {
+    "name": "Apple Crumble",
+    "description": "Warme, gewürzte Äpfel mit einer butterartigen Streuselkruste.",
+    "category": "Desserts",
+    "subcategory": "Fruchtdesserts",
+    "ingredients": {
+      "Apples": "Äpfel",
+      "Cinnamon": "Zimt",
+      "Brown Sugar": "Brauner Zucker",
+      "Butter": "Butter"
+    }
+  },
+  "berry-parfait": {
+    "name": "Beeren-Parfait",
+    "description": "Ein erfrischendes und leichtes Dessert auf Fruchtbasis.",
+    "category": "Desserts",
+    "subcategory": "Fruchtdesserts",
+    "ingredients": {
+      "Blueberries": "Blaubeeren",
+      "Greek Yogurt": "Griechischer Joghurt",
+      "Granola": "Müsli",
+      "Honey": "Honig"
+    }
+  },
+  "cheesecake": {
+    "name": "Käsekuchen",
+    "description": "Cremiger Käsekuchen mit Graham-Kruste und Füllung aus Frischkäse.",
+    "category": "Desserts",
+    "subcategory": "Kuchen",
+    "ingredients": {
+      "Cream Cheese": "Frischkäse",
+      "Sugar": "Zucker",
+      "Eggs": "Eier",
+      "Graham Crackers": "Graham-Kekse"
+    }
+  },
+  "chocolate-chip-cookies": {
+    "name": "Schokoladenkekse",
+    "description": "Außen knusprig und innen weich.",
+    "category": "Desserts",
+    "subcategory": "Kekse",
+    "ingredients": {
+      "Flour": "Mehl",
+      "Sugar": "Zucker",
+      "Butter": "Butter",
+      "Eggs": "Eier"
+    }
+  },
+  "oatmeal-raisin-cookies": {
+    "name": "Hafer-Rosinen-Kekse",
+    "description": "Weiche Kekse aus Haferflocken mit süßen Rosinen.",
+    "category": "Desserts",
+    "subcategory": "Kekse",
+    "ingredients": {
+      "Rolled Oats": "Haferflocken",
+      "Raisins": "Rosinen",
+      "Flour": "Mehl"
+    }
+  },
+  "strawberry-ice-cream": {
+    "name": "Erdbeereis",
+    "description": "Frisches und cremiges Eis mit Erdbeergeschmack.",
+    "category": "Desserts",
+    "subcategory": "Eis",
+    "ingredients": {
+      "Milk": "Milch",
+      "Sugar": "Zucker",
+      "Strawberries": "Erdbeeren",
+      "Cream": "Sahne"
+    }
+  },
+  "tiramisu": {
+    "name": "Tiramisu",
+    "description": "Klassisches italienisches Dessert mit Löffelbiskuit und Mascarponecreme.",
+    "category": "Desserts",
+    "subcategory": "Kuchen",
+    "ingredients": {
+      "Ladyfingers": "Löffelbiskuits",
+      "Mascarpone": "Mascarpone",
+      "Coffee": "Kaffee",
+      "Eggs": "Eier",
+      "Sugar": "Zucker"
+    }
+  },
+  "vanilla-ice-cream": {
+    "name": "Vanilleeis",
+    "description": "Klassisches cremiges Vanilleeis.",
+    "category": "Desserts",
+    "subcategory": "Eis",
+    "ingredients": {
+      "Milk": "Milch",
+      "Sugar": "Zucker",
+      "Vanilla Extract": "Vanilleextrakt"
+    }
+  }
+}
+
+}
