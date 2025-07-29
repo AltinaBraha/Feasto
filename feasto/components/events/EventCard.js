@@ -1,8 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function EventCard({ id, title, description, image, reverse }) {
+export default function EventCard({
+  id,
+  title,
+  description,
+  image,
+  reverse,
+  type,
+}) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/event-reservation?type=${type}`);
+  };
+
   return (
     <div
       id={id}
@@ -16,6 +30,7 @@ export default function EventCard({ id, title, description, image, reverse }) {
           <div className="absolute bottom-[-10px] left-4 w-[90%] h-[2px] bg-[#e4d7cb]" />
         </div>
       </div>
+
       <div className="w-full lg:w-1/2 max-w-[600px] text-center">
         <h3 className="text-lg md:text-xl font-bold tracking-widest uppercase text-[#dd5903] mb-4">
           {title}
@@ -24,12 +39,12 @@ export default function EventCard({ id, title, description, image, reverse }) {
           {description}
         </p>
         <div className="flex flex-col items-center gap-2">
-          <a
-            href="#"
-            className="text-[#dd5903] text-sm font-semibold tracking-wide uppercase hover:underline"
+          <button
+            onClick={handleClick}
+            className="text-orange-600 font-semibold underline"
           >
-            Learn More »
-          </a>
+            LEARN MORE »
+          </button>
           <div className="h-[1px] w-24 bg-[#e4d7cb]" />
         </div>
       </div>

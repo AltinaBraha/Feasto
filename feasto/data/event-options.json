@@ -1,0 +1,128 @@
+{
+  "wedding": {
+    "decoration": [
+      {
+        "id": "decor1",
+        "title": "Elegant White",
+        "img": "/img/wd1.jpg",
+        "price": 300
+      },
+      {
+        "id": "decor2",
+        "title": "Rustic Charm",
+        "img": "/img/wd2.jpg",
+        "price": 400
+      },
+      {
+        "id": "decor3",
+        "title": "Romantic Garden",
+        "img": "/img/wd3.jpg",
+        "price": 400
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu1",
+        "title": "Traditional Feast",
+        "img": "/img/wmenu1.jpg",
+        "price": 25
+      },
+      {
+        "id": "menu2",
+        "title": "Gourmet Dining",
+        "img": "/img/wmenu2.jpg",
+        "price": 40
+      },
+      {
+        "id": "menu3",
+        "title": "Luxury Dinner",
+        "img": "/img/wmenu3.jpg",
+        "price": 40
+      }
+    ]
+  },
+  "celebration": {
+    "decoration": [
+      {
+        "id": "decor4",
+        "title": "Colorful Vibes",
+        "img": "/img/c1.jpg",
+        "price": 280
+      },
+      {
+        "id": "decor5",
+        "title": "Minimal Chic",
+        "img": "/img/c2.webp",
+        "price": 350
+      },
+      {
+        "id": "decor6",
+        "title": "Minimal Chic",
+        "img": "/img/c3.webp",
+        "price": 350
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu4",
+        "title": "Family Style",
+        "img": "/img/pmenu1.png",
+        "price": 20
+      },
+      {
+        "id": "menu5",
+        "title": "Buffet Deluxe",
+        "img": "/img/pmenu2.webp",
+        "price": 30
+      },
+      {
+        "id": "menu6",
+        "title": "Buffet Deluxe",
+        "img": "/img/pmenu3.jpg",
+        "price": 30
+      }
+    ]
+  },
+  "catering": {
+    "decoration": [
+      {
+        "id": "decor7",
+        "title": "Simple Table Setup",
+        "img": "/img/cd1.jpg",
+        "price": 120
+      },
+      {
+        "id": "decor8",
+        "title": "Corporate Theme",
+        "img": "/img/cd2.jpg",
+        "price": 180
+      },
+      {
+        "id": "decor9",
+        "title": "Outdoor Tent",
+        "img": "/img/cd1.jpg",
+        "price": 220
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu6",
+        "title": "Corporate Box",
+        "img": "/img/cmenu2.jpg",
+        "price": 15
+      },
+      {
+        "id": "menu7",
+        "title": "Party Catering",
+        "img": "/img/cmenu3.jpg",
+        "price": 22
+      },
+      {
+        "id": "menu8",
+        "title": "Premium Catering",
+        "img": "/img/cmenu4.jpg",
+        "price": 35
+      }
+    ]
+  }
+}
