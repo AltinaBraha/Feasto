@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createOrder } from "@/lib/firestore/orders";
+import { createOrder } from "@/lib/firebase/orders";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 

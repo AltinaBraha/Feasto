@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getAvailableTables } from "@/lib/firestore/tables";
+import { getAvailableTables } from "@/lib/firebase/tables";
 
 export default function TableGrid({
   date,

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ClientToast from "@/lib/ui/ClientToast";
-import { createReservation } from "@/lib/firestore/reservations";
-import { getAvailableTables } from "@/lib/firestore/tables";
+import { createReservation } from "@/lib/firebase/reservations";
+import { getAvailableTables } from "@/lib/firebase/tables";
 import { convertTo24Hour } from "@/utils/time";
 import { timeSlots } from "@/constants/time";
 import ReservationModal from "@/components/reservations/ReservationModal";

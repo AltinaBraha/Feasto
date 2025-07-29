@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@/auth/AuthContext";
+import { useAuthStore } from "@/lib/store/authStore";
 import {
   ChevronDown,
   ChevronUp,
@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export default function SidebarFilter({ current, setFilter }) {
-  const { logout } = useAuth();
+  const logout = useAuthStore((state) => state.logout);
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false);
 
   const isActive = (type) =>
@@ -49,7 +49,6 @@ export default function SidebarFilter({ current, setFilter }) {
           </button>
           {showOrdersDropdown && (
             <div className="ml-4 mt-2 space-y-2">
-              {/*  */}
               <button
                 onClick={() => setFilter("delivery")}
                 className={`block w-full text-left px-4 py-1 rounded transition ${isActive("delivery")}`}

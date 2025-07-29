@@ -6,7 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "next-intl";
-import AuthButton from "../login-signup/AuthButton";
+import AuthButton from "../my-account/common/AuthButton";
 
 
 export default function Header() {
@@ -33,18 +33,19 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="flex justify-between items-center px-6 md:px-10 py-4">
-        <div className="relative w-40 h-20 cursor-pointer">
-          <Image
-            src="/img/logo.png"
-            alt="Feasto Logo"
-            layout="fill"
-            objectFit="contain"
-            priority
-          />
-        </div>
+    <nav className="flex items-center justify-between px-6 md:px-20 py-4">
+      <div className="relative w-40 h-20 cursor-pointer">
+        <Image
+          src="/img/logo.png"
+          alt="Feasto Logo"
+          layout="fill"
+          objectFit="contain"
+          priority
+        />
+      </div>
 
-        <ul className="hidden md:flex space-x-20 font-medium pl-[35%]">
+
+         <ul className="hidden md:flex space-x-16 font-medium text-xs font-bold">
           <li className="relative cursor-pointer text-xs tracking-wide font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             <Link href="/">
               {t("menu.home")}
@@ -93,34 +94,26 @@ export default function Header() {
               </li>
             </ul>
           </li>
-
-          {/* <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            {t("menu.guestbook")} <span className="ml-1 text-[8px]">&#x25BC;</span>
-            <ul className="absolute left-0 top-full mt-2 w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
-              <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                {t("menu.leaveReview")}
-              </li>
-              <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                {t("menu.whatGuestsSay")}
-              </li>
-            </ul>
-          </li> */}
-          <LanguageSwitcher />
+        
+          <li
+        onClick={handleScroll}
+        className="relative cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+      >
+        {t("menu.findTable")}
+        {/* Optional arrow icon if you want */}
+        <span className="ml-1 text-[8px]">&#x25BC;</span>
+      </li>
+        <LanguageSwitcher />
         </ul>
 
-        <button
+        {/* <button
           onClick={handleScroll}
           className="hidden md:block border border-white px-4 py-2 rounded bg-transparent hover:bg-white hover:text-black transition"
         >
           {t("menu.findTable")}
-        </button>
+        </button> */}
         <AuthButton/>
-          {/* <button
-    onClick={() => setAuthModalOpen(true)}
-    className="hidden md:block border border-white px-4 py-2 rounded bg-orange-500 hover:bg-orange-600 transition text-white text-sm"
-  >
-    {t("menu.loginSignUp")}
-  </button> */}
+  
 
         <div className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}

@@ -1,40 +1,40 @@
-// components/AuthContext.jsx
-"use client";
+// // components/AuthContext.jsx
+// "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
-import { useRouter } from "next/navigation";
+// import { createContext, useContext, useEffect, useState } from "react";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import { auth } from "@/lib/firebase";
+// import { useRouter } from "next/navigation";
 
-const AuthContext = createContext();
+// const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+// export function AuthProvider({ children }) {
+//   const [user, setUser] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const router = useRouter();
 
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
+//   useEffect(() => {
+//     const unsub = onAuthStateChanged(auth, (currentUser) => {
+//       setUser(currentUser);
+//       setLoading(false);
+//     });
 
-    return () => unsub();
-  }, []);
+//     return () => unsub();
+//   }, []);
 
-  const logout = async () => {
-    await signOut(auth);
-    setUser(null);
-    router.push("/staff-login");
-  };
+//   const logout = async () => {
+//     await signOut(auth);
+//     setUser(null);
+//     router.push("/staff-login");
+//   };
 
-  return (
-    <AuthContext.Provider value={{ user, logout, loading }}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-}
+//   return (
+//     <AuthContext.Provider value={{ user, logout, loading }}>
+//       {!loading && children}
+//     </AuthContext.Provider>
+//   );
+// }
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+// export function useAuth() {
+//   return useContext(AuthContext);
+// }

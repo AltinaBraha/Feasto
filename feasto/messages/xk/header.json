@@ -18,7 +18,14 @@
     "guestbook": "LIBRI I MYSAFIRËVE",
     "leaveReview": "Lësho një Vlerësim",
     "whatGuestsSay": "Çfarë Thonë Mysafirët Tanë",
-    "findTable": "  Rezervo  "
+    "findTable": "  REZERVO  ",
+     "loginSignUp": " KYÇU ",
+      "myAccount" : "Llogaria ime",
+    "reservations": "Rezervimet",
+    "orders": "Porositë",
+    "favorites":"Të preferuarat",
+    "settings": "Cilësimet",
+    "logout":"Çkyçu"
   }
 }
 }

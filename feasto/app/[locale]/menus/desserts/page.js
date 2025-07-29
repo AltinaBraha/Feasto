@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CartButton from "@/components/menu/CartButton";
 import DessertTabs from "@/components/menu/DessertTabs";
-import { fetchDesserts } from "@/lib/firestore/fetchDesserts"; // Funksioni që merr të dhënat nga Firebase
+import { fetchDesserts } from "@/lib/firebase/fetchDesserts"; // Funksioni që merr të dhënat nga Firebase
 
 export default async function OurMenuPage() {
   const dessertMenu = await fetchDesserts();

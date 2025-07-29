@@ -18,8 +18,15 @@
     "guestbook": "GUESTBOOK",
     "leaveReview": "Leave a Review",
     "whatGuestsSay": "What Our Guests Say",
-    "findTable": "Find a Table",
-    "loginSignUp": "Join / Login"
+    "findTable": "RESERVE NOW",
+    "loginSignUp": "JOIN US ",
+    "myAccount" : "My Account",
+    "reservations": "Reservations",
+    "orders": "Orders",
+    "favorites":"Favorites",
+    "settings": "Settings",
+    "logout":"Logout"
+
   }
 }
 }

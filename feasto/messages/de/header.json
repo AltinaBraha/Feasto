@@ -18,7 +18,14 @@
       "guestbook": "GÄSTEBUCH",
       "leaveReview": "Bewertung abgeben",
       "whatGuestsSay": "Was unsere Gäste sagen",
-      "findTable": "Tisch finden"
+      "findTable": "TISCH FINDEN",
+        "loginSignUp": "MITGLIED WERDEN",
+        "myAccount": "Mein Konto",
+        "reservations": "Reservierungen",
+        "orders": "Bestellungen",
+        "favorites": "Favoriten",
+        "settings": "Einstellungen",
+        "logout": "Abmelden"
     }
   }
 }
