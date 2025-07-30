@@ -16,7 +16,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
       <input
         type="text"
         name="firstName"
-        value={guestInfo.firstName}
+        value={guestInfo.firstName || ""}
         onChange={handleChange}
         placeholder="First Name"
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
@@ -25,25 +25,25 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
       <input
         type="text"
         name="lastName"
-        value={guestInfo.lastName}
+        value={guestInfo.lastName || ""}
         onChange={handleChange}
         placeholder="Last Name"
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />
       <input
-        type="text"
-        name="phoneNumber"
-        value={guestInfo.phoneNumber}
+        type="email"
+        name="email"
+        value={guestInfo.email || ""}
         onChange={handleChange}
-        placeholder="Phone Number"
+        placeholder="Email"
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />
       <input
         type="date"
         name="eventDate"
-        value={guestInfo.eventDate}
+        value={guestInfo.eventDate || ""}
         onChange={handleChange}
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
@@ -52,6 +52,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
         type="number"
         name="guests"
         min={1}
+        value={guestInfo.guests || ""}
         onChange={handleChange}
         placeholder="Guests"
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"

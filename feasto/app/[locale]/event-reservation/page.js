@@ -18,7 +18,7 @@ export default function EventReservationPage() {
   const [guestInfo, setGuestInfo] = useState({
     firstName: "",
     lastName: "",
-    phone: "",
+    email: "",
     eventDate: "",
     guests: "",
   });
@@ -26,7 +26,6 @@ export default function EventReservationPage() {
   const [selections, setSelections] = useState({
     decoration: null,
     menu: null,
-    music: null,
     activeCategory: "menu",
   });
 
@@ -78,7 +77,9 @@ export default function EventReservationPage() {
             </div>
             <SummaryFooter
               guestInfo={guestInfo}
+              setGuestInfo={setGuestInfo}
               selections={selections}
+              setSelections={setSelections}
               eventType={eventType}
             />
           </div>

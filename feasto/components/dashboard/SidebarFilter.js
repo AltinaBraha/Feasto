@@ -7,6 +7,7 @@ import {
   ChevronUp,
   Package,
   ClipboardList,
+  CalendarHeart,
   LogOut,
 } from "lucide-react";
 
@@ -21,9 +22,7 @@ export default function SidebarFilter({ current, setFilter }) {
 
   return (
     <aside className="w-full md:w-64 lg:w-62 bg-black text-white p-6 flex flex-col justify-between min-h-screen shadow-xl">
-      {/* MENU */}
       <div className="space-y-4">
-        {/* Orders  */}
         <div>
           <button
             onClick={() => {
@@ -65,16 +64,21 @@ export default function SidebarFilter({ current, setFilter }) {
           )}
         </div>
 
-        {/* Reservations */}
         <button
           onClick={() => setFilter("reservations")}
           className={`w-full flex items-center gap-2 px-4 py-2 rounded font-medium transition border ${isActive("reservations")}`}
         >
-          <ClipboardList className="w-5 h-5" /> Reservations
+          <ClipboardList className="w-5 h-5" /> Table Reservations
+        </button>
+
+        <button
+          onClick={() => setFilter("event-reservations")}
+          className={`w-full flex items-center gap-2 px-4 py-2 rounded font-medium transition border ${isActive("event-reservations")}`}
+        >
+          <CalendarHeart className="w-5 h-5" /> Event Reservations
         </button>
       </div>
 
-      {/* SIGN OUT */}
       <div className="pt-6 border-t border-gray-800">
         <button
           onClick={logout}
