@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { FaUserCircle } from "react-icons/fa";
-import { useAuthStore } from "@/lib/store/authStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 import AuthModal from "./AuthModal";
 import UserDropdown from "./UserDropdown";
 
@@ -58,7 +58,7 @@ export default function AuthButton() {
     <div className="relative hidden md:block" ref={dropdownRef}>
       <button
         onClick={() => setIsDropdownOpen((prev) => !prev)}
-        className="flex items-center cursor-pointer text-xs tracking-wide font-bold gap-2 text-white hover:text-orange-400 transition"
+        className="flex items-center cursor-pointer text-xs tracking-wide font-bold gap-2 text-white "
         aria-label="User Menu"
         type="button"
       >

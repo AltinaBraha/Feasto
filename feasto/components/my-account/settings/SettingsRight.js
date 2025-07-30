@@ -3,8 +3,21 @@
 import { useState } from "react";
 import { HiLocationMarker } from "react-icons/hi";
 
-export default function SettingsRight({ user }) {
+export default function SettingsRight({ user, onSaveLocation }) {
   const [location, setLocation] = useState(user.location || "");
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  
+  async function handleSave() {
+    try {
+      setSaving(true);
+      await onSaveLocation?.({ location });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } finally {
+      setSaving(false);
+    }
+  }
 
   return (
     <section className="md:col-span-1 bg-white rounded-lg p-6 shadow-sm border border-gray-200">
@@ -20,7 +33,19 @@ export default function SettingsRight({ user }) {
         value={location}
         onChange={(e) => setLocation(e.target.value)}
       />
-      <p className="mt-3 text-sm text-gray-500 italic">We'll use this address for your food delivery.</p>
+      <div className="mt-4 flex items-center gap-3">
+        <button
+          onClick={handleSave}
+          disabled={saving}
+          className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition font-bold disabled:opacity-60"
+        >
+          {saving ? "Saving..." : "Save Address"}
+        </button>
+        {saved && <span className="text-green-600 text-sm font-semibold">Saved!</span>}
+      </div>
+      <p className="mt-3 text-sm text-gray-500 italic">
+        We'll use this address for your food delivery.
+      </p>
     </section>
   );
 }

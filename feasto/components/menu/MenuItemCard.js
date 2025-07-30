@@ -4,36 +4,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
 import { useTranslations } from "next-intl";
-import { useLocale } from 'next-intl'; 
+import { useLocale } from "next-intl";
 import { getTodaysOfferCategory } from "@/utils/offerCategory";
 import { isOfferTimeActive } from "@/utils/offerTime";
+import Favorite from "../my-account/favorites/Favorite";
 
 export default function MenuItemCard({ item }) {
   const { addToCart } = useCart();
-   const locale = useLocale();
-  
+  const locale = useLocale();
+
   const t = locale !== "en" ? useTranslations("items") : null;
 
-const slugify = (text) =>
-  text
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
+  const slugify = (text) =>
+    text
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]+/g, "")
+      .replace(/--+/g, "-")
+      .replace(/^-+|-+$/g, "");
 
   const slug = slugify(item.name);
 
-  const name =  t ? t(`${slug}.name`) : item.name;
+  const name = t ? t(`${slug}.name`) : item.name;
 
-  const ingredients = t 
-    ? item.ingredients.map(ing => t(`${slug}.ingredients.${ing}`)) 
+  const ingredients = t
+    ? item.ingredients.map((ing) => t(`${slug}.ingredients.${ing}`))
     : item.ingredients;
 
-     // Logjika e ofertës:
+  // Logjika e ofertës:
   const offerCategory = getTodaysOfferCategory();
-  const isOnOffer = item.subcategory?.toLowerCase() === offerCategory && isOfferTimeActive();
+  const isOnOffer =
+    item.subcategory?.toLowerCase() === offerCategory && isOfferTimeActive();
   const discountedPrice = isOnOffer ? item.price * 0.8 : item.price;
 
   return (
@@ -48,27 +49,39 @@ const slugify = (text) =>
       </div>
 
       <div className="flex-1 text-start">
-        <Link
-          href={`/${locale}/menus/food/${slug}`} 
-          className="font-semibold text-lg hover:text-orange-600 transition block"
-        >
-          {name}
-        </Link>
-         <p className="text-gray-500 text-sm">{ingredients.join(", ")}</p>
+        {/* Wrap name and heart in flex container */}
+        <div className="flex items-center justify-between">
+          <Link
+            href={`/${locale}/menus/food/${slug}`}
+            className="font-semibold text-lg hover:text-orange-600 transition"
+          >
+            {name}
+          </Link>
+          <Favorite
+            itemId={item.id}
+            itemData={{ name: item.name, image: item.image }}
+          />
+        </div>
+
+        <p className="text-gray-500 text-sm">{ingredients.join(", ")}</p>
         {isOnOffer && (
           <p className="text-green-600 text-xs font-semibold mt-1">
             Limited Time Offer - 20% off until 3:00 PM
           </p>
         )}
-
       </div>
- <div className="flex sm:flex-row flex-col sm:items-center sm:space-x-4 sm:justify-end justify-start items-start sm:min-w-[110px]">
+
+      <div className="flex sm:flex-row flex-col sm:items-center sm:space-x-4 sm:justify-end justify-start items-start sm:min-w-[110px]">
         <div className="hidden sm:block flex-grow border-b border-dotted border-gray-400 mx-2"></div>
         <span className="font-bold whitespace-nowrap mb-2 sm:mb-0">
           {isOnOffer ? (
             <>
-              <span className="line-through text-gray-400 mr-1">${item.price.toFixed(2)}</span>
-              <span className="text-orange-600">${discountedPrice.toFixed(2)}</span>
+              <span className="line-through text-gray-400 mr-1">
+                ${item.price.toFixed(2)}
+              </span>
+              <span className="text-orange-600">
+                ${discountedPrice.toFixed(2)}
+              </span>
             </>
           ) : (
             <>${item.price.toFixed(2)}</>

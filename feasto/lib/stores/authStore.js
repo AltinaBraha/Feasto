@@ -1,4 +1,3 @@
-// lib/store/authStore.js
 import { create } from "zustand";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";

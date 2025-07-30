@@ -14,7 +14,7 @@ const quotes = [
   "Food is our common ground, a universal experience.",
 ];
 
-export default function AccountBanner({ user }) {
+export default function AccountBanner({ title = "Welcome" }) {
   const [quote, setQuote] = useState("");
 
   useEffect(() => {
@@ -23,19 +23,30 @@ export default function AccountBanner({ user }) {
   }, []);
 
   return (
-    <div className="relative w-full h-140">
+    <section className="relative h-[75vh] w-full mb-0">
       <Image
         src="/img/photo1.jpg"
         alt="Background photo"
         fill
         priority
-        className="object-cover object-center"
+        className="absolute inset-0 object-cover brightness-[0.5]"
       />
-      <div className="absolute inset-0 bg-black/60 z-10" />
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-white px-4 max-w-5xl mx-auto text-center">
-        <h1 className="text-5xl font-bold mb-4">Welcome, {user.displayName || "User"}</h1>
-        <p className="mt-6 text-lg italic opacity-90 max-w-xl mx-auto">{quote}</p>
+      <div className="absolute inset-0 bg-black/40 z-10" />
+      <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 max-w-5xl mx-auto text-center text-white">
+        <h1 className="uppercase tracking-widest font-serif text-5xl mb-4 flex items-center space-x-6">
+          <span className="block w-12 border-b-2 border-white"></span>
+          <span>{title}</span>
+          <span className="block w-12 border-b-2 border-white"></span>
+        </h1>
+{/* 
+        <h1 className="text-5xl font-serif font-semibold tracking-wide mb-6">
+          Hello, {user?.displayName || "User"}
+        </h1> */}
+
+        <p className="text-lg italic max-w-2xl opacity-80 font-light leading-relaxed">
+          “{quote}”
+        </p>
       </div>
-    </div>
+    </section>
   );
 }

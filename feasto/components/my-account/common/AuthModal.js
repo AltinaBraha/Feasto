@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { useAuthStore } from "@/lib/store/authStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 import { useGoogleLogin } from "@/hooks/useGoogleLogin";
 import { getFirebaseErrorMessage } from "@/lib/firebase/errorMessages";
 import Image from "next/image";
@@ -107,8 +107,8 @@ const handleGoogleLogin = async () => {
   try {
     setLoading(true);
     await loginWithGoogle();
-    setUser(auth.currentUser); // set the current user after google login
-    router.push("/my-account");  // Redirect here
+    setUser(auth.currentUser); 
+    router.push("/my-account");
     onClose();
   } catch (err) {
     setErrors({ firebase: err.message });

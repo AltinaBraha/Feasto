@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { createOrder } from "@/lib/firebase/orders";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import { useAuthStore } from "@/lib/stores/authStore"; 
+
 
 const ORDER_TYPES = {
   DINE_IN: "dine-in",
@@ -32,10 +34,36 @@ export default function OrderModal({
   const [orderType, setOrderType] = useState(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const user = useAuthStore((state) => state.user);
 
-  useEffect(() => {
+useEffect(() => {
+  if (isOpen && user) {
+    if (orderType === ORDER_TYPES.DELIVERY) {
+      setFormData((prev) => ({
+        ...prev,
+        fullName: user.displayName || "",
+        email: user.email || "",
+        phone: user.phone || "",
+      }));
+    } else if (orderType === ORDER_TYPES.DINE_IN) {
+      setFormData((prev) => ({
+        ...prev,
+        tableNumber: prev.tableNumber || "",
+        fullName: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        postalCode: "",
+      }));
+    } else {
+      setFormData(initialFormData);
+    }
+  } else if (!isOpen) {
     setFormData(initialFormData);
-  }, [orderType]);
+  }
+}, [isOpen, user, orderType]);
+
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -64,46 +92,52 @@ export default function OrderModal({
     orderType === ORDER_TYPES.DINE_IN ? isDineInValid() : isDeliveryValid();
 
   const handleConfirm = async () => {
-    if (!orderType) {
-      toast.error(t("orderModal.pleaseSelectOrderType"));
-      return;
-    }
+  if (!orderType) {
+    toast.error(t("orderModal.pleaseSelectOrderType"));
+    return;
+  }
+  
+  if (!user?.uid) {
+    toast.error(t("orderModal.userNotLoggedIn"));
+    return;
+  }
 
-    setLoading(true);
-    try {
-      const cleanedFormData =
-        orderType === ORDER_TYPES.DINE_IN
-          ? {
-              tableNumber: formData.tableNumber,
-              fullName: "",
-              email: "",
-              phone: "",
-              address: "",
-              city: "",
-              postalCode: "",
-            }
-          : { ...formData, tableNumber: "" };
+  setLoading(true);
+  try {
+    const cleanedFormData =
+      orderType === ORDER_TYPES.DINE_IN
+        ? {
+            tableNumber: formData.tableNumber,
+            fullName: "",
+            email: "",
+            phone: "",
+            address: "",
+            city: "",
+            postalCode: "",
+          }
+        : { ...formData, tableNumber: "" };
 
-      const orderPayload = {
-        type: orderType,
-        formData: cleanedFormData,
-        items: cart,
-        total,
-        status: "pending",
-      };
+    const orderPayload = {
+      type: orderType,
+      formData: cleanedFormData,
+      items: cart,
+      total,
+      status: "pending",
+      userId: user.uid, // userId added here
+    };
 
-      const result = await createOrder(orderPayload);
-      toast.success(t("orderModal.orderPlacedSuccess"));
-      console.log(result);
-      clearCart();
-      handleClose();
-    } catch (error) {
-      toast.error(t("orderModal.orderPlaceError"));
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const result = await createOrder(orderPayload);
+    toast.success(t("orderModal.orderPlacedSuccess"));
+    console.log(result);
+    clearCart();
+    handleClose();
+  } catch (error) {
+    toast.error(t("orderModal.orderPlaceError"));
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div

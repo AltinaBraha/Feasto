@@ -11,6 +11,8 @@ import {
   runTransaction,
   serverTimestamp,
 } from "firebase/firestore";
+import { query, where } from "firebase/firestore";
+
 
 const RESERVATIONS_COLLECTION = "reservations";
 const RES_COUNTER_DOC = doc(db, "counters", "reservations");
@@ -35,7 +37,7 @@ export const getReservations = async () => {
     .sort((a, b) => (a.reservationNumber || 0) - (b.reservationNumber || 0));
 };
 
-export const createReservation = async (reservationData) => {
+export const createReservation = async (reservationData, user) => {
   const reservationNumber = await getNextReservationNumber();
   const reservationId = reservationNumber.toString();
 
@@ -46,17 +48,20 @@ export const createReservation = async (reservationData) => {
       : [];
 
   const docRef = doc(db, RESERVATIONS_COLLECTION, reservationId);
+
   await setDoc(docRef, {
     ...reservationData,
     tables,
     reservationNumber,
     status: reservationData.status || "pending",
     createdAt: serverTimestamp(),
+    ...(user ? { userId: user.uid } : {}), // Zustand user
   });
 
   const snapshot = await getDoc(docRef);
   return { id: docRef.id, ...snapshot.data() };
 };
+
 
 export const updateReservationStatus = async (id, newStatus) => {
   const docRef = doc(db, RESERVATIONS_COLLECTION, id);
@@ -85,4 +90,19 @@ export const subscribeToReservations = (callback) => {
 
 export const resetReservationCounter = async () => {
   await setDoc(RES_COUNTER_DOC, { lastReservationNumber: 0 });
+};
+
+export const getReservationsByUser = async (userId) => {
+  if (!userId) return [];
+
+  const q = query(
+    collection(db, RESERVATIONS_COLLECTION),
+    where("userId", "==", userId)
+  );
+
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 };

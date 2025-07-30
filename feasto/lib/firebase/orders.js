@@ -11,6 +11,8 @@ import {
   runTransaction,
   serverTimestamp,
 } from "firebase/firestore";
+import { query, where } from "firebase/firestore";
+
 
 const ORDERS_COLLECTION = "orders";
 const COUNTER_DOC = doc(db, "counters", "orders");
@@ -61,10 +63,22 @@ export const createOrder = async (orderData) => {
     orderNumber,
     status: orderData.status || "pending",
     createdAt: serverTimestamp(),
+    userId: orderData.userId,  
   });
 
   const snapshot = await getDoc(docRef);
   return { id: docRef.id, ...snapshot.data() };
+};
+
+export const fetchOrdersByUser = async (userId) => {
+  const q = query(
+    collection(db, ORDERS_COLLECTION),
+    where("userId", "==", userId)
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs
+    .map(doc => ({ id: doc.id, ...doc.data() }))
+    .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
 };
 
 export const updateOrder = async (id, updates) => {

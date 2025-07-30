@@ -9,11 +9,14 @@ import { convertTo24Hour } from "@/utils/time";
 import { timeSlots } from "@/constants/time";
 import ReservationModal from "@/components/reservations/ReservationModal";
 import { useTranslations } from "next-intl";
+import { useAuthStore } from "@/lib/stores/authStore";
+import { useEffect } from "react";
 
 export default function ReservationForm() {
   console.log("ReservationForm loaded");
 
   const t = useTranslations("ReservationForm");
+  const user = useAuthStore((state) => state.user);
 
   const [people, setPeople] = useState("1");
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -22,6 +25,16 @@ export default function ReservationForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [selectedTables, setSelectedTables] = useState([]);
+
+   useEffect(() => {
+    if (user) {
+      setName(user.displayName || ""); // depends on how you store full name
+      setEmail(user.email || "");
+    } else {
+      setName("");
+      setEmail("");
+    }
+  }, [user]);
 
   /**
    * Kontrollon nëse ka tavolina të mjaftueshme para hapjes së modalit.
@@ -58,44 +71,46 @@ export default function ReservationForm() {
    * Submition i rezervimit.
    */
   const handleReservationSubmit = async (tablesArray) => {
-    if (!name.trim() || !email.trim()) {
-      toast.error("Please fill in both name and email.");
-      return;
-    }
-    if (!tablesArray || tablesArray.length === 0) {
-      toast.error("Zgjedh të paktën një tavolinë.");
-      return;
-    }
+  if (!name.trim() || !email.trim()) {
+    toast.error("Please fill in both name and email.");
+    return;
+  }
+  if (!tablesArray || tablesArray.length === 0) {
+    toast.error("Zgjedh të paktën një tavolinë.");
+    return;
+  }
 
-    const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
-    if (selectedDateTime < new Date()) {
-      toast.error(t("errors.pastTime"));
-      return;
-    }
+  const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
+  if (selectedDateTime < new Date()) {
+    toast.error(t("errors.pastTime"));
+    return;
+  }
 
-    try {
-      const newReservation = {
-        name,
-        email,
-        people: Number(people),
-        date,
-        time: convertTo24Hour(time),
-        status: "pending",
-        tables: tablesArray,
-      };
+  try {
+    const newReservation = {
+      name,
+      email,
+      people: Number(people),
+      date,
+      time: convertTo24Hour(time),
+      status: "pending",
+      tables: tablesArray,
+    };
 
-      await createReservation(newReservation);
+    // Pass user from Zustand here 👇
+    await createReservation(newReservation, user);
 
-      toast.success(t("success.submitted"));
-      setShowModal(false);
-      setName("");
-      setEmail("");
-      setSelectedTables([]);
-    } catch (err) {
-      console.error(err);
-      toast.error(t("errors.submitFailed"));
-    }
-  };
+    toast.success(t("success.submitted"));
+    setShowModal(false);
+    setName("");
+    setEmail("");
+    setSelectedTables([]);
+  } catch (err) {
+    console.error(err);
+    toast.error(t("errors.submitFailed"));
+  }
+};
+
 
   return (
     <>
