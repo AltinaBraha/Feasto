@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCart } from "@/components/CartProvider";
 import { useTranslations } from "next-intl";
 import { useLocale } from 'next-intl'; 
+import Favorite from "../my-account/favorites/Favorite";
 
 
 export default function DrinkItemCard({ item }) {
@@ -36,13 +37,17 @@ const translatedIngredients = t
           className="rounded-full object-cover"
         />
       </div>
+      
       <div className="flex-1">
-        <Link
-          href={`/menus/Drinks/${slugify(item.name)}`}
-          className="font-semibold text-lg hover:text-orange-600 transition"
-        >
-          {translatedName}
-        </Link>
+        <div className="flex items-center space-x-2">
+          <Link
+            href={`/menus/Drinks/${slug}`}
+            className="font-semibold text-lg hover:text-orange-600 transition"
+          >
+            {translatedName}
+          </Link>
+          <Favorite itemId={item.id} itemData={{ name: item.name, image: item.image }} />
+        </div>
         <p className="text-gray-500 text-sm">
           {translatedIngredients.join(", ")}
         </p>

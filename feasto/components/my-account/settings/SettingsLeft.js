@@ -1,20 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { HiUser, HiGlobeAlt, HiLockClosed } from "react-icons/hi";
 
 const LANGUAGES = [
   { code: "en", label: "English" },
-  { code: "sq", label: "Albanian" },
+  { code: "xk", label: "Albanian" },
   { code: "de", label: "Deutsch" },
 ];
 
-export default function SettingsLeft({ user }) {
-  // State
-  const [name, setName] = useState(user.displayName || "");
+export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) {
+  const [name, setName] = useState(user.name || user.displayName || "");
   const [phone, setPhone] = useState(user.phone || "");
   const [language, setLanguage] = useState(user.language || "en");
-  const [emailNotifications, setEmailNotifications] = useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(
+    user.emailNotifications ?? true
+  );
 
   const [showPasswordChange, setShowPasswordChange] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -23,25 +24,43 @@ export default function SettingsLeft({ user }) {
 
   const [profileSaved, setProfileSaved] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-
-  // Handlers
-  function saveProfile() {
-    // TODO: call your setUser or API here to save profile
-    setProfileSaved(true);
-    setTimeout(() => setProfileSaved(false), 3000);
+  const [saving, setSaving] = useState(false);
+  const [changingPw, setChangingPw] = useState(false);
+        useEffect(() => {
+        setName(user.name || "");
+        setPhone(user.phone || "");
+        setLanguage(user.language || "en");
+      }, [user]);
+  async function saveProfile() {
+    try {
+      setSaving(true);
+      await onSaveProfile?.({ name, phone, language, emailNotifications });
+      setProfileSaved(true);
+      setTimeout(() => setProfileSaved(false), 3000);
+    } finally {
+      setSaving(false);
+    }
   }
 
-  function changePassword() {
+  async function changePassword() {
     if (newPassword !== confirmNewPassword) {
       setPasswordError("New passwords do not match!");
       return;
     }
     setPasswordError("");
-    alert("Password changed! (Mock)");
-    setCurrentPassword("");
-    setNewPassword("");
-    setConfirmNewPassword("");
-    setShowPasswordChange(false);
+    try {
+      setChangingPw(true);
+      await onChangePassword?.({ currentPassword, newPassword });
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
+      setShowPasswordChange(false);
+      alert("Password changed successfully.");
+    } catch (err) {
+      setPasswordError(err?.message || "Failed to change password.");
+    } finally {
+      setChangingPw(false);
+    }
   }
 
   return (
@@ -154,9 +173,10 @@ export default function SettingsLeft({ user }) {
           {profileSaved && <span className="text-green-600 font-semibold">Profile saved!</span>}
           <button
             type="submit"
-            className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide"
+            disabled={saving}
+            className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide disabled:opacity-60"
           >
-            Save Changes
+            {saving ? "Saving..." : "Save Changes"}
           </button>
         </div>
       </form>
@@ -230,9 +250,10 @@ export default function SettingsLeft({ user }) {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide "
+                disabled={changingPw}
+                className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide disabled:opacity-60"
               >
-                Change Password
+                {changingPw ? "Changing..." : "Change Password"}
               </button>
             </div>
           </form>

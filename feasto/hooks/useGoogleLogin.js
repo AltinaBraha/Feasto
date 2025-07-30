@@ -1,7 +1,7 @@
 import { signInWithGoogle } from "@/lib/firebase/googleLogin";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { useAuthStore } from "@/lib/store/authStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 import { getFirebaseErrorMessage } from "@/lib/firebase/errorMessages";
 
 export const useGoogleLogin = () => {

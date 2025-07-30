@@ -107,7 +107,7 @@ import {
 import { toast } from "react-toastify";
 import WaiterDashboard from "../dashboard/page";
 import Image from "next/image";
-import { useAuthStore } from "@/lib/store/authStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 
 export default function StaffLogin() {
   const [email, setEmail] = useState("");

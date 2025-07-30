@@ -1,53 +1,60 @@
 "use client";
 
+import Link from "next/link";
 import { MdAccountCircle, MdFavorite } from "react-icons/md";
-import { FiSettings, FiLogOut, FiHelpCircle } from "react-icons/fi";
+import { FiSettings, FiLogOut } from "react-icons/fi";
 import { FaClipboardList } from "react-icons/fa";
 import { IoMdCalendar } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 export default function UserDropdown({ logout, t }) {
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "en";
+
+  const basePath = `/${locale}/my-account`;
+
   return (
     <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded text-sm z-50">
       <div className="flex flex-col py-2">
-        <button
+        <Link
+          href={`${basePath}`}
           className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100 gap-2"
-          type="button"
         >
           <MdAccountCircle size={16} />
           {t("menu.myAccount") || "My Account"}
-        </button>
+        </Link>
 
-        <button
+        <Link
+          href={`${basePath}/reservations`}
           className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100 gap-2"
-          type="button"
         >
           <IoMdCalendar size={16} />
           {t("menu.reservations") || "Reservations"}
-        </button>
+        </Link>
 
-        <button
+        <Link
+          href={`${basePath}/orders`}
           className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100 gap-2"
-          type="button"
         >
           <FaClipboardList size={16} />
           {t("menu.orders") || "Orders"}
-        </button>
+        </Link>
 
-        <button
+        <Link
+          href={`${basePath}/favorites`}
           className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100 gap-2"
-          type="button"
         >
           <MdFavorite size={16} />
           {t("menu.favorites") || "Favorites"}
-        </button>
+        </Link>
 
-        <button
+        <Link
+          href={`${basePath}/settings`}
           className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100 gap-2"
-          type="button"
         >
           <FiSettings size={16} />
           {t("menu.settings") || "Settings"}
-        </button>
+        </Link>
 
         <button
           onClick={logout}
