@@ -20,14 +20,14 @@ export default function MenuTabs({ drinkMenu }) {
   const filteredMenu =
     activeKey === "all-drinks"
       ? drinkMenu
-      : drinkMenu.filter(item => item.subcategory === activeKey);
+      : drinkMenu.filter(item => item.subCategory === activeKey);
 
   const groupedBySubcategory = subcategories
     .filter(s => s.key !== "all-drinks")
     .map(s => ({
       key: s.key,
       label: s.label,
-      items: drinkMenu.filter(item => item.subcategory === s.key),
+      items: drinkMenu.filter(item => item.subCategory === s.key),
     }));
 
   return (

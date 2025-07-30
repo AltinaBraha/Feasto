@@ -34,7 +34,7 @@ export default function MenuItemCard({ item }) {
   // Logjika e ofertës:
   const offerCategory = getTodaysOfferCategory();
   const isOnOffer =
-    item.subcategory?.toLowerCase() === offerCategory && isOfferTimeActive();
+    item.subCategory?.toLowerCase() === offerCategory && isOfferTimeActive();
   const discountedPrice = isOnOffer ? item.price * 0.8 : item.price;
 
   return (
