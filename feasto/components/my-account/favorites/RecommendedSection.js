@@ -2,8 +2,10 @@
 
 import { useMemo } from "react";
 import RecommendedCard from "./RecommendedCard";
+import { useTranslations } from "next-intl";
 
 export default function RecommendedSection({ favorites, foodData }) {
+  const t = useTranslations("Favorites");
   const favoriteItems = useMemo(() => Object.values(favorites), [favorites]);
 
   const recommendedItems = useMemo(() => {
@@ -41,23 +43,23 @@ export default function RecommendedSection({ favorites, foodData }) {
   return (
     <section className="mt-14 max-w-6xl mx-auto">
       <h3 className="text-xl font-semibold mb-6 text-center text-gray-800">
-        Recommended for You
+        {t("recommendedForYou")}
       </h3>
-       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-    {recommendedItems.map((item, index) => (
-  <RecommendedCard key={item.itemId ?? index} item={item} />
-))}
-  </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {recommendedItems.map((item, index) => (
+          <RecommendedCard key={item.itemId ?? index} item={item} />
+        ))}
+      </div>
 
       <div className="mt-10 text-center">
         <a
           href="/menus/food"
           className="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg text-m font-bold hover:bg-orange-700 transition"
         >
-          Explore the Menu
+          {t("exploreMenu")}
         </a>
       </div>
-      <br></br>
+      <br />
     </section>
   );
 }

@@ -1,6 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export default function StatusBadge({ status }) {
+  const t = useTranslations("Reservations.status");
+
   const statusColors = {
     confirmed: "border-green-500 text-green-600 bg-green-50",
     pending: "border-amber-400 text-amber-600 bg-amber-50",
@@ -20,7 +24,7 @@ export default function StatusBadge({ status }) {
       className={`inline-flex items-center gap-2 text-sm font-bold px-4 py-1.5 rounded-full border ${colorClass}`}
     >
       <span className={`h-2.5 w-2.5 rounded-full ${dotClass}`}></span>
-      {status.charAt(0).toUpperCase() + status.slice(1)}
+      {t(status)}
     </span>
   );
 }

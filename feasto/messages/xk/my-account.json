@@ -1,0 +1,199 @@
+{
+  "AccountBanner": {
+    "title": "Mirësevini",
+    "quotes": [
+      "Ushqimi i mirë është baza e lumturisë së vërtetë.",
+      "Çdo vakt është një festë e shijes dhe komunitetit.",
+      "Shijo momentin – ushqimi yt i preferuar të pret.",
+      "Ne bashkojmë njerëzit, një kafshatë e shijshme pas tjetrës.",
+      "Përjeto pasionin në çdo pjatë që shërbejmë.",
+      "Mirë se erdhët përsëri! Gati për eksperienca të reja shijesh?",
+      "Përbërës të freskët, fytyra mikpritëse, vakte të paharrueshme.",
+      "Ushqimi është përbashkuesi ynë – një përvojë universale."
+    ]
+  },
+  "AccountCard": {
+    "view": "Shiko",
+    "reservations": {
+      "title": "Rezervime",
+      "description": "Keni rezervime të ardhshme. Shikoni detajet ose planifikoni një të re lehtësisht.",
+      "action": "Rezervim i Ri"
+    },
+    "orders": {
+      "title": "Porosi",
+      "description": "Qasuni te porositë tuaja të fundit dhe të kaluara, dhe porositni përsëri me një klik.",
+      "action": "Bëj Porosinë"
+    },
+    "favorites": {
+      "title": "Të Preferuarat",
+      "description": "Shfletoni dhe menaxhoni pjatat që keni shënuar si të preferuara.",
+      "action": "Shiko Menunë"
+    },
+    "addresses": {
+      "title": "Adresat e Dorëzimit",
+      "description": "Menaxhoni adresat e ruajtura për dorëzim më të shpejtë.",
+      "action": "Shto Adresë"
+    },
+    "payments": {
+      "title": "Metodat e Pagesës",
+      "description": "Menaxhoni kartat ose opsionet e pagesës të ruajtura në mënyrë të sigurt.",
+      "action": "Shto Pagesën"
+    },
+    "settings": {
+      "title": "Cilësimet",
+      "description": "Përditësoni informacionin e profilit, preferencat ose detajet e kontaktit.",
+      "action": "Shko te Cilësimet"
+    }
+  },
+  "Reservations": {
+    "title": "Rezervimet",
+    "loginPrompt": "Ju lutem identifikohuni për të parë rezervimet tuaja",
+    "loading": "Duke ngarkuar rezervimet tuaja...",
+    "searchPlaceholder": "Kërko sipas emrit ose muajit...",
+    "tabs": {
+      "upcoming": "Në ardhje",
+      "past": "Të kaluara"
+    },
+    "empty": {
+      "upcoming": "Nuk u gjetën rezervime në ardhje.",
+      "past": "Nuk u gjetën rezervime të kaluara."
+    },
+    "details": {
+      "guests": "Të ftuarit",
+      "tables": "Tavolinat",
+      "date": "Data",
+      "time": "Ora"
+    },
+     "status": {
+      "confirmed": "Konfirmuar",
+      "pending": "Në pritje",
+      "cancelled": "Anuluar"
+    }
+},
+     "Orders": {
+      "cancelConfirmMessage": "A jeni të sigurt që dëshironi ta anuloni këtë porosi?",
+  "cancelSuccess": "Porosia juaj është anuluar me sukses.",
+  "cancelError": "Ndodhi një gabim gjatë anulimit të porosisë.",
+  "yes": "Po",
+  "no": "Jo",
+    "title":"Porositë",
+    "loginPrompt": "Ju lutem hyni për të parë porositë tuaja",
+    "loadingOrders": "Duke ngarkuar porositë tuaja...",
+    "searchPlaceholder": "Kërko sipas numrit të porosisë, emrit, statusit ose artikullit...",
+    "items":"Artikujt",
+    "tabs": {
+      "dineIn": "Në Restorant",
+      "delivery": "Dorëzim"
+    },
+    "pleaseLogin":"Te lutem kycu",
+    "orderDetails": "Detajet e Porosisë",
+    "deliveredAt": "Dërguar në {time}",
+    "tableNumber": "Numri Tavolines",
+    "orderTime": "{date} ({ago})",
+    "empty": {
+      "dineIn": "Nuk u gjetën porosi për në restorant.",
+      "delivery": "Nuk u gjetën porosi për dorëzim."
+    },
+    "actions": {
+      "cancelConfirmTitle": "A jeni i sigurt që doni të anuloni këtë porosi?",
+      "cancelYes": "Po",
+      "cancelNo": "Jo",
+      "cancelSuccess": "🛑 Porosia u anulua!",
+      "cancelFailed": "❌ Anulimi i porosisë dështoi.",
+      "reorderSuccess": "Porosia është përsëritur me sukses!",
+      "reorderFailed": "Përsëritja e porosisë dështoi.",
+      "edit": "Ndrysho",
+      "cancel": "Anulo",
+      "reorder": "Porosit përsëri"
+    },
+    "status": {
+      "pending": "Në pritje",
+      "confirmed": "Konfirmuar",
+      "preparing": "Në përgatitje",
+      "ready": "Përfunduar",
+      "cancelled": "Anuluar"
+    },
+    "orderCard": {
+      "orderNumber": "Numri i Porosisë",
+      "customerName": "Emri i Klientit",
+      "items": "Artikujt",
+      "total": "Totali",
+      "date": "Data",
+      "status": "Statusi"
+    },
+    "editableOrder": {
+      "editOrderItems": "Ndrysho artikujt e porosisë",
+      "removeItemAriaLabel": "Hiq {name}",
+      "removeItemTitle": "Hiq {name}",
+      "addMeal": "Shto pjatë",
+      "selectMeal": "Zgjidh një pjatë",
+      "total": "Totali",
+      "save": "Ruaj",
+      "cancel": "Anulo"
+    },
+    "customerInfo": "Informacioni i Klientit",
+  "name": "Emri",
+  "email": "Email",
+  "phone": "Telefoni",
+  "deliveryAddress": "Adresa e Dërgesës",
+  "city": "Qyteti",
+  "postalCode": "Kodi Postar",
+  "total": "Totali",
+  "cancel": "Anulo",
+  "reorder": "Porosit përsëri",
+  "edit": "Përditëso"
+  },
+  "Favorites":{
+    "loadingFavorites": "Duke ngarkuar të preferuarat tuaja...",
+  "pleaseLoginToView": "Ju lutem identifikohuni për të parë të preferuarat tuaja.",
+  "goToLogin": "Shko te Hyrja",
+  "favoriteDishes": "Të preferuarat",
+  "addToCart": "Shto në Karrocë",
+  "view": "Shiko",
+  "noFavoritesYet": "Nuk keni asnjë të preferuar ende.",
+  "browseMenu": "Shfleto Menunë",
+  "searchPlaceholder": "Kërko të preferuarat tuaja...",
+  "noFavoritesMatch": "Asnjë e preferuar nuk përputhet me kërkimin tuaj.",
+  "customerInfo": "Informacioni i Klientit",
+  "name": "Emri",
+  "email": "Email",
+  "phone": "Telefoni",
+  "deliveryAddress": "Adresa e Dorëzimit",
+  "tableNumber": "Numri i Tavolinës",
+  "total": "Totali",
+  "cancel": "Anulo",
+  "reorder": "Rendit përsëri",
+  "edit": "Ndrysho",
+  "recommendedForYou": "Të rekomanduara për ju",
+  "exploreMenu": "Eksploro Menunë"
+  },
+  "Settings": {
+    "title": "Cilësimet",
+    "loadingProfile": "Duke ngarkuar profilin…",
+    "personalInfo": "Informacion Personal",
+    "fullName": "Emri i Plotë",
+    "phone": "Numri i Telefonit (opsional)",
+    "emailAddress": "Adresa e Email-it",
+    "preferences": "Preferencat",
+    "languagePreference": "Preferenca e Gjuhës",
+    "receiveNotifications": "Merr Njoftime",
+    "saveChanges": "Ruaj Ndryshimet",
+    "saving": "Duke ruajtur...",
+    "profileSaved": "Profili u ruajt!",
+    "changePassword": "Ndrysho Fjalëkalimin",
+    "cancelPasswordChange": "Anulo Ndryshimin e Fjalëkalimit",
+    "currentPassword": "Fjalëkalimi Aktual",
+    "newPassword": "Fjalëkalim i Ri",
+    "confirmNewPassword": "Konfirmo Fjalëkalimin e Ri",
+    "changing": "Duke ndryshuar...",
+    "passwordChangedSuccess": "Fjalëkalimi u ndryshua me sukses.",
+    "passwordsMismatch": "Fjalëkalimet e reja nuk përputhen!",
+    "failedChangePassword": "Ndryshimi i fjalëkalimit dështoi.",
+    "deliveryLocation": "Adresa e Dorëzimit",
+    "enterDeliveryAddress": "Shkruaj adresën tënde të dorëzimit",
+    "saveAddress": "Ruaj Adresën",
+    "saved": "U ruajt!",
+    "deliveryAddressInfo": "Këtë adresë do ta përdorim për dorëzimin e ushqimit."
+  }
+  }
+

@@ -1,0 +1,197 @@
+{
+  "AccountBanner": {
+    "title": "Willkommen",
+    "quotes": [
+      "Gutes Essen ist die Grundlage echten Glücks.",
+      "Jede Mahlzeit ist ein Fest des Geschmacks und der Gemeinschaft.",
+      "Genieße den Moment – dein nächstes Lieblingsgericht wartet schon.",
+      "Wir bringen Menschen zusammen, ein köstlicher Bissen nach dem anderen.",
+      "Man schmeckt die Leidenschaft in jedem Gericht, das wir servieren.",
+      "Willkommen zurück! Bereit für neue Geschmackserlebnisse?",
+      "Frische Zutaten, freundliche Gesichter, unvergessliche Mahlzeiten.",
+      "Essen ist unser gemeinsamer Nenner – eine universelle Erfahrung."
+    ]
+  },
+  "AccountCard": {
+    "view": "Ansehen",
+    "reservations": {
+      "title": "Reservierungen",
+      "description": "Sie haben bevorstehende Reservierungen. Sehen Sie Details oder planen Sie einfach eine neue.",
+      "action": "Neue Reservierung"
+    },
+    "orders": {
+      "title": "Bestellungen",
+      "description": "Greifen Sie auf Ihre letzten und vergangenen Bestellungen zu und bestellen Sie mit einem Klick erneut.",
+      "action": "Bestellung aufgeben"
+    },
+    "favorites": {
+      "title": "Favoriten",
+      "description": "Durchsuchen und verwalten Sie Ihre Lieblingsgerichte.",
+      "action": "Speisekarte ansehen"
+    },
+    "addresses": {
+      "title": "Lieferadressen",
+      "description": "Verwalten Sie gespeicherte Adressen für schnellere Lieferung.",
+      "action": "Adresse hinzufügen"
+    },
+    "payments": {
+      "title": "Zahlungsmethoden",
+      "description": "Verwalten Sie sicher gespeicherte Karten oder Zahlungsoptionen.",
+      "action": "Zahlung hinzufügen"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "description": "Aktualisieren Sie Ihre Profildaten, Präferenzen oder Kontaktdaten.",
+      "action": "Zu den Einstellungen"
+    }
+  },
+  "Reservations": {
+    "loginPrompt": "Bitte melden Sie sich an, um Ihre Reservierungen zu sehen",
+    "loading": "Reservierungen werden geladen...",
+    "searchPlaceholder": "Suche nach Name oder Monat...",
+    "tabs": {
+      "upcoming": "Bevorstehend",
+      "past": "Vergangen"
+    },
+    "empty": {
+      "upcoming": "Keine bevorstehenden Reservierungen gefunden.",
+      "past": "Keine vergangenen Reservierungen gefunden."
+    },
+    "details": {
+      "guests": "Gäste",
+      "tables": "Tische",
+      "date": "Datum",
+      "time": "Uhrzeit"
+    },
+    "status": {
+      "confirmed": "Bestätigt",
+      "pending": "Ausstehend",
+      "cancelled": "Storniert"
+    }
+  },
+  "Orders": {
+     "cancelConfirmMessage": "Sind Sie sicher, dass Sie diese Bestellung stornieren möchten?",
+  "cancelSuccess": "Ihre Bestellung wurde erfolgreich storniert.",
+  "cancelError": "Beim Stornieren der Bestellung ist ein Fehler aufgetreten.",
+  "yes": "Ja",
+  "no": "Nein",
+    "title": "Bestellungen",
+    "loginPrompt": "Bitte melden Sie sich an, um Ihre Bestellungen zu sehen",
+    "loadingOrders": "Bestellungen werden geladen...",
+    "searchPlaceholder": "Suche nach Bestellnummer, Name, Status oder Artikel...",
+    "items": "Artikel",
+    "tabs": {
+      "dineIn": "Im Restaurant",
+      "delivery": "Lieferung"
+    },
+    "pleaseLogin": "Bitte anmelden",
+    "orderDetails": "Bestelldetails",
+    "deliveredAt": "Geliefert um {time}",
+    "tableNumber": "Tischnummer",
+    "orderTime": "{date} ({ago})",
+    "empty": {
+      "dineIn": "Keine Restaurantbestellungen gefunden.",
+      "delivery": "Keine Lieferbestellungen gefunden."
+    },
+    "actions": {
+      "cancelConfirmTitle": "Möchten Sie diese Bestellung wirklich stornieren?",
+      "cancelYes": "Ja",
+      "cancelNo": "Nein",
+      "cancelSuccess": "🛑 Bestellung storniert!",
+      "cancelFailed": "❌ Stornierung fehlgeschlagen.",
+      "reorderSuccess": "Bestellung erfolgreich erneut aufgegeben!",
+      "reorderFailed": "Wiederholung der Bestellung fehlgeschlagen.",
+      "edit": "Bearbeiten",
+      "cancel": "Stornieren",
+      "reorder": "Erneut bestellen"
+    },
+    "status": {
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt",
+      "preparing": "In Vorbereitung",
+      "ready": "Bereit",
+      "cancelled": "Storniert"
+    },
+    "orderCard": {
+      "orderNumber": "Bestellnummer",
+      "customerName": "Kundenname",
+      "items": "Artikel",
+      "total": "Gesamt",
+      "date": "Datum",
+      "status": "Status"
+    },
+    "editableOrder": {
+      "editOrderItems": "Bestellartikel bearbeiten",
+      "removeItemAriaLabel": "{name} entfernen",
+      "removeItemTitle": "{name} entfernen",
+      "addMeal": "Gericht hinzufügen",
+      "selectMeal": "Gericht auswählen",
+      "total": "Gesamt",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    },
+    "customerInfo": "Kundendaten",
+  "name": "Name",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "deliveryAddress": "Lieferadresse",
+  "city": "Stadt",
+  "postalCode": "Postleitzahl",
+  "total": "Gesamt",
+  "cancel": "Stornieren",
+  "reorder": "Erneut bestellen",
+  "edit": "Bearbeiten"
+  },
+  "Favorites": {
+    "loadingFavorites": "Ihre Favoriten werden geladen...",
+    "pleaseLoginToView": "Bitte melden Sie sich an, um Ihre Favoriten anzuzeigen.",
+    "goToLogin": "Zur Anmeldung",
+    "favoriteDishes": "Lieblingsgerichte",
+    "addToCart": "In den Warenkorb",
+    "view": "Ansehen",
+    "noFavoritesYet": "Sie haben noch keine Favoriten.",
+    "browseMenu": "Menü durchsuchen",
+    "searchPlaceholder": "Suche deine Favoriten...",
+    "noFavoritesMatch": "Keine Favoriten entsprechen Ihrer Suche.",
+    "recommendedForYou": "Empfohlen für Sie",
+    "exploreMenu": "Menü entdecken",
+    "customerInfo": "Kundeninformationen",
+    "deliveryAddress": "Lieferadresse",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "tableNumber": "Tischnummer",
+    "total": "Gesamt",
+    "cancel": "Abbrechen",
+    "reorder": "Erneut bestellen",
+    "edit": "Bearbeiten"
+  },
+  "Settings": {
+    "title": "Einstellungen",
+    "loadingProfile": "Profil wird geladen…",
+    "personalInfo": "Persönliche Informationen",
+    "fullName": "Vollständiger Name",
+    "phone": "Telefonnummer (optional)",
+    "emailAddress": "E-Mail-Adresse",
+    "preferences": "Einstellungen",
+    "languagePreference": "Spracheinstellung",
+    "receiveNotifications": "Benachrichtigungen erhalten",
+    "saveChanges": "Änderungen speichern",
+    "saving": "Speichert...",
+    "profileSaved": "Profil gespeichert!",
+    "changePassword": "Passwort ändern",
+    "cancelPasswordChange": "Passwortänderung abbrechen",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmNewPassword": "Neues Passwort bestätigen",
+    "changing": "Ändert...",
+    "passwordChangedSuccess": "Passwort erfolgreich geändert.",
+    "passwordsMismatch": "Neue Passwörter stimmen nicht überein!",
+    "failedChangePassword": "Passwortänderung fehlgeschlagen.",
+    "deliveryLocation": "Lieferadresse",
+    "enterDeliveryAddress": "Geben Sie Ihre Lieferadresse ein",
+    "saveAddress": "Adresse speichern",
+    "saved": "Gespeichert!",
+    "deliveryAddressInfo": "Wir verwenden diese Adresse für Ihre Essenslieferung."
+  }
+}

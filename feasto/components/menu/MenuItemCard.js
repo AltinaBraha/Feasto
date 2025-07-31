@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/components/CartProvider";
+import { useCartStore } from "@/lib/stores/cartStore"; 
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { getTodaysOfferCategory } from "@/utils/offerCategory";
@@ -10,7 +10,7 @@ import { isOfferTimeActive } from "@/utils/offerTime";
 import Favorite from "../my-account/favorites/Favorite";
 
 export default function MenuItemCard({ item }) {
-  const { addToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart); 
   const locale = useLocale();
 
   const t = locale !== "en" ? useTranslations("items") : null;
@@ -31,7 +31,6 @@ export default function MenuItemCard({ item }) {
     ? item.ingredients.map((ing) => t(`${slug}.ingredients.${ing}`))
     : item.ingredients;
 
-  // Logjika e ofertës:
   const offerCategory = getTodaysOfferCategory();
   const isOnOffer =
     item.subcategory?.toLowerCase() === offerCategory && isOfferTimeActive();
@@ -49,7 +48,6 @@ export default function MenuItemCard({ item }) {
       </div>
 
       <div className="flex-1 text-start">
-        {/* Wrap name and heart in flex container */}
         <div className="flex items-center justify-between">
           <Link
             href={`/${locale}/menus/food/${slug}`}
@@ -79,9 +77,7 @@ export default function MenuItemCard({ item }) {
               <span className="line-through text-gray-400 mr-1">
                 ${item.price.toFixed(2)}
               </span>
-              <span className="text-orange-600">
-                ${discountedPrice.toFixed(2)}
-              </span>
+              <span className="text-orange-600">${discountedPrice.toFixed(2)}</span>
             </>
           ) : (
             <>${item.price.toFixed(2)}</>

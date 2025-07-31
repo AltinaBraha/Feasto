@@ -3,9 +3,15 @@ import ImageSlider from "@/components/home-page/ImageSlider";
 import AnimateOnScroll from "@/components/home-page/AnimatedSection";
 import GalleryFeature from "@/components/home-page/GalleryFeature";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { headers } from "next/headers";
+
+
 
 export default async function HomePage() {
   const t = await getTranslations("HomePage");
+  const pathname = headers().get("x-pathname") || "";
+const locale = pathname.split("/")[1] || "en"; 
 
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
@@ -26,9 +32,11 @@ export default async function HomePage() {
             {t("hostsMessage")}
           </p>
 
-          <button className="bg-orange-500  text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
-            {t("discoverMore")}
-          </button>
+          <Link href={`/${locale}/menus/food`} passHref>
+  <button className="bg-orange-500 text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+    {t("discoverMore")}
+  </button>
+</Link>
 
           <div
             className="relative w-full h-[250px] md:max-w-xl md:h-[300px] mt-10 rounded overflow-hidden shadow-lg"
@@ -92,9 +100,11 @@ export default async function HomePage() {
           <p className="text-base md:text-lg font-extralight mb-6 text-gray-700">
             {t("philosophyDesc")}
           </p>
-          <button className="bg-orange-500 text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
-            {t("discoverMore")}
-          </button>
+         <Link href={`/${locale}/our-chefs`} passHref>
+        <button className="bg-orange-500 text-l text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+          {t("discoverMore")}
+        </button>
+      </Link>
         </div>
       </section>
 

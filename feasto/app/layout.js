@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Jost } from "next/font/google";
-import { CartProvider } from "@/components/CartProvider";
+// import { CartProvider } from "@/components/CartProvider";
 
 const myFont = Jost({
   subsets: ["latin"],
@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body className={`${myFont.variable} font-serif`}>
-        <CartProvider>
+        {/* <CartProvider> */}
           {children}
-        </CartProvider>
+        {/* </CartProvider> */}
       </body>
     </html>
   );

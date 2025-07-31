@@ -1,0 +1,199 @@
+{
+  "AccountBanner": {
+    "title": "Welcome",
+    "quotes": [
+      "Good food is the foundation of genuine happiness.",
+      "Every meal is a celebration of flavor and community.",
+      "Enjoy the moment – your next favorite dish is waiting.",
+      "We bring people together, one delicious bite at a time.",
+      "Experience the passion in every dish we serve.",
+      "Welcome back! Ready for new flavor adventures?",
+      "Fresh ingredients, friendly faces, unforgettable meals.",
+      "Food is our common ground – a universal experience."
+    ]
+  },
+  "AccountCard": {
+    "view": "View",
+    "reservations": {
+      "title": "Reservations",
+      "description": "You have upcoming reservations. View details or plan a new one easily.",
+      "action": "New Reservation"
+    },
+    "orders": {
+      "title": "Orders",
+      "description": "Access your recent and past orders, and reorder with one click.",
+      "action": "Place Order"
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Browse and manage dishes you've marked as favorites.",
+      "action": "View Menu"
+    },
+    "addresses": {
+      "title": "Delivery Addresses",
+      "description": "Manage your saved addresses for quicker delivery.",
+      "action": "Add Address"
+    },
+    "payments": {
+      "title": "Payment Methods",
+      "description": "Manage securely saved cards or payment options.",
+      "action": "Add Payment"
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Update your profile info, preferences, or contact details.",
+      "action": "Go to Settings"
+    }
+  },
+  "Reservations": {
+    "title":"Reservations",
+    "loginPrompt": "Please log in to view your reservations",
+    "loading": "Loading your reservations...",
+    "searchPlaceholder": "Search by name or month...",
+    "tabs": {
+      "upcoming": "Upcoming",
+      "past": "Past"
+    },
+    "empty": {
+      "upcoming": "No upcoming reservations found.",
+      "past": "No past reservations found."
+    },
+    "details": {
+      "guests": "Guests",
+      "tables": "Tables",
+      "date": "Date",
+      "time": "Time"
+    },
+    "status": {
+      "confirmed": "Confirmed",
+      "pending": "Pending",
+      "cancelled": "Cancelled"
+    }
+  },
+  "Orders": {
+    "cancelConfirmMessage": "Are you sure you want to cancel this order?",
+    "cancelSuccess": "Your order has been successfully canceled.",
+    "cancelError": "An error occurred while cancelling the order.",
+    "yes": "Yes",
+    "no":"No",
+    "title": "Orders",
+    "loginPrompt": "Please log in to view your orders",
+    "loadingOrders": "Loading your orders...",
+    "searchPlaceholder": "Search by order number, name, status, or item...",
+    "items": "Items",
+    "tabs": {
+      "dineIn": "Dine-In",
+      "delivery": "Delivery"
+    },
+    "pleaseLogin": "Please log in",
+    "orderDetails": "Order Details",
+    "deliveredAt": "Delivered at {time}",
+    "tableNumber": "Table Number",
+    "orderTime": "{date} ({ago})",
+    "empty": {
+      "dineIn": "No dine-in orders found.",
+      "delivery": "No delivery orders found."
+    },
+    "actions": {
+      "cancelConfirmTitle": "Are you sure you want to cancel this order?",
+      "cancelYes": "Yes",
+      "cancelNo": "No",
+      "cancelSuccess": "🛑 Order cancelled!",
+      "cancelFailed": "❌ Failed to cancel order.",
+      "reorderSuccess": "Order successfully reordered!",
+      "reorderFailed": "Failed to reorder.",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "reorder": "Reorder"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "cancelled": "Cancelled"
+    },
+    "orderCard": {
+      "orderNumber": "Order Number",
+      "customerName": "Customer Name",
+      "items": "Items",
+      "total": "Total",
+      "date": "Date",
+      "status": "Status"
+    },
+    "editableOrder": {
+      "editOrderItems": "Edit order items",
+      "removeItemAriaLabel": "Remove {name}",
+      "removeItemTitle": "Remove {name}",
+      "addMeal": "Add meal",
+      "selectMeal": "Select a meal",
+      "total": "Total",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "customerInfo": "Customer Info",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "deliveryAddress": "Delivery Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "total": "Total",
+    "cancel": "Cancel",
+    "reorder": "Reorder",
+    "edit": "Edit"
+
+  },
+  "Favorites": {
+    "loadingFavorites": "Loading your favorites...",
+    "pleaseLoginToView": "Please log in to view your favorites.",
+    "goToLogin": "Go to Login",
+    "favoriteDishes": "Favorite Dishes",
+    "addToCart": "Add to Cart",
+    "view": "View",
+    "noFavoritesYet": "You don't have any favorites yet.",
+    "browseMenu": "Browse Menu",
+    "searchPlaceholder": "Search your favorites...",
+    "noFavoritesMatch": "No favorites match your search.",
+    "recommendedForYou": "Recommended for You",
+    "exploreMenu": "Explore the Menu",
+    "customerInfo": "Customer Info",
+    "deliveryAddress": "Delivery Address",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "tableNumber": "Table Number",
+    "total": "Total",
+    "cancel": "Cancel",
+    "reorder": "Reorder",
+    "edit": "Edit"
+  },
+  "Settings": {
+    "title": "Settings",
+    "loadingProfile": "Loading profile…",
+    "personalInfo": "Personal Information",
+    "fullName": "Full Name",
+    "phone": "Phone Number (optional)",
+    "emailAddress": "Email Address",
+    "preferences": "Preferences",
+    "languagePreference": "Language Preference",
+    "receiveNotifications": "Receive Notifications",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "profileSaved": "Profile saved!",
+    "changePassword": "Change Password",
+    "cancelPasswordChange": "Cancel Password Change",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "changing": "Changing...",
+    "passwordChangedSuccess": "Password changed successfully.",
+    "passwordsMismatch": "New passwords do not match!",
+    "failedChangePassword": "Failed to change password.",
+    "deliveryLocation": "Delivery Location",
+    "enterDeliveryAddress": "Enter your delivery address",
+    "saveAddress": "Save Address",
+    "saved": "Saved!",
+    "deliveryAddressInfo": "We'll use this address for your food delivery."
+  }
+}

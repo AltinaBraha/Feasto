@@ -50,5 +50,9 @@ export default async function FoodItemPage({ params }) {
     }
   }
 
-  return <FoodDetailsClient item={translatedItem} />;
+ return (
+  <div className="bg-[rgba(221,89,3,0.05)] min-h-screen">
+    <FoodDetailsClient item={translatedItem} />
+  </div>
+);
 }

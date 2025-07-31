@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { HiUser, HiGlobeAlt, HiLockClosed } from "react-icons/hi";
+import { useTranslations } from "next-intl";
 
 const LANGUAGES = [
   { code: "en", label: "English" },
@@ -10,12 +11,12 @@ const LANGUAGES = [
 ];
 
 export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) {
+  const t = useTranslations("Settings");
+  
   const [name, setName] = useState(user.name || user.displayName || "");
   const [phone, setPhone] = useState(user.phone || "");
   const [language, setLanguage] = useState(user.language || "en");
-  const [emailNotifications, setEmailNotifications] = useState(
-    user.emailNotifications ?? true
-  );
+  const [emailNotifications, setEmailNotifications] = useState(user.emailNotifications ?? true);
 
   const [showPasswordChange, setShowPasswordChange] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -26,11 +27,13 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
   const [passwordError, setPasswordError] = useState("");
   const [saving, setSaving] = useState(false);
   const [changingPw, setChangingPw] = useState(false);
-        useEffect(() => {
-        setName(user.name || "");
-        setPhone(user.phone || "");
-        setLanguage(user.language || "en");
-      }, [user]);
+
+  useEffect(() => {
+    setName(user.name || "");
+    setPhone(user.phone || "");
+    setLanguage(user.language || "en");
+  }, [user]);
+
   async function saveProfile() {
     try {
       setSaving(true);
@@ -44,7 +47,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
 
   async function changePassword() {
     if (newPassword !== confirmNewPassword) {
-      setPasswordError("New passwords do not match!");
+      setPasswordError(t("passwordsMismatch"));
       return;
     }
     setPasswordError("");
@@ -55,9 +58,9 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
       setNewPassword("");
       setConfirmNewPassword("");
       setShowPasswordChange(false);
-      alert("Password changed successfully.");
+      alert(t("passwordChangedSuccess"));
     } catch (err) {
-      setPasswordError(err?.message || "Failed to change password.");
+      setPasswordError(err?.message || t("failedChangePassword"));
     } finally {
       setChangingPw(false);
     }
@@ -72,17 +75,16 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
         }}
         className="space-y-12"
       >
-        {/* Profile Info */}
         <div className="space-y-8">
           <div className="flex items-center space-x-2 text-orange-600 mb-3">
             <HiUser className="w-5 h-5" />
-            <h2 className="text-xl font-bold text-gray-900">Personal Information</h2>
+            <h2 className="text-xl font-bold text-gray-900">{t("personalInfo")}</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                Full Name
+                {t("fullName")}
               </label>
               <input
                 id="name"
@@ -92,13 +94,13 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                placeholder="Your full name"
+                placeholder={t("fullName")}
               />
             </div>
 
             <div>
               <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                Phone Number (optional)
+                {t("phone")}
               </label>
               <input
                 id="phone"
@@ -114,7 +116,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
 
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-              Email Address
+              {t("emailAddress")}
             </label>
             <input
               id="email"
@@ -126,17 +128,16 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
           </div>
         </div>
 
-        {/* Preferences */}
         <div className="space-y-6">
           <div className="flex items-center space-x-2 text-orange-600 mb-3">
             <HiGlobeAlt className="w-5 h-5" />
-            <h2 className="text-xl font-bold text-gray-900">Preferences</h2>
+            <h2 className="text-xl font-bold text-gray-900">{t("preferences")}</h2>
           </div>
 
           <div className="space-y-4">
             <div>
               <label htmlFor="language" className="block text-sm font-semibold text-gray-700 mb-2">
-                Language Preference
+                {t("languagePreference")}
               </label>
               <select
                 id="language"
@@ -162,26 +163,24 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
                 className="h-5 w-5 rounded border-gray-300"
               />
               <label htmlFor="emailNotifications" className="text-sm font-semibold text-gray-700 select-none">
-                Receive Notifications
+                {t("receiveNotifications")}
               </label>
             </div>
           </div>
         </div>
 
-        {/* Save button and feedback */}
         <div className="flex items-center space-x-4 justify-end">
-          {profileSaved && <span className="text-green-600 font-semibold">Profile saved!</span>}
+          {profileSaved && <span className="text-green-600 font-semibold">{t("profileSaved")}</span>}
           <button
             type="submit"
             disabled={saving}
             className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide disabled:opacity-60"
           >
-            {saving ? "Saving..." : "Save Changes"}
+            {saving ? t("saving") : t("saveChanges")}
           </button>
         </div>
       </form>
 
-      {/* Change Password Section */}
       <div className="border-t border-gray-200 pt-10">
         <button
           className="flex items-center text-black font-bold underline mb-6 space-x-2"
@@ -189,7 +188,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
           type="button"
         >
           <HiLockClosed className="w-5 h-5" />
-          <span>{showPasswordChange ? "Cancel Password Change" : "Change Password"}</span>
+          <span>{showPasswordChange ? t("cancelPasswordChange") : t("changePassword")}</span>
         </button>
 
         {showPasswordChange && (
@@ -204,7 +203,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
 
             <div>
               <label htmlFor="currentPassword" className="block text-sm font-semibold text-gray-700 mb-2">
-                Current Password
+                {t("currentPassword")}
               </label>
               <input
                 id="currentPassword"
@@ -219,7 +218,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
             </div>
             <div>
               <label htmlFor="newPassword" className="block text-sm font-semibold text-gray-700 mb-2">
-                New Password
+                {t("newPassword")}
               </label>
               <input
                 id="newPassword"
@@ -234,7 +233,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
             </div>
             <div>
               <label htmlFor="confirmNewPassword" className="block text-sm font-semibold text-gray-700 mb-2">
-                Confirm New Password
+                {t("confirmNewPassword")}
               </label>
               <input
                 id="confirmNewPassword"
@@ -253,7 +252,7 @@ export default function SettingsLeft({ user, onSaveProfile, onChangePassword }) 
                 disabled={changingPw}
                 className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition font-bold tracking-wide disabled:opacity-60"
               >
-                {changingPw ? "Changing..." : "Change Password"}
+                {changingPw ? t("changing") : t("changePassword")}
               </button>
             </div>
           </form>

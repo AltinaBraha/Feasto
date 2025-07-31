@@ -18,13 +18,13 @@ export default function Footer() {
         {/* Logo & Description */}
         <div className="flex flex-col space-y-4">
           <div className="relative w-32 h-12 sm:w-36 sm:h-14">
-            <Image
+            {/* <Image
               src="/img/logo.png"
               alt="Feasto Logo"
               layout="fill"
               objectFit="contain"
               priority
-            />
+            /> */}
           </div>
           <p className="text-xs sm:text-sm leading-relaxed">
             {t("description")}

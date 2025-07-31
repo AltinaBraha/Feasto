@@ -1,16 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 
 export default function AccountCard({
   icon,
   iconBg,
-  title,
+  titleKey,
+  descriptionKey,
+  actionKey,
   href,
-  description,
   count,
-  actionText,
   actionHref,
 }) {
+  const t = useTranslations("AccountCard");
+
+  const title = t(titleKey);
+  const description = t(descriptionKey);
+  const actionText = actionKey ? t(actionKey) : null;
+
   return (
     <div className="border rounded-xl bg-white shadow-sm hover:shadow-lg transition transform hover:-translate-y-1 p-6 flex flex-col justify-between border-gray-200">
       <div className="flex items-center gap-4 mb-5">
@@ -32,7 +41,7 @@ export default function AccountCard({
 
       <div className="flex flex-col gap-2 mt-auto">
         <Link href={href} className="text-sm font-medium text-gray-700 hover:text-gray-900 underline">
-          View {title}
+          {t("view")} {title}
         </Link>
         {actionText && actionHref && (
           <Link href={actionHref}>

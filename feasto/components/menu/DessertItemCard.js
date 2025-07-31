@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/components/CartProvider";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import Favorite from "../my-account/favorites/Favorite";
+import { useCartStore } from "@/lib/stores/cartStore"; 
+
 
 
 export default function DessertItemCard({ item }) {
-  const { addToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart); 
   const locale = useLocale();
   const t = locale !== "en" ? useTranslations("desserts") : null;
 
-  // Funksion për slug
   const slugify = (text) =>
     text
       .toLowerCase()
