@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from "next/navigation"; 
 import { FaUserCircle } from "react-icons/fa";
 import { useAuthStore } from "@/lib/stores/authStore";
 import AuthModal from "./AuthModal";
@@ -9,21 +10,13 @@ import UserDropdown from "./UserDropdown";
 
 export default function AuthButton() {
   const t = useTranslations("Header");
+  const locale = useLocale();
+  const router = useRouter(); 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const { user, initAuthListener, logout } = useAuthStore();
-
-  useEffect(() => {
-    initAuthListener();
-  }, [initAuthListener]);
-
-   useEffect(() => {
-    if (user) {
-      console.log("Logged user:", user);
-    }
-  }, [user]);
+  const { user, logout } = useAuthStore();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -35,6 +28,11 @@ export default function AuthButton() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleLogout = async () => {
+    await logout();
+    router.replace(`/${locale}`); 
+  };
 
   if (!user) {
     return (
@@ -63,12 +61,10 @@ export default function AuthButton() {
         type="button"
       >
         <FaUserCircle size={20} />
-       <span className="text-sm">
-  {user.fullName || user.displayName }
-</span>
+        <span className="text-sm">{user.fullName || user.displayName}</span>
       </button>
 
-      {isDropdownOpen && <UserDropdown logout={logout} t={t} />}
+      {isDropdownOpen && <UserDropdown logout={handleLogout} t={t} />}
     </div>
-  );
+  )
 }

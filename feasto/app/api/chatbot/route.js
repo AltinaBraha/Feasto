@@ -6,7 +6,17 @@ export async function POST(req) {
     const { message } = await req.json();
     const lowerMsg = message.toLowerCase();
 
-    
+    const matchedItem = food.find((item) =>
+      lowerMsg.includes(item.name.toLowerCase())
+    );
+
+    if (matchedItem) {
+      return NextResponse.json({
+        reply: `Added "${matchedItem.name}" to the cart.`,
+        addToCart: matchedItem,
+      });
+    }
+
     if (lowerMsg.includes("hello") || lowerMsg.includes("hi")) {
       return NextResponse.json({
         reply: "Hello! Welcome to Feasto. How can I help you today?",
@@ -15,8 +25,8 @@ export async function POST(req) {
 
     if (
       lowerMsg.includes("close") ||
-      lowerMsg.includes("What time does the restaurant close") ||
-      lowerMsg.includes("What time does the restaurant open")
+      lowerMsg.includes("what time does the restaurant close") ||
+      lowerMsg.includes("what time does the restaurant open")
     ) {
       return NextResponse.json({
         reply: "We open at 8:00 AM and close at 11:00 PM every day.",
@@ -62,7 +72,7 @@ Answer clearly and concisely.
             { role: "system", content: systemPrompt },
             { role: "user", content: message },
           ],
-          max_tokens: 150, // kufizo përgjigjen në gjatësinë e dëshiruar
+          max_tokens: 150,
         }),
       }
     );

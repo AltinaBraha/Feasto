@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { X } from "lucide-react"; // opsional, mund të përdorësh ikona të tjera
+import { X } from "lucide-react";
 
 import ChatBot from "@/components/chatbot/ChatBot";
 
@@ -29,8 +29,8 @@ export default function ChatWidget() {
 
       {/* Popup i chatbot-it */}
         {open && (
-          <div className="fixed bottom-6 right-6 w-[350px] max-w-[90vw] h-[520px] bg-white border shadow-xl rounded-xl z-50 flex flex-col">
-            <div className="flex justify-between items-center p-3 border-b bg-gray-100 rounded-t-xl">
+          <div className="fixed bottom-6 right-6 w-[350px] max-w-[90vw] h-[520px] bg-white  shadow-xl rounded-xl z-50 flex flex-col">
+            <div className="flex justify-between items-center p-3  bg-gray-100 rounded-t-xl">
               <h2 className="font-semibold text-gray-800">Feasto Chatbot</h2>
               <button
                 onClick={() => setOpen(false)}

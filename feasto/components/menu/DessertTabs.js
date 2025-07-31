@@ -31,7 +31,7 @@ export default function MenuTabs({ dessertMenu }) {
     }));
 
   return (
-    <div className="flex flex-col items-center mb-12">
+    <div className="flex flex-col items-center">
       <div className="flex justify-center space-x-10 mb-12">
         <a
           href="/menus/food"

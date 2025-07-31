@@ -8,14 +8,15 @@ import TabButton from "./TabButton";
 import { toast } from "react-toastify";
 import EditableOrder from "./UpdateOrder";
 import menuItems from '@/data/food.json';
+import { useTranslations } from "next-intl";
 
 export default function OrderList({ searchTerm }) {
+  const t = useTranslations("Orders");
   const user = useAuthStore((state) => state.user);
   const [orders, setOrders] = useState([]);
   const [activeTab, setActiveTab] = useState("dine-in");
   const [loading, setLoading] = useState(true);
   const [editingOrder, setEditingOrder] = useState(null);
-
 
   useEffect(() => {
     if (!user?.uid) return;
@@ -61,7 +62,7 @@ export default function OrderList({ searchTerm }) {
       ({ closeToast }) => (
         <div className="flex flex-col gap-2">
           <p className="font-semibold text-gray-800">
-            Are you sure you want to cancel this order?
+            {t("cancelConfirmMessage")}
           </p>
           <div className="flex gap-2 mt-2">
             <button
@@ -69,22 +70,22 @@ export default function OrderList({ searchTerm }) {
               onClick={async () => {
                 try {
                   await updateOrder(orderId, { status: "cancelled" });
-                  toast.success("🛑 Order cancelled!");
+                  toast.success(t("cancelSuccess"));
                   const updated = await fetchOrdersByUser(user.uid);
                   setOrders(updated || []);
                 } catch (e) {
-                  toast.error("❌ Failed to cancel order.");
+                  toast.error(t("cancelFail"));
                 }
                 closeToast();
               }}
             >
-              Yes
+              {t("yes")}
             </button>
             <button
               className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-1 rounded"
               onClick={closeToast}
             >
-              No
+              {t("no")}
             </button>
           </div>
         </div>
@@ -104,14 +105,15 @@ export default function OrderList({ searchTerm }) {
         total: order.total,
         createdAt: new Date(),
       });
-      toast.success(" Order has been placed again!");
+      toast.success(t("reorderSuccess"));
       const updated = await fetchOrdersByUser(user.uid);
       setOrders(updated || []);
     } catch (e) {
-      toast.error("Failed to reorder.");
+      toast.error(t("reorderFail"));
     }
   }
-    function openEditModal(order) {
+
+  function openEditModal(order) {
     setEditingOrder(order);
   }
 
@@ -119,28 +121,27 @@ export default function OrderList({ searchTerm }) {
     setEditingOrder(null);
   }
 
-
   if (!user) {
-    return <p className="text-center text-red-600 font-semibold">Please log in to view your orders.</p>;
+    return <p className="text-center text-red-600 font-semibold">{t("pleaseLogin")}</p>;
   }
 
   if (loading) {
-    return <p className="text-center text-gray-600 font-medium">Loading your orders...</p>;
+    return <p className="text-center text-gray-600 font-medium">{t("loadingOrders")}</p>;
   }
 
   return (
     <div>
       <div className="max-w-5xl mx-auto flex justify-center border-b border-gray-300 dark:border-gray-700 mb-8">
         <TabButton active={activeTab === "dine-in"} onClick={() => setActiveTab("dine-in")}>
-          Dine In ({dineInOrders.length})
+          {t("tabs.dineIn")} ({dineInOrders.length})
         </TabButton>
         <TabButton active={activeTab === "delivery"} onClick={() => setActiveTab("delivery")}>
-          Delivery ({deliveryOrders.length})
+          {t("tabs.delivery")} ({deliveryOrders.length})
         </TabButton>
       </div>
 
       {sortedOrders.length === 0 ? (
-        <p className="text-center text-gray-500 italic">No orders found in this category.</p>
+        <p className="text-center text-gray-500 italic">{t("noOrdersFound")}</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           {sortedOrders.map((order) => (
@@ -153,29 +154,27 @@ export default function OrderList({ searchTerm }) {
             />
           ))}
         </div>
-        
       )}
       {editingOrder && (
-      <EditableOrder
-        order={editingOrder}
-        menuItems={menuItems}  
-        onSave={async (updatedItems) => {
-          try {
-            const newTotal = updatedItems.reduce((sum, item) => sum + item.qty * item.price, 0);
-            await updateOrder(editingOrder.id, { items: updatedItems, total: newTotal });
-            const updated = await fetchOrdersByUser(user.uid);
-            setOrders(updated || []);
-            toast.success("Order updated successfully!");
-          } catch {
-            toast.error("Failed to update order.");
-          } finally {
-            closeEditModal();
-          }
-        }}
-
-        onCancel={closeEditModal}
-      />
-    )}
+        <EditableOrder
+          order={editingOrder}
+          menuItems={menuItems}
+          onSave={async (updatedItems) => {
+            try {
+              const newTotal = updatedItems.reduce((sum, item) => sum + item.qty * item.price, 0);
+              await updateOrder(editingOrder.id, { items: updatedItems, total: newTotal });
+              const updated = await fetchOrdersByUser(user.uid);
+              setOrders(updated || []);
+              toast.success(t("orderUpdateSuccess"));
+            } catch {
+              toast.error(t("orderUpdateFail"));
+            } finally {
+              closeEditModal();
+            }
+          }}
+          onCancel={closeEditModal}
+        />
+      )}
     </div>
   );
 }

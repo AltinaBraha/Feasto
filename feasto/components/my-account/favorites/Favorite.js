@@ -10,6 +10,7 @@ import {
   checkFavorite,
 } from "@/lib/firebase/favorites";
 import { useFavoritesStore } from "@/lib/stores/favoritesStore";
+import { toast } from "react-toastify";
 
 export default function Favorite({ itemId, itemData }) {
   const user = useAuthStore((state) => state.user);
@@ -44,8 +45,12 @@ export default function Favorite({ itemId, itemData }) {
     };
   }, [user, itemId, addFavoriteStore, removeFavoriteStore, itemData]);
 
-  async function toggleFavorite() {
-    if (!user) return alert("Please log in to add favorites.");
+
+     async function toggleFavorite() {
+    if (!user) {
+      toast.error("Login to add Favorites");
+      return;
+    }
 
     setLoading(true);
     try {

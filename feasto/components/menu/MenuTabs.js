@@ -38,7 +38,7 @@ export default function MenuTabs({ foodMenu }) {
 const offerActive = isOfferTimeActive();
  
   return (
-    <div className="flex flex-col items-center mb-12 px-4 sm:px-0">
+    <div className="flex flex-col items-center px-4 sm:px-0">
       <div className="flex flex-wrap justify-center gap-4 sm:gap-10 mb-8">
         <button
           onClick={() => setShowSubcategories(!showSubcategories)}

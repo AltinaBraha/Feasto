@@ -6,11 +6,16 @@ export const useAuthStore = create((set, get) => ({
   user: null,
   loading: true,
 
-  initAuthListener: () => {
-    onAuthStateChanged(auth, (currentUser) => {
-      set({ user: currentUser, loading: false });
-    });
-  },
+ initAuthListener: () => {
+  const currentUser = auth.currentUser;
+  if (currentUser) {
+    set({ user: currentUser, loading: false });
+  }
+
+  onAuthStateChanged(auth, (currentUser) => {
+    set({ user: currentUser, loading: false });
+  });
+},
 
   logout: async () => {
     await signOut(auth);

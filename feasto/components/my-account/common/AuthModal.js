@@ -15,6 +15,8 @@ import { getFirebaseErrorMessage } from "@/lib/firebase/errorMessages";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl"; 
+
 
 export default function AuthModal({ isOpen, onClose }) {
   const t = useTranslations();
@@ -23,6 +25,8 @@ export default function AuthModal({ isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
   const { loginWithGoogle } = useGoogleLogin();
   const setUser = useAuthStore((state) => state.setUser);
+    const locale = useLocale(); 
+
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -63,14 +67,13 @@ export default function AuthModal({ isOpen, onClose }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const redirectBasedOnEmail = (email) => {
-    if (email.endsWith("@feasto.com")) {
-      router.push("/dashboard");
-    } else {
-      router.push("/my-account");
-    }
-  };
-
+ const redirectBasedOnEmail = async (email) => {
+  if (email.endsWith("@feasto.com")) {
+    await router.push(`/${locale}/dashboard`);
+  } else {
+    await router.push(`/${locale}/my-account`);
+  }
+};
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     if (!validate()) return;

@@ -3,22 +3,42 @@
 import { format, formatDistanceToNow } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { FaBoxOpen, FaClock, FaListAlt } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
-export default function OrderCard({ order, onCancel, onReorder, onEdit  }) {
+export default function OrderCard({ order, onCancel, onReorder, onEdit }) {
+  const t = useTranslations("Orders");
   const createdAt = order.createdAt?.toDate ? order.createdAt.toDate() : new Date();
+  const orderTypeKey = order.type === "dine-in" ? "dineIn" : order.type;
 
-  function formatOrderDate(date) {
-    if (!date) return "";
-    const d = date.toDate ? date.toDate() : new Date(date);
-    return `${format(d, "PPpp", { locale: enUS })} (${formatDistanceToNow(d, { addSuffix: true, locale: enUS })})`;
+
+ function formatOrderDate(date) {
+  const formattedDate = format(date, "PPpp", { locale: enUS });
+  const relative = formatDistanceToNow(date, { addSuffix: true, locale: enUS });
+  return t("orderTime", { date: formattedDate, ago: relative });
+}
+
+  function getStatusLabel(status) {
+    switch (status) {
+      case "pending":
+        return t("status.preparing");
+      case "completed":
+        if (order.type === "delivery") {
+          return t("status.deliveredAt", { time: format(order.updatedAt?.toDate ? order.updatedAt.toDate() : new Date(), "p") });
+        }
+        return t("status.completed");
+      case "cancelled":
+        return t("status.cancelled");
+      default:
+        return status;
+    }
   }
 
   return (
-<section className="relative flex flex-col bg-white dark:bg-gray-900 shadow-xl rounded-2xl border border-gray-300 dark:border-gray-700 p-6 max-w-lg mx-auto" style={{ minHeight: "400px" }}>
+<section className="relative flex flex-col justify-between bg-white dark:bg-gray-900 shadow-xl rounded-2xl border border-gray-300 dark:border-gray-700 p-6 max-w-lg mx-auto" style={{ minHeight: "550px" }}>
       <header className="flex justify-between items-center mb-6">
         <h2 className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
           <FaBoxOpen className="text-orange-600" />
-          Order Details
+          {t("orderDetails")}
         </h2>
         <span
           className={`uppercase font-semibold px-4 py-1 rounded-full text-sm ${
@@ -31,15 +51,7 @@ export default function OrderCard({ order, onCancel, onReorder, onEdit  }) {
               : "bg-[rgba(200,200,200,0.3)] text-[rgba(100,100,100,0.9)]"
           }`}
         >
-          {order.status === "pending"
-            ? "Preparing..."
-            : order.status === "completed"
-            ? order.type === "delivery"
-              ? `Delivered at ${format(order.updatedAt?.toDate ? order.updatedAt.toDate() : new Date(), "p")}`
-              : "Completed"
-            : order.status === "cancelled"
-            ? "Order Cancelled"
-            : order.status}
+          {getStatusLabel(order.status)}
         </span>
       </header>
 
@@ -50,12 +62,12 @@ export default function OrderCard({ order, onCancel, onReorder, onEdit  }) {
         </div>
         <div className="flex items-center gap-2 capitalize">
           <FaListAlt />
-          {order.type.replace("-", " ")}
+          {t(`tabs.${orderTypeKey}`, { defaultValue: order.type.replace("-", " ") })}
         </div>
       </div>
 
       <div className="mb-6">
-        <h3 className="font-semibold text-lg mb-3">Items</h3>
+      <h3 className="font-semibold text-lg mb-3">{t("items")}</h3>
         <ul className="space-y-4 max-h-64 overflow-y-auto">
           {order.items.map((item) => (
             <li
@@ -84,63 +96,61 @@ export default function OrderCard({ order, onCancel, onReorder, onEdit  }) {
       </div>
 
       {order.type === "delivery" && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-gray-800 dark:text-gray-300 text-sm">
-          <div>
-            <h3 className="font-semibold mb-2">Customer Info</h3>
-            <p><strong>Name:</strong> {order.formData.fullName || "—"}</p>
-            <p><strong>Email:</strong> {order.formData.email || "—"}</p>
-            <p><strong>Phone:</strong> {order.formData.phone || "—"}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-2">Delivery Address</h3>
-            <p>{order.formData.address || "—"}</p>
-            <p>{order.formData.city || "—"}</p>
-            <p>{order.formData.postalCode || "—"}</p>
-          </div>
-        </div>
-      )}
-
-      {order.type === "dine-in" && (
-        <div className="mb-6 text-gray-800 dark:text-gray-300 text-sm">
-          <h3 className="font-semibold mb-2">Table Number</h3>
-          <p>{order.formData.tableNumber || "—"}</p>
-        </div>
-      )}
-
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-        <div className="text-orange-600 font-bold text-xl">
-          Total: ${order.total.toFixed(2)}
-        </div>
-           <div className="absolute bottom-6 right-6 left-6 flex gap-4 justify-end">
-    {order.status === "pending" && (
-      <button
-        onClick={onCancel}
-        className="bg-red-400 hover:bg-red-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
-        style={{ boxShadow: "0 2px 6px rgba(239, 68, 68, 0.4)", minWidth: "90px" }}
-      >
-        Cancel
-      </button>
-    )}
-    <button
-      onClick={onReorder}
-      className="bg-blue-400 hover:bg-blue-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
-      style={{ boxShadow: "0 2px 6px rgba(59, 130, 246, 0.4)", minWidth: "90px" }}
-    >
-      Reorder
-    </button>
-    {order.status === "pending" && (
-      <button
-        onClick={onEdit}
-        className="bg-yellow-400 hover:bg-yellow-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
-        style={{ boxShadow: "0 2px 6px rgba(234, 179, 8, 0.4)", minWidth: "90px" }}
-      >
-        Edit
-      </button>
-    )}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-gray-800 dark:text-gray-300 text-sm">
+    <div>
+      <h3 className="font-semibold mb-2">{t("customerInfo")}</h3>
+      <p><strong>{t("name")}:</strong> {order.formData.fullName || "—"}</p>
+      <p><strong>{t("email")}:</strong> {order.formData.email || "—"}</p>
+      <p><strong>{t("phone")}:</strong> {order.formData.phone || "—"}</p>
+    </div>
+    <div>
+      <h3 className="font-semibold mb-2">{t("deliveryAddress")}</h3>
+      <p>{order.formData.address || "—"}</p>
+      <p>{order.formData.city || "—"}</p>
+      <p>{order.formData.postalCode || "—"}</p>
+    </div>
   </div>
+)}
 
-        
-      </div>
-    </section>
+{order.type === "dine-in" && (
+  <div className="mb-6 text-gray-800 dark:text-gray-300 text-sm">
+    <h3 className="font-semibold mb-2">{t("tableNumber")}</h3>
+    <p>{order.formData.tableNumber || "—"}</p>
+  </div>
+)}
+
+<div className="mt-auto flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    <div className="text-orange-600 font-bold text-xl">
+      {t("total")}: ${order.total.toFixed(2)}
+    </div>
+    <div className="flex gap-4 justify-end">
+      {order.status === "pending" && (
+        <button
+          onClick={onCancel}
+          className="bg-red-400 hover:bg-red-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
+          style={{ boxShadow: "0 2px 6px rgba(239, 68, 68, 0.4)", minWidth: "90px" }}
+        >
+          {t("cancel")}
+        </button>
+      )}
+      <button
+        onClick={onReorder}
+        className="bg-blue-400 hover:bg-blue-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
+        style={{ boxShadow: "0 2px 6px rgba(59, 130, 246, 0.4)", minWidth: "90px" }}
+      >
+        {t("reorder")}
+      </button>
+      {order.status === "pending" && (
+        <button
+          onClick={onEdit}
+          className="bg-yellow-400 hover:bg-yellow-500 text-white px-5 py-2 rounded-md font-semibold text-sm transition"
+          style={{ boxShadow: "0 2px 6px rgba(234, 179, 8, 0.4)", minWidth: "90px" }}
+        >
+          {t("edit")}
+        </button>
+      )}
+    </div>
+  </div>
+</section>
   );
 }

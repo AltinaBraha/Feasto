@@ -21,66 +21,66 @@ export default function Dashboard({ stats }) {
         <AccountCard
           icon={<FiCalendar />}
           iconBg="bg-orange-100 text-orange-600"
-          title="Reservations"
+          titleKey="reservations.title"
+          descriptionKey="reservations.description"
+          actionKey="reservations.action"
           href={`/${locale}/my-account/reservations`}
-          description="You have upcoming reservations ready. View details or schedule a new one easily."
           count={stats.upcomingReservationsCount}
-          actionText="New Reservation"
           actionHref={`/${locale}/my-account/reservations/new`}
         />
 
         <AccountCard
           icon={<FiShoppingCart />}
           iconBg="bg-yellow-100 text-yellow-600"
-          title="Orders"
+          titleKey="orders.title"
+          descriptionKey="orders.description"
+          actionKey="orders.action"
           href={`/${locale}/my-account/orders`}
-          description="Access your recent and past orders, and reorder with a click."
           count={stats.recentOrdersCount}
-          actionText="Place Order"
           actionHref={`/${locale}/menu`}
         />
 
         <AccountCard
           icon={<FiHeart />}
           iconBg="bg-red-100 text-red-600"
-          title="Favorites"
+          titleKey="favorites.title"
+          descriptionKey="favorites.description"
+          actionKey="favorites.action"
           href={`/${locale}/my-account/favorites`}
-          description="Browse and manage the dishes you've marked as favorites."
           count={stats.favoritesCount}
-          actionText="View Menu"
           actionHref={`/${locale}/menu`}
         />
 
         <AccountCard
           icon={<FiMapPin />}
           iconBg="bg-green-100 text-green-600"
-          title="Delivery Addresses"
+          titleKey="addresses.title"
+          descriptionKey="addresses.description"
+          actionKey="addresses.action"
           href={`/${locale}/my-account/settings`}
-          description="Manage your saved delivery locations for faster checkout."
           count={stats.addressesCount}
-          actionText="Add Address"
           actionHref={`/${locale}/my-account/settings`}
         />
 
         <AccountCard
           icon={<FiCreditCard />}
           iconBg="bg-blue-100 text-blue-600"
-          title="Payment Methods"
+          titleKey="payments.title"
+          descriptionKey="payments.description"
+          actionKey="payments.action"
           href={`/${locale}/my-account/settings`}
-          description="Manage your saved cards or payment options securely."
           count={stats.paymentMethodsCount}
-          actionText="Add Payment"
           actionHref={`/${locale}/my-account/settings`}
         />
 
         <AccountCard
           icon={<FiSettings />}
           iconBg="bg-gray-100 text-gray-600"
-          title="Settings"
+          titleKey="settings.title"
+          descriptionKey="settings.description"
+          actionKey="settings.action"
           href={`/${locale}/my-account/settings`}
-          description="Update your profile info, preferences, or contact details."
           count={null}
-          actionText="Go to Settings"
           actionHref={`/${locale}/my-account/settings`}
         />
       </div>

@@ -97,10 +97,10 @@ useEffect(() => {
     return;
   }
   
-  if (!user?.uid) {
-    toast.error(t("orderModal.userNotLoggedIn"));
-    return;
-  }
+  // if (!user?.uid) {
+  //   toast.error(t("orderModal.userNotLoggedIn"));
+  //   return;
+  // }
 
   setLoading(true);
   try {
@@ -123,7 +123,7 @@ useEffect(() => {
       items: cart,
       total,
       status: "pending",
-      userId: user.uid, // userId added here
+      userId: user?.uid || null, 
     };
 
     const result = await createOrder(orderPayload);

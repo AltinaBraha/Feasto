@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Favorite from "@/components/my-account/favorites/Favorite";
-import { useCart } from "@/components/CartProvider";
+import { useCartStore } from "@/lib/stores/cartStore"; 
+import { useTranslations } from "next-intl";
 
 export default function FavoriteCard({ item }) {
-  const { addToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart); 
+  const t = useTranslations("Favorites");
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
@@ -24,13 +26,13 @@ export default function FavoriteCard({ item }) {
             onClick={() => addToCart({ ...item, qty: 1 })}
             className="flex-1 bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 transition"
           >
-            Add to Cart
+            {t("addToCart")}
           </button>
           <Link
             href={`/menus/food/${item.itemId}`}
             className="flex-1 border border-gray-300 text-gray-700 py-2 rounded-md text-center hover:bg-gray-100 transition"
           >
-            View
+            {t("view")}
           </Link>
         </div>
       </div>

@@ -79,7 +79,7 @@ export function useUserProfile(user) {
         displayName: user.displayName || profile?.name || "",
         name: profile?.name ?? user.displayName ?? "",
         phone: profile?.phone ?? "",
-        language: profile?.language ?? "en",           // ✅ fixed
+        language: profile?.language ?? "en",         
         emailNotifications: profile?.emailNotifications ?? true,
         location: profile?.location ?? "",
       }

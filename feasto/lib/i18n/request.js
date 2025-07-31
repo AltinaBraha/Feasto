@@ -35,7 +35,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     "dessert-header",
     "desserts",
     "events",
-  ];
+  ,'my-account'];
 
   const messages = {};
 

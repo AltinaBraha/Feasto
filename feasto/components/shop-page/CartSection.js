@@ -1,7 +1,7 @@
 "use client";
 
-import { useCart } from "@/components/CartProvider";
 import { useState } from "react";
+import { useCartStore } from "@/lib/stores/cartStore";
 import OrderModal from "@/components/shop-page/OrderModal";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -10,7 +10,8 @@ import Image from "next/image";
 export default function ClientCartSection() {
   const t = useTranslations("cart");
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  const { cart, removeFromCart, updateQty, clearCart } = useCart();
+
+  const { cart, removeFromCart, updateQty, clearCart } = useCartStore();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 

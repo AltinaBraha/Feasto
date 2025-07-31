@@ -5,23 +5,18 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AccountBanner from "@/components/my-account/common/AccountBanner";
 import Dashboard from "@/components/my-account/common/Dashboard";
-import Loading from "@/components/my-account/common/Loading";
 import { getUserStats } from "@/lib/firebase/myAccount";
 
 export default function MyAccountPage() {
-  const { user, loading, initAuthListener } = useAuthStore();
+  const { user, loading } = useAuthStore();
   const router = useRouter();
 
   const [stats, setStats] = useState(null);
-  const [statsLoading, setStatsLoading] = useState(true);
-
-  useEffect(() => {
-    initAuthListener();
-  }, [initAuthListener]);
-
+  const [statsLoading, setStatsLoading] = useState(false);
+  
   useEffect(() => {
     if (!loading && !user) {
-      router.push("/en");
+      router.replace("/en"); 
     }
   }, [user, loading, router]);
 
@@ -36,13 +31,14 @@ export default function MyAccountPage() {
     }
   }, [user]);
 
-  if (loading || statsLoading) return <Loading />;
   if (!user) return null;
-
   return (
     <div className="bg-[rgba(221,89,3,0.05)] min-h-screen">
       <AccountBanner user={user} />
-      {stats && <Dashboard stats={stats} />}
+      {statsLoading && (
+        <p className="text-center text-gray-400 py-10">Loading dashboard...</p>
+      )}
+      {!statsLoading && stats && <Dashboard stats={stats} />}
     </div>
   );
 }

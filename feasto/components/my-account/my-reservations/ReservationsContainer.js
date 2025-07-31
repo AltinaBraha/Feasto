@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAuthStore } from "@/lib/stores/authStore";
 import { getReservationsByUser } from "@/lib/firebase/reservations";
 import { format, isBefore } from "date-fns";
+import { de, enUS, sq } from "date-fns/locale";
 import {
   FaCalendarAlt,
   FaClock,
@@ -15,12 +16,23 @@ import SearchBar from "@/components/common/SearchBar";
 import StatusBadge from "./StatusBadge";
 import Detail from "./Detail";
 
+import { useTranslations, useLocale } from "next-intl";
+
 export default function ReservationsClient() {
+  const t = useTranslations("Reservations");
+  const locale = useLocale(); // get current locale from next-intl
   const user = useAuthStore((state) => state.user);
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("upcoming");
   const [search, setSearch] = useState("");
+
+  const localeMap = {
+    de,
+    en: enUS,
+    xk: sq,
+  };
+  const dateFnsLocale = localeMap[locale] || enUS;
 
   useEffect(() => {
     if (!user) {
@@ -45,9 +57,7 @@ export default function ReservationsClient() {
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
-        <h2 className="text-xl font-bold text-gray-800">
-          Please log in to view your reservations
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800">{t("loginPrompt")}</h2>
       </div>
     );
   }
@@ -55,9 +65,7 @@ export default function ReservationsClient() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
-        <p className="text-lg font-medium text-gray-600">
-          Loading your reservations...
-        </p>
+        <p className="text-lg font-medium text-gray-600">{t("loading")}</p>
       </div>
     );
   }
@@ -72,7 +80,7 @@ export default function ReservationsClient() {
 
   const filtered = (activeTab === "upcoming" ? upcoming : past).filter((res) => {
     const dateTime = new Date(`${res.date}T${res.time}`);
-    const month = format(dateTime, "MMMM").toLowerCase();
+    const month = format(dateTime, "MMMM", { locale: dateFnsLocale }).toLowerCase();
     return (
       res.name.toLowerCase().includes(search.toLowerCase()) ||
       month.includes(search.toLowerCase())
@@ -82,7 +90,7 @@ export default function ReservationsClient() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-14">
       <SearchBar
-        placeholder="Search by name or month..."
+        placeholder={t("searchPlaceholder")}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="mb-10 max-w-2xl mx-auto"
@@ -98,7 +106,7 @@ export default function ReservationsClient() {
                 : "border-transparent text-gray-600 hover:text-orange-600"
             }`}
           >
-            Upcoming
+            {t("tabs.upcoming")}
           </button>
           <button
             onClick={() => setActiveTab("past")}
@@ -108,7 +116,7 @@ export default function ReservationsClient() {
                 : "border-transparent text-gray-600 hover:text-orange-600"
             }`}
           >
-            Past
+            {t("tabs.past")}
           </button>
         </div>
       </div>
@@ -117,16 +125,16 @@ export default function ReservationsClient() {
         <div className="flex flex-col items-center mt-20 text-gray-600 space-y-3">
           <p className="text-lg italic font-medium">
             {activeTab === "upcoming"
-              ? "No upcoming reservations found."
-              : "No past reservations found."}
+              ? t("empty.upcoming")
+              : t("empty.past")}
           </p>
         </div>
       ) : (
         <ul className="space-y-10">
           {filtered.map((res) => {
             const dateTime = new Date(`${res.date}T${res.time}`);
-            const formattedDate = format(dateTime, "EEEE, MMM d, yyyy");
-            const formattedTime = format(dateTime, "h:mm a");
+            const formattedDate = format(dateTime, "EEEE, MMM d, yyyy", { locale: dateFnsLocale });
+            const formattedTime = format(dateTime, "h:mm a", { locale: dateFnsLocale });
 
             return (
               <li
@@ -146,10 +154,10 @@ export default function ReservationsClient() {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-6 text-base">
-                  <Detail icon={<FaUserFriends />} label="Guests" value={res.people} />
-                  <Detail icon={<FaChair />} label="Tables" value={res.tables?.join(", ") || "—"} />
-                  <Detail icon={<FaCalendarAlt />} label="Date" value={res.date} />
-                  <Detail icon={<FaClock />} label="Time" value={res.time} />
+                  <Detail icon={<FaUserFriends />} label={t("details.guests")} value={res.people} />
+                  <Detail icon={<FaChair />} label={t("details.tables")} value={res.tables?.join(", ") || "—"} />
+                  <Detail icon={<FaCalendarAlt />} label={t("details.date")} value={res.date} />
+                  <Detail icon={<FaClock />} label={t("details.time")} value={res.time} />
                 </div>
               </li>
             );

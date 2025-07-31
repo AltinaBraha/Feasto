@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 
 export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
+  const t = useTranslations("Orders.editableOrder");
   const [items, setItems] = useState(order.items);
 
   function updateQty(itemId, newQty) {
@@ -15,20 +17,18 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
   }
 
   function addItem(newItem) {
-  console.log("Adding item:", newItem);
-  const existing = items.find((i) => i.id === newItem.id);
-  if (existing) {
-    updateQty(newItem.id, existing.qty + 1);
-  } else {
-    setItems((prev) => {
-      const newItems = [...prev, { ...newItem, qty: 1 }];
-      console.log("New items list after add:", newItems);
-      return newItems;
-    });
+    console.log("Adding item:", newItem);
+    const existing = items.find((i) => i.id === newItem.id);
+    if (existing) {
+      updateQty(newItem.id, existing.qty + 1);
+    } else {
+      setItems((prev) => {
+        const newItems = [...prev, { ...newItem, qty: 1 }];
+        console.log("New items list after add:", newItems);
+        return newItems;
+      });
+    }
   }
-}
-
-
 
   const totalPrice = useMemo(() => {
     return items.reduce((sum, item) => sum + item.qty * item.price, 0);
@@ -38,7 +38,7 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
     <div className="fixed inset-0 bg-gray-900 bg-opacity-70 flex justify-center items-center z-50 p-6">
       <div className="bg-white rounded-lg shadow-xl max-w-xl w-full max-h-[85vh] overflow-auto p-8">
         <h3 className="text-2xl font-semibold text-gray-900 mb-8 border-b border-gray-200 pb-3">
-          Edit Order Items
+          {t("editOrderItems")}
         </h3>
 
         <ul className="mb-8 space-y-4 max-h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
@@ -71,8 +71,8 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
 
               <button
                 onClick={() => removeItem(item.id)}
-                aria-label={`Remove ${item.name}`}
-                title={`Remove ${item.name}`}
+                aria-label={t("removeItemAriaLabel", { name: item.name })}
+                title={t("removeItemTitle", { name: item.name })}
                 className="text-red-600 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
               >
                 ✕
@@ -83,26 +83,26 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
 
         <div className="mb-10">
           <label htmlFor="addMeal" className="block text-gray-700 font-semibold mb-3">
-            Add Meal
+            {t("addMeal")}
           </label>
           <select
-        id="addMeal"
-        onChange={(e) => {
-            console.log("Dropdown changed, value:", e.target.value);
-            const meal = menuItems.find((m) => m.id.toString() === e.target.value);
-            if (meal) {
-            console.log("Found meal:", meal);
-            addItem(meal);
-            } else {
-            console.log("Meal not found for id:", e.target.value);
-            }
-            e.target.value = "";
-        }}
-        defaultValue=""
-        className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-        >
-         <option value="" disabled>
-              Select a meal
+            id="addMeal"
+            onChange={(e) => {
+              console.log("Dropdown changed, value:", e.target.value);
+              const meal = menuItems.find((m) => m.id.toString() === e.target.value);
+              if (meal) {
+                console.log("Found meal:", meal);
+                addItem(meal);
+              } else {
+                console.log("Meal not found for id:", e.target.value);
+              }
+              e.target.value = "";
+            }}
+            defaultValue=""
+            className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+          >
+            <option value="" disabled>
+              {t("selectMeal")}
             </option>
             {menuItems.map((meal) => (
               <option key={meal.id} value={meal.id}>
@@ -113,7 +113,7 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
         </div>
 
         <div className="text-right mb-6 text-lg font-semibold text-gray-900">
-          Total: ${totalPrice.toFixed(2)}
+          {t("total")}: ${totalPrice.toFixed(2)}
         </div>
 
         <div className="flex justify-end space-x-4">
@@ -121,13 +121,13 @@ export default function EditableOrder({ order, menuItems, onSave, onCancel }) {
             onClick={() => onSave(items)}
             className="inline-flex justify-center px-6 py-2 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-2 focus:ring-offset-2 text-white font-semibold rounded-md transition"
           >
-            Save
+            {t("save")}
           </button>
           <button
             onClick={onCancel}
             className="inline-flex justify-center px-6 py-2 bg-gray-100 hover:bg-gray-200 focus:ring-gray-300 focus:ring-2 focus:ring-offset-2 text-gray-700 font-semibold rounded-md transition"
           >
-            Cancel
+            {t("cancel")}
           </button>
         </div>
       </div>
