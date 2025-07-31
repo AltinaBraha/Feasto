@@ -7,8 +7,8 @@ import foodMenu from "@/data/food.json";
 
 export default function OurMenuPage() {
   return (
-    <main className="bg-[rgba(221,89,3,0.05)] min-h-screen relative">
-      <div className="max-w-full">
+    <main >
+      <div className="max-w-full bg-[rgba(221,89,3,0.05)] min-h-screen relative">
         <MenuHeader />
         <div className="sm:block hidden">
           <MenuTabs foodMenu={foodMenu} />
