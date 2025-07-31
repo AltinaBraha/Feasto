@@ -37,7 +37,7 @@ export default function EventReservationPage() {
 
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
-      <section className="relative h-[70vh] flex items-center justify-center text-white text-center">
+      <section className="relative h-[90vh] flex items-center justify-center text-white text-center">
         <Image
           src="/img/event-bg.jpg"
           alt="Events Hero"

@@ -26,9 +26,9 @@ export default function ReservationForm() {
   const [email, setEmail] = useState("");
   const [selectedTables, setSelectedTables] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     if (user) {
-      setName(user.displayName || ""); // depends on how you store full name
+      setName(user.displayName || "");
       setEmail(user.email || "");
     } else {
       setName("");
@@ -36,9 +36,6 @@ export default function ReservationForm() {
     }
   }, [user]);
 
-  /**
-   * Kontrollon nëse ka tavolina të mjaftueshme para hapjes së modalit.
-   */
   const handleBookingClick = async (e) => {
     e.preventDefault();
     try {
@@ -55,62 +52,57 @@ export default function ReservationForm() {
 
       if (totalFreeSeats < Number(people)) {
         toast.error(
-          `Nuk ka tavolina të mjaftueshme për ${people} persona në këtë datë dhe orë.`
+          `There are not enough tables available for ${people} people at this date and time.`
         );
-        return; // Mos hap modalin
+        return;
       }
 
-      setShowModal(true); // Hap modal vetëm nëse ka kapacitet
+      setShowModal(true);
     } catch (error) {
       console.error("Error checking tables:", error);
-      toast.error("Nuk mund të kontrollohen tavolinat për momentin.");
+      toast.error("Tables cannot be checked at the moment.");
     }
   };
 
-  /**
-   * Submition i rezervimit.
-   */
   const handleReservationSubmit = async (tablesArray) => {
-  if (!name.trim() || !email.trim()) {
-    toast.error("Please fill in both name and email.");
-    return;
-  }
-  if (!tablesArray || tablesArray.length === 0) {
-    toast.error("Zgjedh të paktën një tavolinë.");
-    return;
-  }
+    if (!name.trim() || !email.trim()) {
+      toast.error("Please fill in both name and email.");
+      return;
+    }
+    if (!tablesArray || tablesArray.length === 0) {
+      toast.error("Select at least one table.");
+      return;
+    }
 
-  const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
-  if (selectedDateTime < new Date()) {
-    toast.error(t("errors.pastTime"));
-    return;
-  }
+    const selectedDateTime = new Date(`${date} ${convertTo24Hour(time)}`);
+    if (selectedDateTime < new Date()) {
+      toast.error(t("errors.pastTime"));
+      return;
+    }
 
-  try {
-    const newReservation = {
-      name,
-      email,
-      people: Number(people),
-      date,
-      time: convertTo24Hour(time),
-      status: "pending",
-      tables: tablesArray,
-    };
+    try {
+      const newReservation = {
+        name,
+        email,
+        people: Number(people),
+        date,
+        time: convertTo24Hour(time),
+        status: "pending",
+        tables: tablesArray,
+      };
 
-    // Pass user from Zustand here 👇
-    await createReservation(newReservation, user);
+      await createReservation(newReservation, user);
 
-    toast.success(t("success.submitted"));
-    setShowModal(false);
-    setName("");
-    setEmail("");
-    setSelectedTables([]);
-  } catch (err) {
-    console.error(err);
-    toast.error(t("errors.submitFailed"));
-  }
-};
-
+      toast.success(t("success.submitted"));
+      setShowModal(false);
+      setName("");
+      setEmail("");
+      setSelectedTables([]);
+    } catch (err) {
+      console.error(err);
+      toast.error(t("errors.submitFailed"));
+    }
+  };
 
   return (
     <>

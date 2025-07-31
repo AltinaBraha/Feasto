@@ -47,9 +47,7 @@ export default function OptionsDisplay({
   try {
     const translated = tSidebar(category);
     if (typeof translated === "string") categoryLabel = translated;
-  } catch {
-    // fallback to raw key
-  }
+  } catch {}
 
   return (
     <>
@@ -104,11 +102,14 @@ export default function OptionsDisplay({
           onClick={() => setSelectedImage(null)}
         >
           <div className="bg-white p-4 rounded-lg shadow-lg max-w-[90%] max-h-[90%]">
-            <Image
-              src={selectedImage}
-              alt="Preview"
-              className="max-w-full max-h-[70vh] rounded-md"
-            />
+            <div className="relative w-[800px] h-[500px]">
+              <Image
+                src={selectedImage}
+                alt="Preview"
+                fill
+                className="object-contain rounded-md"
+              />
+            </div>
           </div>
         </div>
       )}

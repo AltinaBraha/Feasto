@@ -39,8 +39,11 @@ export default function ClientCartSection() {
             <Image
               src={item.image}
               alt={item.name}
-              className="w-16 h-16 object-cover rounded"
+              width={64}
+              height={64}
+              className="object-cover rounded"
             />
+
             <div>
               <h2 className="font-semibold">{item.name}</h2>
               <p className="text-sm text-gray-600">
