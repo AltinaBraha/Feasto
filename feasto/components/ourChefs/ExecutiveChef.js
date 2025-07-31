@@ -14,13 +14,13 @@ export default function ExecutiveChef({ chef }) {
   if (!chef) return null;
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="max-w-4xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-x-6 items-center">
       <div className="w-full">
         <Image
           src={chef.image}
           alt={chef.name}
-          width={500}
-          height={500}
+          width={400}
+          height={400}
           className="object-cover"
         />
       </div>

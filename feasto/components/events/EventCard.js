@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function EventCard({
   id,
@@ -12,6 +13,7 @@ export default function EventCard({
   type,
 }) {
   const router = useRouter();
+  const t = useTranslations("events.card");
 
   const handleClick = () => {
     router.push(`/event-reservation?type=${type}`);
@@ -43,7 +45,7 @@ export default function EventCard({
             onClick={handleClick}
             className="text-orange-600 font-semibold underline"
           >
-            LEARN MORE »
+            {t("learnMore")}
           </button>
           <div className="h-[1px] w-24 bg-[#e4d7cb]" />
         </div>

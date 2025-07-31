@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const galleryImages = [
   "/img/gallery1.jpg",
@@ -19,11 +22,13 @@ const galleryImages = [
 ];
 
 export default function EventGallery() {
+  const t = useTranslations("events.gallery");
+
   return (
     <section className="py-24 px-6 md:px-20">
       <div className="text-center max-w-4xl mx-auto mb-12">
         <h2 className="text-[#dd5903] text-2xl md:text-3xl font-semibold tracking-widest uppercase mb-4">
-          Event Gallery
+          {t("title")}
         </h2>
       </div>
 

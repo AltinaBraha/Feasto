@@ -2,7 +2,7 @@ import QRCode from "react-qr-code";
 import Image from "next/image";
 
 export default function ScanMenuPage() {
-  const qrValue = "http://10.10.10.154:3000/menus/food";
+  const qrValue = "http://10.10.10.177:3000/menus/food";
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gray-50 px-6 py-12">

@@ -11,9 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body className={`${myFont.variable} font-serif`}>
-        {/* <CartProvider> */}
           {children}
-        {/* </CartProvider> */}
       </body>
     </html>
   );

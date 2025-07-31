@@ -1,32 +1,32 @@
 {
-    "Header": {
-  "topBar": {
-    "address": "Rruga B, Pristina",
-    "phone": "+49 123 456789",
-    "email": "contact@feasto.com"
-  },
-  "menu": {
-    "home": "HOME",
-    "menus": "MENUS",
-    "food": "Food",
-    "drinks": "Drinks",
-    "desserts": "Desserts",
-    "aboutUs": "ABOUT US",
-    "ourStory": "Our Story",
-    "ourChefs": "Our Chefs",
-    "contactUs": "Contact",
-    "guestbook": "GUESTBOOK",
-    "leaveReview": "Leave a Review",
-    "whatGuestsSay": "What Our Guests Say",
-    "findTable": "RESERVE NOW",
-    "loginSignUp": "JOIN US ",
-    "myAccount" : "My Account",
-    "reservations": "Reservations",
-    "orders": "Orders",
-    "favorites":"Favorites",
-    "settings": "Settings",
-    "logout":"Logout"
-
+  "Header": {
+    "topBar": {
+      "address": "Rruga B, Pristina",
+      "phone": "+49 123 456789",
+      "email": "contact@feasto.com"
+    },
+    "menu": {
+      "home": "HOME",
+      "menus": "MENUS",
+      "food": "Food",
+      "drinks": "Drinks",
+      "desserts": "Desserts",
+      "aboutUs": "ABOUT US",
+      "ourStory": "Our Story",
+      "ourChefs": "Our Chefs",
+      "contactUs": "Contact",
+      "guestbook": "GUESTBOOK",
+      "leaveReview": "Leave a Review",
+      "whatGuestsSay": "What Our Guests Say",
+      "findTable": "RESERVE NOW",
+      "events": "EVENTS",
+      "loginSignUp": "JOIN US ",
+      "myAccount": "My Account",
+      "reservations": "Reservations",
+      "orders": "Orders",
+      "favorites": "Favorites",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
   }
-}
 }

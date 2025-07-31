@@ -19,7 +19,6 @@ export default async function MeetOurChefsPage() {
 
   return (
     <section className="min-h-screen bg-[rgba(221,89,3,0.05)] text-black overflow-hidden">
-      {/* HERO SECTION */}
       <div className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh] mb-20">
         <Image
           src="/img/chefs-hero.jpg"
@@ -42,7 +41,7 @@ export default async function MeetOurChefsPage() {
       </AnimatedWrapper>
 
       <AnimatedWrapper delay={0.2}>
-        <ChefQuote /> {/* Thirrja e citatit */}
+        <ChefQuote />
       </AnimatedWrapper>
 
       <AnimatedWrapper delay={0.4}>

@@ -1,31 +1,35 @@
 "use client";
-import { PartyPopper, UtensilsCrossed, Heart } from "lucide-react";
 
-const eventTypes = [
-  {
-    id: "wedding",
-    title: "Wedding",
-    description: "Elegant venue, full experience, customizable setup.",
-    icon: <Heart className="w-8 h-8 text-pink-500" />,
-  },
-  {
-    id: "catering",
-    title: "Catering",
-    description: "We bring the menu to your location.",
-    icon: <UtensilsCrossed className="w-8 h-8 text-orange-500" />,
-  },
-  {
-    id: "celebration",
-    title: "Private Celebration",
-    description: "Birthdays, graduations, or any private event.",
-    icon: <PartyPopper className="w-8 h-8 text-purple-500" />,
-  },
-];
+import { PartyPopper, UtensilsCrossed, Heart } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function EventTypeSelector({ setEventType }) {
+  const t = useTranslations("events.typeSelector");
+
+  const eventTypes = [
+    {
+      id: "wedding",
+      title: t("wedding.title"),
+      description: t("wedding.description"),
+      icon: <Heart className="w-8 h-8 text-pink-500" />,
+    },
+    {
+      id: "catering",
+      title: t("catering.title"),
+      description: t("catering.description"),
+      icon: <UtensilsCrossed className="w-8 h-8 text-orange-500" />,
+    },
+    {
+      id: "celebration",
+      title: t("celebration.title"),
+      description: t("celebration.description"),
+      icon: <PartyPopper className="w-8 h-8 text-purple-500" />,
+    },
+  ];
+
   return (
     <div className="text-center space-y-8 px-4">
-      <h2 className="text-3xl font-bold text-orange-700">Select Event Type</h2>
+      <h2 className="text-3xl font-bold text-orange-700">{t("title")}</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {eventTypes.map((event) => (
           <button

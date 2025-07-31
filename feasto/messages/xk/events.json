@@ -1,0 +1,76 @@
+{
+  "events": {
+    "card": {
+      "learnMore": "MËSO MË SHUMË »"
+    },
+    "gallery": {
+      "title": "Galeria e Eventeve"
+    },
+    "hero": {
+      "title": "Fillo Planifikimin e Eventit",
+      "subtitle": "Catering i jashtëzakonshëm. Koordinim i lehtë. Momente të paharrueshme."
+    },
+    "section": {
+      "title": "Eksploro Eventet Tona",
+      "description": "Zgjidh përvojën perfekte për festën tënde."
+    },
+    "search": {
+      "placeholder": "Kërko evente… (p.sh. ditëlindje, dasmë)",
+      "button": "Kërko",
+      "noMatch": "Nuk u gjet ndonjë event përputhës. Provo: ditëlindje, dasmë, ushqim..."
+    },
+    "typeSelector": {
+      "title": "Zgjedh Llojin e Eventit",
+      "wedding": {
+        "title": "Dasmë",
+        "description": "Ambient elegant, përvojë e plotë, dekor sipas dëshirës."
+      },
+      "catering": {
+        "title": "Catering",
+        "description": "Ne sjellim menynë në lokacionin tuaj."
+      },
+      "celebration": {
+        "title": "Festa Private",
+        "description": "Ditëlindje, diplomime, apo çdo festë private."
+      }
+    },
+    "guestForm": {
+      "firstName": "Emri",
+      "lastName": "Mbiemri",
+      "email": "Emaili",
+      "eventDate": "Data e eventit",
+      "guests": "Numri i mysafirëve"
+    },
+    "options": {
+      "selectCategory": "Zgjidh një kategori të vlefshme për të filluar.",
+      "title": "Opsionet për {category}",
+      "pricePerGuest": "€{price} për mysafir",
+      "priceTotal": "€{price} gjithsej"
+    },
+    "reservations": {
+      "card": {
+        "noName": "Pa emër",
+        "noEmail": "Pa email",
+        "guests": "Mysafirë",
+        "eventDate": "Data e eventit",
+        "confirm": "Konfirmo",
+        "reject": "Refuzo"
+      }
+    },
+    "sidebar": {
+      "categories": "Kategoritë",
+      "noCategories": "Nuk ka kategori të disponueshme për këtë event.",
+      "labels": {
+        "decoration": "Dekor",
+        "menu": "Meny"
+      }
+    },
+    "summaryFooter": {
+      "total": "Çmimi Total",
+      "submit": "Dërgo Rezervimin",
+      "success": "Rezervimi u dërgua me sukses!",
+      "errorSubmit": "Dështoi dërgimi i rezervimit. Provo përsëri.",
+      "errorIncomplete": "Ju lutem plotësoni të gjitha fushat dhe zgjedhjet."
+    }
+  }
+}

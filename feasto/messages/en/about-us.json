@@ -1,18 +1,68 @@
 {
-"about-us":{
- "metaTitle": "Our Chefs' Secrets",
-  "metaDescription": "Discover our latest recipes and culinary insights from top chefs.",
-  "headerTitle": "About Us",
-"categories": {
-      "news": "News",
-      "recipes": "Recipes",
-      "food story": "Food Story"
+  "about-us": {
+    "aboutHero": {
+      "title": "ABOUT US",
+      "description": "At Feasto, we believe every meal should be an experience. From locally sourced ingredients to chef-crafted dishes, we bring people together through flavor, ambiance, and genuine hospitality. Whether you are here for a quick bite or a celebration, expect comfort, creativity, and unforgettable taste."
     },
-  "introParagraph": "Feasto is a contemporary restaurant established in June 2025, dedicated to delivering a unique dining experience for all food lovers. Our space blends comfort and elegance, offering a warm ambiance ideal for family lunches, romantic dinners, or special events.",
-  "stats": {
-    "chefs": "Chefs",
-    "happyGuests": "Happy Guests",
-    "averageRating": "Average Rating"
+    "aboutContent": {
+      "section": "About Us",
+      "title": {
+        "line1": "Where Trust",
+        "line2": "Meets Flavor & Innovation"
+      },
+      "description": "At Feasto, we specialize in delivering exceptional culinary experiences tailored to your tastes. With a focus on quality, creativity, and guest satisfaction, we create moments that inspire and endure.",
+      "vision": {
+        "title": "Our Vision",
+        "text": "To be a leading restaurant known for transforming meals into memories, delivering excellence, and creating a place that feels like home."
+      },
+      "mission": {
+        "title": "Unsere Mission",
+        "points": {
+          "point1": "Bereitstellung hochwertiger Gerichte",
+          "point2": "Gastfreundschaft mit Integrität",
+          "point3": "Langfristige Gäste-Beziehungen aufbauen",
+          "point4": "In unser Küchenteam investieren"
+        }
+      },
+      "stats": {
+        "years": "Years Experience",
+        "staff": "Staff Members",
+        "guests": "Guests Served"
+      },
+      "seeOurTeam": "SEE OUR TEAM"
+    },
+    "testimonials": {
+      "section": "GUESTS",
+      "title": "What Our Guests Are Saying",
+      "description": "We don't just serve food — we create moments. Here is what our guests have to say about their experience at Feasto, from the flavors on their plate to the feeling they take home."
+    },
+    "values": {
+      "section": "Our Values",
+      "headline": "Built on Integrity and Hospitality",
+      "freshIngredients": {
+        "title": "Fresh Ingredients",
+        "desc": "We prioritize quality by using fresh, local ingredients in every dish."
+      },
+      "guestSatisfaction": {
+        "title": "Guest Satisfaction",
+        "desc": "Every dish and every moment is crafted to exceed expectations."
+      },
+      "culinaryInnovation": {
+        "title": "Culinary Innovation",
+        "desc": "We create unique flavor experiences blending tradition and creativity."
+      },
+      "trustTransparency": {
+        "title": "Trust & Transparency",
+        "desc": "We believe in honest service and transparent communication."
+      },
+      "sustainability": {
+        "title": "Sustainable Practices",
+        "desc": "Our kitchen follows eco-conscious methods and minimizes waste."
+      },
+      "teamExcellence": {
+        "title": "Team Excellence",
+        "desc": "Our team is our soul — skilled, passionate, and dedicated to hospitality."
+      }
+    }
   }
-}
 }

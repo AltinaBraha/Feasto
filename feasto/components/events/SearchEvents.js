@@ -2,24 +2,21 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function SearchEvents({ onMatch }) {
   const [searchInput, setSearchInput] = useState("");
+  const t = useTranslations("events.search");
+
+  const keywords = {
+    catering: ["catering", "food", "buffet", "service", "menu"],
+    wedding: ["wedding", "marriage", "bride", "groom", "ceremony"],
+    celebration: ["birthday", "party", "graduation", "celebration", "private"],
+  };
 
   const handleSearch = () => {
     const val = searchInput.toLowerCase().trim();
-
-    const keywords = {
-      catering: ["catering", "food", "buffet", "service", "menu"],
-      weddings: ["wedding", "marriage", "bride", "groom", "ceremony"],
-      "private-celebration": [
-        "birthday",
-        "party",
-        "graduation",
-        "celebration",
-        "private",
-      ],
-    };
+    if (!val) return;
 
     let matchedId = null;
 
@@ -31,9 +28,9 @@ export default function SearchEvents({ onMatch }) {
     }
 
     if (matchedId) {
-      onMatch(matchedId);
+      onMatch?.(matchedId);
     } else {
-      alert("No matching event found. Try: birthday, wedding, food...");
+      alert(t("noMatch"));
     }
 
     setSearchInput("");
@@ -45,7 +42,7 @@ export default function SearchEvents({ onMatch }) {
         <Search className="w-5 h-5 text-orange-500" />
         <input
           type="text"
-          placeholder="Search events… (e.g. birthday, wedding)"
+          placeholder={t("placeholder")}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -55,7 +52,7 @@ export default function SearchEvents({ onMatch }) {
           onClick={handleSearch}
           className="bg-[#dd5903] text-white px-6 py-2 text-sm font-semibold uppercase hover:bg-orange-700 transition"
         >
-          Search
+          {t("button")}
         </button>
       </div>
     </div>

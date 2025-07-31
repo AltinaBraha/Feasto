@@ -8,12 +8,10 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "next-intl";
 import AuthButton from "../my-account/common/AuthButton";
 
-
 export default function Header() {
   const t = useTranslations("Header");
   const [isOpen, setIsOpen] = useState(false);
   const locale = useLocale();
-
 
   const handleScroll = () => {
     const element = document.getElementById("reservation-form");
@@ -33,37 +31,30 @@ export default function Header() {
         </div>
       </div>
 
-    <nav className="flex items-center justify-between px-6 md:px-20 py-4">
-      <div className="relative w-40 h-20 cursor-pointer">
-        <Image
-          src="/img/logo.png"
-          alt="Feasto Logo"
-          layout="fill"
-          objectFit="contain"
-          priority
-        />
-      </div>
+      <nav className="flex items-center justify-between px-6 md:px-20 py-4">
+        <div className="relative w-40 h-20 cursor-pointer">
+          <Image
+            src="/img/logo.png"
+            alt="Feasto Logo"
+            layout="fill"
+            objectFit="contain"
+            priority
+          />
+        </div>
 
-
-         <ul className="hidden md:flex space-x-16 font-medium text-xs font-bold">
+        <ul className="hidden md:flex space-x-16 font-medium text-xs font-bold">
           <li className="relative cursor-pointer text-xs tracking-wide font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            <Link href="/">
-              {t("menu.home")}
-            </Link>
+            <Link href="/">{t("menu.home")}</Link>
           </li>
 
           <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t("menu.menus")} <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href={`/${locale}/menus/food`}>
-                  {t("menu.food")}
-                </Link>
+                <Link href={`/${locale}/menus/food`}>{t("menu.food")}</Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href={`/${locale}/menus/drinks`}>
-                  {t("menu.drinks")}
-                </Link>
+                <Link href={`/${locale}/menus/drinks`}>{t("menu.drinks")}</Link>
               </li>
               {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
                 <Link href="/menus/desserts">
@@ -74,17 +65,14 @@ export default function Header() {
           </li>
 
           <li className="relative group cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
-            {t("menu.aboutUs")} <span className="ml-1 text-[8px]">&#x25BC;</span>
+            {t("menu.aboutUs")}{" "}
+            <span className="ml-1 text-[8px]">&#x25BC;</span>
             <ul className="absolute left-0 top-full w-44 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-50">
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href={`/${locale}/about-us`}>
-                  {t("menu.ourStory")}
-                </Link>
+                <Link href={`/${locale}/about-us`}>{t("menu.ourStory")}</Link>
               </li>
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
-                <Link href={`/${locale}/our-chefs`}>
-                  {t("menu.ourChefs")}
-                </Link>
+                <Link href={`/${locale}/our-chefs`}>{t("menu.ourChefs")}</Link>
               </li>
               <li
                 className="px-4 py-2 hover:bg-orange-600 cursor-pointer"
@@ -94,16 +82,19 @@ export default function Header() {
               </li>
             </ul>
           </li>
-        
+
           <li
-        onClick={handleScroll}
-        className="relative cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100"
-      >
-        {t("menu.findTable")}
-        {/* Optional arrow icon if you want */}
-        <span className="ml-1 text-[8px]">&#x25BC;</span>
-      </li>
-        <LanguageSwitcher />
+            onClick={handleScroll}
+            className="relative cursor-pointer text-xs font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+          >
+            {t("menu.findTable")}
+            {/* Optional arrow icon if you want */}
+            <span className="ml-1 text-[8px]">&#x25BC;</span>
+          </li>
+          <li className="relative cursor-pointer text-xs tracking-wide font-bold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+            <Link href={`/${locale}/events`}>{t("menu.events")}</Link>
+          </li>
+          <LanguageSwitcher />
         </ul>
 
         {/* <button
@@ -112,8 +103,7 @@ export default function Header() {
         >
           {t("menu.findTable")}
         </button> */}
-        <AuthButton/>
-  
+        <AuthButton />
 
         <div className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}

@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-export default function AboutHero() {
+export default async function AboutHero() {
+  const t = await getTranslations("about-us.aboutHero");
+
   return (
     <section className="relative w-full h-[90vh]">
       <Image
@@ -15,14 +18,10 @@ export default function AboutHero() {
 
       <div className="absolute inset-0 z-20 flex flex-col justify-center items-start max-w-6xl mx-auto px-6">
         <h1 className="text-white text-4xl sm:text-5xl font-extrabold mb-4">
-          ABOUT US
+          {t("title")}
         </h1>
         <p className="text-white text-sm sm:text-base max-w-xl leading-relaxed">
-          At Feasto, we believe every meal should be an experience. From locally
-          sourced ingredients to chef-crafted dishes, we bring people together
-          through flavor, ambiance, and genuine hospitality. Whether you are
-          here for a quick bite or a celebration, expect comfort, creativity,
-          and unforgettable taste.
+          {t("description")}
         </p>
       </div>
     </section>

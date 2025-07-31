@@ -1,5 +1,5 @@
 {
-"Header": {
+  "Header": {
     "topBar": {
       "address": "Beispielstraße 123, Berlin",
       "phone": "+49 123 456789",
@@ -19,13 +19,14 @@
       "leaveReview": "Bewertung abgeben",
       "whatGuestsSay": "Was unsere Gäste sagen",
       "findTable": "TISCH FINDEN",
-        "loginSignUp": "MITGLIED WERDEN",
-        "myAccount": "Mein Konto",
-        "reservations": "Reservierungen",
-        "orders": "Bestellungen",
-        "favorites": "Favoriten",
-        "settings": "Einstellungen",
-        "logout": "Abmelden"
+      "events": "VERANSTALTUNGEN",
+      "loginSignUp": "MITGLIED WERDEN",
+      "myAccount": "Mein Konto",
+      "reservations": "Reservierungen",
+      "orders": "Bestellungen",
+      "favorites": "Favoriten",
+      "settings": "Einstellungen",
+      "logout": "Abmelden"
     }
   }
 }

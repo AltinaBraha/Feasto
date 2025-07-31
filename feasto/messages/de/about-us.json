@@ -1,59 +1,68 @@
 {
   "about-us": {
-    "metaTitle": "Die Geheimnisse unserer Köche",
-    "metaDescription": "Entdecken Sie unsere neuesten Rezepte und kulinarischen Einblicke von Spitzenköchen.",
-    "headerTitle": "Über uns",
-    "cards": {
-      "1": {
-        "date": "16. März 2022",
-        "category": ["REZEPTE"],
-        "title": "Geräucherte Lachs-Tarte",
-        "description": "Eine leichte und elegante Räucherlachs-Tarte mit Frischkäse, frischen Kräutern und knusprigem Teig – perfekt als raffinierte Vorspeise oder zum Brunch."
+    "aboutHero": {
+      "title": "ÜBER UNS",
+      "description": "Bei Feasto glauben wir, dass jede Mahlzeit ein Erlebnis sein sollte. Von lokal bezogenen Zutaten bis hin zu von Köchen kreierten Gerichten bringen wir Menschen durch Geschmack, Ambiente und echte Gastfreundschaft zusammen. Ob Sie für einen schnellen Happen oder eine Feier hier sind – erwarten Sie Komfort, Kreativität und unvergesslichen Geschmack."
+    },
+    "aboutContent": {
+      "section": "Über uns",
+      "title": {
+        "line1": "Vertrauen trifft",
+        "line2": "auf Geschmack & Innovation"
       },
-      "2": {
-        "date": "15. März 2022",
-        "category": ["ESSENSGESCHICHTE"],
-        "title": "Wunderbares Esserlebnis",
-        "description": "Ein Blick in unsere Küche und die Inspiration hinter einem unserer beliebtesten Gerichte – wo Geschmack, Tradition und Kreativität aufeinandertreffen."
+      "description": "Bei Feasto spezialisieren wir uns auf außergewöhnliche kulinarische Erlebnisse, die auf Ihren Geschmack abgestimmt sind. Mit Fokus auf Qualität, Kreativität und Gästezufriedenheit schaffen wir Momente, die inspirieren und bleiben.",
+      "vision": {
+        "title": "Unsere Vision",
+        "text": "Ein führendes Restaurant zu sein, das dafür bekannt ist, Mahlzeiten in Erinnerungen zu verwandeln, Exzellenz zu liefern und ein Gefühl von Zuhause zu schaffen."
       },
-      "3": {
-        "date": "12. März 2022",
-        "category": ["NACHRICHTEN"],
-        "title": "Feasto bietet jetzt Brunch an",
-        "description": "Großartige Neuigkeiten! Unser beliebtes Feasto-Restaurant serviert nun am Wochenende Brunch mit frisch zubereiteten saisonalen Gerichten und besonderen Getränken."
+      "mission": {
+        "title": "Unsere Mission",
+        "points": {
+          "point1": "Bereitstellung hochwertiger Gerichte",
+          "point2": "Gastfreundschaft mit Integrität",
+          "point3": "Langfristige Gäste-Beziehungen aufbauen",
+          "point4": "In unser Küchenteam investieren"
+        }
       },
-      "4": {
-        "date": "8. März 2022",
-        "category": ["ESSENSGESCHICHTE", "REZEPTE"],
-        "title": "Essen ist die Grundlage wahren Glücks",
-        "description": "Von unserem Küchentisch zu Ihrem – erfahren Sie, wie einfache, nährhafte Zutaten und liebevolles Kochen Trost, Freude und Verbundenheit in jede Mahlzeit bringen."
+      "stats": {
+        "years": "Jahre Erfahrung",
+        "staff": "Mitarbeiter",
+        "guests": "Bediente Gäste"
       },
-      "5": {
-        "date": "7. März 2022",
-        "category": ["NACHRICHTEN", "REZEPTE"],
-        "title": "Schwedische Fleischbällchen & Kartoffelpüree",
-        "description": "Ein klassisches Wohlfühlgericht mit zarten schwedischen Fleischbällchen, cremigem Kartoffelpüree, reichhaltiger Soße und Preiselbeermarmelade – ein zeitloser Favorit."
+      "seeOurTeam": "UNSER TEAM ANSCHAUEN"
+    },
+    "testimonials": {
+      "section": "GÄSTE",
+      "title": "Was unsere Gäste sagen",
+      "description": "Wir servieren nicht nur Essen – wir schaffen Erlebnisse. Hier erfahren Sie, was unsere Gäste über ihre Erfahrungen bei Feasto sagen – vom Geschmack auf dem Teller bis zum Gefühl, das sie mitnehmen."
+    },
+    "values": {
+      "section": "Unsere Werte",
+      "headline": "Gegründet auf Integrität und Gastfreundschaft",
+      "freshIngredients": {
+        "title": "Frische Zutaten",
+        "desc": "Wir legen Wert auf Qualität durch frische, lokale Zutaten in jedem Gericht."
       },
-      "6": {
-        "date": "9. März 2022",
-        "category": ["ESSENSGESCHICHTE"],
-        "title": "Liebe und Essen: Alles dreht sich um Gewürze",
-        "description": "Entdecken Sie die geheime Verbindung zwischen Leidenschaft und Gewürzen mit kräftigen Aromen, aromatischen Zutaten und herzlichen Geschichten hinter jedem Gericht."
+      "guestSatisfaction": {
+        "title": "Gästebefriedigung",
+        "desc": "Jedes Gericht und jeder Moment ist darauf ausgelegt, Erwartungen zu übertreffen."
+      },
+      "culinaryInnovation": {
+        "title": "Kulinarische Innovation",
+        "desc": "Wir schaffen einzigartige Geschmackserlebnisse durch Tradition und Kreativität."
+      },
+      "trustTransparency": {
+        "title": "Vertrauen & Transparenz",
+        "desc": "Wir glauben an ehrlichen Service und transparente Kommunikation."
+      },
+      "sustainability": {
+        "title": "Nachhaltige Praktiken",
+        "desc": "Unsere Küche folgt umweltbewussten Methoden und reduziert Abfall."
+      },
+      "teamExcellence": {
+        "title": "Team-Exzellenz",
+        "desc": "Unser Team ist unsere Seele – kompetent, leidenschaftlich und engagiert."
       }
-    },
-"categories": {
-    "news": "Nachrichten",
-    "recipes": "Rezepte",
-    "food story": "Geschichten über Essen"
-    },
-"introParagraph": "Feasto ist ein modernes Restaurant, das im Juni 2025 gegründet wurde und sich der Bereitstellung eines einzigartigen kulinarischen Erlebnisses für alle Feinschmecker widmet. Unser Raum vereint Komfort und Eleganz und bietet eine warme Atmosphäre, ideal für Familienessen, romantische Abendessen oder besondere Anlässe.",
-  "stats": {
-    "chefs": "Köche",
-    "happyGuests": "Zufriedene Gäste",
-    "averageRating": "Durchschnittliche Bewertung"
-  }
-
-
-  
+    }
   }
 }

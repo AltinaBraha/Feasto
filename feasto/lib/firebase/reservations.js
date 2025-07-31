@@ -13,7 +13,6 @@ import {
 } from "firebase/firestore";
 import { query, where } from "firebase/firestore";
 
-
 const RESERVATIONS_COLLECTION = "reservations";
 const RES_COUNTER_DOC = doc(db, "counters", "reservations");
 
@@ -55,13 +54,12 @@ export const createReservation = async (reservationData, user) => {
     reservationNumber,
     status: reservationData.status || "pending",
     createdAt: serverTimestamp(),
-    ...(user ? { userId: user.uid } : {}), // Zustand user
+    ...(user ? { userId: user.uid } : {}),
   });
 
   const snapshot = await getDoc(docRef);
   return { id: docRef.id, ...snapshot.data() };
 };
-
 
 export const updateReservationStatus = async (id, newStatus) => {
   const docRef = doc(db, RESERVATIONS_COLLECTION, id);
