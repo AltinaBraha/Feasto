@@ -7,7 +7,6 @@ export default function OrderCard({ order, onMarkReady }) {
         isReady ? "bg-gray-100 text-gray-800" : "bg-white text-gray-900"
       } shadow-sm hover:shadow-md`}
     >
-      {/* Përmbajtja e sipërme */}
       <div className="space-y-2 flex-1">
         <h2 className="text-lg font-bold">
           Order{" "}
@@ -28,7 +27,6 @@ export default function OrderCard({ order, onMarkReady }) {
         </ul>
       </div>
 
-      {/* Përmbajtja e poshtme */}
       <div className="mt-4 space-y-1">
         <p className="font-semibold text-orange-600">Total: ${order.total}</p>
         <p className="text-sm text-gray-600">Type: {order.type}</p>

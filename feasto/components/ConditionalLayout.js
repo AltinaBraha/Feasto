@@ -9,17 +9,18 @@ import ChatWidget from "@/components/chatbot/ChatWidget";
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
 
-  const localeNormalizedPath = pathname.replace(/^\/(en|de|sq)/, "");
+  const normalizedPath = pathname.replace(/^\/(en|de|sq)/, "");
 
   const hideHeader =
-    localeNormalizedPath === "/staff-login" ||
-    localeNormalizedPath.startsWith("/dashboard") ||
-    localeNormalizedPath.startsWith("/display") ||
-    localeNormalizedPath.startsWith("/menus/scan-menu");
+    normalizedPath === "/staff-login" ||
+    normalizedPath.startsWith("/dashboard") ||
+    normalizedPath.startsWith("/display") ||
+    normalizedPath.startsWith("/menus/scan-menu");
 
   const hideChat =
-    localeNormalizedPath === "/menus/food" ||
-    localeNormalizedPath === "/menus/drinks";
+    normalizedPath.startsWith("/dashboard") ||
+    normalizedPath === "/menus/food" ||
+    normalizedPath === "/menus/drinks";
 
   return (
     <>

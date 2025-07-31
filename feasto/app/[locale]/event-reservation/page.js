@@ -37,8 +37,6 @@ export default function EventReservationPage() {
 
   return (
     <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
-      {/* HERO SECTION INLINE */}
-
       <section className="relative h-[70vh] flex items-center justify-center text-white text-center">
         <Image
           src="/img/event-bg.jpg"
@@ -59,7 +57,6 @@ export default function EventReservationPage() {
         </div>
       </section>
 
-      {/* CONTENT */}
       <div className="pt-24 pb-56 px-4 max-w-[1200px] mx-auto">
         {!eventType ? (
           <EventTypeSelector setEventType={setEventType} />

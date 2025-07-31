@@ -5,9 +5,10 @@ import { useState } from "react";
 import OrderModal from "@/components/shop-page/OrderModal";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function ClientCartSection() {
-  const t = useTranslations("cart"); 
+  const t = useTranslations("cart");
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const { cart, removeFromCart, updateQty, clearCart } = useCart();
 
@@ -30,9 +31,16 @@ export default function ClientCartSection() {
   return (
     <>
       {cart.map((item) => (
-        <div key={item.id} className="flex items-center justify-between py-3 border-b">
+        <div
+          key={item.id}
+          className="flex items-center justify-between py-3 border-b"
+        >
           <div className="flex items-center gap-4">
-            <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+            <Image
+              src={item.image}
+              alt={item.name}
+              className="w-16 h-16 object-cover rounded"
+            />
             <div>
               <h2 className="font-semibold">{item.name}</h2>
               <p className="text-sm text-gray-600">
@@ -54,9 +62,7 @@ export default function ClientCartSection() {
               onClick={() => updateQty(item.id, item.qty + 1)}
               className="px-2 py-1 border"
               aria-label={t("increaseQty")}
-            >
-              +
-            </button>
+            ></button>
             <button
               onClick={() => removeFromCart(item.id)}
               className="ml-4 text-red-500 text-xl"

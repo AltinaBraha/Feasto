@@ -5,12 +5,11 @@ import { getTranslations } from "next-intl/server";
 
 export default async function AboutContent() {
   const t = await getTranslations("about-us.aboutContent");
-  const missionPoints = Object.values(t.raw("mission.points")); // Lexojmë objektin si array
+  const missionPoints = Object.values(t.raw("mission.points"));
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
       <div className="grid lg:grid-cols-2 gap-6 items-start">
-        {/* Left Column */}
         <div className="space-y-4">
           <p className="text-orange-500 text-sm font-semibold uppercase tracking-wide">
             {t("section")}
@@ -34,14 +33,12 @@ export default async function AboutContent() {
           </div>
         </div>
 
-        {/* Right Column */}
         <div className="space-y-4 max-w-[520px]">
           <p className="text-gray-700 text-sm leading-relaxed text-justify">
             {t("description")}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            {/* Vision */}
             <div>
               <h4 className="font-semibold bg-black text-white px-3 py-1.5 text-sm w-full block mb-2">
                 {t("vision.title")}
@@ -51,7 +48,6 @@ export default async function AboutContent() {
               </p>
             </div>
 
-            {/* Mission */}
             <div>
               <h4 className="font-semibold bg-black text-white px-3 py-1.5 text-sm w-full block mb-2">
                 {t("mission.title")}
@@ -69,7 +65,6 @@ export default async function AboutContent() {
             </div>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-3 gap-4 text-center mt-10 max-w-[520px]">
             <div>
               <h3 className="text-2xl font-bold text-gray-900">
@@ -91,7 +86,6 @@ export default async function AboutContent() {
             </div>
           </div>
 
-          {/* Bottom Image */}
           <div className="pt-4">
             <Image
               src="/img/a1.jpg"

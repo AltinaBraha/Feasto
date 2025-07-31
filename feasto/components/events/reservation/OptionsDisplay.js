@@ -104,7 +104,7 @@ export default function OptionsDisplay({
           onClick={() => setSelectedImage(null)}
         >
           <div className="bg-white p-4 rounded-lg shadow-lg max-w-[90%] max-h-[90%]">
-            <img
+            <Image
               src={selectedImage}
               alt="Preview"
               className="max-w-full max-h-[70vh] rounded-md"

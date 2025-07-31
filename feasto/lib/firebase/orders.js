@@ -13,13 +13,9 @@ import {
 } from "firebase/firestore";
 import { query, where } from "firebase/firestore";
 
-
 const ORDERS_COLLECTION = "orders";
 const COUNTER_DOC = doc(db, "counters", "orders");
 
-/**
- * Merr numrin radhor të ardhshëm për porositë.
- */
 const getNextOrderNumber = async () => {
   return await runTransaction(db, async (transaction) => {
     const counterDoc = await transaction.get(COUNTER_DOC);
@@ -33,9 +29,6 @@ const getNextOrderNumber = async () => {
   });
 };
 
-/**
- * Fetch të gjitha porositë e renditura sipas numrit radhor.
- */
 export const fetchOrders = async () => {
   const snapshot = await getDocs(collection(db, ORDERS_COLLECTION));
   return snapshot.docs
@@ -43,9 +36,6 @@ export const fetchOrders = async () => {
     .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
 };
 
-/**
- * Merr një porosi sipas ID-së.
- */
 export const getOrderById = async (id) => {
   const docRef = doc(db, ORDERS_COLLECTION, id);
   const snapshot = await getDoc(docRef);
@@ -63,7 +53,7 @@ export const createOrder = async (orderData) => {
     orderNumber,
     status: orderData.status || "pending",
     createdAt: serverTimestamp(),
-    userId: orderData.userId,  
+    userId: orderData.userId,
   });
 
   const snapshot = await getDoc(docRef);
@@ -77,7 +67,7 @@ export const fetchOrdersByUser = async (userId) => {
   );
   const snapshot = await getDocs(q);
   return snapshot.docs
-    .map(doc => ({ id: doc.id, ...doc.data() }))
+    .map((doc) => ({ id: doc.id, ...doc.data() }))
     .sort((a, b) => (a.orderNumber || 0) - (b.orderNumber || 0));
 };
 

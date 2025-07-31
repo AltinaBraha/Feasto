@@ -8,7 +8,6 @@ export default function ReservationCard({
     reservation;
   const isReserved = status === "confirmed" || status === "rejected";
 
-  // Logjika për të shfaqur tavolinat
   const displayTables = Array.isArray(tables)
     ? tables.join(" & ")
     : table || "-";
