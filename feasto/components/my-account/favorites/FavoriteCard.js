@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Favorite from "@/components/my-account/favorites/Favorite";
-import { useCart } from "@/components/CartProvider";
+import { useCartStore } from "@/lib/stores/cartStore"; 
 import { useTranslations } from "next-intl";
 
 export default function FavoriteCard({ item }) {
-  const { addToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart); 
   const t = useTranslations("Favorites");
 
   return (

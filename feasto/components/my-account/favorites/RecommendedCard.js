@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "@/components/CartProvider";
+import { useCartStore } from "@/lib/stores/cartStore"; 
 import Favorite from "@/components/my-account/favorites/Favorite";
 import { useTranslations } from "next-intl";
 
 export default function RecommendedCard({ item }) {
-  const { addToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart); 
   const t = useTranslations("Favorites");
 
   return (

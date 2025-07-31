@@ -10,13 +10,15 @@ import { useTranslations } from "next-intl";
 
 export default function SettingsPage() {
   const t = useTranslations("Settings");
-  const { user, initAuthListener } = useAuthStore();
-
-  useEffect(() => {
-    initAuthListener?.();
-  }, [initAuthListener]);
+  const { user} = useAuthStore();
 
   const { profile, loading, actions } = useUserProfile(user);
+
+   useEffect(() => {
+    if (user === null) {
+      router.replace("/en"); 
+    }
+  }, [user, router]);
 
   if (!user) return null;
 

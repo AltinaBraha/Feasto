@@ -1,9 +1,9 @@
-// app/[locale]/layout.tsx
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/lib/i18n/routing";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import RootProvider from "@/auth/AuthInit";
 
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
@@ -16,7 +16,9 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ConditionalLayout>{children}</ConditionalLayout>
+      <RootProvider> 
+        <ConditionalLayout>{children}</ConditionalLayout>
+      </RootProvider>
     </NextIntlClientProvider>
   );
 }

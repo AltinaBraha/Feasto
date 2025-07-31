@@ -1,4 +1,4 @@
-"use client";
+
 
 export default function Detail({ icon, label, value }) {
   return (

@@ -12,6 +12,7 @@ import AccountBanner from "@/components/my-account/common/AccountBanner";
 
 import foodData from "@/data/food.json";
 import { useTranslations } from "next-intl";
+import CartButton from "@/components/menu/CartButton";
 
 export default function FavoritesPage() {
   const t = useTranslations("Favorites");
@@ -72,6 +73,7 @@ export default function FavoritesPage() {
           setSearchTerm={setSearchTerm}
         />
         <RecommendedSection favorites={favorites} foodData={foodData} />
+         <CartButton />
       </div>
     </>
   );

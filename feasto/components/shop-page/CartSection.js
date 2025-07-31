@@ -38,10 +38,12 @@ export default function ClientCartSection() {
         >
           <div className="flex items-center gap-4">
             <Image
-              src={item.image}
-              alt={item.name}
-              className="w-16 h-16 object-cover rounded"
-            />
+                src={item.image}
+                alt={item.name}
+                width={64}    // 16 * 4 = 64px (or just use 64 to match class w-16)
+                height={64}   // same for height
+                className="object-cover rounded"
+              />
             <div>
               <h2 className="font-semibold">{item.name}</h2>
               <p className="text-sm text-gray-600">
