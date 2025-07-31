@@ -1,31 +1,32 @@
 {
-     "Header": {
-  "topBar": {
-    "address": "Rruga Shembull 123, Berlin",
-    "phone": "+49 123 456789",
-    "email": "kontakt@shembull.de"
-  },
-  "menu": {
-    "home": "BALLINA",
-    "menus": "MENYTË",
-    "food": "Ushqim",
-    "drinks": "Pije",
-    "desserts": "Ëmbëlsira",
-    "aboutUs": "RRETH NESH",
-    "ourStory": "Historia Jonë",
-    "ourChefs": "Kuzhinierët Tanë",
-    "contactUs": "Kontakti",
-    "guestbook": "LIBRI I MYSAFIRËVE",
-    "leaveReview": "Lësho një Vlerësim",
-    "whatGuestsSay": "Çfarë Thonë Mysafirët Tanë",
-    "findTable": "  REZERVO  ",
-     "loginSignUp": " KYÇU ",
-      "myAccount" : "Llogaria ime",
-    "reservations": "Rezervimet",
-    "orders": "Porositë",
-    "favorites":"Të preferuarat",
-    "settings": "Cilësimet",
-    "logout":"Çkyçu"
+  "Header": {
+    "topBar": {
+      "address": "Rruga Shembull 123, Berlin",
+      "phone": "+49 123 456789",
+      "email": "kontakt@shembull.de"
+    },
+    "menu": {
+      "home": "BALLINA",
+      "menus": "MENYTË",
+      "food": "Ushqim",
+      "drinks": "Pije",
+      "desserts": "Ëmbëlsira",
+      "aboutUs": "RRETH NESH",
+      "ourStory": "Historia Jonë",
+      "ourChefs": "Kuzhinierët Tanë",
+      "contactUs": "Kontakti",
+      "guestbook": "LIBRI I MYSAFIRËVE",
+      "leaveReview": "Lësho një Vlerësim",
+      "whatGuestsSay": "Çfarë Thonë Mysafirët Tanë",
+      "findTable": "  REZERVO  ",
+      "events": "EVENTE",
+      "loginSignUp": " KYÇU ",
+      "myAccount": "Llogaria ime",
+      "reservations": "Rezervimet",
+      "orders": "Porositë",
+      "favorites": "Të preferuarat",
+      "settings": "Cilësimet",
+      "logout": "Çkyçu"
+    }
   }
-}
 }

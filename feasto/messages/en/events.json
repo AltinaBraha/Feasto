@@ -1,0 +1,78 @@
+{
+  "events": {
+    "card": {
+      "learnMore": "LEARN MORE »"
+    },
+    "gallery": {
+      "title": "Event Gallery"
+    },
+    "hero": {
+      "title": "Start Planning Your Event",
+      "subtitle": "Exceptional Catering. Seamless Coordination. Unforgettable Moments."
+    },
+    "section": {
+      "title": "Explore Our Events",
+      "description": "Choose the perfect experience for your celebration."
+    },
+    "search": {
+      "placeholder": "Search events… (e.g. birthday, wedding)",
+      "button": "Search",
+      "noMatch": "No matching event found. Try: birthday, wedding, food..."
+    },
+    "typeSelector": {
+      "title": "Select Event Type",
+      "wedding": {
+        "title": "Wedding",
+        "description": "Elegant venue, full experience, customizable setup."
+      },
+      "catering": {
+        "title": "Catering",
+        "description": "We bring the menu to your location."
+      },
+      "celebration": {
+        "title": "Private Celebration",
+        "description": "Birthdays, graduations, or any private event."
+      }
+    },
+    "guestForm": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "eventDate": "Event Date",
+      "guests": "Guests"
+    },
+
+    "options": {
+      "selectCategory": "Select a valid category to begin.",
+      "title": "{category} Options",
+      "pricePerGuest": "€{price} per guest",
+      "priceTotal": "€{price} total"
+    },
+
+    "reservations": {
+      "card": {
+        "noName": "No Name",
+        "noEmail": "No Email",
+        "guests": "Guests",
+        "eventDate": "Event Date",
+        "confirm": "Confirm",
+        "reject": "Reject"
+      }
+    },
+    "sidebar": {
+      "categories": "Categories",
+      "noCategories": "No categories available for this event.",
+      "labels": {
+        "decoration": "Decoration",
+        "menu": "Menu"
+      }
+    },
+    "summaryFooter": {
+      "total": "Total Price",
+      "submit": "Submit Reservation",
+      "success": "Reservation submitted successfully!",
+      "errorSubmit": "Failed to submit reservation. Try again.",
+      "errorIncomplete": "Please complete all required fields and selections."
+    }
+  }
+}

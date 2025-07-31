@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -8,6 +9,7 @@ import "swiper/css/pagination";
 import Image from "next/image";
 
 export default function TestimonialsSlider() {
+  const t = useTranslations("about-us.testimonials");
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
@@ -23,15 +25,13 @@ export default function TestimonialsSlider() {
     <section className="max-w-6xl mx-auto px-4 py-24 text-center space-y-12">
       <div className="space-y-6">
         <p className="text-orange-500 text-sm font-semibold uppercase tracking-wide">
-          GUESTS
+          {t("section")}
         </p>
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-          What Our Guests Are Saying
+          {t("title")}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm leading-relaxed">
-          We dont just serve food — we create moments. Here is what our guests
-          have to say about their experience at Feasto, from the flavors on
-          their plate to the feeling they take home.
+          {t("description")}
         </p>
       </div>
 
@@ -81,12 +81,11 @@ export default function TestimonialsSlider() {
         .custom-pagination .swiper-pagination-bullet {
           width: 8px;
           height: 8px;
-          background-color: #d1d5db; /* gray-300 */
+          background-color: #d1d5db;
           border-radius: 9999px;
         }
-
         .custom-pagination .swiper-pagination-bullet-active {
-          background-color: #f97316; /* orange-500 */
+          background-color: #f97316;
         }
       `}</style>
     </section>

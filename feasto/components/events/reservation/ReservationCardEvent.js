@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export default function ReservationCardEvent({
   reservation,
   onConfirm,
@@ -18,6 +20,7 @@ export default function ReservationCardEvent({
   } = reservation;
 
   const isReserved = status === "confirmed" || status === "rejected";
+  const t = useTranslations("events.reservations.card");
 
   return (
     <div
@@ -36,12 +39,15 @@ export default function ReservationCardEvent({
 
       <div className="space-y-2">
         <h3 className="text-lg font-bold">
-          {firstName || "No Name"} {lastName || ""}
+          {firstName || t("noName")} {lastName || ""}
         </h3>
-        <p className="text-sm text-gray-700">{email || "No Email"}</p>
-        <p className="text-sm">Guests: {guests || "-"}</p>
+        <p className="text-sm text-gray-700">{email || t("noEmail")}</p>
         <p className="text-sm">
-          Event Date: <span className="font-medium">{eventDate || "N/A"}</span>
+          {t("guests")}: {guests || "-"}
+        </p>
+        <p className="text-sm">
+          {t("eventDate")}:{" "}
+          <span className="font-medium">{eventDate || "N/A"}</span>
         </p>
 
         {eventType && (
@@ -58,7 +64,7 @@ export default function ReservationCardEvent({
             className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 transition"
             disabled={!id}
           >
-            Confirm
+            {t("confirm")}
           </button>
           <button
             onClick={() =>
@@ -71,7 +77,7 @@ export default function ReservationCardEvent({
             className="bg-red-500 text-white py-1 px-4 rounded-md hover:bg-red-600 transition"
             disabled={!id}
           >
-            Reject
+            {t("reject")}
           </button>
         </div>
       )}

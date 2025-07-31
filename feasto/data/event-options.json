@@ -51,13 +51,13 @@
       },
       {
         "id": "decor5",
-        "title": "Minimal Chic",
+        "title": "Birthday Vibes",
         "img": "/img/c2.webp",
         "price": 350
       },
       {
         "id": "decor6",
-        "title": "Minimal Chic",
+        "title": "Graduation",
         "img": "/img/c3.webp",
         "price": 350
       }
@@ -71,7 +71,7 @@
       },
       {
         "id": "menu5",
-        "title": "Buffet Deluxe",
+        "title": "Birthday Buffet",
         "img": "/img/pmenu2.webp",
         "price": 30
       },
@@ -99,8 +99,8 @@
       },
       {
         "id": "decor9",
-        "title": "Outdoor Tent",
-        "img": "/img/cd1.jpg",
+        "title": "Classic",
+        "img": "/img/cd3.jpg",
         "price": 220
       }
     ],

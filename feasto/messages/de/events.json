@@ -1,0 +1,77 @@
+{
+  "events": {
+    "card": {
+      "learnMore": "MEHR ERFAHREN »"
+    },
+    "gallery": {
+      "title": "Eventgalerie"
+    },
+    "hero": {
+      "title": "Beginne mit der Planung deines Events",
+      "subtitle": "Außergewöhnliches Catering. Nahtlose Koordination. Unvergessliche Momente."
+    },
+    "section": {
+      "title": "Entdecken Sie unsere Events",
+      "description": "Wählen Sie das perfekte Erlebnis für Ihre Feier."
+    },
+    "search": {
+      "placeholder": "Events durchsuchen… (z.B. Geburtstag, Hochzeit)",
+      "button": "Suchen",
+      "noMatch": "Kein passendes Event gefunden. Versuche: Geburtstag, Hochzeit, Essen..."
+    },
+    "typeSelector": {
+      "title": "Veranstaltungsart auswählen",
+      "wedding": {
+        "title": "Hochzeit",
+        "description": "Eleganter Ort, vollständiges Erlebnis, individuelle Gestaltung."
+      },
+      "catering": {
+        "title": "Catering",
+        "description": "Wir bringen das Menü zu Ihnen."
+      },
+      "celebration": {
+        "title": "Private Feier",
+        "description": "Geburtstage, Abschlussfeiern oder andere private Events."
+      }
+    },
+    "guestForm": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "eventDate": "Veranstaltungsdatum",
+      "guests": "Gästeanzahl"
+    },
+    "options": {
+      "selectCategory": "Wählen Sie eine gültige Kategorie aus, um zu beginnen.",
+      "title": "{category} Optionen",
+      "pricePerGuest": "€{price} pro Gast",
+      "priceTotal": "€{price} insgesamt"
+    },
+
+    "reservations": {
+      "card": {
+        "noName": "Kein Name",
+        "noEmail": "Keine E-Mail",
+        "guests": "Gäste",
+        "eventDate": "Veranstaltungsdatum",
+        "confirm": "Bestätigen",
+        "reject": "Ablehnen"
+      }
+    },
+    "sidebar": {
+      "categories": "Kategorien",
+      "noCategories": "Keine Kategorien für dieses Event verfügbar.",
+      "labels": {
+        "decoration": "Dekoration",
+        "menu": "Menü"
+      }
+    },
+    "summaryFooter": {
+      "total": "Gesamtpreis",
+      "submit": "Reservierung abschicken",
+      "success": "Reservierung erfolgreich gesendet!",
+      "errorSubmit": "Reservierung fehlgeschlagen. Bitte erneut versuchen.",
+      "errorIncomplete": "Bitte alle Pflichtfelder und Optionen ausfüllen."
+    }
+  }
+}

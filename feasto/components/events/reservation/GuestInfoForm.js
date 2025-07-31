@@ -1,8 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthStore } from "@/lib/stores/authStore";
+import { useTranslations } from "next-intl";
 
 export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
+  const user = useAuthStore((state) => state.user);
+  const t = useTranslations("events.guestForm");
+
+  useEffect(() => {
+    if (user) {
+      const fullName = user.displayName || user.fullName || "";
+      const [firstName, lastName] = fullName.trim().split(" ");
+      setGuestInfo((prev) => ({
+        ...prev,
+        firstName: firstName || prev.firstName || "",
+        lastName: lastName || prev.lastName || "",
+        email: user.email || prev.email || "",
+      }));
+    }
+  }, [user, setGuestInfo]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setGuestInfo((prev) => ({
@@ -18,7 +36,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
         name="firstName"
         value={guestInfo.firstName || ""}
         onChange={handleChange}
-        placeholder="First Name"
+        placeholder={t("firstName")}
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />
@@ -27,7 +45,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
         name="lastName"
         value={guestInfo.lastName || ""}
         onChange={handleChange}
-        placeholder="Last Name"
+        placeholder={t("lastName")}
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />
@@ -36,7 +54,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
         name="email"
         value={guestInfo.email || ""}
         onChange={handleChange}
-        placeholder="Email"
+        placeholder={t("email")}
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />
@@ -54,7 +72,7 @@ export default function GuestInfoForm({ guestInfo, setGuestInfo }) {
         min={1}
         value={guestInfo.guests || ""}
         onChange={handleChange}
-        placeholder="Guests"
+        placeholder={t("guests")}
         className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
         required
       />

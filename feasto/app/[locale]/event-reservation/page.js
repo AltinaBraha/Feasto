@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import Image from "next/image";
 
 import EventTypeSelector from "@/components/events/reservation/EventTypeSelector";
 import GuestInfoForm from "@/components/events/reservation/GuestInfoForm";
 import Sidebar from "@/components/events/reservation/Sidebar";
 import OptionsDisplay from "@/components/events/reservation/OptionsDisplay";
 import SummaryFooter from "@/components/events/reservation/SummaryFooter";
+import Image from "next/image";
 
 export default function EventReservationPage() {
   const searchParams = useSearchParams();
@@ -36,25 +36,31 @@ export default function EventReservationPage() {
   }, [typeFromUrl, eventType]);
 
   return (
-    <main className="bg-[#fff9f3] min-h-screen">
-      {/* HERO SECTION */}
-      <div className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh]">
+    <main className="bg-[rgba(221,89,3,0.05)] min-h-screen">
+      {/* HERO SECTION INLINE */}
+
+      <section className="relative h-[70vh] flex items-center justify-center text-white text-center">
         <Image
-          src="/img/"
-          alt="Hero"
-          fill
-          className="absolute inset-0 w-full h-full object-cover brightness-[.5] scale-105 transition-transform duration-1000 hover:scale-110"
+          src="/img/event-bg.jpg"
+          alt="Events Hero"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          priority
+          className="z-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent"></div>
-        <div className="relative z-10 flex items-center justify-center h-full px-4 text-center">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide drop-shadow-lg">
-            Start Planning Your Event
+        <div className="z-10 bg-black/50 w-full h-full absolute top-0 left-0" />
+        <div className="z-20 relative px-4">
+          <h1 className="text-4xl md:text-6xl font-light tracking-wide uppercase">
+            {eventType
+              ? `${eventType} Event Planning`
+              : "Start Planning Your Event"}
           </h1>
         </div>
-      </div>
+      </section>
 
-      {/* CONTENT BELOW HERO */}
-      <div className="pt-20 pb-12 px-4 max-w-[1200px] mx-auto">
+      {/* CONTENT */}
+      <div className="pt-24 pb-56 px-4 max-w-[1200px] mx-auto">
         {!eventType ? (
           <EventTypeSelector setEventType={setEventType} />
         ) : (

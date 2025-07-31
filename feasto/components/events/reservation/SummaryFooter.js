@@ -3,6 +3,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 export default function SummaryFooter({
   guestInfo,
@@ -11,6 +12,8 @@ export default function SummaryFooter({
   setSelections,
   eventType,
 }) {
+  const t = useTranslations("events.summaryFooter");
+
   const { decoration, menu } = selections ?? {};
   const numberOfGuests = parseInt(guestInfo.guests) || 0;
 
@@ -28,7 +31,7 @@ export default function SummaryFooter({
 
   const handleSubmit = async () => {
     if (!isComplete) {
-      toast.error("Please complete all required fields and selections.");
+      toast.error(t("errorIncomplete"));
       return;
     }
 
@@ -44,7 +47,7 @@ export default function SummaryFooter({
 
     try {
       await addDoc(collection(db, "eventReservations"), reservationData);
-      toast.success("Reservation submitted successfully!");
+      toast.success(t("success"));
 
       setGuestInfo({
         firstName: "",
@@ -61,14 +64,14 @@ export default function SummaryFooter({
       });
     } catch (error) {
       console.error("Reservation error:", error);
-      toast.error("Failed to submit reservation. Try again.");
+      toast.error(t("errorSubmit"));
     }
   };
 
   return (
     <footer className="w-full px-6 py-6 bg-white flex flex-col md:flex-row justify-between items-center gap-4 shadow-md">
       <div className="text-lg font-bold text-gray-800">
-        Total Price:{" "}
+        {t("total")}:{" "}
         <span className="text-orange-600">€{totalPrice.toFixed(2)}</span>
       </div>
       <button
@@ -76,7 +79,7 @@ export default function SummaryFooter({
         disabled={!isComplete}
         className="px-6 py-2 bg-orange-600 text-white rounded-lg font-medium transition hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Submit Reservation
+        {t("submit")}
       </button>
     </footer>
   );

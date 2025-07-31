@@ -1,19 +1,24 @@
 import Image from "next/image";
 import SeeOurTeamButton from "@/components/about-us/SeeOurTeamButton";
 import { Check } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export default function AboutContent() {
+export default async function AboutContent() {
+  const t = await getTranslations("about-us.aboutContent");
+  const missionPoints = Object.values(t.raw("mission.points")); // Lexojmë objektin si array
+
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
       <div className="grid lg:grid-cols-2 gap-6 items-start">
+        {/* Left Column */}
         <div className="space-y-4">
           <p className="text-orange-500 text-sm font-semibold uppercase tracking-wide">
-            About Us
+            {t("section")}
           </p>
           <h2 className="text-3xl font-extrabold text-gray-900 leading-snug">
-            Where Trust
+            {t("title.line1")}
             <br />
-            Meets Flavor & Innovation
+            {t("title.line2")}
           </h2>
 
           <Image
@@ -21,7 +26,7 @@ export default function AboutContent() {
             alt="Restaurant team"
             width={440}
             height={260}
-            className=" shadow-sm"
+            className="shadow-sm"
           />
 
           <div className="pt-2">
@@ -29,87 +34,71 @@ export default function AboutContent() {
           </div>
         </div>
 
+        {/* Right Column */}
         <div className="space-y-4 max-w-[520px]">
           <p className="text-gray-700 text-sm leading-relaxed text-justify">
-            At Feasto, we specialize in delivering exceptional culinary
-            experiences tailored to your tastes. With a focus on quality,
-            creativity, and guest satisfaction, we create moments that inspire
-            and endure.
+            {t("description")}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4">
+            {/* Vision */}
             <div>
               <h4 className="font-semibold bg-black text-white px-3 py-1.5 text-sm w-full block mb-2">
-                Our Vision
+                {t("vision.title")}
               </h4>
               <p className="text-sm text-gray-600 leading-relaxed text-justify">
-                To be a leading restaurant known for transforming meals into
-                memories, delivering excellence, and creating a place that feels
-                like home.
+                {t("vision.text")}
               </p>
             </div>
+
+            {/* Mission */}
             <div>
               <h4 className="font-semibold bg-black text-white px-3 py-1.5 text-sm w-full block mb-2">
-                Our Mission
+                {t("mission.title")}
               </h4>
-
               <ul className="text-sm text-gray-600 space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-500">
-                    <Check className="w-3 h-3 text-white" />
-                  </span>
-                  To provide high-quality dishes
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-500">
-                    <Check className="w-3 h-3 text-white" />
-                  </span>
-                  Hospitality with integrity
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-500">
-                    <Check className="w-3 h-3 text-white" />
-                  </span>
-                  Build long-term guest relationships
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-500">
-                    <Check className="w-3 h-3 text-white" />
-                  </span>
-                  Invest in our culinary team
-                </li>
+                {missionPoints.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-500">
+                      <Check className="w-3 h-3 text-white" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
+          {/* Stats */}
           <div className="grid grid-cols-3 gap-4 text-center mt-10 max-w-[520px]">
             <div>
               <h3 className="text-2xl font-bold text-gray-900">
                 10 <span className="text-orange-500">+</span>
               </h3>
-              <p className="text-gray-600 text-xs mt-1">Years Experience</p>
+              <p className="text-gray-600 text-xs mt-1">{t("stats.years")}</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900">
                 50 <span className="text-orange-500">+</span>
               </h3>
-              <p className="text-gray-600 text-xs mt-1">Staff Members</p>
+              <p className="text-gray-600 text-xs mt-1">{t("stats.staff")}</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900">
                 1M <span className="text-orange-500">+</span>
               </h3>
-              <p className="text-gray-600 text-xs mt-1">Guests Served</p>
+              <p className="text-gray-600 text-xs mt-1">{t("stats.guests")}</p>
             </div>
           </div>
 
+          {/* Bottom Image */}
           <div className="pt-4">
             <Image
               src="/img/a1.jpg"
               alt="Restaurant dining"
               width={520}
               height={260}
-              className=" shadow-sm"
+              className="shadow-sm"
             />
           </div>
         </div>

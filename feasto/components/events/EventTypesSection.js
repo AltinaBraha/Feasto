@@ -3,10 +3,10 @@
 import { useState } from "react";
 import EventCard from "@/components/events/EventCard";
 import SearchEvents from "@/components/events/SearchEvents";
-import events from "@/data/events.json"; // ⬅️ import direkt i JSON-it
+import events from "@/data/events.json";
 
 export default function EventTypesSection() {
-  const [filteredEvents] = useState(events); // ⬅️ përdorim direkt të JSON-it
+  const [filteredEvents] = useState(events);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
