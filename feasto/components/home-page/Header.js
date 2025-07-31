@@ -56,11 +56,11 @@ export default function Header() {
               <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
                 <Link href={`/${locale}/menus/drinks`}>{t("menu.drinks")}</Link>
               </li>
-              {/* <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
+              <li className="px-4 py-2 hover:bg-orange-600 cursor-pointer">
                 <Link href="/menus/desserts">
                   {t("menu.desserts")}
                 </Link>
-              </li> */}
+              </li> 
             </ul>
           </li>
 
