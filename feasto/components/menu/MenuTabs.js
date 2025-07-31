@@ -21,7 +21,7 @@ export default function MenuTabs({ foodMenu }) {
   const filteredMenu = foodMenu.filter((item) =>
     activeSubcategory === "all-food"
       ? true
-      : item.subcategory.toLowerCase() === activeSubcategory
+      : item.subCategory.toLowerCase() === activeSubcategory
   );
 
   const groupedBySubcategory = subcategoryKeys
@@ -30,7 +30,7 @@ export default function MenuTabs({ foodMenu }) {
       key,
       name: t(key),
       items: foodMenu.filter(
-        (item) => item.subcategory.toLowerCase() === key
+        (item) => item.subCategory.toLowerCase() === key
       ),
     }));
 
