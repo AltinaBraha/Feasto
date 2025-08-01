@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation"; // 🔥 importuar router
 import { useAuthStore } from "@/lib/stores/authStore";
 import AccountBanner from "@/components/my-account/common/AccountBanner";
 import SettingsLeft from "@/components/my-account/settings/SettingsLeft";
@@ -10,13 +11,14 @@ import { useTranslations } from "next-intl";
 
 export default function SettingsPage() {
   const t = useTranslations("Settings");
-  const { user} = useAuthStore();
+  const { user } = useAuthStore();
+  const router = useRouter();
 
   const { profile, loading, actions } = useUserProfile(user);
 
-   useEffect(() => {
+  useEffect(() => {
     if (user === null) {
-      router.replace("/en"); 
+      router.replace("/en");
     }
   }, [user, router]);
 
@@ -43,10 +45,7 @@ export default function SettingsPage() {
             onSaveProfile={actions.saveProfile}
             onChangePassword={actions.changePassword}
           />
-          <SettingsRight
-            user={profile}
-            onSaveLocation={actions.saveLocation}
-          />
+          <SettingsRight user={profile} onSaveLocation={actions.saveLocation} />
         </div>
       </div>
       <br />
