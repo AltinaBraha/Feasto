@@ -13,7 +13,6 @@ import {
 export default function SidebarFilter({ current, setFilter }) {
   const logout = useAuthStore((state) => state.logout);
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false);
-  const [showMenuDropdown, setShowMenuDropdown] = useState(false);
   const [showReservationsDropdown, setShowReservationsDropdown] =
     useState(false);
 
@@ -105,53 +104,8 @@ export default function SidebarFilter({ current, setFilter }) {
         </div>
 
         <div>
-          <button
-            onClick={() => {
-              setShowMenuDropdown((prev) => !prev);
-            }}
-            className={`w-full flex items-center justify-between px-4 py-2 rounded font-medium transition border ${
-              current?.startsWith("menu")
-                ? "border-orange-500 text-white"
-                : "border-transparent hover:border-gray-500 text-gray-300"
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              <Utensils className="w-5 h-5" /> Menu
-            </span>
-            {showMenuDropdown ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
-          </button>
-          {showMenuDropdown && (
-            <div className="ml-4 mt-2 space-y-2">
-              <button
-                onClick={() => setFilter("menu-food")}
-                className={`block w-full text-left px-4 py-1 rounded transition ${isActive("menu-food")}`}
-              >
-                Food
-              </button>
-              <button
-                onClick={() => setFilter("menu-drinks")}
-                className={`block w-full text-left px-4 py-1 rounded transition ${isActive("menu-drinks")}`}
-              >
-                Drinks
-              </button>
-              <button
-                onClick={() => setFilter("menu-desserts")}
-                className={`block w-full text-left px-4 py-1 rounded transition ${isActive("menu-desserts")}`}
-              >
-                Desserts
-              </button>
-              <button
-                onClick={() => setFilter("menu-add")}
-                className={`block w-full text-left px-4 py-1 rounded transition ${isActive("menu-add")}`}
-              >
-                Add Dessert
-              </button>
-            </div>
-          )}
+         
+          
         </div>
       </div>
 
